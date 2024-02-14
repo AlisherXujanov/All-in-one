@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="orbit-spinner">
+        <div class="orbit"></div>
+        <div class="orbit"></div>
+        <div class="orbit"></div>
+    </div>
+</body>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+    body {
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        width: 100%;
+        height: 100vh;
+    }
+    .orbit-spinner {
+        height: 550px;
+        width: 550px;
+        border-radius: 50%;
+        perspective: 1100px;
+    }
+
+    .orbit-spinner .orbit {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+    }
+
+    .orbit-spinner .orbit:nth-child(1) {
+        left: 0%;
+        top: 0%;
+        animation: orbit-spinner-orbit-one-animation 1200ms linear infinite;
+        border-bottom: 10px solid #00ff00;
+    }
+
+    .orbit-spinner .orbit:nth-child(2) {
+        right: 0%;
+        top: 0%;
+        animation: orbit-spinner-orbit-two-animation 1200ms linear infinite;
+        border-right: 10px solid #00ff00;
+    }
+
+    .orbit-spinner .orbit:nth-child(3) {
+        right: 0%;
+        bottom: 0%;
+        animation: orbit-spinner-orbit-three-animation 1200ms linear infinite;
+        border-top: 10px solid #00ff00;
+    }
+
+    @keyframes orbit-spinner-orbit-one-animation {
+        0% {
+            transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+        }
+
+        100% {
+            transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+        }
+    }
+
+    @keyframes orbit-spinner-orbit-two-animation {
+        0% {
+            transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+        }
+
+        100% {
+            transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+        }
+    }
+
+    @keyframes orbit-spinner-orbit-three-animation {
+        0% {
+            transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+        }
+
+        100% {
+            transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+        }
+    }
+</style>
+
+</html>

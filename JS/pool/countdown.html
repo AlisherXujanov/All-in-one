@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="main">
+        <div id="countdownDiv">
+            00
+        </div>
+        <div class="buttons">
+            <button onclick="stop()">Stop</button>
+            <button onclick="location.reload()">Refresh</button>
+        </div>
+    </div>
+
+
+    <script>
+        var manualMinutes = parseInt(prompt("Сколько минут?  "))
+        const dateObj = new Date()
+        const thisYear = dateObj.getFullYear()
+        const thisMonth = dateObj.getMonth()
+        const thisDay = dateObj.getDate()
+        const thisHours = dateObj.getHours()
+        const thisMinutes = dateObj.getMinutes()
+        const thisSeconds = dateObj.getSeconds()
+
+        // будущие минуты
+        const futureMinutes = thisMinutes + manualMinutes
+        var countDownDate = new Date(
+            thisYear, thisMonth, thisDay, thisHours, futureMinutes, thisSeconds
+        )
+        if (countDownDate > 0) { start() }
+        function start(on = true) {
+            let time = setInterval(function () {
+                var now = new Date().getTime();
+                var distance = countDownDate - now;
+
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("countdownDiv").innerHTML = minutes + " : " + seconds;
+                //   && == and == и
+                //   || == or == или
+                if (minutes < 1 && seconds < 10) {
+                    document.getElementById("countdownDiv").style.color = "red"
+                    document.getElementById("countdownDiv").style.animation = "countdown-animation infinite 1s alternate"
+                }
+                if (distance < 0) {
+                    clearInterval(time);
+                    document.getElementById("countdownDiv").innerHTML = "Время вышло!";
+                }
+            }, 1000);
+            if (on == false) {
+                countDownDate = 0
+                clearInterval(time);
+                document.getElementById("countdownDiv").innerHTML = "Время вышло!";
+            }
+        }
+        function stop() {
+            start(false)
+        }
+    </script>
+
+</body>
+<style>
+    * { margin:0;  padding:0;
+        box-sizing:border-box;
+        font-size: 1.5em;
+        color: snow;
+        transition: 1s;
+    }
+    .main {
+        width:100%;  height:100vh;
+        background: radial-gradient(circle, gray, #333, black);
+        display:flex;
+        justify-content:center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .buttons { margin-top: 50px; }
+    button {
+        border:none;  outline:none;
+        padding: 10px 20px;
+        border: 2px cyan solid;
+        background-color: #333;
+        font-size: x-large;
+        font-weight: bold;
+        color: cyan;
+    }
+    button:hover {
+        cursor: pointer;
+        color: snow;
+        box-shadow: inset 0 100px cyan,
+                    inset 100px 0 yellow,
+                    inset -100px 0 yellow,
+                    2px 2px 15px 2px cyan;
+    }
+    .countdownDiv {
+        font-size: 3em;
+    }
+    @keyframes countdown-animation {
+        from { transform: scale(0.9, 0.9); }
+        to { transform: scale(1,2, 1,2); letter-spacing: 3px; }
+    }
+</style>
+</html>

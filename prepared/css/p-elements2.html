@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <ol>
+        <li>Test text</li>
+        <li>Test text</li>
+        <li>Test text</li>
+        <li>Test text</li>
+        <li>Test text</li>
+        <li>Test text</li>
+        <li>Test text</li>
+        <li>Test text</li>
+        <li>Test text</li>
+        <li>Test text</li>
+    </ol>
+</body>
+<style>
+    li { 
+        list-style-type: armenian;
+        cursor: pointer; 
+    }
+    li:hover {
+        list-style-type: none;
+        position: relative;
+        padding: 10px;
+        background: url(../../pics/1.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        background-color: rgb(0,0,0,0.3);
+        background-blend-mode: darken;
+        color: snow;
+        border-radius: 20px;
+        width: 75px;
+    }
+    li::before {
+        content: "🎃";
+        position: absolute;
+        left: -25px;
+    }
+</style>
+</html>

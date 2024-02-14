@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="icon" href="logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Menus of Ice Cream Cafe</h1>
+
+        <nav>
+            <div class="left">
+                <a id="logo" href="#">
+                    <img src="logo.png" alt="Cafe Logo" width="60" height="40">
+                </a>
+            </div>
+            <div class="right">
+                <a href="index.html">Home</a>
+                <a href="About.html">About</a>
+                <a class="selected" href="#">Menu</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Menu</h1>
+
+        <div class="menus">
+            <div class="menu">
+                <img src="imgs/menus/menu_1.jpeg" width="100%" height="150">
+                <div class="info">
+                    <h5>The best menu ever</h5>
+                    <p>
+                        <!-- lorem 15 -->
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias odit aperiam error tempore fugiat
+                        placeat.
+                    </p>
+                    <div class="info-footer">
+                        <div>
+                            <img src="imgs/people/ic (6).jpeg" width="15" height="15">
+                            <span class="name">Ratatuelle - 19 Oct, 2020</span>
+                        </div>
+                        <div>
+                            <img src="imgs/icons/eye.png" width="25" height="15">
+                            256
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section>
+            <button id="open-modal" onclick="openModalFn()">Create Menu</button>
+
+            <div class="modal">
+                <div class="modal-content">
+                    <span id="close-modal" onclick="closeModalFn()">
+                        &times;
+                    </span>
+
+                    <form>
+                        <div class="form-control">
+                            <label for="name">Name</label>
+                            <input 
+                                id="name" class="name" 
+                                type="text" 
+                                onkeyup="if(event.keyCode===13) formSubmitFn()"
+                            >
+                        </div>
+                        <div class="form-control">
+                            <label for="desc">Description</label>
+                            <textarea 
+                                id="desc" cols="22" 
+                                rows="3" 
+                                onkeyup="if(event.keyCode===13) formSubmitFn()"
+                            ></textarea>
+                        </div>
+                        <div class="form-control">
+                            <button type="button">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const modal = document.querySelector('.modal');
+        const closeModal = document.querySelector('#close-modal');
+        const openModal = document.querySelector('#open-modal');
+        const nameInput = document.querySelector('form #name');
+        const descInput = document.querySelector('form #desc');
+        const formSubmit = document.querySelector('form button');
+        const menusDiv = document.querySelector('.menus');
+
+
+        modal.style.display = 'none';
+        function openModalFn() {
+            modal.style.display = 'flex';
+            setTimeout(() => {
+                modal.style.opacity = 1;
+            }, 100);
+        }
+        function closeModalFn() {
+            modal.style.opacity = 0;
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 500);
+        }
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                closeModalFn();
+            }
+        }
+
+
+        function formSubmitFn() {
+            const default_menu_name = 'The best menu ever';
+            const lorem_15 = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias odit aperiam error tempore fugiat placeat."
+
+            const menu = `
+                <div class="menu">
+                    <img src="imgs/menus/menu_1.jpeg" width="100%" height="150">
+                    <div class="info">
+                        <h5>${nameInput.value || default_menu_name}</h5>
+                        <p>
+                            ${descInput.value || lorem_15}  
+                        </p>
+                        <div class="info-footer">
+                            <div>
+                                <img src="imgs/people/ic (6).jpeg" width="15" height="15">
+                                <span class="name">Ratatuelle  - 19 Oct, 2020</span>
+                            </div>
+                            <div>
+                                <img src="imgs/icons/eye.png" width="25" height="15">
+                                256
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `
+
+            menusDiv.innerHTML += menu; 
+            closeModalFn();
+            nameInput.value = '';
+            descInput.value = '';
+        }
+
+        formSubmit.addEventListener('click', formSubmitFn);
+    </script>
+
+</body>
+<style>
+    body {
+        min-height: 100vh;
+        width: 100%;
+        background: url(imgs/menus_bg.jpg) no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-color: rgb(0, 0, 0, 0.5);
+        background-blend-mode: darken;
+        color: snow;
+    }
+    h1 {
+        padding: 30px;
+    }
+
+    .modal {
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        left: 0;
+        top: 0;
+        background-color: rgb(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        transition: 0.5s;
+    }
+
+    .modal-content {
+        width: 60%;
+        padding: 20px;
+        position: relative;
+        background: linear-gradient(to right top,
+                #019ede, #01d9de, #089d7a);
+        border-radius: 10px;
+    }
+
+    .form-control {
+        margin: 10px 0;
+        width: 100%;
+    }
+
+    .form-control * {
+        display: block;
+        width: 100%;
+        margin: 5px 0;
+        outline: none;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 10px;
+        font-family: sans-serif;
+        font-size: 1.2em;
+    }
+
+    .modal input,
+    .modal textarea {
+        background-color: lightgray;
+    }
+
+    .modal input:focus,
+    .modal textarea:focus {
+        background-color: #eee;
+        outline: 5px solid rgb(0, 255, 255, 0.5);
+        text-align: left;
+    }
+
+    .modal button {
+        background-color: #fff;
+        color: #000;
+        cursor: pointer;
+    }
+
+    .modal button:hover {
+        background-color: green;
+        color: snow;
+    }
+
+    .modal button:active {
+        cursor: progress;
+    }
+
+    .modal #close-modal {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        cursor: pointer;
+        background-color: rgb(255, 0, 0, 0.5);
+        padding: 3px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+    }
+
+    .modal #close-modal:hover {
+        background-color: red;
+        color: snow;
+        padding: 6px;
+        transform: rotate(360deg);
+    }
+
+    #open-modal {
+        outline: none;
+        border: none;
+        background-color: gray;
+        color: snow;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-family: sans-serif;
+        font-size: 1.2em;
+
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+    }
+
+    #open-modal:hover {
+        background-color: green;
+        cursor: pointer;
+    }
+
+    .menus {
+        margin: 20px;
+        padding: 20px;
+        background-color: rgb(0, 0, 0, 0.3);
+        border-radius: 10px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(300px, 1fr));
+        gap: 10px;
+
+    }
+
+    .menu {
+        background-color: #171719;
+    }
+
+    .menu p,
+    .menu h5 {
+        color: #F8F8F8;
+    }
+
+    .menu p {
+        font-size: small;
+        margin: 10px 0;
+    }
+
+    .menu .info {
+        padding: 10px;
+    }
+
+    .menu .info-footer {
+        display: flex;
+        justify-content: space-between;
+        color: gray;
+    }
+</style>
+
+</html>

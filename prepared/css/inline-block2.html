@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <marquee direction="right">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, architecto.
+    </marquee>
+    <div class="main">
+        <table>
+            <tr>
+                <td><img src="../../pics/3.jpg" width="200" height="200"></td>
+                <td>
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. <br>
+                        Vel quisquam <span>repudiandae</span> quia commodi dolore perferendis magni, <br>
+                        ab doloribus quo beatae inventore <span>architecto</span> velit est cum <br>
+                        reprehenderit quas libero molestiae aliquam?
+                    </p>
+                </td>
+                <td><img src="../../pics/3.jpg" width="200" height="200"></td>
+            </tr>
+        </table>
+        <a href="#4">Link 1</a>
+        <a href="#5">Link 2</a>
+    </div>
+
+</body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+        text-align: center;
+        transition: 1s;
+    }
+    body {
+        background-color: black;
+        color: snow;
+    }
+    marquee {
+        padding: 30px 0;
+    }
+    .main {
+        border: 1px solid green;
+        padding: 30px 0;
+    }
+    .main:hover {
+        padding: 50px;
+        border: 10px inset darkred;
+        background-color: rgb(0, 140, 0, 0.25);
+    }
+    table {
+        width: 50%;
+        margin: 0 auto;
+    }
+    span {
+        display: inline-block;
+    }
+    span:hover {
+        background-color: rgb(0, 255, 255, 0.6);
+    }
+    .main:hover span {
+        padding: 20px;
+        border: solid cyan 1px;
+    }
+    a {
+        text-decoration: none;
+        margin-top: 20px;
+        display: inline-block;
+        padding: 20px;
+    }
+    .main a {
+        border-bottom: solid red 1px;
+    }
+    a:hover {
+        background-color: rgb(140, 0, 0, 0.35);
+        padding: 30px 40px;
+        color: cyan;
+    }
+    img { opacity: 0; }
+    .main:hover img { opacity: 1; }
+</style>
+
+</html>

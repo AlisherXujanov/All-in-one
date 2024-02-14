@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.5.1/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <h1>Todos</h1>
+    <button id="get-todos">Get todos</button>
+    <div id="spinner">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="todos">
+        <div class="todo">
+            <input id="test-todo" type="checkbox">
+            <label for="test-todo">Todo title</label>
+        </div>
+    </div>
+
+    <script>
+        const url = "https://jsonplaceholder.typicode.com/todos"
+        const getTodosBtn = document.querySelector("#get-todos")
+        const spinner = document.querySelector("#spinner")
+        const todosDiv = document.querySelector(".todos")
+
+        function connect_listener() {
+            const all_todos = document.querySelectorAll(".todo")
+            all_todos.forEach(todo => {
+                todo.addEventListener('click', (e) => {
+                    const todo_input = todo.querySelector('input')
+                    if (todo_input.checked) {
+                        todo_input.checked = false
+                        todo.style.background = "linear-gradient(to right, skyblue, darkblue)"
+                    } else {
+                        todo_input.checked = true
+                        todo.style.background = "linear-gradient(to right, darkred, pink)"
+                    }
+                })
+            })
+        }
+        getTodosBtn.addEventListener('click', getTodosFn)
+
+        spinner.style.display = "none"
+        todosDiv.style.display = "none"
+
+        async function getTodosFn(e) {
+            e.preventDefault()
+            spinner.style.display = "flex"
+            todosDiv.style.display = "none"
+
+            let response = await axios.get(url)
+            if (response.data.length > 0) {
+                setTimeout(() => {
+                    spinner.style.display = "none"
+                    todosDiv.style.display = "grid"
+                }, 3000)
+            }
+            showTodos(response.data)
+        }
+        function showTodos(todos) {
+            for (let todo of todos) {
+                const todo_item = `
+                    <div class="todo">
+                        <input id='todo-${todo.id}' type="checkbox">
+                        <label for='todo-${todo.id}'>
+                            ${todo.title}
+                        </label>
+                    </div>
+                `
+                todosDiv.innerHTML += todo_item
+            }
+            connect_listener()
+        }
+
+    </script>
+</body>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        transition: 0.5s;
+        box-sizing: border-box;
+    }
+
+    button {
+        display: block;
+        width: 50%;
+        margin: 0 auto;
+        border-radius: 20px;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: green;
+        color: snow;
+    }
+
+    .todos {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        border-radius: 10px;
+        padding: 10px;
+        background-color: darkgray;
+    }
+
+    #spinner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        margin: 10px 0;
+    }
+
+    #spinner div {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: black;
+        animation: spinner-item 1s linear infinite alternate;
+    }
+
+    @keyframes spinner-item {
+        to {
+            transform: scale(0.5);
+            background-color: red;
+        }
+    }
+
+    #spinner div:nth-child(1) {
+        animation-delay: 0.3s;
+    }
+
+    #spinner div:nth-child(2) {
+        animation-delay: 0.6s;
+    }
+
+    #spinner div:nth-child(3) {
+        animation-delay: 0.9s;
+    }
+
+    .todo {
+        background: linear-gradient(45deg, skyblue, darkblue);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border-radius: 10px;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .todo input {
+        width: 20px;
+        height: 20px;
+    }
+
+    .todo input:checked+label {
+        text-decoration: line-through;
+        font-weight: bold;
+    }
+</style>
+
+</html>

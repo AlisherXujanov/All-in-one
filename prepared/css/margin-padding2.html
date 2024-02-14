@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <table>
+        <tr>
+            <td class="first" rowspan="2">
+                <img src="../../pics/3.jpg" width="100" height="100">
+            </td>
+            <td>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae, vero nostrum ut laboriosam accusantium ipsa illo culpa, animi tempore vel beatae earum nemo, quos quidem tempora accusamus iste sed vitae. Eos nam voluptatem non fuga blanditiis quas vero aperiam molestiae autem magnam asperiores, harum dolore quam. Iste voluptate saepe atque labore dolorem, iure maiores laudantium facilis sunt dolorum asperiores quas, unde nam, inventore ipsam voluptatum aliquam nostrum veniam et autem. Officiis voluptates quae praesentium in, obcaecati architecto consequuntur. Est aliquid magnam soluta harum ex voluptatibus quisquam. Provident, perspiciatis! Omnis aliquid, voluptatibus aliquam eius illo quis asperiores. Nobis amet quisquam dolores?</p>
+            </td>
+            <td class="last" rowspan="2">
+                <img src="../../pics/3.jpg" width="100" height="100">
+            </td>
+        </tr>
+
+        <tr>
+            <td class="bottom">
+                <img src="../../pics/3.jpg" width="95%" height="300">
+            </td>
+        </tr>
+    </table>
+</body>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        transition: 0.5s;
+    }
+    body {
+        background-color: #333;
+        color: snow;
+    }
+    .first img {
+        margin: 300px 0 0 0;
+        border-radius: 50%;
+    }
+    .last img {
+        margin-bottom: 300px;
+        border-radius: 50%;
+    }
+    table:hover .first img {
+        margin: 0 0 300px 0;
+    }
+    table:hover .last img {
+        margin: 300px 0 0 0;
+    }
+    table:hover .bottom img {
+        border-radius: 20px;
+        border: inset 15px green;
+    }
+</style>
+</html>

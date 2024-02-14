@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Dark / Light - theme</h1>
+    <span id="toggle-theme">
+        🌙
+    </span>
+    <p>
+        <!-- lorem 50 -->
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit magni eum distinctio facilis suscipit tempora nesciunt, deleniti corrupti quibusdam rerum accusantium perspiciatis numquam quod mollitia, tempore id atque. Sed assumenda, at perspiciatis porro rem doloremque repellat ut sunt, similique ullam aperiam. Sit ipsam libero perferendis reiciendis debitis nostrum maxime quaerat!
+    </p>
+    
+
+    <script>
+        let switchedOff = false
+        const toggler = document.getElementById('toggle-theme');
+        toggler.addEventListener('click', () => {
+            if (!switchedOff) {
+                const audio = new Audio('../click.mp3');
+                audio.play();
+            }
+            document.body.classList.toggle('dark-theme');
+
+            if (document.body.classList.contains('dark-theme')) {
+                toggler.innerHTML = '☀️';
+            } else {
+                toggler.innerHTML = '🌙';
+            }
+        })
+    </script>
+</body>
+<style>
+    * { 
+        transition: 0.2s; 
+        padding: 0;
+        margin: 0;
+        text-align: center;
+    }
+    #toggle-theme {
+        cursor: pointer;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        background-color: rgb(200,0,200,  0.1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        right: 5%;
+        top: 5%;
+    }
+    .dark-theme {
+        background-color: #333;
+        color: #eee;
+    }
+    .light-theme {
+        background-color: #eee;
+        color: #222;
+    }
+
+</style>
+</html>

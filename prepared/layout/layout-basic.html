@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alisher</title>
+</head>
+<body>
+    <div class="top-header">
+        <div class="heading">
+            <h1>My new WebSite</h1>
+        </div>
+
+        <div class="menu-nav">
+            <a style="float: left;" href="#">
+                <img src="../../pics/2.png" width="30" height="20">
+            </a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a href="#">Profile</a>
+        </div>
+    </div>
+
+    <div class="content-body">
+        <div class="left">
+            <div class="img-div">
+                <h4>Image</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, officia!</p>
+            </div>
+            <div class="img-div">
+                <h4>Image</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, officia!</p>
+            </div>
+            <div class="img-div">
+                <h4>Image</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, officia!</p>
+            </div>
+            <div class="img-div">
+                <h4>Image</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, officia!</p>
+            </div>
+        </div>
+        
+        <div class="middle">
+            <div class="content">
+                <img src="../../pics/event.jpg" width="75" height="75">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam illum unde illo laboriosam eligendi possimus libero. Saepe facere consequuntur, perferendis excepturi laudantium quod, deleniti ea tempora nobis quae error maxime.</p>
+            </div>
+            <div class="content">
+                <img src="../../pics/event.jpg" width="75" height="75">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam illum unde illo laboriosam eligendi possimus libero. Saepe facere consequuntur, perferendis excepturi laudantium quod, deleniti ea tempora nobis quae error maxime.</p>
+            </div>
+            <div class="content">
+                <img src="../../pics/event.jpg" width="75" height="75">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam illum unde illo laboriosam eligendi possimus libero. Saepe facere consequuntur, perferendis excepturi laudantium quod, deleniti ea tempora nobis quae error maxime.</p>
+            </div>
+            <div class="content">
+                <img src="../../pics/event.jpg" width="75" height="75">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam illum unde illo laboriosam eligendi possimus libero. Saepe facere consequuntur, perferendis excepturi laudantium quod, deleniti ea tempora nobis quae error maxime.</p>
+            </div>
+        </div>
+        
+        <div class="right">
+            <div class="ad">
+                <h5>Advertisement</h5>
+            </div>
+            <div class="ad">
+                <h5>Advertisement</h5>
+            </div>
+            <div class="ad">
+                <h5>Advertisement</h5>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+<style>
+    
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        transition: 0.8s;
+        text-align: center;
+        text-decoration: none;
+        font-family: sans-serif;
+    }
+    body {
+        background-color: #eee;
+        color: #111;
+    }
+    a {
+        float: right;   
+        padding: 10px 20px;
+        color: snow;
+    }
+    a:hover { background-color: #111; }
+    a:active { background-color: red; }
+    
+    .menu-nav {
+        background-color: #333;
+        overflow: hidden;
+    }
+    .heading h1 { line-height: 100px; }
+    
+    .content-body { 
+        padding: 10px; 
+        background-color: #444;
+        overflow: hidden;
+        color: snow;
+    }
+    .content-body > div {
+        float: left;
+        background-color: #333;
+        padding: 5px;
+        height: 70vh;
+        overflow: auto;
+    }
+
+    /*
+    .content-body > div::-webkit-scrollbar {
+        background-color: blueviolet;
+    }
+    .content-body > div::-webkit-scrollbar-thumb {
+        background-color: yellow;
+        border-radius: 10px;
+    }
+    */
+    
+    .left { width: 25%; }
+    .middle { width: 50%; }
+    .right { width: 25%; }
+    
+    .left .img-div {
+        padding: 5px;
+        background-color: #222;
+        width: 100%;
+        height: 25vh;
+        margin: 10px 0;
+    }
+    .middle .content {
+        width: 100%;
+        background-color: #222;
+        color: aquamarine;
+        padding: 20px 5px;
+        margin: 10px 0;
+    }
+    .middle .content img {
+        border-radius: 50%;
+        float: left;
+        margin: 0 5px 5px 0;
+    }
+    
+    .right .ad {
+        height: 30vh;
+        width: 100%;
+        background-color: bisque;
+        color: magenta;
+        padding: 10px;
+        margin: 5px 0;
+    }
+    
+
+</style>
+</html>

@@ -1,0 +1,36 @@
+@use "_resets";
+@import "_vars";
+
+body {
+    background-color: $dark;
+}
+.main {
+    width: 50%;
+    margin: 0 auto;
+    @include d_flex($direction: column, $align: center);
+    background-color: map-get($colors, secondary);
+    color: $light;
+    padding: 20px;
+    @include shadow(0, 5px, 25px, 0, rgb(100, 255, 100, 0.3));
+
+    * {
+        margin: 5px 0;
+    }
+}
+
+.success {
+    @extend %btn;
+    background-color: $success;
+    color: snow;
+    &:hover {
+        background-color: darken($success, 10%);
+    }
+}
+.info {
+    @extend %btn;
+    background-color: $info;
+    color: snow;
+    &:hover {
+        background-color: darken($info, 10%);
+    }
+}

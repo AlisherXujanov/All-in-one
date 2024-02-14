@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <table>
+        <tr>
+            <td>
+                <img src="../../pics/event.jpg">
+            </td>
+            <td class="main">
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam veritatis debitis ipsa ea quia
+                    laboriosam eos hic, eveniet ad maiores, assumenda neque officiis quasi ut incidunt quisquam
+                    nostrum voluptas quas.
+                </p>
+            </td>
+            <td>
+                <img src="../../pics/event.jpg">
+            </td>
+        </tr>
+    </table>
+</body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        transition: 0.5s;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    body { background-color: black; }
+
+    .main {
+        width: 50%;
+        height: 50vh;
+        margin: 0 auto;
+        background-color: #333;
+        padding: 10px;
+        color: snow;
+    }
+
+    table {
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    table:hover {
+        width: 100%;
+    }
+
+    table:hover .main {
+        padding: 50px;
+        border: 10px inset green;
+
+        box-shadow: 10px 10px 25px red,
+            -10px -10px 25px cyan;
+            
+        text-shadow: 2px 2px 5px blue,
+            -2px -2px 5px blue;
+        color: red;
+        font-weight: bold;
+
+        background: url(../../pics/3.jpg) no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-color: rgb(0, 0, 0, 0.5);
+        background-blend-mode: darken;
+    }
+
+    img {
+        width: 0;
+        height: 150px;
+    }
+
+    table:hover img {
+        width: 100%;
+        height: 200px;
+    }
+
+    /*
+        box-sizing: border-box;  => is used to include the 
+                                padding and border in the width and height of the element
+                    RU: используется для включения в ширину и высоту элемента внутренних 
+                    отступов и границ
+        box-shadow: ...  => takes upto 5 values and is used to add shadow to the element
+                    RU: принимает до 5 значений и используется для добавления тени элементу
+
+                    inset  => is used to add inner shadow
+                              RU: используется для добавления внутренней тени
+                    1. horizontal shadow  =>  горизонтальная тень
+                    2. vertical shadow    =>  вертикальная тень
+                    3. blur radius        =>  радиус размытия
+                    4. spread radius      =>  радиус распространения
+                    5. color              =>  цвет
+
+        text-shadow: ...   =>  works just like box-shadow but does NOT take 
+                               third value (blur radius)
+                               RU: работает так же как и box-shadow, 
+                               но НЕ принимает третье значение (радиус размытия)
+                    
+    */
+</style>
+
+</html>

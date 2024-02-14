@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main">
+        <div class="div-1">
+            <div class="child-1"></div>
+            <div class="child-2"></div>
+            <div class="child-3"></div>
+        </div>
+
+        <div class="div-2">
+            <div class="child-4"></div>
+            <div class="child-5"></div>
+            <div class="child-6"></div>
+        </div>
+    </div>
+</body>
+<style>
+    * {
+        padding:0;  margin:0;
+        box-sizing:border-box;
+        text-align: center;
+        transition: 1s;
+    }
+    body {
+        z-index: -999;
+    }
+    div {
+        width:50px;   height:50px;
+        border-radius:50%;
+        position: absolute;
+    }
+    .main {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        background-color: #333;
+        border-radius:0;
+        position: relative;
+    }
+    .child-1 { background: radial-gradient(circle, 
+                        rgb(255, 0, 0, 0.1), rgb(0, 128, 0, 0.5), blue); 
+        animation: child1 1s alternate linear infinite;
+        animation-delay: 0.2s;
+        top: 20px;
+    }
+    .child-2 { background: radial-gradient(circle, 
+                        rgb(0, 0, 255, 0.1), rgb(255, 0, 0, 0.5), green); 
+        animation: child2 1.5s alternate linear infinite;
+        animation-delay: 0.4s;
+        bottom: 20px;
+    }
+    .child-3 { background: radial-gradient(circle, 
+                        rgb(255, 255, 0, 0.1), rgb(255, 166, 0, 0.5), red); 
+        animation: child3 0.5s alternate linear infinite;
+        animation-delay: 0.6s;
+        left: 20px;
+    }
+    .child-4 { background: radial-gradient(circle, 
+                        rgb(76, 0, 130, 0.1), rgb(238, 130, 238, 0.5), pink); 
+        animation: child4 2s alternate linear infinite;
+        animation-delay: 0.8s;
+        right: 20px;
+    }
+    .child-5 { background: radial-gradient(circle, 
+                        rgb(0, 255, 255, 0.1), rgb(0, 255, 255, 0.5), aquamarine); 
+        animation: child5 1.2s alternate linear infinite;
+        animation-delay: 1s;
+        right: 20px;
+        top: 20px;
+    }
+    .child-6 { background: radial-gradient(circle, 
+                        rgb(0, 0, 0, 0.1), rgb(255, 191, 202, 0.5), gold); 
+        animation: child6 1.8s alternate linear infinite;
+        animation-delay: 1.2s;
+        bottom: 20px;
+        left: 20px;
+    }
+
+    @keyframes child1 {
+        from { z-index: 1; }
+        to {
+            transform: scale(1.5) translateY(10px);
+            z-index: 10;
+        }
+    }
+    @keyframes child2 {
+        from { z-index: 2; }
+        to {
+            transform: scale(1.5) translateY(-10px);
+            z-index: 11;
+        }
+    }
+    @keyframes child3 {
+        from { z-index: 3; }
+        to {
+            transform: scale(1.5) translateX(10px);
+            z-index: 12;
+        }
+    }
+    @keyframes child4 {
+        from { z-index: 4; }
+        to {
+            transform: scale(1.5) translateX(-10px);
+            z-index: 13;
+        }
+    }
+    @keyframes child5 {
+        from { z-index: 5; }
+        to {
+            transform: scale(1.5) translate(15px, -15px);
+            z-index: 14;
+        }
+    }
+    @keyframes child6 {
+        from { z-index: 6; }
+        to {
+            transform: scale(1.5) translate(-15px, 15px);
+            z-index: 15;
+        }
+    }
+
+
+    .div-1 {
+        animation: div-1-child 3s linear infinite alternate;
+    }
+    .div-2 {
+        animation: div-2-child 4s ease-in-out infinite alternate-reverse;
+    }
+    @keyframes div-1-child {
+        from {
+            transform: scale(2) translateY(25px)
+        }
+        to {
+            transform: scale(0.8) translateY(-50px)
+        }
+    }
+    @keyframes div-2-child {
+        from {
+            transform: scale(1.5) translateY(15px)
+        }
+        to {
+            transform: scale(0.75) translateY(-30px)
+        }
+    }
+
+</style>
+</html>

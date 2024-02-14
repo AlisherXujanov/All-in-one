@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <tr class="bottom">
+            <td colspan="3">
+                <img src="/pics/stars.jpg">
+            </td>
+        </tr>
+
+        <tr class="middle">
+            <th><img src="/pics/event.jpg"></th>
+            <th class="middle-th">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente deleniti nisi debitis ipsam totam facilis ex earum fugiat deserunt modi! Id hic quas sed nostrum autem architecto dignissimos quaerat dolor.</th>
+            <th><img src="/pics/event.jpg"></th>
+        </tr>
+
+        <tr class="bottom">
+            <td colspan="3">
+                <img src="/pics/stars.jpg">
+            </td>
+        </tr>
+    </table>
+</body>
+<style>
+    * {
+        transition: 1s; 
+        text-align: center;
+    }
+    body { background-color:black;    color:snow;}
+    
+    .middle img {
+        width: 0;
+        height: 150px;
+    }
+    .bottom img {
+        height: 0;
+        width: 100%;
+    }
+    table:hover img {
+        width: 100%;
+        height: 150px;
+    }
+  
+</style>
+</html>

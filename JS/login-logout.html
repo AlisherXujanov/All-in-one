@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="alert"></div>
+
+    <div id="spinner">
+        <div class="breeding-rhombus-spinner">
+            <div class="rhombus child-1"></div>
+            <div class="rhombus child-2"></div>
+            <div class="rhombus child-3"></div>
+            <div class="rhombus child-4"></div>
+            <div class="rhombus child-5"></div>
+            <div class="rhombus child-6"></div>
+            <div class="rhombus child-7"></div>
+            <div class="rhombus child-8"></div>
+            <div class="rhombus big"></div>
+        </div>
+    </div>
+
+    <main id="logged-out-menu">
+        <div id="login-form">
+            <h1>Login</h1>
+
+            <form>
+                <div class="form-control">
+                    <label for="name">Username</label>
+                    <input id="name" type="text" placeholder="Username">
+                </div>
+                <div class="form-control">
+                    <label for="pass">Password</label>
+                    <input id="pass" type="password" placeholder="Password">
+                </div>
+                <div class="form-control">
+                    <button class="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="register-form">
+            <h1>Registeration</h1>
+
+            <form>
+                <div class="form-control">
+                    <label for="name-reg">Username</label>
+                    <input id="name-reg" type="text" placeholder="Username">
+                </div>
+                <div class="form-control">
+                    <label for="pass-reg">Password</label>
+                    <input id="pass-reg" type="password" placeholder="Password">
+                </div>
+                <div class="form-control">
+                    <label for="pass-conf">Password confirmation</label>
+                    <input id="pass-conf" type="password" placeholder="Password confirmation">
+                </div>
+                <div class="form-control">
+                    <button class="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <main id="logged-in-menu">
+        <h1>Hello world</h1>
+        <button onclick="logout()">Logout</button>
+    </main>
+
+    <script>
+        const loginForm = document.querySelector("#login-form")
+        const registerForm = document.querySelector("#register-form")
+
+        // ===========================================================
+        // LOGIN FORM
+        const loginName = loginForm.querySelector("#name")
+        const loginPass = loginForm.querySelector("#pass")
+        const loginBtn = loginForm.querySelector(".submit")
+
+        // ===========================================================
+        // REGISTER FORM
+        const registerName = registerForm.querySelector("#name-reg")
+        const registerPass = registerForm.querySelector("#pass-reg")
+        const registerPassConf = registerForm.querySelector("#pass-conf")
+        const registerBtn = registerForm.querySelector(".submit")
+
+        // ===========================================================
+        // CONTAINERS
+        const alertDiv = document.querySelector("#alert")
+        const loggedOutMain = document.querySelector("#logged-out-menu")
+        const loggedInMain = document.querySelector("#logged-in-menu")
+        const spinner = document.querySelector("#spinner")
+
+
+        const loggedIn = localStorage.getItem('logged_id')
+        if (loggedIn) {
+            loggedOutMain.style.display = 'none'
+            loggedInMain.style.display = 'block'
+        } else {
+            loggedOutMain.style.display = 'grid'
+            loggedInMain.style.display = 'none'
+        }
+
+        // ===========================================================
+        // FUNCTIONS
+        function logout() {
+            localStorage.removeItem('logged_id')
+            reloadPage()
+        }
+        function reloadPage() { location.reload() }
+        function showAlert(type, msg) {
+            alertDiv.style.display = 'block'
+            spinner.style.display = 'block'
+            loggedOutMain.style.opacity = 0.5
+
+            alertDiv.innerHTML = msg
+            switch (type) {
+                case 'success':
+                    alertDiv.style.backgroundColor = 'green'
+                    alertDiv.style.color = 'yellow'
+                    break;
+                case 'warning':
+                    alertDiv.style.backgroundColor = 'orange'
+                    alertDiv.style.color = 'snow'
+                    break;
+                case 'error':
+                    alertDiv.style.backgroundColor = 'red'
+                    alertDiv.style.color = 'snow'
+                    break;
+            }
+
+            setTimeout(() => {
+                alertDiv.style.display = 'none'
+                spinner.style.display = 'none'
+                loggedOutMain.style.opacity = 1
+        }, 3000)
+        }
+        function getUsersFromLS() {
+            let users = localStorage.getItem("users")
+            return JSON.parse(users || "[]") // [{..}, {..}]
+        }
+        function loginFn(e) {
+            e.preventDefault()
+            const existingUsers = getUsersFromLS()
+            for (let u of existingUsers) {
+                if (u.username == loginName.value && u.password == loginPass.value) {
+                    showAlert('success', 'Successfully logged in!')
+                    loginName.value = ""
+                    loginPass.value = ""
+                    localStorage.setItem('logged_id', true)
+                    setTimeout(reloadPage, 3000)
+                    break;
+                } else {
+                    showAlert('error', 'User does not exist!')
+                }
+            }
+        }
+        function registerFn(e) {
+            e.preventDefault()
+            if (registerPass.value == registerPassConf.value) {
+                const newUser = {
+                    'username': registerName.value,
+                    'password': registerPass.value
+                }
+                const allUsers = getUsersFromLS() // [...]
+                allUsers.push(newUser)
+                localStorage.setItem('users', JSON.stringify(allUsers))
+                showAlert('success', 'Successfully registered!')
+                registerPassConf.value = ""
+                registerName.value = ""
+                registerPass.value = ""
+                setTimeout(reloadPage, 3000)
+            } else {
+                showAlert('warning', 'Passwords do not match')
+            }
+        }
+
+        // ===========================================================
+        // CONNECT FUNCTIONS TO EVENTS
+        loginBtn.addEventListener("click", loginFn)
+        registerBtn.addEventListener("click", registerFn)
+    </script>
+
+</body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition: 0.5s;
+    }
+
+    main {
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    form {
+        padding: 20px;
+        background-color: lightgray;
+        border-radius: 10px;
+    }
+
+    .form-control {
+        margin: 10px 0;
+    }
+
+    .form-control * {
+        margin: 5px 0;
+    }
+
+    input,
+    button {
+        outline: none;
+        border: none;
+        background-color: darkgray;
+        padding: 10px 20px;
+        border-radius: 10px;
+        display: block;
+        width: 100%;
+    }
+
+    form input:focus {
+        background-color: snow;
+        outline: 3px solid rgb(0, 140, 140, 0.4);
+    }
+
+    button:hover {
+        background-color: darkcyan;
+        color: snow;
+        cursor: pointer;
+    }
+
+    #alert {
+        padding: 20px;
+        border-radius: 20px;
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+        background-color: darkgray;
+        display: none;
+    }
+
+    #spinner {
+        display: none;
+    }
+    .breeding-rhombus-spinner {
+        height: 65px;
+        width: 65px;
+        margin: 0 auto;
+        position: absolute;
+        z-index: 999;
+        left: 47%;
+        margin-top: 50px;
+        transform: rotate(45deg);
+    }
+
+    .breeding-rhombus-spinner,
+    .breeding-rhombus-spinner * {
+        box-sizing: border-box;
+    }
+
+    .breeding-rhombus-spinner .rhombus {
+        height: calc(65px / 7.5);
+        width: calc(65px / 7.5);
+        animation-duration: 2000ms;
+        position: absolute;
+        top: calc(65px / 2.3077);
+        left: calc(65px / 2.3077);
+        background-color: #ff1d5e;
+        box-shadow: 2px 2px 15px 2px blue, -2px -2px 15px 2px red;
+        animation-iteration-count: infinite;
+    }
+
+    .breeding-rhombus-spinner .rhombus:nth-child(even) {
+        margin-right: 0;
+    }
+
+    .breeding-rhombus-spinner .rhombus.child-1 {
+        animation-name: breeding-rhombus-spinner-animation-child-1;
+        animation-delay: calc(100ms * 1);
+    }
+
+    .breeding-rhombus-spinner .rhombus.child-2 {
+        animation-name: breeding-rhombus-spinner-animation-child-2;
+        animation-delay: calc(100ms * 2);
+    }
+
+    .breeding-rhombus-spinner .rhombus.child-3 {
+        animation-name: breeding-rhombus-spinner-animation-child-3;
+        animation-delay: calc(100ms * 3);
+    }
+
+    .breeding-rhombus-spinner .rhombus.child-4 {
+        animation-name: breeding-rhombus-spinner-animation-child-4;
+        animation-delay: calc(100ms * 4);
+    }
+
+    .breeding-rhombus-spinner .rhombus.child-5 {
+        animation-name: breeding-rhombus-spinner-animation-child-5;
+        animation-delay: calc(100ms * 5);
+    }
+
+    .breeding-rhombus-spinner .rhombus.child-6 {
+        animation-name: breeding-rhombus-spinner-animation-child-6;
+        animation-delay: calc(100ms * 6);
+    }
+
+    .breeding-rhombus-spinner .rhombus.child-7 {
+        animation-name: breeding-rhombus-spinner-animation-child-7;
+        animation-delay: calc(100ms * 7);
+    }
+
+    .breeding-rhombus-spinner .rhombus.child-8 {
+        animation-name: breeding-rhombus-spinner-animation-child-8;
+        animation-delay: calc(100ms * 8);
+    }
+
+    .breeding-rhombus-spinner .rhombus.big {
+        height: calc(65px / 3);
+        width: calc(65px / 3);
+        animation-duration: 2000ms;
+        top: calc(65px / 3);
+        left: calc(65px / 3);
+        background-color: #ff1d5e;
+        box-shadow: 2px 2px 15px 2px blue, -2px -2px 15px 2px red;
+        animation: breeding-rhombus-spinner-animation-child-big 2s infinite;
+        animation-delay: 0.5s;
+    }
+
+
+    @keyframes breeding-rhombus-spinner-animation-child-1 {
+        50% {
+            transform: translate(-325%, -325%);
+        }
+    }
+
+    @keyframes breeding-rhombus-spinner-animation-child-2 {
+        50% {
+            transform: translate(0, -325%);
+        }
+    }
+
+    @keyframes breeding-rhombus-spinner-animation-child-3 {
+        50% {
+            transform: translate(325%, -325%);
+        }
+    }
+
+    @keyframes breeding-rhombus-spinner-animation-child-4 {
+        50% {
+            transform: translate(325%, 0);
+        }
+    }
+
+    @keyframes breeding-rhombus-spinner-animation-child-5 {
+        50% {
+            transform: translate(325%, 325%);
+        }
+    }
+
+    @keyframes breeding-rhombus-spinner-animation-child-6 {
+        50% {
+            transform: translate(0, 325%);
+        }
+    }
+
+    @keyframes breeding-rhombus-spinner-animation-child-7 {
+        50% {
+            transform: translate(-325%, 325%);
+        }
+    }
+
+    @keyframes breeding-rhombus-spinner-animation-child-8 {
+        50% {
+            transform: translate(-325%, 0);
+        }
+    }
+
+    @keyframes breeding-rhombus-spinner-animation-child-big {
+        50% { 
+            transform: scale(0.5);
+        }
+    }
+</style>
+
+</html>

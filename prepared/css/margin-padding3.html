@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <div class="main">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere eum impedit, repudiandae nemo aliquid ratione minus. Voluptas impedit quisquam fugit provident recusandae eaque architecto, doloremque necessitatibus maiores dicta fuga cupiditate.</p>
+
+        <div class="child">
+            <div id="first-img">
+                <img src="../../pics/1.jpg" >
+            </div>
+            <div id="second-img">
+                <img src="../../pics/1.jpg" >
+            </div>
+        </div>
+    </div>
+
+</body>
+<style>
+    * {
+        transition: 1s;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+    }
+    .main img {
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+    }
+    .main {
+        width: 50%;
+        margin: 0 auto;
+        background-color: black;
+        color: magenta;
+    }
+    .main:hover {
+        width: 80%;
+        background: url(../../pics/3.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-color: rgb(0,0,255, 0.5);
+        background-blend-mode: darken;
+        border-radius: 20px;
+        padding: 50px;
+    }
+    .main > div:hover #first-img {
+        margin-left: 350px;
+    }
+    .main > div:hover #second-img {
+        margin-right: 350px;
+    }
+    .main:hover {
+        color: cyan;
+    } 
+    .main:hover .child div {
+        border: 10px solid red;
+    }
+    img:hover {
+        border-radius: 50%;
+        border: 10px dotted blue;
+    }
+    p:hover{
+        text-decoration: underline dotted yellow 3px;
+    }
+</style>
+</html>
+
+

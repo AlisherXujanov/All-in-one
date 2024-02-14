@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>Scroll Event</h1>
+    <p>Check scroll event in JS</p>
+
+
+    <main>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis vero ipsum quia nostrum ut deserunt obcaecati ea minus beatae! Quae, harum sunt, non consectetur atque temporibus quod officia fugiat accusamus voluptatibus tempora optio amet laudantium! Ab, sit, possimus, omnis porro quae quaerat tenetur assumenda recusandae sunt autem repudiandae hic repellendus nesciunt. Nisi tempora accusantium neque vero corrupti facilis aperiam doloremque, consequuntur expedita architecto eligendi? Fugiat, vitae perferendis impedit officiis voluptatum obcaecati quaerat id nulla repudiandae neque! Nesciunt obcaecati optio dignissimos placeat harum veritatis sapiente temporibus impedit rerum, ipsa numquam, natus, nihil aliquam maxime quibusdam. Voluptatibus assumenda eius asperiores eveniet impedit similique accusamus minus iusto blanditiis atque laudantium adipisci, quos amet at in? Quae, architecto velit recusandae facilis vero, id laudantium at hic esse atque, minima modi suscipit molestias. Magnam placeat quo quas at, neque explicabo! Veniam consequuntur tenetur similique repellat quaerat asperiores doloribus temporibus aliquam libero nam minima dicta voluptate earum quisquam ratione, suscipit ab nobis harum perferendis! Inventore tempora a quia autem dolores aperiam architecto minima quibusdam blanditiis! Distinctio, facilis laudantium suscipit amet facere sequi esse eius quibusdam vel voluptas laborum molestias sit tenetur, porro, minima corporis modi maiores? Minus voluptas aperiam odio distinctio. Architecto a omnis aliquam facere rem ea tempore voluptatibus nihil numquam, sapiente iure assumenda adipisci accusamus saepe cumque natus fugit laudantium asperiores recusandae? Tempore quisquam beatae unde temporibus dolores sit sed rem repudiandae, fugit vitae esse pariatur ratione exercitationem nostrum qui aliquid. Dolores autem ducimus, officiis vitae possimus voluptas esse. Reprehenderit ipsa quis quia eos, commodi corporis expedita neque mollitia provident! Vitae totam molestiae recusandae alias obcaecati amet rem iure, incidunt labore? Officia blanditiis fuga deserunt! Illum quos maiores, a, quisquam ducimus optio eligendi inventore, officia sapiente mollitia accusantium. In quasi officia natus fugit labore ipsam vero. Cum, ab repellendus omnis esse tempora ipsum enim? Quas inventore soluta, natus error enim praesentium pariatur aspernatur nemo incidunt iure suscipit consequuntur consequatur vel modi excepturi optio doloremque, qui quam aut quaerat commodi distinctio. Est repudiandae, voluptatibus accusantium optio sequi asperiores et harum animi dolores necessitatibus adipisci omnis aspernatur tempore? Facilis, reprehenderit repellendus hic praesentium ad id obcaecati molestiae, aspernatur tempora iste eligendi voluptates dicta necessitatibus rerum minus quam. Fugiat molestiae nulla sequi tempora error alias voluptatem, magni rerum voluptas, natus fugit est harum, aut recusandae sint! Praesentium delectus nihil molestias non tempora officia excepturi sapiente aperiam, voluptatem ab aspernatur saepe quaerat adipisci enim repellat veniam pariatur earum repudiandae! Ipsam natus quis fugit eaque molestias hic voluptatem unde provident quia magnam neque nisi ullam, quo, asperiores similique accusantium nemo quas exercitationem, ex ut. Aspernatur laboriosam assumenda animi distinctio provident amet optio reprehenderit totam maiores corporis? Dolore itaque ipsum quas odit, maiores tenetur aperiam alias obcaecati blanditiis quae laborum. Sed culpa aliquid vero dignissimos temporibus consequuntur, eum est rerum quisquam quo facilis aspernatur delectus magnam, nulla dolore fuga minus. Consequuntur voluptate expedita consequatur, magnam quod officia quae aut tenetur vel animi unde accusantium reprehenderit, possimus distinctio officiis tempora voluptatem sint temporibus minus est quo cum laboriosam. Vel, commodi voluptas!</p>
+    </main>
+
+    <script>
+        const main = document.querySelector('main');
+        main.addEventListener('scroll', function(e) {
+            let topEmptyHeight = main.scrollTop;
+            if (topEmptyHeight < 200) {
+                main.style.backgroundColor = '#333';
+                main.style.color = 'snow';
+            } else {
+                main.style.backgroundColor = 'snow';
+                main.style.color = 'black';
+            }
+
+            if (topEmptyHeight > 400) {
+                main.style.backgroundColor = 'blue';
+                main.style.color = 'snow';
+            } 
+            if (topEmptyHeight > 600) {
+                main.style.backgroundColor = 'indigo';
+                main.style.color = 'red';
+            }
+            if (topEmptyHeight > 800) {
+                main.style.backgroundColor = 'red';
+                main.style.color = 'snow';
+            }
+        })
+
+        window.addEventListener('scroll', function() {
+            let availableTopInPixels = document.documentElement.scrollTop;
+            if (availableTopInPixels < 200) {
+                document.body.style.backgroundColor = '#eee';
+            } else {
+                document.body.style.backgroundColor = '#333';
+            }
+
+            if (availableTopInPixels > 400) {
+                document.body.style.backgroundColor = 'blue';
+            } 
+            if (availableTopInPixels > 600) {
+                document.body.style.backgroundColor = 'indigo';
+            }
+            if (availableTopInPixels > 800) {
+                document.body.style.backgroundColor = 'red';
+            }
+            // switch (availableTopInPixels) {
+            //     case 0:
+            //         document.body.style.backgroundColor = '#333';
+            //         break;
+            //     case 200:
+            //         document.body.style.backgroundColor = 'red';
+            //         break;
+            //     case 400:
+            //         document.body.style.backgroundColor = 'blue';
+            //         break;
+            //     case 600:
+            //         document.body.style.backgroundColor = 'indigo';
+            //         break;
+            // }
+        });
+    </script>
+</body>
+<style>
+    * { transition: 0.3s; }
+    body {
+        transition: 0.5s;
+        height: 200vh;
+    }
+
+    main {
+        width: 50%;
+        padding: 20px;
+        height: 50vh;
+        overflow: auto;
+        color: snow;
+        background-color: #333;
+        border: 1px solid orange;
+    }
+</style>
+</html>

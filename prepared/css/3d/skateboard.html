@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+</body>
+<style>
+    div {
+        width: 50%;
+        margin: 150px auto;
+        height: 20vh;
+        background: radial-gradient(rgb(110, 150, 120) 30%, rgb(0, 60, 0));
+        transform: rotateX(50deg) rotateZ(45deg);
+        border-radius: 32px;
+        box-shadow: 1px 1px 0 1px #eee, 
+                    -1px 0 28px 0 gray,
+                    28px 28px 28px 0 #333;
+        transition: 0.4s ease-in-out;
+
+        animation: scate 0.5s linear infinite alternate;
+    }
+    @keyframes scate {
+        to {
+            transform: translate(0px, -16px) rotateX(50deg) rotateZ(45deg);
+            box-shadow: 1px 1px 0 1px #eee, 
+                        -1px 0 28px 0 gray,
+                        54px 54px 28px -10px #333;
+        }
+    }
+    div:hover {
+        transform: translate3d(0px, -16px, 0px) rotateX(50deg) rotateZ(45deg);
+        box-shadow: 1px 1px 0 1px #eee, 
+            -1px 0 28px 0 gray,
+            54px 54px 28px -10px #333;
+    }
+</style>
+</html>

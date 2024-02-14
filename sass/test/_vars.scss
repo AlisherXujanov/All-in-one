@@ -1,0 +1,50 @@
+$success: #5cb85c;
+$info: #5bc0de;
+$secondary: #6c757d;
+$light: #f8f9fa;
+$dark: #343a40;
+
+$colors: (
+    success: #5cb85c,
+    info: #5bc0de,
+    secondary: #6c757d,
+    light: #f8f9fa
+);
+
+%btn {
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: lightgray;
+    margin: 5px;
+    width: 150px;
+}
+
+@mixin d_flex($direction: false, $justify: false, $align: false) {
+    display: flex;
+
+    @if $direction {
+        flex-direction: $direction;
+    }
+    @if $justify {
+        justify-content: $justify;
+    }
+    @if $align {
+        align-items: $align;
+    }
+}
+
+@mixin shadow($x, $y, $blur, $spread, $color, $box: true) {
+    @if $box {
+        box-shadow:
+            $x $y $blur $spread $color,
+            $x * 2 $y * 2 $blur * 2 $spread $color,
+            $x * 3 $y * 3 $blur * 3 $spread $color,
+            $x * 4 $y * 4 $blur * 4 $spread $color,
+            $x * 5 $y * 5 $blur * 5 $spread $color;
+    } @else {
+        text-shadow: $x $y $blur $color;
+    }
+}

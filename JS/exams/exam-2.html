@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="header-menu">
+        <div class="menu-nav">
+            <div class="logo-div">
+                <img id="theme-icon" onclick="changeTheme()" style="margin:15px; cursor:pointer;"
+                    src="../../../pics/2.png" width="40" height="40">
+            </div>
+            <div class="logged-in">
+                <a href="#">Profile</a>
+                <a href="#" onclick="logout(event)">Logout</a>
+            </div>
+            <div class="logged-out">
+                <a onclick="openModal()" href="#">Register</a>
+                <a onclick="openModal()" href="#">Login</a>
+            </div>
+        </div>
+        <div id="modal-div">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <div id="modal-content">
+                <div>
+                    <input id="text-input" type="text" placeholder="Username">
+                    <input id="pass-input" type="password" placeholder="Password">
+                    <button onclick="login(event)">Login</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="logged-out">
+            <h1>Please, Sign-in to continue</h1>
+            <p>
+                <em>
+                    <small>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat odio dignissimos culpa
+                        temporibus
+                        enim ex dolorem ratione nihil deserunt sint reiciendis aspernatur commodi perspiciatis nobis
+                        quo,
+                        quibusdam velit ipsam tempora praesentium animi ut in illo. Possimus error, nihil unde maxime,
+                        officiis vitae minus qui obcaecati pariatur vero at ipsum mollitia id? Accusamus cumque
+                        repellat,
+                        quos aliquam perferendis odio impedit tempore natus magnam dolorem, minus in unde mollitia, sit
+                        veniam cum ea quia voluptatem quae nesciunt excepturi illo. Accusantium, ducimus mollitia eaque
+                        debitis fugit quae sint nulla animi aspernatur, ab odio quos! Eligendi cumque asperiores iusto
+                        corporis, dolorum quo recusandae id.
+                    </small>
+                </em>
+            </p>
+        </div>
+        <div class="logged-in main">
+            <h1>Welcome <span id="username"></span></h1>
+            <div>
+                <input id="card-title" type="text">
+                <button onclick="create()">Create</button>
+                <hr width="30%">
+            </div>
+            <div id="all-cards">
+                <div class="card">
+                    <h2>Card 1</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum ullam corporis molestiae
+                        officiis repudiandae repellendus.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function setMenuNav() {
+            const username = localStorage.getItem("username")
+            const loginEls = document.querySelectorAll(".logged-out")
+            const profileEls = document.querySelectorAll(".logged-in")
+
+            document.getElementById("username").innerHTML = username || "and Hello"
+            loginEls.forEach(el => { el.style.display = username ? "none" : "block" })
+            profileEls.forEach(el => { el.style.display = username ? "block" : "none"})
+        }
+        setMenuNav()
+
+        let modal = document.getElementById("modal-div")
+        modal.style.display = "none"
+
+        function openModal() {
+            modal.style.display = ""
+            modal.style.animation = ""
+            setTimeout(function () { modal.style.opacity = "1" }, 100)
+        }
+        function closeModal() { modalDisappear() }
+        window.onclick = function (event) {
+            if (event.target == modal) { modalDisappear() }
+        }
+        function modalDisappear() {
+            modal.style.opacity = "0"
+            setTimeout(function () { modal.style.display = "none" }, 1000)
+        }
+
+        const icon = document.getElementById("theme-icon")
+        function changeTheme() {
+            const body = document.body
+            const theme = body.classList.contains("light-theme") ? "light" : "dark"
+            body.classList.remove(`${theme}-theme`)
+            body.classList.add(`${theme === "light" ? "dark" : "light"}-theme`)
+            icon.src = theme === "light" ? "../../../pics/1.png" : "../../../pics/2.png"
+        }
+
+        function login(e) {
+            // gets information and saves in local storage
+            const username = document.getElementById("text-input").value
+            const password = document.getElementById("pass-input").value
+            localStorage.setItem("username", username)
+
+            if (password.length > 0 && username.length > 0) {
+                e.preventDefault()
+                const login = document.querySelector(".logged-out")
+                const profile = document.querySelector(".logged-in")
+                closeModal()
+                setMenuNav()
+                return 
+            }
+        }
+        function logout(e) {
+            // deletes information from local storage
+            e.preventDefault()
+            localStorage.removeItem("username")
+            const login = document.querySelector(".logged-out")
+            const profile = document.querySelector(".logged-in")
+            closeModal()
+            setMenuNav()
+        }
+
+        const cardTitle = document.querySelector('#card-title');
+        let allCards = document.querySelector('#all-cards');
+
+        let allText = ""
+        let headingCounter = 1
+        function create() {
+            headingCounter += 1
+
+            let lorem = document.createTextNode("Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum ullam corporis molestiae officiis repudiandae repellendus.");
+            let newDiv = document.createElement('div');
+            let h2 = document.createElement('h2');
+            let p = document.createElement('p');
+
+            h2TextNode = cardTitle.value ? cardTitle.value : `Card ` + headingCounter
+            h2.appendChild(document.createTextNode(h2TextNode));
+            p.appendChild(lorem)
+
+            newDiv.setAttribute('class', 'card');
+            newDiv.appendChild(h2)
+            newDiv.appendChild(p)
+            allCards.appendChild(newDiv);
+            cardTitle.value = ""
+        }
+    </script>
+
+</body>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        text-align: center;
+        transition: 0.5s;
+        text-decoration: none;
+    }
+
+    ::-webkit-scrollbar {
+        background: linear-gradient(to bottom, greenyellow, yellow);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: linear-gradient(to bottom, #333, red, #333);
+        border-radius: 20px;
+    }
+
+    .light-theme {
+        background-color: #333;
+        color: snow;
+    }
+
+    .light-theme:link {
+        color: snow;
+    }
+
+    .dark-theme {
+        background-color: #eee;
+        color: black;
+    }
+
+    .dark-theme:link {
+        color: black;
+    }
+
+    .menu-nav {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .menu-nav a {
+        padding: 10px 20px;
+        display: inline-block;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        color: cyan;
+    }
+
+    .menu-nav a:hover {
+        color: magenta;
+        border-bottom: 1px solid magenta;
+    }
+
+    #modal-div {
+        overflow: auto;
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(0, 0, 0, 0.7);
+    }
+
+    #modal-content {
+        overflow: auto;
+        width: 50%;
+        height: 50vh;
+        border-radius: 10px;
+        background: radial-gradient(circle, darkred, darkgreen);
+        padding: 50px;
+        color: snow;
+    }
+
+    .close-button {
+        position: absolute;
+        min-width: 30px;
+        min-height: 30px;
+        border-radius: 50%;
+        background-color: rgb(255, 0, 0, 0.5);
+        color: snow;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        top: 10%;
+        right: 10%;
+        transition: 0.1s ease;
+    }
+
+    .close-button:hover {
+        font-weight: 900;
+    }
+
+    p {
+        padding: 15px;
+        margin-top: 10%;
+    }
+
+    input,
+    button {
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        display: block;
+        width: 80%;
+        margin: 15px auto;
+        padding: 10px 20px;
+    }
+
+    input {
+        background-color: darkgray;
+        text-align: left;
+    }
+
+    input:focus {
+        background-color: white;
+    }
+
+    input::placeholder {
+        color: darkcyan;
+    }
+
+    hr {
+        margin: 20px auto;
+        background-color: snow;
+        height: 2px;
+        box-shadow: 2px 2px 3px 2px #42ba96, -2px -2px 3px 2px #42ba96;
+    }
+
+    input,
+    button {
+        padding: 10px 20px;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+
+    input {
+        min-width: 300px;
+        text-align: left;
+    }
+
+    button {
+        cursor: pointer;
+        color: snow;
+        background-color: #42ba96;
+    }
+
+    button:hover {
+        background-color: green;
+        outline: solid 5px rgb(0, 255, 255, 0.5);
+    }
+
+    #all-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    .card {
+        color: snow;
+        border-radius: 10px;
+        background: linear-gradient(to right, #42ba96, #6E72FC);
+        padding: 20px;
+    }
+
+    @media (max-width: 500px) {
+        #all-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 5px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            margin: 5px auto;
+            cursor: pointer;
+            color: snow;
+            background-color: #42ba96;
+        }
+
+        button:hover {
+            background-color: green;
+        }
+    }
+
+    @media (min-width: 500px) {
+        #all-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 7px;
+        }
+    }
+
+    @media (min-width: 750px) {
+        #all-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+    }
+</style>
+
+</html>

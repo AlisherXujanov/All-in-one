@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Yandex Maps Example</title>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=YOUR_API_KEY&lang=en_US" type="text/javascript"></script>
+    <style>
+        #map {
+            width: 100%;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>JavaScript Geolocation</h2>
+    <button onclick="getLocation()">Найти</button>
+    <p id="demo"></p>
+
+    <!-- Uses real-world-map to show the location -->
+    <div id="map"></div>
+    <script type="text/javascript">
+        // get geolocation and show in the demo
+        var x = document.getElementById("demo");
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+        function showPosition(position) {
+            x.innerHTML = "Ширина: " + position.coords.latitude +
+                "<br>Долгота: " + position.coords.longitude;
+
+            init(position.coords.latitude, position.coords.longitude)
+        }
+        function init(la, lo) {
+            var myMap = new ymaps.Map("map", {
+                center: [la, lo],
+                zoom: 15
+            });
+            var myPlacemark = new ymaps.Placemark([la, lo], {}, {
+                preset: 'islands#redDotIcon'
+            });
+            myMap.geoObjects.add(myPlacemark);
+        }
+    </script>
+</body>
+
+</html>

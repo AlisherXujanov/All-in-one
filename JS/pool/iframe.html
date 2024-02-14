@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        iframe => is used to get any website into our website
+                  используется для вставки любого сайта в наш сайт
+
+        allow => special attribute to control how the other website behaves
+                 специальный атрибут для управления поведением другого сайта 
+
+                VALUES:
+                    camera 'none';
+                    microphone 'none';
+                    geolocation 'none';
+                    payment 'none';
+                    fullscreen 'none';
+                    
+
+        https://www.youtube.com/embed/videoID...
+        ...?        => starting point
+        autoplay=1  => automatically play video when user enters the page
+        mute=1      => muted video
+        loop=1      => repeat infinitely
+        controls=0  => removes controls
+    -->
+
+
+    <input type="text">
+    <button>Create iframe</button>
+    <div class="videos"></div>
+    <iframe 
+        src="https://www.youtube.com/embed/jfKfPfyJRdk?controls=1&loop=1&autoplay=1&mute=1" 
+        width="400" 
+        height="300"
+        allow="camera 'none'; microphone 'none'; geolocation 'none'; payment 'none';"
+    ></iframe>
+
+    <script>
+        const btn = document.querySelector('button');
+        const inp = document.querySelector('input');
+        const videos = document.querySelector('.videos');
+
+        btn.onclick = function() {
+            const videoID = inp.value  ?  inp.value : "jfKfPfyJRdk"
+            const controls = "?controls=0&loop=1&autoplay=1&mute=1"
+            const url = `https://www.youtube.com/embed/${videoID}`
+            const iframe = document.createElement('iframe')
+            iframe.setAttribute('width', '100%')
+            iframe.setAttribute('height', '300')
+            iframe.setAttribute('allow', "camera 'none'; microphone 'none'; geolocation 'none'; payment 'none'")
+            iframe.setAttribute('src', url)
+            videos.appendChild(iframe)
+            inp.value = ""
+        }
+    </script>
+</body>
+<style>
+    .videos {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+    iframe {
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+</style>
+</html>

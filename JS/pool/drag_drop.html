@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+    <div id="div1" 
+        ondrop="drop(event)" 
+        ondragover="allowDrop(event)">
+    </div>
+    <img 
+        id="drag1" src="../../pics/1.jpg" 
+        draggable="true" 
+        ondragstart="drag(event)" 
+        width="300" height="70"
+    >
+    <div id="div2" 
+        ondrop="drop(event)" 
+        ondragover="allowDrop(event)">
+    </div>
+
+    <script>
+        function allowDrop(ev) { ev.preventDefault(); }
+        function drag(event) {  
+            // event.target === this
+            event.dataTransfer.setData("img-id", event.target.id);  
+        }
+        function drop(ev) {
+            var imgID = ev.dataTransfer.getData("img-id");
+            ev.target.appendChild(document.getElementById(imgID));
+        }
+        // event.preventDefault() => prevents the browser from executing 
+                                 //  the default action
+                                 //  RU: предотвращает выполнение браузером
+                                 //      действия по умолчанию
+        // ----------------------------------
+        // event  =>  event object  =>  объект события
+        // ----------------------------------
+        // event.target => taget of the event 
+        //                 владелец события
+        // ----------------------------------
+        // event.dataTransfer => dataTransfer object
+        //                      объект передачи данных
+        // ----------------------------------
+        // event.dataTransfer.setData() => set the data type and the value 
+        //                                 of the dragged data
+        //                                 устанавливает тип данных и значение 
+        //                                 перетаскиваемых данных
+        // ----------------------------------
+        // event.dataTransfer.getData() => get the data type and the value
+        //                                 of the dragged data
+        //                                 получает тип данных и значение
+        //                                 перетаскиваемых данных
+    </script>
+</body>
+<style>
+    #div1, 
+    #div2 {
+        width: 350px;
+        height: 70px;
+        padding: 10px;
+        border: 1px solid #aaaaaa;
+    }
+</style>
+</html>

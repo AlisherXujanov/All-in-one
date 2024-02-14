@@ -1,0 +1,20 @@
+$text-color: #fff;
+$primary-color: rgb(100, 10, 100);
+$font-weights: (
+    "normal": 200,
+    "medium": 500,
+    "bold": 700
+);
+
+
+%general-button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: lightgray;
+    color: #222;
+    font-family: sans-serif;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: 0.6s ease-in;
+}

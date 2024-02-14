@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Navigation bar</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="left">
+                <a id="logo" href="#">
+                    <img src="../../pics/2.png" width="50" height="25">
+                </a>
+                <a href="#">
+                    <img class="nav-img" src="../../pics/2.png">
+                    Home
+                </a>
+                <a href="#">
+                    <img class="nav-img" src="../../pics/2.png">
+                    Site
+                </a>
+                <a href="#">
+                    <img class="nav-img" src="../../pics/2.png">
+                    About
+                </a>
+                <select>
+                    <option>Text 1</option>
+                    <option>Text 2</option>
+                    <option>Text 3</option>
+                </select>
+            </div>
+
+            <div class="right">
+                <div class="container">
+                    <input type="search" placeholder="Search">
+                    <button>Search</button>
+                </div>
+            </div>
+        </nav>
+
+        <main>
+            <h1>This is Lorem ipsum dolor sit amet.</h1>
+            <p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Дороге первую жаренные от всех текстов по всей безорфографичный своих несколько, подзаголовок рот имеет коварный выйти повстречался, все, пор собрал осталось деревни!</p>
+        </main>
+
+        <div class="secondary">
+            <div class="left">
+                <img src="../../pics/1.jpg" width="150" height="150">
+            </div>
+            <div>
+                <img src="../../pics/1.jpg" width="150" height="150">
+            </div>
+            <div class="right">
+                <img src="../../pics/1.jpg" width="150" height="150">
+            </div>
+            <div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, eos. Excepturi, debitis nobis! Ullam, nam itaque! Perspiciatis accusantium velit aspernatur, excepturi provident quam, officia sequi, dolores maxime soluta ea omnis?</p>
+            </div>
+            <div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, eos. Excepturi, debitis nobis! Ullam, nam itaque! Perspiciatis accusantium velit aspernatur, excepturi provident quam, officia sequi, dolores maxime soluta ea omnis?</p>
+            </div>
+            <div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, eos. Excepturi, debitis nobis! Ullam, nam itaque! Perspiciatis accusantium velit aspernatur, excepturi provident quam, officia sequi, dolores maxime soluta ea omnis?</p>
+            </div>
+        </div>
+
+    </header>
+
+</body>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    body {
+        background-color: black;
+        color: snow;
+    }
+
+    header {
+        background: url(../../pics/3.jpg) no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-color: rgb(0,0,0, 0.7);
+        background-blend-mode: darken;
+        border-radius: 0 0 50% 50%;
+        height: 100vh;
+        width: 100%;
+    }
+
+    nav {
+        overflow: hidden;
+    }
+    nav div:first-child { float: left; }
+    nav div:last-child { float: right; }
+
+    .left a,
+    .right .container {
+        display: inline-block;
+        padding: 20px;
+        font-size: 1.2em;
+        font-family: Impact;
+        color: snow;
+        transition: 0.6s;
+    }
+    a:hover:not(#logo) {
+        border-bottom: 1px solid snow;
+        padding-bottom: 5px;
+    }
+
+    input, button, select {
+        border: none;
+        outline: none;
+        padding: 10px 20px;
+    }
+    input { width: 250px; }
+    input:hover { outline: 5px solid rgb(0, 255, 0, 0.3); }
+
+    button:hover {
+        background-color: green;
+        color: snow;
+        cursor: pointer;
+    }
+    select {
+        background-color: rgb(0,255,0,0.1);
+        color: snow;
+        font-size: 1.2em;
+        font-family: Impact;
+        cursor: pointer;
+    }
+    select:hover { background-color: green; }
+
+
+    main {
+        text-align: center;
+        padding: 100px 25px 0 25px;
+        color: snow;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    h1 { line-height: 100px; }
+
+    .secondary {
+        margin-top: 100px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        text-align: center;
+    }
+    .secondary img {
+        opacity: 0.5;
+        border-radius: 50%;
+    }
+    .secondary img:hover { opacity: 1; }
+
+    .nav-img {
+        width: 0;
+        height: 15px;
+    }
+    a:hover .nav-img {
+        height: 25px;
+        width: 40px;
+    } 
+
+</style>
+</html>

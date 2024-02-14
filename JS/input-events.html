@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="main">
+        <div class="left">
+            <input class="input-field" id="text-input" type="text">
+            <input class="input-field" id="file-input" type="file" hidden>
+            <button id="create-text">Create comment</button>
+
+            <div id="all-text">
+            </div>
+        </div>
+
+        <div class="right">
+            <input id="colorInput" type="color">
+            <input id="range" type="range" min="1" max="255" step="1">
+            <p id="range-value"></p>
+        </div>
+    </div>
+    <hr>
+
+    <script>
+        const fileInput = document.getElementById("file-input")
+        const textInput = document.getElementById("text-input")
+        const button = document.getElementById("create-text")
+        const allText = document.getElementById("all-text")
+        const colorInput = document.getElementById("colorInput")
+        const colorInputP = document.getElementById("colorInputP")
+
+
+        colorInput.addEventListener("change", function (e) {
+            document.body.style.backgroundColor = colorInput.value
+        })
+        const range = document.getElementById("range")
+        const rVal = document.getElementById("range-value")
+        range.addEventListener("change", function (e) {
+            rVal.innerHTML = range.value
+            if (range.value > 15) {
+                document.body.style.opacity = range.value + "%"
+            }
+        })
+
+        /*
+            let red = 0
+            let green = 0
+            let blue = 0
+            `rgb(${red}, ${green}, ${blue})`
+        */
+
+        var uploadedImg = "";
+        fileInput.addEventListener('change', function (e) {
+            const reader = new FileReader()
+            reader.addEventListener("load", () => {
+                uploadedImg = reader.result
+            })
+            console.log(uploadedImg)
+            reader.readAsDataURL(this.files[0])
+        })
+
+        button.onclick = () => {
+            let text = textInput.value
+            let img = ""
+            if (uploadedImg) {
+                img = `<img src='${uploadedImg}'>`
+            }
+            allText.innerHTML = allText.innerHTML +
+                `<div>
+                    &rArr; ${img}  
+                    <b>${text}</b>
+                </div>`
+            textInput.value = ""
+        }
+
+
+    </script>
+</body>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        text-align: center;
+        transition: 0.5s ease;
+    }
+
+    body {
+        background-color: #333;
+        color: snow;
+
+    }
+
+    .main div {
+        float: left;
+    }
+
+    .main .left {
+        width: 70%;
+    }
+
+    .main .right {
+        width: 30%;
+        padding-top: 70px;
+    }
+    .main::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .input-field {
+        margin-top: 50px;
+        padding: 10px 20px;
+        border: none;
+        outline: none;
+        border-radius: 10px;
+        background-color: gray;
+    }
+
+    .input-field:focus {
+        background-color: green;
+        color: snow;
+        padding: 10px 25px;
+    }
+
+    button {
+        padding: 10px 20px;
+        border: none;
+        outline: none;
+        background-color: gray;
+        color: snow;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    button:hover {
+        box-shadow: inset 150px 0 green;
+        cursor: pointer;
+    }
+
+    #all-text {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+        margin: 10px;
+    }
+
+    img {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+    }
+</style>
+
+</html>

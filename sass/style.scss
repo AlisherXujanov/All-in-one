@@ -1,0 +1,76 @@
+@use "_resets";
+@import "_vars";
+
+@mixin shadow($x, $y, $transparency, $color, $box: true) {
+    @if ($box) {
+        box-shadow: $x $y $transparency $color;
+    } @else {
+        text-shadow: $x $y $transparency $color;
+    }
+}
+
+$font-sizes: (
+    "sm": 0.8em,
+    "md": 1em,
+    "lg": 1.2em
+);
+
+%text-behavior {
+    @include shadow(2px, 2px, 5px, blue, false);
+    color: red;
+    font-size: map-get($map: $font-sizes, $key: "lg");
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+p {
+    animation: text-3d-animation 10s infinite;
+}
+
+// Variables.
+$tile-bg: #cfcfdf;
+
+// Styles.
+.tiles {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    width: 330px;
+    @extend %text-behavior;
+}
+
+.tile {
+    animation: 1s ease 0s pulse infinite;
+    background: $tile-bg;
+    border-radius: 4px;
+    float: left;
+    height: 75px;
+    margin: 5px;
+    width: 100px;
+}
+
+// Loop from 1-9.
+@for $i from 1 through 9 {
+    .tile {
+        // :nth-child(1-9)
+        &:nth-child(#{$i}) {
+            // Delay the animation. Delay increases as items loop.
+            animation-delay: $i * (1s / 30);
+        }
+    }
+}
+
+@keyframes pulse {
+    0% {
+        background: $tile-bg;
+        transform: scale(1);
+    }
+    25% {
+        background: darken($tile-bg, 10%);
+        transform: scale(1.015);
+    }
+    50% {
+        background: $tile-bg;
+        transform: scale(1);
+    }
+}

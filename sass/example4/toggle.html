@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <svg class="goo-filter" viewBox="0 0 1 1">
+        <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 50 -20"
+                result="goo" />
+            <feBlend in="SourceGraphic" in2="goo" />
+        </filter>
+    </svg>
+
+    <div id="app">
+        <input type="checkbox" id="toggle" name="toggle" />
+
+        <div class="background">
+            <div class="bg-content">
+                <div class="drip"></div>
+                <div class="drip"></div>
+                <div class="drip"></div>
+            </div>
+            <div class="bg-description">
+                <div class="drip"></div>
+                <div class="drip"></div>
+                <div class="drip"></div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="avatar">💺</div>
+            <header>Un sillón</header>
+            <p class="pronunciation">🔈 see-yawn</p>
+            <label class="button" for="toggle"></label>
+        </div>
+        <div class="description">
+            <header>
+                A chair!
+            </header>
+            <p>
+                We literally did an entire episode on chairs.
+            </p>
+        </div>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <main>
+        <h1>Tic Tac Toe</h1>
+        <div class="container">
+            <div></div>  <div></div>  <div></div>
+            <div></div>  <div></div>  <div></div>
+            <div></div>  <div></div>  <div></div>
+        </div>
+        <button id="restart">Restart</button>
+    </main>
+
+    <script>
+        const cells = document.querySelectorAll('.container div');
+        const restartBtn = document.querySelector('#restart');
+
+        function runAI() {
+            let empty_cells = []
+            cells.forEach(cell => {
+                if (!cell.innerText) {
+                    empty_cells.push(cell)
+                }
+            })
+            const random_n = parseInt(Math.random() * empty_cells.length)
+
+            if (empty_cells.length == 0) {
+                setTimeout(checkWinner(empty_cells), 200)
+                return
+            }
+            const cell = empty_cells[random_n]
+            cell.innerText = "⭕"
+            cell.style.borderRadius = '50%'
+            cell.style.backgroundColor = 'darkred'
+            cell.style.color = 'snow'
+
+            setTimeout(checkWinner(empty_cells), 200)
+        }
+        function checkWinner(empty_cells) {
+            const win_combinations = [
+                [0, 1, 2], [3, 4, 5], [6, 7, 8], // horizontal
+                [0, 3, 6], [1, 4, 7], [2, 5, 8], // vertical
+                [0, 4, 8], [2, 4, 6] // diagonal
+            ]
+            let winner = null
+            win_combinations.forEach(combination => {
+                const cell1 = cells[combination[0]]
+                const cell2 = cells[combination[1]]
+                const cell3 = cells[combination[2]]
+                if (cell1.innerText == "❌" && cell2.innerText == "❌" && cell3.innerText == "❌") {
+                    winner = "❌"
+                }
+                if (cell1.innerText == "⭕" && cell2.innerText == "⭕" && cell3.innerText == "⭕") {
+                    winner = "⭕"
+                }
+            })
+            if (winner) {
+                alert(winner + " wins!")
+                restartFn()
+            } else {
+                if (empty_cells.length == 0) {
+                    alert("Draw!")
+                    restartFn()
+                }
+            }
+        }
+
+        cells.forEach(cell => {
+            cell.addEventListener('click', runGameLogicWithAI)
+        })
+
+        function runGameLogicWithAI(e) {
+            const cell = e.target
+            if (cell.innerText != "⭕") {
+                if (cell.innerText == "") {
+                    cell.innerText = "❌"
+                    cell.style.backgroundColor = 'darkgreen'
+                    cell.style.color = 'snow'
+                    // ---------------------------------
+                    // Очередь Искуственного Интеллекта
+                    setTimeout(runAI, 200)// AI runs after player
+                }
+            }
+        }
+
+        function restartFn() {
+            cells.forEach(cell => {
+                cell.innerText = ""
+                cell.style.backgroundColor = "lightgray"
+                cell.style.borderRadius = '10px'
+            })
+        }
+        restartBtn.onclick = restartFn
+
+    </script>
+</body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition: 0.3s;
+    }
+
+    body {
+        background-color: black;
+        color: cyan;
+    }
+
+    main {
+        width: 90%;
+        text-align: center;
+        margin: 0 auto;
+        padding: 10px;
+    }
+
+    button {
+        width: 100%;
+        display: block;
+        border-radius: 10px;
+        background-color: gray;
+        color: snow;
+        border: none;
+        padding: 10px 20px;
+    }
+
+    button:hover {
+        background-color: green;
+        cursor: pointer;
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 100px);
+        gap: 10px;
+        margin: 10px 0;
+    }
+
+    .container div {
+        background-color: lightgray;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2em;
+        border-radius: 10px;
+    }
+
+    .container div:active {
+        cursor: auto;
+    }
+</style>
+
+</html>

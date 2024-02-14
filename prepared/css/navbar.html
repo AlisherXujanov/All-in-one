@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- NAVIGATION BAR (advanced) -->
+    <header>
+        <h1>My Site</h1>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos laboriosam itaque quae deserunt eum repellat quia assumenda, animi maiores. Aspernatur labore ratione debitis nemo id iure laboriosam enim consequatur unde?</p>
+
+        <nav>
+            <div class="left-nav">
+                <a href="#1">Link 1</a>
+                <a href="#2">Link 2</a>
+                <a href="#3">Link 3</a>
+            </div>
+            <div class="right-nav">
+                <select>
+                    <option>Option 1</option>
+                    <option>Option 2</option>
+                    <option>Option 3</option>
+                </select>
+                <input type="search">
+                <button id="search-btn">Search</button>
+            </div>
+        </nav>
+    </header>
+    
+</body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition: 0.5s;
+    }
+    header {
+        background: url(../../pics/3.jpg) no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-color: rgb(0,0,0, 0.5);
+        background-blend-mode: darken;
+        color: snow;
+        text-align: center;
+    }
+    header h1 { line-height: 100px; }
+    header p { margin:20px 0;   font-style:italic;   padding:0 50px;}
+    nav {
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 40px;
+        background-color: rgb(0,0,0, 0.3);
+        padding: 10px;
+    }
+    nav a { 
+        text-decoration: none;
+        display: inline-block;
+        padding: 10px 20px;
+        color: snow;
+        text-transform: uppercase;
+    }
+    nav a:hover { background-color:rgb(0, 140, 140, 0.6); }
+    nav .left-nav { text-align: left; }
+    nav .right-nav { text-align: right; }
+
+    nav .right-nav select,
+    nav .right-nav option,
+    nav .right-nav input,
+    nav .right-nav button {
+        display: inline-block;
+        outline: none;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: rgb(200, 200, 200, 0.4);
+        color: snow;
+    }
+    nav .right-nav option { background-color:gray; }
+
+    nav .right-nav input { padding: 10px 20px; }
+    nav .right-nav input:focus {
+        background-color: rgb(100, 100, 100, 0.5);
+        color: cyan;
+        outline: 5px solid rgb(0, 140, 140, 0.8);
+        margin: 0 5px;
+    }
+    nav .right-nav button:hover {
+        background-color: darkcyan;
+        outline: 5px solid rgb(0, 140, 140, 0.5);
+    }
+</style>
+</html>

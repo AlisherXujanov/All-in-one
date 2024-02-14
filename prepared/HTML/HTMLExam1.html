@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 style="background-color:gray;">
+        <span style="color:red;">E</span>
+        <sub style="color:blue;">x</sub>
+        <sup style="color:magenta;">a</sup>
+        m
+    </h1>
+    <div style="background-color: lightgray;">
+        <hr>
+        <hr>
+        <hr>
+        <table>
+            <tr>
+                <td style="background-color: gray; color:snow;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus
+                    alias sint beatae odit harum amet molestias. Esse dolores tempora sint, quam obcaecati, accusamus
+                    quaerat molestias, impedit nam ex autem iusto.</td>
+                <td style="background-color: indigo; color:snow;">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Possimus alias sint beatae odit harum amet molestias. Esse dolores tempora sint, quam obcaecati,
+                    accusamus quaerat molestias, impedit nam ex autem iusto.</td>
+                <td style="background-color: green; color:snow;">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Possimus alias sint beatae odit harum amet molestias. Esse dolores tempora sint, quam obcaecati,
+                    accusamus quaerat molestias, impedit nam ex autem iusto.</td>
+                <td>
+                    <table border="1" bordercolor="red">
+                        <tr>
+                            <th>First</th>
+                            <th>Second</th>
+                            <th>Third</th>
+                        </tr>
+                        <tr>
+                            <td>First</td>
+                            <td colspan="2">
+                                <img src="/pics/1.jpg" width="100%" height="100">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <ol type="I">
+                                    <li>First</li>
+                                    <li>Second</li>
+                                    <li style="background-color:gray;">
+                                        Third
+                                        <ul style="color: red;">
+                                            <li>First</li>
+                                            <li>Second</li>
+                                        </ul>
+                                    </li>
+                                </ol>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <hr>
+        <hr>
+        <hr>
+    </div>
+</body>
+<style>
+    .td1 { color:red; }
+    .td2 { color:blue; }
+    .td3 { color:magenta; }
+    .td4 { color:yellow; }
+    * {transition: 1s;}
+    .td1:hover {
+        color: aquamarine;
+        background-color: black;
+        text-decoration: underline double 2px red;
+        font-size: large;
+        text-transform: uppercase;
+    }
+    .td2:hover {
+        color: magenta;
+        background-color: #333;
+        text-decoration: line-through wavy 2px yellow;
+        font-size: 2em;
+        text-transform: capitalize;
+    }
+    .td3:hover {
+        color: green;
+        background-color: yellow;
+        text-decoration: underline solid 2px red;
+        font-size: 1.5em;
+        text-transform: lowercase;
+    }
+</style>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <p>
+            <a href="#12">link 1</a>
+        </p>
+        <p>
+            <a href="#16">link 2</a>
+        </p>
+        <p>
+            <a href="#15">link 3</a>
+        </p>
+    </div>
+</body>
+<style>
+    * { transition: 0.5s; }
+    div {
+        width: 50%;
+        margin: 0 auto;
+        background-color: black;
+        padding: 5px 0;
+    }
+    p {
+        position: relative;
+        background-color: gray;
+        margin: 5px 0;
+    }
+    a {
+        margin: 20px;
+        text-decoration: none;
+        background-color: aquamarine;
+    }
+    p:hover::before, 
+    p:hover::after {
+        content: "";
+        width:15px;  height:15px;
+        background: url(../../pics/1.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+
+        position: absolute;
+    }
+    p:hover::before  { left: -15px; }
+    p:hover::after { right: -15px; }
+    p:hover { margin: 15px; }
+</style>
+</html>

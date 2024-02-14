@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div class="main">
+        <img class="img-1" src="../../pics/1.jpg" width="100%" height="120">
+        <img class="img-2" src="../../pics/3.jpg" width="100%" height="120">
+        <img class="img-3" src="../../pics/stars.jpg" width="100%" height="120">
+        <img class="img-4" src="../../pics/event.jpg" width="100%" height="120">
+    </div>
+</body>
+<style>
+    * {
+        transition: 0.3s ease-in;
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+    }
+    .main {
+        width: 60%;
+        background-color: gray;
+        margin: 0 auto;
+        text-align: center;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
+        padding: 5px;
+    }
+    
+    img {
+        filter: grayscale(100%);
+    }
+    img:hover {
+        filter: none;
+    }
+
+    .img-1:hover {
+        border-top: ridge 10px green;
+        border-left: double 10px green;
+        border-right: groove 3px green;
+        border-radius:  0 50px 0 50px;
+    }
+    .img-2:hover {
+        border-top: ridge 10px red;
+        border-right: dotted 10px red;
+        border-left: ridge 3px red;
+        border-radius:  50px 0 50px 0;
+    }
+    .img-3:hover {
+        border-left: dashed 10px yellow;
+        border-radius:  50px 0 50px 0 ;
+        border-bottom: ridge 10px yellow;
+        border-right: ridge 3px yellow;
+    }
+    .img-4:hover {
+        border-right: double 10px blue;
+        border-radius: 0 50px 0 50px;
+        border-bottom: ridge 10px blue;
+        border-left: groove 3px blue;
+    }
+</style>
+</html>

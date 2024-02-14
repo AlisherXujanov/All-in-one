@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button id="open-modal">Open modal</button>
+    <div id="cards"></div>
+
+    <div class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <label for="title">Title</label>
+            <input id="title" type="text" placeholder="Title">
+
+            <label for="subtitle">Subtitle</label>
+            <input id="subtitle" type="text" placeholder="Subtitle">
+
+            <button id="submit">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        const openModal = document.getElementById('open-modal');
+        const modal = document.querySelector('.modal');
+        const closeModal = document.querySelector('.close-modal');
+        const titleInp  = document.getElementById('title');
+        const subtitleInp  = document.getElementById('subtitle');
+        const submitBtn = document.getElementById('submit');
+        const cards = document.getElementById('cards');
+
+        setUpPage()
+
+        modal.style.display = 'none';
+
+        let [counter, cardsLS] = getLocalStorageInfo()
+
+        submitBtn.onclick = function() {
+            counter += 1
+
+            let date = new Date();
+            let now = date.toLocaleTimeString()
+            const card = `
+                            <div class='card' id='card-${counter}'>
+                                <h2>${titleInp.value}</h2>
+                                <p>${subtitleInp.value}</p>
+                                <hr>
+                                <span>Date: ${now}</span>
+                                <button class='del-card' onclick="deleteCard('card-${counter}')">
+                                    Delete
+                                </button>
+                            </div>
+                        `
+            cardsLS.push(card)
+            setLocalStorageInfo(counter, cardsLS)
+
+            cards.innerHTML += card;
+            subtitleInp.value = ""
+            titleInp.value = ""
+            setCloseModal()
+        }
+        function deleteCard(cardID) {
+            let cardToDelete = document.getElementById(cardID);
+            let cardTitle = cardToDelete.querySelector('h2').innerText;
+            if (confirm(`Are you sure to delete ${cardTitle}?`)) {
+                cards.removeChild(cardToDelete)
+
+                let [counter, cardsLS] = getLocalStorageInfo()
+                cardsLS = cardsLS.filter(card => {
+                    return !card.includes(cardID)
+                })
+                setLocalStorageInfo(counter, cardsLS)
+
+                alert(`${cardTitle} deleted`)
+            } else {
+                alert(`${cardTitle} NOT deleted`)
+            }
+        }
+        openModal.onclick = function() {
+            modal.style.display = 'flex';
+            setTimeout(() => {
+                modal.style.opacity = 1;
+            }, 100);
+        }
+        closeModal.onclick = function() {
+            setCloseModal()
+        }
+        /* Close modal when clicked to the modal window */
+        window.onclick = function(e) {
+            if(e.target == modal) {
+                setCloseModal()
+            }
+        }
+        function setCloseModal() {
+            modal.style.opacity = 0;
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 500);
+        }
+
+        function getLocalStorageInfo() {
+            let counter = localStorage.getItem('counter');
+            let cards = localStorage.getItem('cards');
+            
+            if (counter == null) { counter = "0" }
+            if (cards == null)   { cards = "[]" }
+
+            return [JSON.parse(counter), JSON.parse(cards)]
+        }
+
+        function setLocalStorageInfo(counter, cards) {
+            localStorage.setItem('counter', JSON.stringify(counter))
+            localStorage.setItem('cards', JSON.stringify(cards))
+        }
+
+        function setUpPage() {
+            cards.innerHTML = ""
+            let [counter, cardsLS] = getLocalStorageInfo()
+            for (let card of cardsLS) {
+                cards.innerHTML += card
+            }
+        }
+
+    </script>
+</body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition: 0.5s;
+    }
+    .modal {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        background-color: rgb(0,0,0, 0.3);
+        width: 100%;
+        height: 100vh;
+        top: 0;
+        left: 0;
+    }
+    .modal-content {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        border-radius: 10px;
+        width: 50%;
+        background: linear-gradient(to right, #8e2de2, #4a00e0);
+        color: snow;
+        position: relative;
+    }
+    .modal-content button,
+    .modal-content input {
+        margin-bottom: 10px;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        background-color: lightgray;
+    }
+    .modal-content button:hover {
+        background-color: indigo;
+        color: snow;
+        
+        cursor: pointer;
+    }
+    .modal-content input:focus {
+        background-color: snow;
+        outline: 4px solid rgb(155,0,255, 0.3);
+    }
+
+    .close-modal {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgb(255, 0,0, 0.3);
+        padding: 10px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+    .close-modal:hover {
+        background-color: red;
+        color: snow;
+    }
+    #cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        padding: 10px;
+    }
+    .card {
+        background: linear-gradient(to right top, green, lightgreen);
+        border-radius: 5px;
+        padding: 20px;
+        color: snow;
+    }
+    .card * { margin: 5px 0; }
+
+    #open-modal {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 20px;
+        border-radius: 5px;
+        background-color: lightgray;
+        cursor: pointer;
+    } 
+    .card .del-card {
+        float: right;
+        background-color: red;
+        color: snow;
+        padding: 5px;
+        outline: none;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+</html>

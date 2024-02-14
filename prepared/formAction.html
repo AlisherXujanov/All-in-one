@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+ <!-- 
+        form  => is a tag that is used to create a form (Login / Logout / Register)
+            ATTRIBUTES:
+                1. action  => is a attribute that is used to specify the url 
+                              of the page where the form data will be sent
+                2. method  => is a attribute that is used to specify the method
+                              of sending the form data to the server
+                              (GET / POST)
+                3. button type 'submit'  =>  calls for an action to send all data
+                                             to send for given url address
+                4. button type 'reset'   =>  clears all input fields
+
+        label => is a tag that is used to create a label for an input
+
+        INPUT ATTRIBUTES:
+            1. id    => is a attribute that is used to specify a unique id for an input
+            2. type  => is a attribute that is used to specify the type of input
+                        (text / password / checkbox / radio / submit / reset)
+            3. value => default value of an input
+
+            4. placeholder => helping text
+            5. required    => required input (can't be empty) (обязательное поле)
+
+            6. disabled    => input that can't be updated (не активное поле)
+
+            7. maxlength   => maximum length of an input (не более ... символов)
+
+            8. minlength   => minimum length of an input (не меньше ... символов)
+
+            9. max         => maximum value of an input (не больше ...)
+
+            10. min        => minimum value of an input (не меньше ...)
+
+            11. checked    => default checked input (по умолчанию выбран)
+
+            12. for        => is a attribute that is used to specify the id of an
+                              input that the label is for (связывает label и input)
+           
+     -->
+
+    <table>
+        <tr>
+            <th style="background-color:gray; color:snow;">
+                <table>
+                    <tr>
+                        <th>
+                            <img src="/pics/1.png" width="200" height="50" />
+                            <h1>Create a new account</h1>
+                            <p>It’s quick and easy.</p>
+                            <hr />
+                            <form action="https://www.instagram.com">
+                                <div>
+                                    <b>First name</b>
+                                    <input  minlength="5" type="text" placeholder="Имя" required />
+            
+                                    <b>Last name</b>
+                                    <input   type="text" minlength="5" placeholder="Фамилия" required />
+                                </div>
+            
+                                <br />
+                                <div>
+                                    <label for="number"><b>Mobile number or email</b></label>
+                                    <input id="number" type="text" placeholder="Номер телефона" />
+                                    ---
+                                    <label for="pass"><b>New Password</b></label>
+                                    <input id="pass" type="password" placeholder="Пароль"/>
+                                </div>
+            
+                                <br />
+                                <div>
+                                    <label for="date"><b>Birthday</b></label>
+                                    <input id="date" type="date" required />
+                                </div>
+            
+                                <br />
+                                <div>
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <label><b>Gender</b></label>
+                                                <fieldset style="background-color: lightgray">
+                                                    <button>
+                                                        <b>Female</b> <input type="radio" name="gender" />
+                                                    </button>
+                                                    <button>
+                                                        <b>Male</b> <input type="radio" name="gender" />
+                                                    </button>
+                                                    <button>
+                                                        <b>Other</b>
+                                                        <input type="radio" name="gender" checked disabled />
+                                                    </button>
+                                                </fieldset>
+                                            </td>
+            
+                                            <td>
+                                                <label><b>Your favourite Web-Site</b></label>
+                                                <fieldset>
+                                                    <button>
+                                                        Instagram: <input type="radio" name="site" checked />
+                                                    </button>
+                                                    <button>
+                                                        Facebook: <input type="radio" name="site" />
+                                                    </button>
+                                                    <button>
+                                                        Twitter: <input type="radio" name="site" />
+                                                    </button>
+                                                </fieldset>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+            
+                                <small>
+                                    People who use our service may have uploaded your contact
+                                    information to Facebook.
+                                    <a href="#">Learn more.</a>
+                                    <br />
+                                    By clicking Sign Up, you agree to our Terms, Privacy Policy and
+                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat placeat, ipsum inventore repellat saepe, omnis sed, recusandae quam consequatur delectus temporibus voluptates neque? Enim dignissimos soluta a eos deserunt veritatis?
+                                </small>
+                                <br />
+            
+                                <button  style="background-color: green; color:snow;" type="submit">
+                                    <h3>Sign up</h3>
+                                </button>
+                                <br />
+                                <a style="background-color: green; color:snow;" href="#">
+                                    <h3>Already have an account?</h3> 
+                                </a>
+                            </form>
+                        </th>
+                    </tr>
+                </table>
+            </th>
+        </tr>
+    </table>
+   
+</body>
+
+</html>
