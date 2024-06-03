@@ -8,10 +8,22 @@
 </head>
 
 <body>
+    <h1>Tasks</h1>
 
-    <h1>Math && Callbacks</h1>
 
+    <script>
+        // Напишите программу JS, чтобы найти количество четных цифр 
+        // в заданном целом числе`
+        // ----------------------------------------------------------
+        let number = 123456789
+        let evens = []
 
-    <script src="main3.js"></script>
+        String(number).split("").filter(val => {
+            if (parseInt(val) % 2 == 0 ) {
+                evens.push(val)
+            }
+        })
+        console.log(evens)
+    </script>
 </body>
 </html>

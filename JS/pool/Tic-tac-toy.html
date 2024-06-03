@@ -20,8 +20,8 @@
     </main>
 
     <script>
-        const cells = document.querySelectorAll('.container div');
-        const restartBtn = document.querySelector('#restart');
+        const cells = document.querySelectorAll('.container div')
+        const restartBtn = document.querySelector('#restart')
 
         function runAI() {
             let empty_cells = []
@@ -39,11 +39,15 @@
             const cell = empty_cells[random_n]
             cell.innerText = "⭕"
             cell.style.borderRadius = '50%'
+            cell.style.height = '100px'
+            cell.style.width = '100px'
+            cell.style.margin = '0 auto'
             cell.style.backgroundColor = 'darkred'
             cell.style.color = 'snow'
 
             setTimeout(checkWinner(empty_cells), 200)
         }
+        
         function checkWinner(empty_cells) {
             const win_combinations = [
                 [0, 1, 2], [3, 4, 5], [6, 7, 8], // horizontal
@@ -96,6 +100,8 @@
                 cell.innerText = ""
                 cell.style.backgroundColor = "lightgray"
                 cell.style.borderRadius = '10px'
+                cell.style.height = '100%'
+                cell.style.width = '100%'
             })
         }
         restartBtn.onclick = restartFn
@@ -159,5 +165,4 @@
         cursor: auto;
     }
 </style>
-
 </html>

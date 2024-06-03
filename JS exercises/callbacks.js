@@ -1,14 +1,48 @@
 // 1. Simple Timer: 
-// Write a JavaScript function that starts a timer that counts up every second and displays the count in the console. Use setInterval for this.
-// RU: Напишите функцию JavaScript, которая запускает таймер, который увеличивается каждую секунду и отображает счет в консоли. Используйте setInterval для этого.
+// Create a function that delay time is increased every time by twice.
+// RU: Создайте функцию, задержка времени которой увеличивается каждый раз вдвое.
 
-function startTimer() {
-    let count = 0;
-    setInterval(() => {
-        count++;
-        console.log(count);
-    }, 1000);
+async function startTimer(max_seconds = 10, delay = 1) {
+    //* 1. Using a loop
+    //* Here, this loop actually works but fails the console.log currentDelay
+    //* The reason is JS code do not wait for the setTimeout to finish 
+    //* before moving to the next line of code
+    // let currentDelay = delay;
+    // while (max_seconds > currentDelay) {
+    //     setTimeout(() => {
+    //         console.log(`Delay: ${currentDelay}`);
+    //     }, currentDelay * 1000);
+    //     currentDelay *= 2;
+    // }
+    // console.log(`Max seconds reached: ${max_seconds}`);
+
+    //* To fix this we use a Promise and async/await
+    let currentDelay = delay;
+    while (max_seconds > currentDelay) {
+        await new Promise(resolve => setTimeout(resolve, currentDelay * 1000));
+        console.log(`Delay: ${currentDelay}`);
+        currentDelay *= 2;
+    }
+    console.log(`Max seconds reached: ${max_seconds}`);
+
+    // -----------------------------------------------------
+    // -----------------------------------------------------
+    //* Using a recursive function
+    // if (max_seconds <= 0) return;
+    // else if (max_seconds < delay) return;
+    // console.log(`Delay: ${delay}`);
+    // const DOUBLE_DELAY = delay * 2
+    // if (max_seconds > DOUBLE_DELAY) {
+    //     setTimeout(() => {
+    //         startTimer(max_seconds, DOUBLE_DELAY);
+    //     }, delay * 1000);
+    // } else {
+    //     console.log(`Max seconds reached: ${max_seconds}`);
+    // }
+    // -----------------------------------------------------
+    // -----------------------------------------------------
 }
+startTimer()
 
 // 2. Stopwatch: 
 // Improve the previous function by adding the ability to stop the timer. You'll need to use clearInterval for this.
@@ -83,9 +117,7 @@ function timeToGetServerResponseWithCallback(url, callback) {
 // Create a function that takes a function as an argument and returns a new function. The new function should cache the results of the original function.
 // RU: Создайте функцию, которая принимает функцию в качестве аргумента и возвращает новую функцию. Новая функция должна кэшировать результаты исходной функции.
 
-// EX:
-// Например:
-function memoization(func) {
+function memoize(func) {
     const cache = {};
     return function (arg) {
         if (cache[arg]) {
@@ -96,6 +128,20 @@ function memoization(func) {
         return result;
     }
 }
+
+// - 1e9 == 1 * 10^9 == 1 000 000 000  (1 billion)
+// - 1e6 == 1 * 10^6 == 1 000 000  (1 million)
+// - 1e3 == 1 * 10^3 == 1 000  (1 thousand)
+
+const slowFunc = (n) => {
+    for(let i = 0; i < 1e9; i++) {} // This loop is just to delay the function
+    return n*n;
+}
+const memoizedSlowFunc = memoize(slowFunc);
+
+console.log(memoizedSlowFunc(5)); // This call should take some time
+console.log(memoizedSlowFunc(5)); // This call should be almost instant
+
 
 
 // 7. Throttle Function -> Slows down the execution of a function:
@@ -121,4 +167,31 @@ function throttle(func, delay) {
 }
 
 
-// 8. Memoization (advanced):
+// 8. Throttle (advanced):
+// Throttle Function Exercise:
+
+// Create a function throttle(func, delay) that takes a function 
+// func and a delay as parameters. This function should return a 
+// throttled version of the original function that, as long as it 
+// continues to be invoked, will not be triggered more than once 
+// every delay milliseconds.
+function throttledExampleFunc(func, delay) {
+    let lastTime = 0;
+    return function (...args) {
+        const now = new Date().getTime();
+        if (now - lastTime >= delay) {
+            lastTime = now;
+            return func(...args);
+        }
+    }
+}
+
+let count = 0;
+const exampleFunc = () => { count++; console.log(count); };
+const throttledExampleFunc = throttle(exampleFunc, 2000);
+
+// Call the throttled function multiple times with less than 2 seconds between each call
+throttledExampleFunc();
+throttledExampleFunc();
+throttledExampleFunc();
+

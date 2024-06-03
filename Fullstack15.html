@@ -1,60 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <main>
-        <div class="div-1">
-            <div class="div-2"></div>
+
+    <h1>Modal</h1>
+
+    <button id="open-modal">Open modal</button>
+
+    <div class="modal">
+        <div class="modal-content">
+            <span id="close-modal">&times;</span>
+            <h1>Sign with your wallet!</h1>
+            <p>
+                <em>
+                    <small>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit aut in nemo, veritatis esse cum
+                        rem, mollitia voluptate minima fugit aliquid necessitatibus quod fugiat culpa ut obcaecati!
+                        Officia, minus animi?</small>
+                </em>
+            </p>
+            <button class="btn-red">Connect wallet A</button>
+            <button class="btn-violet">Connect wallet B</button>
+            <button class="btn-green">Connect wallet C</button>
         </div>
-        <div class="div-3">
-            <div class="div-4"></div>
-        </div>
-        <div class="div-5">
-            <div class="div-6"></div>
-        </div>
-    </main>
+    </div>
+
+    <script>
+        const openModalBtn = document.querySelector('#open-modal')
+        const closeModalBtn = document.querySelector('#close-modal')
+        const modalScreen = document.querySelector('.modal')
+        const modelContent = modalScreen.querySelector('.modal-content')
+
+        // ---------------------------------------------------------
+        // Close modal initially
+        modalScreen.style.opacity = 0
+        modalScreen.style.display = 'none'
+        modelContent.style.transform = 'translateY(-200px)'
+        // ---------------------------------------------------------
+        // FUNCTIONS
+
+        openModalBtn.addEventListener('click', (e) => {
+            modalScreen.style.display = 'flex'
+            setTimeout(() => {
+                modalScreen.style.opacity = 1
+                modelContent.style.transform = 'translateY(0)'
+            }, 100)
+        })
+        closeModalBtn.addEventListener('click', closeModal)
+        window.addEventListener('click', (e) => {
+            if (e.target == modalScreen) { closeModal() }
+        })
+        window.addEventListener('keydown', (e) => {
+            if (e.key == 'Escape') { closeModal() }
+        })
+        // ---------------------------------------------------------
+        // Declarations
+        function closeModal(e) {
+            modalScreen.style.opacity = 0
+            modelContent.style.transform = 'translateY(200px)'
+            setTimeout(() => {
+                modalScreen.style.display = 'none'
+                modelContent.style.transform = 'translateY(-200px)'
+            }, 500)
+        }
+    </script>
+
 </body>
 <style>
-    main {
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        transition: 0.5s;
+    }
+
+    body {
+        text-align: center;
+    }
+
+    .modal {
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        left: 0;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+        background-attachment: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
         width: 50%;
-        height: 50vh;
-        margin: 0 auto;
-        background-color: darkgray;
+        padding: 50px;
+        border-radius: 20px;
         position: relative;
+        background-color: #FFFFFF;
+        text-align: center;
     }
-    main div { position: absolute; }
-    
-    main div div {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
+
+    .modal-content * {
+        margin: 10px 0;
     }
-    .div-1 {
-        top: 25%;
-        height: 50%;
-        width: 40px;
-        background-color: blue;
+
+    .modal-content button {
+        padding: 20px;
+        font-size: 1.2em;
+        font-family: Arial, sans-serif;
     }
-    .div-2 { background-color: red; }
-    .div-3 {
-        top: 25%;
-        height: 50%;
-        width: 40px;
-        background-color: black;
-        right: 0;
+
+    button.btn-red {
+        background: linear-gradient(45deg, red, orange);
     }
-    .div-4 { background-color:greenyellow;   bottom:0; }
-    .div-5 {
-        left: 25%;
-        height: 40px;
-        width: 50%;
+
+    button.btn-violet {
+        background: linear-gradient(45deg, violet, indigo);
+    }
+
+    button.btn-green {
+        background: linear-gradient(45deg, green, limegreen);
+    }
+
+    button {
+        width: 100%;
+        padding: 10px 20px;
+        border-radius: 10px;
         background-color: green;
-        bottom: 0;
+        color: snow;
+        cursor: pointer;
+        border: none;
+        outline: none;
     }
-    .div-6 { background-color:magenta;   left:45%; }
+
+    #open-modal {
+        width: 50%;
+        margin: 20px auto;
+    }
+
+    #close-modal {
+        position: absolute;
+        top: -20%;
+        right: 0;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        font-size: 2em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        color: snow;
+    }
+
+    #close-modal:hover {
+        background-color: rgb(0, 0, 0, 0.1);
+    }
 </style>
+
 </html>

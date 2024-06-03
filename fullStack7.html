@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <main>
+        <div class="gallery-item item1"><img src="pics/1.jpg"></div>
+        <div class="gallery-item item2"><img src="pics/3.jpg"></div>
+        <div class="gallery-item item3"><img src="pics/5.jpg"></div>
+        <div class="gallery-item item4"><img src="pics/6.jpg"></div>
+        <div class="gallery-item item5"><img src="pics/day.jpg"></div>
+        <div class="gallery-item item1"><img src="pics/1.jpg"></div>
+        <div class="gallery-item item2"><img src="pics/3.jpg"></div>
+        <div class="gallery-item item3"><img src="pics/5.jpg"></div>
+        <div class="gallery-item item4"><img src="pics/6.jpg"></div>
+        <div class="gallery-item item5"><img src="pics/day.jpg"></div>
+        <div class="gallery-item item1"><img src="pics/1.jpg"></div>
+        <div class="gallery-item item2"><img src="pics/3.jpg"></div>
+        <div class="gallery-item item3"><img src="pics/5.jpg"></div>
+        <div class="gallery-item item4"><img src="pics/6.jpg"></div>
+        <div class="gallery-item item5"><img src="pics/day.jpg"></div>
+        <div class="gallery-item item1"><img src="pics/1.jpg"></div>
+        <div class="gallery-item item2"><img src="pics/3.jpg"></div>
+        <div class="gallery-item item3"><img src="pics/5.jpg"></div>
+        <div class="gallery-item item4"><img src="pics/6.jpg"></div>
+        <div class="gallery-item item5"><img src="pics/day.jpg"></div>
+        <div class="gallery-item item1"><img src="pics/1.jpg"></div>
+        <div class="gallery-item item2"><img src="pics/3.jpg"></div>
+        <div class="gallery-item item3"><img src="pics/5.jpg"></div>
+        <div class="gallery-item item4"><img src="pics/6.jpg"></div>
+        <div class="gallery-item item5"><img src="pics/day.jpg"></div>
+    </main>
+    
+    <script>
+        // Generate random grid-row span values
+        const items = document.querySelectorAll('.gallery-item');
+        items.forEach(item => {
+            const randomSpan = Math.floor(Math.random() * 4) + 1;
+            item.style.gridRow = `span ${randomSpan}`;
+        });
+    </script>
+</body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    main {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-gap: 5px;
+        padding: 20px;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+
+    /* 
+        Randomly assign grid-row span
+        from randing 1 to 5 to values of
+        --random-span property 
+        property is always 1 by default
+        and is set to random value in JS
+        ranging from 1 to 3
+    */
+    
+</style>
+</html>

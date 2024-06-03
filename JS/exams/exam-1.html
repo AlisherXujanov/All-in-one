@@ -10,11 +10,36 @@
 
 <body>
 
+    <!-- 
+        When clicked to the picture on the left, the main picture on the right should change.
+        For this you should use:
+            - querySelectorAll
+            - loop
+            - onclick
+            - src
+
+        1. find all the pictures on the left (using querySelectorAll)
+        2. loop through them
+        3. when clicked to any of them, change the src of the main picture on the right
+
+        RU: 
+            - Слева находятся картинки. При клике на любую из них, главная картинка справа должна измениться.
+            - Для этого вам нужно использовать:
+                - querySelectorAll
+                - loop
+                - onclick
+                - src
+
+            1. Найдите все картинки слева (используя querySelectorAll)
+            2. Пройдитесь по ним циклом
+            3. При клике на любую из них, измените src главной картинки справа
+     -->
+
     <div class="main">
         <div class="left">
             <img src="../../pics/1.jpg" alt="Img not found">
+            <img src="../../pics/5.jpg" alt="Img not found">
             <img src="../../pics/3.jpg" alt="Img not found">
-            <img src="../../pics/stars.jpg" alt="Img not found">
         </div>
         <div class="right">
             <img class="main-img" src="../../pics/1.jpg" alt="Img not found">
@@ -26,7 +51,9 @@
         const mainImg = document.querySelector(".main-img")
 
         pickedImgs.forEach(img => {
-            img.onclick = function() { return mainImg.src = img.src }
+            img.onclick = function () { 
+                return mainImg.src = img.src 
+            }
         })
     </script>
 </body>
@@ -48,6 +75,7 @@
         width: 100%;
         height: 100vh;
     }
+
     .main {
         height: 70vh;
         width: 70%;
@@ -55,10 +83,21 @@
         border-radius: 5px;
     }
 
-    .main div { float: left; }
-    .left { width: 30%; }
-    .right { width: 70%; }
-    img { border-radius: 5px; }
+    .main div {
+        float: left;
+    }
+
+    .left {
+        width: 30%;
+    }
+
+    .right {
+        width: 70%;
+    }
+
+    img {
+        border-radius: 5px;
+    }
 
     .left img {
         width: 100%;
@@ -66,8 +105,16 @@
         filter: grayscale(100%);
         display: block;
     }
-    .left img:hover {  opacity:0.8;  filter:none;  }
-    .right img {  width:100%;  height:70vh;  }
+
+    .left img:hover {
+        opacity: 0.8;
+        filter: none;
+    }
+
+    .right img {
+        width: 100%;
+        height: 70vh;
+    }
 </style>
 
 </html>

@@ -2,17 +2,50 @@
 // 1. Create a function that takes an array of integers and finds the sum of all even numbers.
 // RU: Создайте функцию, которая принимает список целых чисел и находит сумму всех четных чисел.
 
+// function sum_evens(числа) {
+//     let result = 0
+//     for (let num of числа) {
+//         if (num%2 == 0) {
+//             result += num
+//         }
+//     }
+//     return result
+// }
+// let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+// let res1 = sum_evens(arr)
+// console.log(res1)
+// =========================================================================================
 // 2. Create a function that takes an array of integers and finds the largest number
 // RU: Создайте функцию, которая принимает список целых чисел и находит самое большое число
+function max_min(числа) {
+    let max = 0
+    let min = числа[0]
+    for (let num of числа) {
+        if (num>max) {
+            max = num
+        } else if (num<min) {
+            min = num
+        }
+    }
+    console.log(`Max: ${max}`)
+    console.log(`Min: ${min}`)
+}
+let arr2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+let res2 = max_min(arr2)
+console.log(res2)
 
+// =========================================================================================
 // 3. Create a function that takes an array of integers and finds the smallest number
 // RU: Создайте функцию, которая принимает список целых чисел и находит самое маленькое число
 
+// =========================================================================================
 // 4. Create a function that takes a string of random letters and numbers and sums all the numbers.
 // RU: Создайте функцию, которая принимает строку из случайных букв и цифр и суммирует все числа.
 
-// 5.  Write a JavaScript program that iterates integers from 1 to 100. But for multiples of three print "Fizz" instead of the number and for multiples of five print "Buzz". For numbers multiples of both three and five print "FizzBuzz".
-// RU: Напишите программу на JavaScript, которая перебирает целые числа от 1 до 100. Но для кратных троек печатает "Fizz" вместо числа и для кратных пяти печатает "Buzz". Для чисел, кратных как трем, так и пяти, печатает "FizzBuzz".
+// =========================================================================================
+// 5.  Напишите программу на JavaScript, которая перебирает целые числа от 1 до 100. 
+// Но для кратных троек печатает "Fizz" вместо числа и для кратных пяти печатает "Buzz". 
+// Для чисел, кратных как трем, так и пяти, печатает "FizzBuzz".
 
 
 // ================================================================================
