@@ -1,3 +1,44 @@
+🔘Fullname
+Alisher Khujanov Rashidovich
+
+🔘Age - 29
+
+🔘Address
+Samarqand, Firdavsiy-2, Panjob
+
+🔘Total experience
+Fullstack Frontend/Backend/Mobile developer
+7-years of development in IT
+
+🔘Work places
+- Paragon Company inc.
+- UpWork
+- Toptal
+- KWork
+- Samarkand IT Park
+
+✅Currently working:
+- Samarkand IT Park
+- Paragon Company inc.
+
+✅Contacts:
+  📞(90) 743-41-47
+  📞(33) 474-74-77
+  ✉️alisherxujanov163@gmail.com
+
+✅GitHub:
+- https://github.com/AlisherXujanov
+
+✅Hosted WebSite:
+- Grow Fast Grow Deep  ➖ https://www.growfastgrowdeep.com/en/splash
+
+✅Telegram group
+- Programming with AC  ➖  https://t.me/+X68FM4NemtdjNzEy
+
+
+<!-- ============================================== -->
+<!-- ============================================== -->
+<!-- ============================================== -->
 ✅ HTML 
 ✅ CSS 
 ✅ JS 

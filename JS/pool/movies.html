@@ -26,7 +26,7 @@
             fetch(`http://www.omdbapi.com/?s=${movie}&apikey=thewdb`)
                 .then(response => response.json())
                 .then(data => {
-                    const movies = data.Search
+                    const movies = data.Search  //  [{Title:"...", Poster:"..."}, {Title:"...", Poster:"..."}]
                     console.log(movies)
                     movies.forEach(movie => {
                         resultContainer.innerHTML += `
