@@ -1,17 +1,2 @@
-console.log('------------------------------------------------------')
-
-enum CardinalDirections {
-    North,
-    East,
-    South,
-    West
-  };
-              
-  let currentDirection = CardinalDirections.South;
-  
-  // North is the first value so it logs '0'
-  console.log(currentDirection);
-  
-  // throws error when commented in as 'North' is not a valid enum
-  // currentDirection = 'North'; 
-  // Error: "North" is not assignable to type 'CardinalDirections'.
+let x = 'hello';
+console.log(((5 as unknown) as string).length); // x is not actually a number so this will return undefined
