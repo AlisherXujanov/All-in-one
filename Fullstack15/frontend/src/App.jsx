@@ -1,13 +1,11 @@
-import Test from './components/Test.jsx'
-import Test2 from './components/Test2'
+import Navbar from "./components/navigation/Navbar"
 
 
 function App() {
 
   return (
     <main className="app">
-      <Test />
-      <Test2 />
+      <Navbar />
     </main>
   )
 }

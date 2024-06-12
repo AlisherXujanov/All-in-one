@@ -28,6 +28,8 @@ Redirection - перенаправление
 - https://onlywei.github.io/explain-git-with-d3/#checkout-b
 - https://github.com/k88hudson/git-flight-rules/blob/master/README.md
 
+- To know the version of Git - `git --version`
+
 1. Create a repo and copy a link into folder 
    - or 
    - git clone
