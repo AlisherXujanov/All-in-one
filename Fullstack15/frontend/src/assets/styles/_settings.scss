@@ -3,12 +3,24 @@ $dark: #141414;
 $light: #ffffff;
 $orange: #FF6600;
 $orange-t: #FF660030;
+$gray: gray;
+$gray-l: lightgray;
 
 
 // ----------------------------------------
 // ------------- GRID & FLEX -------------
-@mixin grid() {}
+@mixin grid($cols: 2) {
+    display: grid;
+    grid-template-columns: repeat($cols, 1fr);
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
 
-@mixin flex() {}
+@mixin flex() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 // ----------------------------------------
