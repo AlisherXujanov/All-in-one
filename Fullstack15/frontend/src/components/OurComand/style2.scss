@@ -1,0 +1,13 @@
+@import "../../assets/styles/settings";
+
+.Comand1 {
+    .divs{
+        width: 80%;
+        margin: 0 auto;
+    }
+    .Comand4{
+        display: grid;
+        grid-template-columns: repeat(6,1fr);
+        gap: 5px;
+    }
+}
