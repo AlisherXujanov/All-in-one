@@ -6,9 +6,9 @@ function App() {
   return (
     <main className="app">
       <Navbar />
+      
       <LendingPage />
     </main>
   )
 }
-
 export default App

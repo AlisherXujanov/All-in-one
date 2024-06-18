@@ -1,0 +1,21 @@
+@import "../../../assets/styles/settings";
+
+.navbar-wrapper {
+    background-color: $dark;
+    color: $light;
+
+    @include flex();
+    justify-content: space-between;
+    padding: 10px 40px;
+
+    a {
+        margin: 0 10px;
+        padding: 10px 20px;
+        color: $light;
+        text-decoration: none;
+    }
+
+    .auth-section {
+        @include flex();
+    }
+}

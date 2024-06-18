@@ -1,0 +1,15 @@
+@import "../../../assets/styles/settings";
+
+.carousel-wrapper {
+    img {
+        height: 600px;
+        filter: grayscale(100%);
+        opacity: 0.4;
+    }
+
+    .control-dots {
+        .dot {
+            background-color: $orange;
+        }
+    }
+}

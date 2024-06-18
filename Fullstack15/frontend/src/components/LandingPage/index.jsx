@@ -1,11 +1,16 @@
 import About from "./About"
 import OurValues from "./OurValues"
 import OurTeam from "./OurTeam"
+import CarouselComponent from "../common/CarouselComponent"
 import "./style.scss"
 
 function LandingPage() {
     return (
         <main className="landing-page-main-wrapper">
+            <div className="carousel-wrapper">
+                <CarouselComponent />
+            </div>
+
             <div className="about-wrapper">
                 <About />
             </div>
