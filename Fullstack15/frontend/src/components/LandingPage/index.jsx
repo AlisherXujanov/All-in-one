@@ -2,6 +2,8 @@ import About from "./About"
 import OurValues from "./OurValues"
 import OurTeam from "./OurTeam"
 import CarouselComponent from "../common/CarouselComponent"
+import Marquee from "../common/Marquee"
+
 import "./style.scss"
 
 import CaruselImage1 from '../../assets/images/carousel/Блокчейн.png'
@@ -9,6 +11,10 @@ import CaruselImage2 from '../../assets/images/carousel/Венчурный.png'
 import CaruselImage3 from '../../assets/images/carousel/Кастам.png'
 import CaruselImage4 from '../../assets/images/carousel/Сукук.png'
 import CaruselImage5 from '../../assets/images/carousel/Хэдж.png'
+
+
+import Test from "./Test.jsx"
+
 
 function LandingPage() {
     const imgs = [CaruselImage1, CaruselImage2, CaruselImage3, CaruselImage4, CaruselImage5]
@@ -23,14 +29,23 @@ function LandingPage() {
                 </CarouselComponent>
             </div>
 
+            <div className="test-wrapper">
+                <Test />
+            </div>
+
             <div className="about-wrapper">
                 <About />
+                <Marquee />
             </div>
+
             <div className="our-values-wrapper">
                 <OurValues />
+                <Marquee reversed={true} />
             </div>
+            
             <div className="our-team-wrapper">
                 <OurTeam />
+                <Marquee />
             </div>
         </main>
     );

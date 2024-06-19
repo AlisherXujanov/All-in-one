@@ -20,22 +20,22 @@
             position: relative;
             width: calc(50% - 50px);
             margin: 10px 25px;
-            background: linear-gradient(to right, #222, $warning-t, $warning);
+            background: linear-gradient(to right, #222, $orange-t, $orange);
             box-shadow:
-                1px 1px 20px 1px $warning,
-                4px 4px 20px 4px black;
+                1px 1px 20px 1px $orange,
+                4px 4px 20px 4px $dark;
 
             .dot {
                 width: 10px;
                 height: 10px;
                 border-radius: 50%;
-                background-color: $warning;
+                background-color: $orange;
                 position: absolute;
                 right: -1px;
                 top: -3px;
                 box-shadow:
-                    3px 3px 20px 3px $warning,
-                    -3px -3px 20px 3px $warning;
+                    3px 3px 20px 3px $orange,
+                    -3px -3px 20px 3px $orange;
             }
         }
     }
@@ -49,6 +49,7 @@
     0% {
         right: 0;
     }
+
     100% {
         right: -100%;
     }
@@ -58,6 +59,7 @@
     0% {
         left: 0;
     }
+
     100% {
         left: -100%;
     }
