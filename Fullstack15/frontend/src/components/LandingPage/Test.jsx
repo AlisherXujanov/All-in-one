@@ -6,6 +6,7 @@ function Test() {
     // a == undefined
 
     const [counter, setCounter] = useState(10) 
+    const [position, setPosition] = useState(0) 
     //    счетчик, обновитьСчетчик
 
 
@@ -19,10 +20,10 @@ function Test() {
     function clickHandler(e) {
         let name = e.target.name
         if (name=='increment') { setCounter(counter + 1) }
-        else if (name=='decrement') { 
-            if (counter > 0) { setCounter(counter - 1) } 
-            else { alert("Ты чёёё ??") }
-        }
+        else if (name=='decrement') { setCounter(counter - 1) }
+        else if (name=='left') { setPosition(-200) }
+        else if (name=='right') { setPosition(200) }
+        else if (name=='center') { setPosition(0) }
         else {
             console.log("Incorrect button name")
         }
@@ -34,7 +35,9 @@ function Test() {
 
             <br />  <br />  <br />
 
-            <h2>{counter}</h2>
+            <h2 style={{textAlign: 'center', transform: `translateX(${position}px)`}}>
+                {counter}
+            </h2>
 
             <br />  <br />  <br />
 
@@ -43,6 +46,15 @@ function Test() {
             </button>
             <button className='btn btn-warning' onClick={clickHandler} name="decrement">
                 Decrement
+            </button>
+            <button className='btn btn-warning' onClick={clickHandler} name="left">
+                To left
+            </button>
+            <button className='btn btn-warning' onClick={clickHandler} name="right">
+                To right
+            </button>
+            <button className='btn btn-warning' onClick={clickHandler} name="center">
+                Center
             </button>
         </>
     );
