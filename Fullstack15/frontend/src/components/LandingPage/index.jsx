@@ -13,9 +13,6 @@ import CaruselImage4 from '../../assets/images/carousel/Сукук.png'
 import CaruselImage5 from '../../assets/images/carousel/Хэдж.png'
 
 
-import Test from "./Test.jsx"
-
-
 function LandingPage() {
     const imgs = [CaruselImage1, CaruselImage2, CaruselImage3, CaruselImage4, CaruselImage5]
 
@@ -27,10 +24,6 @@ function LandingPage() {
                     <p>Классический выбор профессиональных инвесторов с заданными умеренными параметрами риска. Основан на инвестировании в бумаги индекса S&P 500 с диверсификацией по 11 секторам экономики.</p>
                     <button className="btn btn-warning">Подробнее</button>
                 </CarouselComponent>
-            </div>
-
-            <div className="test-wrapper">
-                <Test />
             </div>
 
             <div className="about-wrapper">

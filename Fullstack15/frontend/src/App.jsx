@@ -1,14 +1,14 @@
-import Navbar from "./components/navigation/Navbar"
-import LendingPage from "./components/LandingPage"
+import { BrowserRouter } from 'react-router-dom'
+import AllComponents from "./components/AllComponents"
 
+// router   =>  путь к странице
 function App() {
 
   return (
-    <main className="app">
-      <Navbar />
-      
-      <LendingPage />
-    </main>
+    <BrowserRouter>
+      <AllComponents />
+    </BrowserRouter>
   )
 }
 export default App
+

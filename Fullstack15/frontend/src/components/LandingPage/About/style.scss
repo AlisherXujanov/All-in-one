@@ -1,0 +1,36 @@
+@import '../../../assets/styles/settings';
+
+.about-section {
+    padding: 50px 150px;
+
+    .about-content {
+        margin: 20px 0;
+        @include grid();
+        grid-template-columns: 1fr 2fr;
+        align-items: flex-start;
+        gap: 50px;
+
+        img.about-page-image {
+            width: 100%;
+            height: 400px;
+            filter: grayscale(100%);
+        }
+
+        .info {
+            padding: 0 20px 50px 0;
+
+            p {
+                margin-bottom: 25px;
+                color: $gray-l;
+            }
+
+            button {
+                margin-top: 50px;
+
+                img {
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}

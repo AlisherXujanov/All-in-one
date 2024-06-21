@@ -1,6 +1,8 @@
 import Heading from "../../common/Heading"
 import AboutImg from "../../../assets/images/about_img.png"
 import Lycence from "../../../assets/icons/lycence.png"
+import './style.scss'
+
 
 function About(props) {
     return (
