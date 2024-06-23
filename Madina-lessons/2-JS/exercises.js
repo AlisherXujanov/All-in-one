@@ -28,15 +28,19 @@ let balance = 25000
 let car = 4480
 let food = 890
 
+balance = balance - car - food
+
 // Доходы
 let invoice = 5500
 let stock = 4200
 
-// Итоги
-let totalBalance = 0
+balance = balance + invoice + stock
 
-// Task:
-// Calculate user's balance
+// Итоги
+let totalBalance = balance
+console.log(`Total balance: ${totalBalance}`)
+
+
 
 
 // TASK - 4
@@ -45,13 +49,18 @@ let totalBalance = 0
 
 // TASK - 5
 // Скидка
-let discount = 0.2
+let discount = 0.2  // twenty percent
 
 // Цена без скидки
 let price = 5000
 
+let discount_sum = (price / 100) * 20 // 1000
+
+
 // Цена со скидкой
 let priceWithDiscount = 0
+priceWithDiscount = price - discount_sum
 
-// TASK:
-// Calculate the price after discount
+console.log("Total price: ", price)
+console.log("Discount sum: ", discount_sum)
+console.log("Price with discount: ", priceWithDiscount)
