@@ -1,0 +1,52 @@
+@import "../../assets/styles/settings";
+
+.contacts-wrapper {
+    background-color: $dark-l;
+
+    @include grid();
+    padding: 50px 150px;
+    gap: 50px;
+
+    .left {
+        .info-section {
+            margin: 40px 0;
+
+            p {
+                color: $gray-l;
+            }
+        }
+    }
+
+    .right {
+        form {
+            width: 70%;
+            margin: 0 auto;
+
+            input,
+            button {
+                width: 100%;
+                padding: 15px 20px;
+                margin-bottom: 10px;
+                outline: none;
+            }
+
+            button {
+                font-weight: bold;
+                background-color: #FF660060;
+            }
+
+            input {
+                border: none;
+                background-color: $dark;
+                color: $gray-l;
+
+                &:focus {
+                    color: snow;
+                    border: 1px solid $orange;
+                    background-color: $orange-t;
+                    box-shadow: 2px 2px 10px $orange-t, -2px -2px 10px $orange-t;
+                }
+            }
+        }
+    }
+}
