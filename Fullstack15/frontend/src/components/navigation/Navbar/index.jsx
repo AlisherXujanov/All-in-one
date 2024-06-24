@@ -11,13 +11,11 @@ function Navbar(props) {
             </Link>
 
             <div className="links">
-                <Link to="/about">
-                    О нас
-                </Link>
+                <Link to="/about">О нас</Link>
                 <a href="#">Команда</a>
                 <a href="#">Блог</a>
                 <a href="#">Продукты</a>
-                <a href="#">Контакты</a>
+                <Link to="/contacts">Контакты</Link>
             </div>
 
             <div className="auth-section">
