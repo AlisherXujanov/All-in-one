@@ -21,7 +21,7 @@ function Contacts() {
 
     function submit(e) {
         e.preventDefault()
-        emailjs.send('#', '#', templateParams, { publicKey: '#' })
+        emailjs.send('service_8aytxhp', 'template_dbx4qji', templateParams, { publicKey: 'mbcCG18ZiPltCRfB-' })
             .then((result) => {
                 toast.success("Email sent successfully!", { theme: "dark" })
             }, (error) => {

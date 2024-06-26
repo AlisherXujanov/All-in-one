@@ -11,7 +11,7 @@ Here's a step-by-step guide on how to use the emailjs library to build a compone
 <div className="email-form">
     <h1>Send Email</h1>
 
-    <form ref={form} onSubmit={(e) => submit(e)}>
+    <form onSubmit={(e) => submit(e)}>
         <input type="text" hidden value={var-name} name='from_name' />
 
         <label htmlFor="reciever_name">Reciever name</label>
@@ -46,14 +46,13 @@ const form = useRef(); // reference to the form element
 const submit = (e) => {
     e.preventDefault(); // prevents the page from reloading when you hit “Send”
 
-    emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, 'YOUR_USER_ID-')
-        .then((result) => {
-            alert('Message Sent', result.text);
-            // show the user a success message
-        }, (error) => {
-            alert('An error occurred, Please try again', error.text);
-            // show the user an error
-        });
+    emailjs.send('#', '#', templateParams, { publicKey: '#' })
+            .then((result) => {
+                toast.success("Email sent successfully!", { theme: "dark" })
+            }, (error) => {
+                toast.error(`Error happened - ${error}`, { theme: "dark" })
+            });
+        e.target.reset()
 
     e.target.reset(); // resets the form after submission
 }
