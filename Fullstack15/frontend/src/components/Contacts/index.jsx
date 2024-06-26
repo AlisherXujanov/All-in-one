@@ -1,6 +1,7 @@
 import './style.scss'
 import Heading from '../common/Heading'
 import { useState } from 'react'
+import { toast } from 'react-toastify'
 
 function Contacts() {
     const [form, setForm] = useState({
@@ -12,13 +13,16 @@ function Contacts() {
 
     function submit(e) {
         e.preventDefault()
-        console.log("Submitted ...")
+        toast.success("Form submitted successfully!", {
+            theme: "dark",
+        })
+        e.target.reset()
     }
 
     function handleInput(e) {
         const input_val = e.target.value
         const input_name = e.target.name
-        setForm({...form, [input_name]: input_val })
+        setForm({ ...form, [input_name]: input_val })
     }
 
     return (
