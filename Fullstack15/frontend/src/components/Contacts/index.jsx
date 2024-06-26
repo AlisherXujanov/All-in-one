@@ -2,6 +2,10 @@ import './style.scss'
 import Heading from '../common/Heading'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
+import emailjs from '@emailjs/browser'
+
+const NAME_PATTERN = /^[a-zA-Z]*$/
+const PHONE_PATTERN = /^[0-9]{7,12}$/
 
 function Contacts() {
     const [form, setForm] = useState({
@@ -13,17 +17,47 @@ function Contacts() {
 
     function submit(e) {
         e.preventDefault()
-        toast.success("Form submitted successfully!", {
-            theme: "dark",
-        })
+
+        emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form, 'YOUR_USER_ID-')
+            .then((result) => {
+                toast.success("Email sent successfully!", { theme: "dark" })
+            }, (error) => {
+                toast.error(`Error happened - ${error}`, { theme: "dark" })
+            });
+
         e.target.reset()
     }
 
     function handleInput(e) {
         const input_val = e.target.value
         const input_name = e.target.name
-        setForm({ ...form, [input_name]: input_val })
+        if (validateForm(e)) {
+            setForm({ ...form, [input_name]: input_val })
+        } else {
+            // pass
+        }
     }
+
+    function validateForm(e) {
+        const success_color = '#FF6600'
+        const error_color = '#FF0000'
+
+        const input = e.target
+        const PATTERN = input.name === 'name' ? NAME_PATTERN : PHONE_PATTERN
+
+        if (input.value.length === 0) {
+            return false
+        } else {
+            if (PATTERN.test(input.value)) {
+                input.style.border = `1px solid ${success_color}`
+                return true
+            } else {
+                input.style.border = `3px solid ${error_color}`
+                return false
+            }
+        }
+    }
+
 
     return (
         <main className='contacts-wrapper'>
@@ -43,14 +77,6 @@ function Contacts() {
                     <p>050040/A15E3H4, проспект Аль-Фараби, 77/7​, 10 этаж, Алматы, Казахстан
                         Z05T3D0, проспект Мангилик Ел, 55/20, Офисы 345-346, Астана, Казахстан</p>
                 </div>
-
-                <div className="info-section">
-                    <h3>Testing form information</h3>
-                    <hr />
-                    <p>Name: {form.name}</p>
-                    <p>Email: {form.email}</p>
-                    <p>Phone: {form.phone}</p>
-                </div>
             </div>
 
             <div className="right">
@@ -66,7 +92,7 @@ function Contacts() {
                         />
                     </div>
                     <div className="form-control">
-                        <input type="number" placeholder='Телефон'
+                        <input type="number" placeholder='Телефон (7-12 цифр)'
                             onChange={handleInput} name='phone'
                         />
                     </div>
