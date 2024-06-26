@@ -13,18 +13,20 @@ function Contacts() {
         email: '',
         phone: '',
     })
-
+    const templateParams = {
+        name: form.name,
+        email: form.email,
+        phone: form.phone
+    }
 
     function submit(e) {
         e.preventDefault()
-
-        emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form, 'YOUR_USER_ID-')
+        emailjs.send('#', '#', templateParams, { publicKey: '#' })
             .then((result) => {
                 toast.success("Email sent successfully!", { theme: "dark" })
             }, (error) => {
                 toast.error(`Error happened - ${error}`, { theme: "dark" })
             });
-
         e.target.reset()
     }
 
@@ -43,6 +45,8 @@ function Contacts() {
         const error_color = '#FF0000'
 
         const input = e.target
+        if (input.name === 'email') return true
+
         const PATTERN = input.name === 'name' ? NAME_PATTERN : PHONE_PATTERN
 
         if (input.value.length === 0) {
