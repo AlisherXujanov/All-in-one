@@ -3,6 +3,7 @@ import LendingPage from "./LandingPage"
 import Layout from './Layout'
 import About from "./LandingPage/About"
 import Contacts from './Contacts'
+import Products from './Products'
 import Blog from './Blog'
 import BlogDetails from './Blog/BlogDetails.jsx'
 
@@ -15,6 +16,7 @@ function AllComponents() {
                 <Route index element={<LendingPage />} />
                 <Route path='/about' element={<About />} />
                 <Route path='/contacts' element={<Contacts />} />
+                <Route path='/products' element={<Products />} />
                 <Route path='/blog' element={<Blog />} />
                 <Route path='/blog/:id' element={<BlogDetails />} />
             </Route>

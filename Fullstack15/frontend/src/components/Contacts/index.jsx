@@ -3,11 +3,17 @@ import Heading from '../common/Heading'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 import emailjs from '@emailjs/browser'
+import { CONTEXT } from "../../../store";
+import { useContext, useEffect } from 'react'
+
 
 const NAME_PATTERN = /^[a-zA-Z]*$/
 const PHONE_PATTERN = /^[0-9]{7,12}$/
 
+
 function Contacts() {
+    const value = useContext(CONTEXT)
+
     const [form, setForm] = useState({
         name: '',
         email: '',
@@ -18,7 +24,6 @@ function Contacts() {
         email: form.email,
         phone: form.phone
     }
-
     function submit(e) {
         e.preventDefault()
         emailjs.send('service_8aytxhp', 'template_dbx4qji', templateParams, { publicKey: 'mbcCG18ZiPltCRfB-' })
@@ -29,7 +34,6 @@ function Contacts() {
             });
         e.target.reset()
     }
-
     function handleInput(e) {
         const input_val = e.target.value
         const input_name = e.target.name
@@ -39,7 +43,6 @@ function Contacts() {
             // pass
         }
     }
-
     function validateForm(e) {
         const success_color = '#FF6600'
         const error_color = '#FF0000'
@@ -62,6 +65,23 @@ function Contacts() {
         }
     }
 
+
+    // SET GEOLOCATION FIRST TIME
+    function setGeolocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                const COORDINATES = position.coords
+                console.log("Latitude: " + COORDINATES.latitude)
+                console.log("Longitude: " + COORDINATES.longitude)
+            });
+        } else {
+            alert("Geolocation is not supported by this browser.")
+        }
+    }
+    useEffect(() => {
+        setGeolocation()
+    }, [])
+    
 
     return (
         <main className='contacts-wrapper'>

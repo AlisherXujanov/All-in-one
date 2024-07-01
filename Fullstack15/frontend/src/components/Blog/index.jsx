@@ -8,7 +8,6 @@ import Post3 from "../../assets/images/posts/post3.png"
 import { getImage } from '../../../helpers'
 import BlogItem from "./BlogItem.jsx"
 
-
 function Blog(props) {
     const imgs = [Post1, Post2, Post3]
 
@@ -33,7 +32,6 @@ function Blog(props) {
                         )
                     })
                 }
-
             </div>
         </main>
     );

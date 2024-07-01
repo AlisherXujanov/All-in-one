@@ -14,7 +14,7 @@ function Navbar(props) {
                 <Link to="/about">О нас</Link>
                 <a href="#">Команда</a>
                 <Link to="/blog">Блог</Link>
-                <a href="#">Продукты</a>
+                <Link to="/products">Продукты</Link>
                 <Link to="/contacts">Контакты</Link>
             </div>
 
