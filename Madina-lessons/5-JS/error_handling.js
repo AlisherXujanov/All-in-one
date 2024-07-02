@@ -13,13 +13,25 @@
 // _______________  HANDLING EMPTY VALUES  _______________
 //   ... ? ... : ...  ->  Ternary Operator -> Тенарный оператор
 //   is used when the first value is true
+
+// if (2==2) {
+//     console.log("True")
+// } else {
+//     console.log("False")
+// }
+// 2 == 2 ? console.log("True") : console.log("False")
 // --------------------------------------------
 //   || (OR) -> is used when the first value is true
 //          undefined, null, 0, ''
+
+// let x = 0
+// console.log(x || "Test")
 // --------------------------------------------
 //   ?? (Nullish Coalescing) -> null или undefined
 //          is used when the first value is null or undefined
 
+// let x = false
+// console.log(x ?? "Test")
 // --------------------------------------------
 // _________________ Error types __________________________
 // 1. Syntax Error      =>  Синтаксическая ошибка
@@ -45,15 +57,15 @@
 // RU: Используется для обработки ошибок
 
 // try () {
-    // code
+// code
 // } catch (error) {
-    // code
-// }
+// code
+// // }
 // console.log("Started...")
+// let a = 1
 // try {
-//     console.log(a-)  // Syntax Error is not handled
-// }
-// catch (error) {
+//     console.log(a())  // Syntax Error is not handled
+// } catch (error) {
 //     console.warn("Error happedend")
 // }
 // console.log("Continue...")
@@ -65,14 +77,14 @@
 // Is used to throw an error when something goes wrong
 // we use it in order to create our own rules for our code
 //          ------------------
-// RU: Мы используем throw, чтобы создать свои 
+// RU: Мы используем throw, чтобы создать свои
 // собственные правила для нашего кода
 // function test(par) {
-//     if (typeof(par) != 'number') {
-//         let error = new Error('Вы ввели не число')
+//     if (typeof (par) != 'number') {
+//         let error = new Error('NOMER EMAS!')
 //         throw error
 //     }
-//     return par+10
+//     return par + 10
 // }
 // console.log(test("10"))
 
