@@ -82,8 +82,8 @@
             }
 
             .team-content {
-                @include flex();
-                justify-content: space-between;
+                @include grid();
+                grid-template-columns: repeat(6, 1fr);
                 gap: 10px;
 
                 .person-wrapper {
@@ -98,7 +98,69 @@
     }
 
 
-    .test-wrapper {
-        padding: 50px 150px;
+    @media (max-width: $x-large-screen) {
+        .our-team-wrapper {
+            .team-section-content-wrapper {
+                padding: 50px 90px;
+            }
+        }
+
+    }
+
+    @media (max-width: $large-screen) {
+        .our-values-wrapper {
+            .values-content {
+                padding: 50px 70px;
+            }
+        }
+
+        .our-team-wrapper {
+            .team-section-content-wrapper {
+                padding: 50px;
+
+                .team-content {
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 40px 20px;
+                }
+            }
+        }
+    }
+
+    @media (max-width: $medium-screen) {
+        .our-values-wrapper {
+            .values-content {
+                padding: 50px;
+
+                .four-divs {
+                    gap: 20px;
+                }
+            }
+        }
+
+        .our-team-wrapper {
+            .team-section-content-wrapper {
+                .team-content {}
+            }
+        }
+    }
+
+    @media (max-width: $small-screen) {
+        .our-values-wrapper {
+            .values-content {
+                padding: 20px;
+
+                .four-divs {
+                    grid-template-columns: 1fr;
+                }
+            }
+        }
+
+        .our-team-wrapper {
+            .team-section-content-wrapper {
+                .team-content {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+        }
     }
 }
