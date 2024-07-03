@@ -1,14 +1,14 @@
 @import '../../../assets/styles/settings';
 
 .about-section {
-    padding: 50px 150px;
+    padding: 50px 120px;
 
     .about-content {
         margin: 20px 0;
         @include grid();
         grid-template-columns: 1fr 2fr;
         align-items: flex-start;
-        gap: 50px;
+        gap: 40px;
 
         img.about-page-image {
             width: 100%;
@@ -31,6 +31,32 @@
                     margin-right: 10px;
                 }
             }
+        }
+    }
+
+
+    @media (max-width: $large-screen) {
+        padding: 50px 70px;
+
+        .about-content {
+            grid-template-columns: 1fr 1.5fr;
+            gap: 20px;
+        }
+    }
+
+    @media (max-width: $medium-screen) {
+        padding: 50px;
+
+        .about-content {
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+    }
+
+    @media (max-width: $small-screen) {
+        .about-content {
+            grid-template-columns: 1fr;
+            gap: 20px;
         }
     }
 }
