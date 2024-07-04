@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Magic Land</h1>
+
+
+    <script>
+        let allQuestions = {
+            question1: {
+                text: "Apple",
+                explanation: "Fruit that is round and sweet",
+            }
+        }
+        let randomIndex = Math.floor(Math.random() * Object.keys(allQuestions).length)
+        let randomKey = Object.keys(allQuestions)[randomIndex]
+
+        const targetQuestion = allQuestions[randomKey]
+        const TEXT = targetQuestion.text
+        const EXPLANATION = targetQuestion.explanation
+
+        let lives = 5
+        let hiddenText = "_".repeat(TEXT.length)
+
+        while (lives > 0) {
+            let letter = prompt(`
+                Explanation: ${EXPLANATION}
+                Lives: ${lives}
+                Current word state: ${hiddenText}            
+                Guess a letter:
+            `).toLowerCase()
+
+            if (isNaN(letter) && letter.length == 1) {
+                if (TEXT.toLowerCase().includes(letter)) {
+                    alert("Correct!")
+                    let new_text = ""
+                    for (let i = 0; i < TEXT.length; i++) {
+                        if (letter == TEXT[i].toLowerCase()) {
+                            new_text += TEXT[i]
+                        } else {
+                            new_text += hiddenText[i]
+                        }
+                    }
+                    hiddenText = new_text
+                }
+                else {
+                    alert("Wrong guess!")
+                    lives--
+                }
+            } else {
+                alert("Enter only one letter!")
+            }
+        }
+
+
+        // 1. Check if the letter was already guesses and if so, 
+        // do NOT allow user enter the same letter again
+        // 2. When LOST || WON, show the result and ask if user wants to play again
+    </script>
+</body>
+
+</html>
