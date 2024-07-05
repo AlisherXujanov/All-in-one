@@ -35,7 +35,7 @@ function Nav(props) {
             <div className="menu">
                 <div className="nav-links">
                     <Link to={"/about"}>About</Link>
-                    <button onClick={goToTeamsHash}>Team</button>
+                    <a onClick={goToTeamsHash}>Team</a>
                     <Link to={"/blog"}>Blog</Link>
                     <Link to={"/products"}>Products</Link>
                     <Link to={"/contacts"}>Contacts</Link>
