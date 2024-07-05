@@ -1,8 +1,8 @@
 import { BrowserRouter } from 'react-router-dom'
 import AllComponents from "./components/AllComponents"
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { CONTEXT, globalMemory } from "../store"
+import 'react-toastify/dist/ReactToastify.css'
+import { CONTEXT, globalMemory } from './db'
+import { ToastContainer } from 'react-toastify'
 
 // router   =>  путь к странице
 function App() {
@@ -10,7 +10,7 @@ function App() {
   return (
     <CONTEXT.Provider value={globalMemory}>
       <ToastContainer />
-      
+
       <BrowserRouter>
         <AllComponents />
       </BrowserRouter>

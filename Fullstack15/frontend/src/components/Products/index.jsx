@@ -1,22 +1,11 @@
-import UsageOfContext from "./usageOfContext"
-import { CONTEXT } from "../../../store";
-import { useContext } from 'react'
+import './style.scss'
 
-
-function Products() {
-    const value = useContext(CONTEXT)
-    // const {test, test2, test3} = useContext(CONTEXT)
+function Products(props) {
 
     return (
-        <>
-            <h1>Products</h1>
-
-            {/* <h1>{value.test}</h1>
-            <h1>{value.test2}</h1>
-            <h1>{value.test3}</h1> */}
-
-            {/* <UsageOfContext /> */}
-        </>
+        <div id="products-wrapper">
+            <h2>Products</h2>
+        </div>
     );
 }
 

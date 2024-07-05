@@ -1,55 +1,53 @@
 @import "../../assets/styles/settings";
 
-.blog-page-wrapper {
-    padding: 50px 250px;
+#blog-wrapper {
+    padding: 100px;
+    background-color: $dark-lighter;
+    .content {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 25px;
+        font-family: cursive;
 
+        *:not(.warning-btn) {
+            margin-bottom: 20px;
+        }
+        .left,
+        .right {
+            padding: 20px;
+        }
+        .warning-btn {
+            border: 1px solid $warning-t;
+            background-color: transparent;
+        }
+        p {
+            color: darkgray;
+            font-size: 0.75em;
+        }
+    }
 
-    .blog-page-content {
-        padding: 40px 0;
+    @media (max-width: $large-screen) {
+        padding: 50px;
+    }
+    @media (max-width: $medium-screen) {
+        padding: 50px 10px;
 
-        .blog-item {
-            @include grid();
-            gap: 50px;
-            align-items: flex-start;
-            margin-bottom: 50px;
+        .content {
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+        }
+    }
+    @media (max-width: $small-screen) {
+        .content {
+            grid-template-columns: 1fr;
+            gap: 0;
 
-            img {
-                width: 100%;
-                height: 350px;
+            .left {
+                margin: 0;
+                padding: 0;
             }
-
-            .blog-content {
-                * {
-                    margin-bottom: 10px;
-                }
-
-                .subtitle {
-                    color: $gray-l;
-                }
-
-                .title {
-                    margin: 20px 0;
-                }
-
-                .info {
-                    margin: 20px 0;
-
-                    span {
-                        margin-right: 20px;
-                    }
-                }
-
-                .text {
-                    color: $gray-l;
-                }
-
-                a.get-info {
-                    color: $orange;
-                    text-decoration: none;
-                    font-size: 1.1em;
-                    margin-top: 10px;
-                    display: inline-block;
-                }
+            .right {
+                padding: 0 10px 20px 10px;
             }
         }
     }

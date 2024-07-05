@@ -1,20 +1,30 @@
 @import "../../assets/styles/settings";
 
+.blog-item {
+    padding: 100px 200px;
 
-.blog-details-wrapper {
-    padding: 50px 250px;
-
-    * {
-        margin-bottom: 20px;
+    .blog-nav {
+        margin-bottom: 50px;
     }
-
+    h1,
     img {
-        width: 100%;
-        height: 450px;
+        margin: 5px 0;
+    }
+    p {
+        margin: 10px 0;
+        color: lightgray;
+    }
+    .blog-author span {
+        margin-right: 20px;
     }
 
-    .subtitle,
-    .text {
-        color: $gray-l;
+    @media (max-width: $large-screen) {
+        padding: 100px 150px;
+    }
+    @media (max-width: $medium-screen) {
+        padding: 100px;
+    }
+    @media (max-width: $small-screen) {
+        padding: 20px;
     }
 }

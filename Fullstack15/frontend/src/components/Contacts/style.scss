@@ -1,52 +1,85 @@
 @import "../../assets/styles/settings";
 
-.contacts-wrapper {
-    background-color: $dark-l;
+.contacts {
+    #contacts-wrapper {
+        padding: 100px;
+        background-color: $dark-lighter;
+        display: flex;
+        justify-content: space-between;
+        gap: 50px;
 
-    @include grid();
-    padding: 50px 150px;
-    gap: 50px;
-
-    .left {
-        .info-section {
-            margin: 40px 0;
-
-            p {
-                color: $gray-l;
+        .left {
+            .info {
+                margin: 40px 0;
+                p {
+                    color: darkgray;
+                }
             }
         }
-    }
-
-    .right {
-        form {
-            width: 70%;
-            margin: 0 auto;
-
+        .right {
             input,
             button {
                 width: 100%;
+                margin: 5px 0;
+                border: 2px solid transparent;
                 padding: 15px 20px;
-                margin-bottom: 10px;
                 outline: none;
-            }
-
-            button {
-                font-weight: bold;
-                background-color: #FF660060;
-            }
-
-            input {
-                border: none;
                 background-color: $dark;
-                color: $gray-l;
+                color: snow;
 
+                &::placeholder {
+                    color: darkgray;
+                    font-size: 0.8em;
+                }
+                &:hover,
                 &:focus {
-                    color: snow;
-                    border: 1px solid $orange;
-                    background-color: $orange-t;
-                    box-shadow: 2px 2px 10px $orange-t, -2px -2px 10px $orange-t;
+                    border: 2px solid yellow;
+                    box-shadow:
+                        5px 5px 25px $warning,
+                        -5px -5px 25px $warning,
+                        10px 10px 50px black,
+                        -10px -10px 50px black,
+                        inset 0 1px 30px $warning-t,
+                        inset 0 -1px 30px $warning-t;
                 }
             }
+        }
+    }
+    .maps {
+        div {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        padding: 0 100px;
+        display: flex;
+        gap: 50px;
+        justify-content: space-between;
+        background-color: $dark-lighter;
+    }
+
+    @media (max-width: $large-screen) {
+        #contacts-wrapper {
+            padding: 50px;
+            gap: 20px;
+        }
+        .maps {
+            padding: 0 50px;
+            gap: 20px;
+        }
+    }
+    @media (max-width: $medium-screen) {
+        #contacts-wrapper {
+            padding: 50px 20px;
+        }
+    }
+    @media (max-width: $small-screen) {
+        #contacts-wrapper {
+            flex-direction: column;
+        }
+        .maps {
+            padding: 0 20px;
+            gap: 10px;
+            flex-direction: column;
         }
     }
 }
