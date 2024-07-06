@@ -27,14 +27,33 @@
 
         let lives = 5
         let hiddenText = "_".repeat(TEXT.length)
+        let lettersPool = ""
 
         while (lives > 0) {
+            if (!hiddenText.includes("_")) {
+                alert("You won!")
+                if (confirm("Would you like to play again?")) {
+                    lives = 5
+                    hiddenText = "_".repeat(TEXT.length)
+                    lettersPool = ""
+                } else {
+                    break
+                }
+            }
+
             let letter = prompt(`
                 Explanation: ${EXPLANATION}
                 Lives: ${lives}
                 Current word state: ${hiddenText}            
                 Guess a letter:
             `).toLowerCase()
+
+            if (lettersPool.includes(letter)) {
+                alert("You already guessed this letter!")
+                continue
+            } else {
+                lettersPool += letter
+            }
 
             if (isNaN(letter) && letter.length == 1) {
                 if (TEXT.toLowerCase().includes(letter)) {
@@ -52,16 +71,23 @@
                 else {
                     alert("Wrong guess!")
                     lives--
+
+                    if (lives == 0) {
+                        alert("GAME OVER!" + ` The letter was ${TEXT}`)
+                        if (confirm("Would you like to play again?")) {
+                            lives = 5
+                            hiddenText = "_".repeat(TEXT.length)
+                            lettersPool = ""
+                        } else {
+                            break
+                        }
+                    }
                 }
             } else {
                 alert("Enter only one letter!")
             }
         }
 
-
-        // 1. Check if the letter was already guesses and if so, 
-        // do NOT allow user enter the same letter again
-        // 2. When LOST || WON, show the result and ask if user wants to play again
     </script>
 </body>
 
