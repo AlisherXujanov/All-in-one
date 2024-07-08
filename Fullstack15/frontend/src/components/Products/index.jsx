@@ -9,21 +9,12 @@ function Products(props) {
         <div id="products-wrapper">
             <h2>{state.test}</h2>
 
-            <br />
-            <br />
             <hr />
-            <br />
-            <br />
-
-            <button onClick={
-                (e) => { state.dispatch({ type: 'setFarzod', payload: "Hello Farzod!" }) }}
-                className='warning-btn'>
-                Farzod
-            </button>
-            <button onClick={
-                (e) => { state.dispatch({ type: 'setFarzona', payload: "Hello Farzona!" }) }}
-                className='warning-btn'>
+            <button className='warning-btn' onClick={(e) => {state.dispatch({ type: 'setFarzod', payload: "This is Farzod!" })}}>
                 Farzona
+            </button>
+            <button className='warning-btn' onClick={(e) => {state.dispatch({ type: 'setFarzona', payload: "This is Farzona!" })}}>
+                Farzod
             </button>
         </div>
     );
