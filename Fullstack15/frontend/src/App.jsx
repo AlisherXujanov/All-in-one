@@ -1,14 +1,18 @@
 import { BrowserRouter } from 'react-router-dom'
 import AllComponents from "./components/AllComponents"
 import 'react-toastify/dist/ReactToastify.css'
-import { CONTEXT, globalMemory } from './db'
+import { CONTEXT, globalMemory, globalReducer } from './db'
 import { ToastContainer } from 'react-toastify'
+import { useReducer } from 'react'
+
 
 // router   =>  путь к странице
 function App() {
+  const [state, dispatch] = useReducer(globalReducer, globalMemory)
+  state.dispatch = dispatch
 
   return (
-    <CONTEXT.Provider value={globalMemory}>
+    <CONTEXT.Provider value={state}>
       <ToastContainer />
 
       <BrowserRouter>

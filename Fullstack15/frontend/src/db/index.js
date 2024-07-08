@@ -1,9 +1,11 @@
 import { createContext } from 'react'
+import { globalReducer } from './helpers.js'
 const CONTEXT = createContext()
 
 
 const globalMemory = {
-    // test: "Hello Farzod!",
+    counter: 0,
+    test: "Hello Farzod!",
     // test2: "Hello Farzona!",
     // test3: "Hello Ramiz!",
     geolocation: {
@@ -14,4 +16,4 @@ const globalMemory = {
 
 
 
-export { CONTEXT, globalMemory }
+export { CONTEXT, globalMemory, globalReducer }
