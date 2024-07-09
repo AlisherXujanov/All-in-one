@@ -69,7 +69,6 @@ function removeDuplicates(nums) {
     // [0, 0, 1, 1, 1, 1, 2, 3, 3]   ->  i < 2  False || 1 > 0  True  =>  third index turns to 1  ->  i = 4
     // [0, 0, 1, 1, 1, 1, 2, 3, 3]   ->  i < 2  False || 1 > 1  False  =>  continue  -> i = 4 
     // ...
-    
     // -----------------------------------------
     // SOLUTION WITH POOL ALGORITHM
     // let pool = []

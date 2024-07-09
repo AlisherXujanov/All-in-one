@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <header>
+        <div class="upper-nav">
+            <h1>Hello world</h1>
+        </div>
+        <nav>
+            <a id="logo" href="#">🌆</a>
+            <div>
+                <a href="#">Text</a>
+                <a href="#">Text</a>
+                <a href="#">Text</a>
+                <a href="#">Text</a>
+            </div>
+        </nav>
+    </header>
+
+
+    <main class="main-section">
+
+        <div class="left">
+            <h2>Sweet Heading</h2>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas aliquam cumque cupiditate. Quia,
+                ratione. Quis quo fugit, voluptatum optio voluptates quisquam ratione animi ad quas minus exercitationem
+                hic facere quam reiciendis id sunt aperiam impedit debitis. Magni quo sequi dolore? Voluptatem aliquid
+                aut ad odit, ducimus accusamus asperiores, atque, nemo sunt quis facere quae repellat fugiat a! Aperiam
+                id atque eveniet soluta pariatur ipsum consequatur maiores voluptates ipsa? Ut magnam incidunt hic nam
+                reprehenderit praesentium esse amet exercitationem quisquam laudantium, repellendus quae, delectus
+                similique soluta in. Et sapiente ipsum nobis atque, quo odio non obcaecati! Doloremque dicta rerum quos
+                temporibus!</p>
+        </div>
+        <div class="right">
+            <img src="images/1.jpg" width="100%">
+            <img src="images/2.jpg" width="100%">
+            <img src="images/3.jpg" width="100%">
+            <img src="images/4.jpg" width="100%">
+        </div>
+
+    </main>
+    <footer>
+
+    </footer>
+
+</body>
+<style>
+    :root {
+        --text-color: white;
+    }
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        transition: 0.1s;
+    }
+    header {
+        background-color: #333;
+        padding: 20px 100px 10px 100px;
+    }
+    header .upper-nav {
+        text-align: center;
+        color: aqua;
+    }
+    #logo {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        transform: scale(2);
+        display: inline-block;
+    }
+    header nav {
+        display: flex;
+        justify-content: space-between;
+    }
+    header nav a {
+        display: inline-block;
+        text-decoration: none;
+        color: snow;
+        padding: 10px 20px;
+    }
+    header nav a:hover:not(#logo) {
+        background-color: black;
+    }
+    main.main-section {
+        padding: 20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    main.main-section .left {
+        text-align: center;
+        padding: 20px;
+    }
+    main.main-section .right {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+    main.main-section .right img {
+        height: 200px;
+    }
+    @media (max-width:1200px) {
+        body {
+            background-color: black;
+            color: var(--text-color);
+        }
+
+        main.main-section {
+            padding: 10px;
+        }
+
+        main.main-section .left {
+            padding: 20px 10px;
+        }
+        main.main-section .right {
+            gap: 30px;
+        }
+    }
+    @media (max-width:900px) {
+        main.main-section .right {
+            gap: 10px;
+        }
+        main.main-section .right img {
+            height: 150px;
+        }
+    }
+    @media (max-width:750px) {
+        main.main-section .right {
+            grid-template-columns: 1fr;
+        }
+        main.main-section .left {
+            padding: 10px;
+        }
+        main.main-section .left h2 {
+            margin-bottom: 20px;
+        }
+        header {
+            padding: 20px 50px 10px 50px;
+        }
+    }
+    @media (max-width:650px) {
+        header {
+            padding: 20px 20px 10px 20px;
+        }
+    }
+    @media (max-width:550px) {
+        main.main-section {
+            grid-template-columns: 1fr;
+        }
+        main.main-section .right img {
+            height: 220px;
+        }
+    }
+</style>
+</html>
