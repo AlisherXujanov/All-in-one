@@ -49,6 +49,8 @@ function CarouselComponent(props) {
         }
     }
 
+    // const helper = (item, index, arr) => {}
+    // [].filter(helper)
 
     return (
         <section className="carousel-section">

@@ -80,18 +80,60 @@ result = sum_whole_evens(number)
 //     *****
 //    *******
 //   *********
-// function create_pyramid_n_lines(lines) {
-//     for (let i = 1; i <= lines; i++) {
-//         // ----*
-//         // ---* *
-//         // --* * *
-//         // -* * * *
-//         // * * * * *
-//         let needed_spaces = lines - i
-//         console.log(" ".repeat(needed_spaces) + "* ".repeat(i))
-//     }
-// }
+function create_pyramid_n_lines(lines) {
+    for (let i = 1; i <= lines; i++) {
+        // ----*
+        // ---* *
+        // --* * *
+        // -* * * *
+        // * * * * *
+        let needed_spaces = lines - i
+        console.log(" ".repeat(needed_spaces) + "* ".repeat(i))
+        // TODO: Delete spaces after each star so that the piramid remains spaceless
+    }
+}
 // create_pyramid_n_lines(5)
+// ----------------------------------------------------------------
+// ----------------------------------------------------------------
+// 2. Write a program to guess a number from 1 to 10.
+// Note: the user is offered to enter a guess. If the user guesses wrong,
+// then the hint appears again until the guess is correct, upon successful guessing
+// the user will receive the message "Well guessed!" and the program will exit.
+
+let lives = 5
+let randomNumber = parseInt(Math.random() * 10) + 1
+
+while (lives > 0) {
+    let answer = parseInt(prompt("Guess a number from 1 to 10"))  //  "2" -> 2
+
+    if (isNaN(answer)) {
+        alert("Please enter a number")
+        continue
+    }
+
+    if (answer > randomNumber) {
+        lives --
+        alert("Too high! You have " + lives + " lives left.")
+    } else if (answer < randomNumber) {
+        lives --
+        alert("Too low! You have " + lives + " lives left.")
+    } else {
+        alert("Well guessed! YOU WIN!")
+        break
+    }
+}
+
+if (lives == 0) {
+    alert("GAME OVER! The number was " + randomNumber)
+}
 
 
+
+// HOMEWORK  ->  make the game more attractive
+// TODO:
+// 1. don't allow the user enter the same number twice. 
+//    Show message "You've already entered this number"
+// 2. Allow him to guess from 1 to 100
+// 3. Optimise the code so the less code covers everything and works perfectly
+//    TIP: Use functions
 
