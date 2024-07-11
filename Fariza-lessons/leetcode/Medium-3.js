@@ -32,43 +32,25 @@
  * @return {number}
  */
 var lengthOfLongestSubstring = function (s) {
-    // Input: s = "pwwkew"
-    // ['pw', 'wke', 'w']
-    let pool = get_each_parts(s)
-    let pool2 = get_each_parts(s.split("").reverse().join(""))
+    let max = 0, len = 0, start = -1, temp = new Map();
 
-    let longest = ''
-    for (let item of pool) {
-        if (item.length > longest.length) {
-            longest = item
-        }
-    }
-    let longest2 = ""
-    for (let item of pool2) {
-        if (item.length > longest2.length) {
-            longest2 = item
-        }
-    }
-    return longest.length > longest2.length ? longest.length : longest2.length
-}
-function get_each_parts(s) {
-    let pool = []
     for (let i = 0; i < s.length; i++) {
-        if (pool.length == 0) {
-            pool.push(s[i])
+        if (temp.get(s[i]) == undefined || temp.get(s[i]) < start) {
+            len++
         } else {
-            let lastText = pool[pool.length - 1]
-            if (!lastText.includes(s[i])) {
-                pool[pool.length - 1] = lastText + s[i]
-            } else {
-                pool.push(s[i])
-            }
+            start = temp.get(s[i])
+            len = i - start
         }
+        temp.set(s[i], i)
+        if (max < len) max = len
+
+        // console.log(s[i], ' start = ',start, ';end=',i, 'len =',len)
+
     }
-    return pool
+
+    return max
 }
 
-
-let r = lengthOfLongestSubstring("dvdf")
+let r = lengthOfLongestSubstring("asjrgapa")
 console.log("Result: ", r)
 
