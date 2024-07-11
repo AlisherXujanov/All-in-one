@@ -101,39 +101,63 @@ function create_pyramid_n_lines(lines) {
 // the user will receive the message "Well guessed!" and the program will exit.
 
 let lives = 5
-let randomNumber = parseInt(Math.random() * 10) + 1
+let randomNumber = parseInt(Math.random() * 100) + 1
+let enteredNumbers = []
+
+
+function askAgain() {
+    if (confirm("Do you want to play again?")) {
+        lives = 5
+        randomNumber = parseInt(Math.random() * 100) + 1
+        enteredNumbers = []
+        return true
+    } else {
+        alert("Goodbye!")
+        return false
+    }
+}
+
 
 while (lives > 0) {
-    let answer = parseInt(prompt("Guess a number from 1 to 10"))  //  "2" -> 2
+    let answer = parseInt(prompt("Guess a number from 1 to 100"))  //  "2" -> 2
 
     if (isNaN(answer)) {
         alert("Please enter a number")
-        continue
+        continue // restart the loop
+    }
+
+    if (enteredNumbers.includes(answer)) {
+        alert("You've already entered this number")
+        continue // restart the loop
+    } else {
+        enteredNumbers.push(answer)
     }
 
     if (answer > randomNumber) {
-        lives --
+        lives--
+        if (lives == 0) {
+            if (askAgain() == false) {
+                break
+            }
+        }
         alert("Too high! You have " + lives + " lives left.")
     } else if (answer < randomNumber) {
-        lives --
+        lives--
+        if (lives == 0) {
+            if (askAgain() == false) {
+                break
+            }
+        }
         alert("Too low! You have " + lives + " lives left.")
     } else {
         alert("Well guessed! YOU WIN!")
-        break
+        if (askAgain() == false) {
+            break
+        }
     }
 }
 
 if (lives == 0) {
     alert("GAME OVER! The number was " + randomNumber)
 }
-
-
-
-// HOMEWORK  ->  make the game more attractive
-// TODO:
-// 1. don't allow the user enter the same number twice. 
-//    Show message "You've already entered this number"
-// 2. Allow him to guess from 1 to 100
-// 3. Optimise the code so the less code covers everything and works perfectly
-//    TIP: Use functions
 
