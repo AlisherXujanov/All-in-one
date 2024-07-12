@@ -14,39 +14,41 @@ import Img2 from "../../assets/images/img2.png"
 import Img3 from "../../assets/images/img3.png"
 import Img4 from "../../assets/images/img4.png"
 import Img5 from "../../assets/images/img5.png"
+import { useTranslation } from "react-i18next"
 
 function About() {
     const images = [Img1, Img2, Img3, Img4, Img5]
+    const { t } = useTranslation()
 
     return (
         <div id="about-wrapper">
             <CarouselComponent images={images} blurred={true}>
                 <div className="inner-carousel">
-                    <h1>Хедж-фонд</h1>
+                    <h1>{t('carousel.title')}</h1>
                     <br />
-                    <p>Классический выбор профессиональных инвесторов с заданными умеренными параметрами риска. Основан на инвестировании в бумаги индекса S&P 500 с диверсификацией по 11 секторам экономики.</p>
+                    <p>{t('carousel.subtitle')}</p>
                     <br />
-                    <button className="warning-btn">Подробнее</button>
+                    <button className="warning-btn">{t('carousel.button')}</button>
                 </div>
             </CarouselComponent>
 
 
             <div className="about">
-                <Heading size={1.5}>О нас</Heading>
+                <Heading size={1.5}>{t('about.title')}</Heading>
                 <div className="about-content">
                     <div className="left">
                         <img src={AboutPic} alt="About" width="100%" height={400} />
                     </div>
                     <div className="right">
-                        <p>Наша Команда успешно осуществляет деятельность на нескольких рынках инвестиций. Богатство выбора инструментов этих рынков позволяет Нам успешно сохранять и преумножать капитал клиентов. </p>
+                        <p>{t('about.p1')}</p>
                         <br />
-                        <p>Вступить в партнерство с Fonte могут как профессиональные инвестора, так и частные лица, только начинающие открывать для себя новые перспективы. Наша юрисдикция - Международный финансовый центр «Астана» (МФЦА). Комфортные налоговые условия и регуляторные политики обеспечивают необходимые свободы и преимущества для достижения целей инвестиций. </p>
+                        <p>{t('about.p2')}</p>
                         <br />
-                        <p>В партнерстве с Fonte Capital LTD, инвесторы имеют возможность воспользоваться не только проверенными стратегиями, но и смогут совместно разработать персональные инвестиционные решения.</p>
+                        <p>{t('about.p3')}</p>
                         <br />
                         <button className="warning-btn">
                             <img src={Licence} alt="Licence" />
-                            Лицензии
+                            {t('about.lycences')}
                         </button>
                     </div>
                 </div>
@@ -72,7 +74,7 @@ function About() {
                 <CompanyBlog />
             </div>
 
-            
+
             <ContactsForm />
         </div>
     );

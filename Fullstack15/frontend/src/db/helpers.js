@@ -3,6 +3,10 @@ function globalReducer(state, action) {
     // action = {type: 'SET', payload: "..."}
 
     switch (action.type) {
+        case "CHANGE_LANG":
+            return { ...state, currentLanguage: action.currentLanguage }
+        case "setJoke":
+            return { ...state, favoriteJokes: { ...state.favoriteJokes, [action.key]: action.payload } }
         case "setFarzod":
             return { ...state, test: action.payload }
         case "setFarzona":

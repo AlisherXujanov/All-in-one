@@ -1,12 +1,16 @@
 import Heading from "../common/Heading"
 import { Link, useNavigate } from 'react-router-dom'
+import { useTranslation } from "react-i18next";
+import { CONTEXT, globalReducer } from '../../db'
+import { useContext } from 'react'
 
-// 1. Create a burger
-// 2. Put the input checkbox onto the burger and make it invisible
-// 3. Open the Nav-width div when the checkbox is checked
+
 
 function Nav(props) {
     const navigate = useNavigate();
+    const { t, i18n: { changeLanguage, language } } = useTranslation();
+    const state = useContext(CONTEXT)
+
 
     const goToTeamsHash = () => {
         navigate('/about');
@@ -19,7 +23,9 @@ function Nav(props) {
     };
 
     function initiateChangeLanguage(e) {
-        console.log('Change language');
+        const newLanguage = language === "en" ? "ru" : "en";
+        state.dispatch({ type: "CHANGE_LANG", currentLanguage: newLanguage })
+        changeLanguage(newLanguage)
     }
 
     return (
@@ -34,17 +40,17 @@ function Nav(props) {
 
             <div className="menu">
                 <div className="nav-links">
-                    <Link to={"/about"}>About</Link>
-                    <a onClick={goToTeamsHash}>Team</a>
-                    <Link to={"/blog"}>Blog</Link>
-                    <Link to={"/products"}>Products</Link>
-                    <Link to={"/contacts"}>Contacts</Link>
+                    <Link to={"/about"}>{t('nav.about')}</Link>
+                    <a onClick={goToTeamsHash}>{t('nav.team')}</a>
+                    <Link to={"/blog"}>{t('nav.blog')}</Link>
+                    <Link to={"/products"}>{t('nav.products')}</Link>
+                    <Link to={"/contacts"}>{t('nav.contacts')}</Link>
                 </div>
 
                 <div className="auth">
-                    <button className="warning-btn">Login</button>
+                    <button className="warning-btn">{t('nav.login')}</button>
                     <span onClick={initiateChangeLanguage} >
-                        <ins>Рус</ins>
+                        <ins><small>{t('lang')}</small></ins>
                     </span>
                 </div>
             </div>

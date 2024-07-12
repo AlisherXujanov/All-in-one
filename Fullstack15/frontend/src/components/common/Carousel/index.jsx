@@ -1,9 +1,10 @@
 import "./style.scss"
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css" // requires a loader
+import { Carousel } from 'react-responsive-carousel'
 import BlogSlideItem from "./BlogSlideItem.jsx"
 
 function CarouselComponent(props) {
+
     const imgStyle = {
         filter: props.blurred ? "grayscale(100%) brightness(0.5)" : "none"
     }

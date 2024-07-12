@@ -3,7 +3,8 @@ import { CONTEXT } from '../../db'
 import { useContext, useEffect, useState } from 'react'
 import Heading from '../common/Heading'
 import SpinnerDiamond from '../common/SpinnerDiamond'
-
+import { toast } from 'react-toastify';
+import Test from './Test'
 
 // useEffect =>  is a hook that is for controlling The Lifecycle of a component
 // RU: useEffect => это хук, который предназначен для управления жизненным циклом компонента
@@ -44,6 +45,16 @@ function Products(props) {
         }, 1500)
     }
 
+    function saveJoke(e) {
+        state.dispatch({
+            type: "setJoke",
+            key: joke.setup,
+            payload: joke.punchline
+        })
+        toast.success(`Successfully saved the joke!`, { theme: "dark" })
+    }
+
+
     useEffect(() => {
         uploadJoke()
     }, [])
@@ -57,7 +68,7 @@ function Products(props) {
             <div className="container">
                 <div className="action-buttons">
                     <button className="warning-btn" onClick={uploadJoke}>Get new joke</button>
-                    <button className="warning-btn">Save joke</button>
+                    <button className="warning-btn" onClick={saveJoke}>Save joke</button>
                 </div>
                 <div className="joke-content">
                     {
@@ -67,6 +78,14 @@ function Products(props) {
                     }
                 </div>
             </div>
+
+
+            <hr />
+            <hr />
+            <br />
+            <br />
+
+            <Test />
         </div>
     );
 }
