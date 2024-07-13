@@ -32,23 +32,18 @@
  * @return {number}
  */
 var lengthOfLongestSubstring = function (s) {
-    let max = 0, len = 0, start = -1, temp = new Map();
-
+    let longest = 0
+    let current = ""
     for (let i = 0; i < s.length; i++) {
-        if (temp.get(s[i]) == undefined || temp.get(s[i]) < start) {
-            len++
-        } else {
-            start = temp.get(s[i])
-            len = i - start
+        let char = s[i]
+        let index = current.indexOf(char)
+        if (index !== -1) {
+            current = current.slice(index + 1)
         }
-        temp.set(s[i], i)
-        if (max < len) max = len
-
-        // console.log(s[i], ' start = ',start, ';end=',i, 'len =',len)
-
+        current += char
+        longest = Math.max(longest, current.length)
     }
-
-    return max
+    return longest
 }
 
 let r = lengthOfLongestSubstring("asjrgapa")
