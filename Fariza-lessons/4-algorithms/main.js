@@ -35,11 +35,11 @@ let second = "✅2. Recursion"
 // ***
 // ****
 // *****
-function drawStarsUp(lines, startingPoint = 1) {
-    console.log("*".repeat(startingPoint))
-    if (lines == startingPoint) return
-    return drawStarsUp(lines, startingPoint + 1)
-}
+// function drawStarsUp(lines, startingPoint = 1) {
+//     console.log("*".repeat(startingPoint))
+//     if (lines == startingPoint) return
+//     return drawStarsUp(lines, startingPoint + 1)
+// }
 // drawStarsUp(50)
 // -----------------------------------------------
 // *****
@@ -47,27 +47,27 @@ function drawStarsUp(lines, startingPoint = 1) {
 // ***
 // **
 // *
-function drawStarsDown(lines) {
-    console.log("*".repeat(lines))
-    if (lines === 1) {
-        return
-    }
-    return drawStarsDown(lines - 1)
-}
+// function drawStarsDown(lines) {
+//     console.log("*".repeat(lines))
+//     if (lines === 1) {
+//         return
+//     }
+//     return drawStarsDown(lines - 1)
+// }
 // drawStarsDown(10)
 // -----------------------------------------------
-let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-function showEvenNumbers(arr) {
-    let firstItem = arr[0]
+// let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+// function showEvenNumbers(arr) {
+//     let firstItem = arr[0]
 
-    if (firstItem % 2 == 0) {
-        console.log(firstItem)
-    }
-    if (arr.length == 1) {
-        return
-    }
-    return showEvenNumbers(arr.slice(1))
-}
+//     if (firstItem % 2 == 0) {
+//         console.log(firstItem)
+//     }
+//     if (arr.length == 1) {
+//         return
+//     }
+//     return showEvenNumbers(arr.slice(1))
+// }
 // showEvenNumbers(arr)
 // -----------------------------------------------
 // 'Hello world'.slice(2, 7) // "llo w"
@@ -82,19 +82,66 @@ function showEvenNumbers(arr) {
 // let r = test("Hello")
 // console.log(r)
 // -----------------------------------------------
-// let callBackFn = (item, index, arr) => {
-//     return item + 10
+
+// =============================================================================
+// =============================================================================
+// =============================================================================
+let third = "✅3. Linear search"
+// let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+// let targetNumber = 5
+// for (let i=0;  i<arr.length; i++) {
+//     if (targetNumber == arr[i]) {
+//         return "Found"
+//     }
 // }
-function cbFn(item, index, arr) {
-    return item + 10
+// =============================================================================
+// =============================================================================
+// =============================================================================
+// =============================================================================
+let fourth = "✅4. Binary search"
+// let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+// let targetNumber = 10
+
+// let start = 0
+// let end = arr.length
+
+// let found = false
+
+// while (end - start > 0) {
+//     let middleItem = parseInt((start + end) / 2)
+//     if (arr[middleItem] == targetNumber) {
+//         found = true
+//         break
+//     } else {
+//         if (targetNumber > arr[middleItem]) {
+//             start = middleItem + 1
+//         } else {
+//             end = middleItem - 1
+//         }
+//     }
+// }
+// if (!found) {
+//     console.log("Target number does not exist") 
+// } else {
+//     console.log("Target number found: ", targetNumber)
+// }
+
+// =============================================================================
+// =============================================================================
+let fifth = "✅5. Bubble sort"
+function bubbleSort(unsortedList) {
+    let sorted = false
+    while (!sorted) {
+        sorted = true
+        for (let i = 0; i < unsortedList.length - 1; i++) {
+            if (unsortedList[i] > unsortedList[i + 1]) {
+                [unsortedList[i], unsortedList[i + 1]] = [unsortedList[i + 1], unsortedList[i]]
+                sorted = false
+            }
+        }
+    }
+    return unsortedList
 }
-arr = [1, 2, 3]
-let newArr = arr.map(cbFn)
-console.log(newArr)
-
-// map
-// filter
-// find
-// findIndex
-// reduce
-
+let unsortedList = [5, 3, 8, 1, 2, 7, 4, 6]
+let sorted_list = bubbleSort(unsortedList)
+console.log(sorted_list)
