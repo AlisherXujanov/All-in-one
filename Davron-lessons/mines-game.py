@@ -17,7 +17,7 @@
 
 
 def print_board(board):
-    print("  | 1 | 2 | 3 | 4 | 5 |")
+    print("  | 1 | 2 | 3 | 4 | 5 | 6 |")
     print("  |---|---|---|---|---|")
     for i in range(5):
         print(f"{chr(65+i)} |", end="")
@@ -45,7 +45,7 @@ def main():
     print_board(board)
     
     for _ in range(5):
-        row, col = get_user_input()
+        row, col = get_user_input() # C3
         row_dict = {"A": 0, "B": 1, "C": 2, "D": 3, "E": 4}
         board[row_dict[row]][col-1] = "o"
         

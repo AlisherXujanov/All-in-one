@@ -1,3 +1,8 @@
+alpha = " ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+counter = 2
+
+
+
 def show_text(text: str) -> None:
     print("============================================")
     print(text)
@@ -27,16 +32,24 @@ def createTable(rows: int, col: int) -> None:
         show_text("Please enter a valid number!!!!!!")
 
 
-LIVES = 7
+LIVE = 1
 MONEY = 10
-while LIVES > 0:
+while LIVE > 0:
     print("=========================================================================")
     print("=========================================================================")
     print("========================= WELCOME TO GAME MINES =========================")
     print("=========================================================================")
     print("=========================================================================")
-    name = input("Enter your name:")
-    answer1 = input("What table do you want (ex: 4x4 to 9x9): ")
+    print("Rules:")
+    print("You can choose number of rows, cols and number of mines in game")
+    print("You have 1 live ❤️  and 10$ dollars 💵 !!")
+    print("You must select cells of type (ex: A1).")
+    print("You will have more money if it is an empty cell and not a 💣!")
+    print("The more mines the less empty spaces so the more change to win more money")
+    print("BUT, if you step on a mine and you will lose. That's all!")
+    print("Good luck in the game!")
+    name = input("Enter your name: ")
+    answer1 = input("What size of table would you like to have? (ex: 4x4 to 9x9): ")
 
     res = []
 
@@ -49,18 +62,16 @@ while LIVES > 0:
         col = int(res[-1])
 
         mines = input(
-            f"Select the number of minutes (select from 1 to {(rows*col)-5})")
-        print(f"HI {name} wlcome to mines game 🎉!!")
+            f"Select the number of mines (select from 1 to {(rows*col)-5}): ")
         print("==========================================")
-        print(f"{name} you have {LIVES} lives ❤️!!")
+        print(f"""Hi {name} you have only 
+- {LIVE} life ❤️ !!
+- ${MONEY} 💵 !!
+- {mines} mines 💣 in table !!
+""")
         print("==========================================")
-        print(f"And you have {MONEY} money 💵!!")
-        print("==========================================")
-        print(f"And you have {mines} mines 💣!!")
-        print("==========================================")
-        print(f"And you have table mines 👇👇👇!!")
+        print(f"This is table of mines 👇👇👇 , lets play now 😆!!")
         createTable(rows, col)
-
     else:
         show_text("Invalid input. Please enter table size in the format 'NxM'.")
-        break
+    break
