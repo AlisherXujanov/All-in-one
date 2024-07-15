@@ -1,35 +1,105 @@
-# Step 1: Create a JSON file
-> - Create a new JSON file in your React project and name it “db.json”. 
-> In this file, we will define the API responses that we want to mock. 
-> Here’s an example:
+Json-server is a simple tool primarily for prototyping and mockups. It lets you generate a full REST API with CRUD (Create, Read, Update, Delete) operations without writing any server-side code
+   - RU: Json-server это простой инструмент в первую очередь для прототипирования и макетов. Он позволяет генерировать полный REST API с операциями CRUD (Create, Read, Update, Delete) без написания какого-либо серверного кода
+
+
+## 1. Full Documentation: 
+   - RU: Полная документация: 
+[Json-server](https://github.com/typicode/json-server)
+
+## 2. Install json-server globally:
+   - RU: Установите json-server глобально:
+```bash
+npm install -g json-server
+```
+
+## 3. Create a db.json file with some data:
+   - RU: Создайте файл db.json с некоторыми данными:
 ```json
 {
-  "posts": [
-    { "id": 1, "title": "json-server", "author": "typicode" }
-  ],
+    "users": [
+        {
+            "id": 1,
+            "name": "admin",
+            "email": "admin@gmail.com",
+            "password": "qweqweqwe",
+            "role": "admin"
+        }
+    ]
 }
 ```
-___
 
-# Step 2: Install JSON Server
-```npm install -g json-server```
-___
+## 4. Start json-server:
+    - RU: Запустите json-server:
+```bash
+json-server --watch db.json
+```
 
-# Step 3: Start the JSON server
-```json-server --watch db.json --port 3030```
-or 
-```json-server --watch db.json --port 3030 --host```
-> - Note: React utilizes the 3000 port, which json-server uses 
-> to run the server, thus we used — port 3030to modify the port.
-___
+For changing the port, use the --port flag:
+    - RU: Для изменения порта используйте флаг --port:
+```bash
+json-server --watch db.json --port 7070
+```
+
+## 5. USE json-server in your project:
+    - RU: ИСПОЛЬЗУЙТЕ json-server в своем проекте:
+We can use any HTTP method (GET, POST, PUT, DELETE) to interact with the server. 
+We can also use query parameters to filter the data. 
+Here are some examples of JS:
+
+### `GET`
+```javascript
+fetch('http://localhost:3000/users')
+    .then(response => response.json())
+    .then(data => console.log(data))
+```
+
+### `POST`
+```javascript
+fetch('http://localhost:3000/users', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        name: 'John Doe',
+        email: ''
+        ...
+    })
+})
+    .then(response => response.json())
+    .then(data => console.log(data))
+```
 
 
-# Step 4: Test API
-> - Now if we open http://localhost:3030/posts 
-> on our browser, we can see our data.
-___
+### `PUT`
+```javascript
+fetch('http://localhost:3000/users/1', {
+    method: 'PUT',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        name: 'John Doe',
+        email: ''
+        ...
+    })
+})
+    .then(response => response.json())
+    .then(data => console.log(data))
+```
 
-# Step 5: Make API requests in React
+### `DELETE`
+```javascript
+fetch('http://localhost:3000/users/1', {
+    method: 'DELETE'
+})
+    .then(response => response.json())
+    .then(data => console.log(data))
+```
+
+
+
+# Step 6: Make API requests in React
 > - In your React component, use the fetch API or any 
 > other HTTP client library to make API requests to 
 > the JSON server. Here’s an example using fetch:
@@ -72,7 +142,7 @@ const App = () => {
 ```
 ___
 
-# Step 6: Create a new post
+# Step 7: Create a new post
 > - To create a new post, we need to make a POST request to the /posts endpoint.
 > - Here’s an example using fetch:
 ```typescript
@@ -141,7 +211,7 @@ const App = () => {
 ```
 
 
-# Step 7: Update a post
+# Step 8: Update a post
 > - To update a post, we need to make a PUT request to the /posts/:id endpoint.
 > - Here’s an example using fetch:
 ```typescript

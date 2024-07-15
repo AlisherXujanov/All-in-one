@@ -99,31 +99,180 @@ fetch('http://localhost:3000/users/1', {
 
 
 
-# Usage the OMDb 
-Usage the OMDb API with JavaScript using the fetch function. This example will search for a movie by title.
-   - RU: Использование OMDb API с помощью JavaScript с использованием функции fetch. В этом примере будет выполнен поиск фильма по названию.
-```javascript
-function searchMovie(title) {
-    const GIVEN_URL = "url that is sent to your email after registration" // it should contain the apikey
-    const url = new URL(GIVEN_URL  + "&t=" + encodeURI(title));
-    url.search = new URLSearchParams({
-        apikey: apiKey,
-        t: title
+# Step 6: Make API requests in React
+> - In your React component, use the fetch API or any 
+> other HTTP client library to make API requests to 
+> the JSON server. Here’s an example using fetch:
+
+```typescript
+import { useState, useEffect } from "react";
+
+const App = () => {
+  const [posts, setPosts] = useState([]);
+
+  const getData = () => {
+    var requestOptions = {
+      method: "GET",
+      redirect: "follow",
+    };
+
+    fetch("http://localhost:3030/posts", requestOptions)
+      .then((response) => response.json())
+      .then((result) => setPosts(result))
+      .catch((error) => console.log("error", error));
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  return (
+    <div>
+      {posts.map((post) => (
+        <div key={post.id}>
+          <h3>
+            <span>{post.id}</span> {post.title}
+          </h3>
+          <p>{post.body}</p>
+        </div>
+      ))}
+    </div>
+  );
+};
+```
+___
+
+# Step 7: Create a new post
+> - To create a new post, we need to make a POST request to the /posts endpoint.
+> - Here’s an example using fetch:
+```typescript
+import { useState, useEffect } from "react";
+
+const App = () => {
+  const [posts, setPosts] = useState([]);
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
+
+  const createPost = () => {
+    var myHeaders = new Headers();
+    // Headers are used to set the content type of the request
+    // and the format of the data we are sending to the server.
+
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+      title: title,
+      body: body,
     });
 
-    fetch(url)
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(err => console.error('Error: ', err));
-}
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
 
-searchMovie('Inception');
+    fetch("http://localhost:3030/posts", requestOptions)
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  return (
+    <div>
+      <div>
+        <input
+          type="text"
+          placeholder="title"
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="body"
+          onChange={(e) => setBody(e.target.value)}
+        />
+        <button onClick={createPost}>Create Post</button>
+      </div>
+      {posts.map((post) => (
+        <div key={post.id}>
+          <h3>
+            <span>{post.id}</span> {post.title}
+          </h3>
+          <p>{post.body}</p>
+        </div>
+      ))}
+    </div>
+  );
+};
 ```
 
-This script sends a GET request to the OMDb API with the title of the movie as a parameter. The API responds with a JSON object containing information about the movie, which is then logged to the console.
-   - RU: Этот скрипт отправляет GET-запрос к API OMDb с названием фильма в качестве параметра. API отвечает JSON-объектом, содержащим информацию о фильме, который затем регистрируется в консоли.
 
-Remember to replace 'your_api_key' with your actual API key.
-    - RU: Не забудьте заменить 'your_api_key' на свой фактический ключ API.
+# Step 8: Update a post
+> - To update a post, we need to make a PUT request to the /posts/:id endpoint.
+> - Here’s an example using fetch:
+```typescript
+import { useState, useEffect } from "react";
 
-GET api_key from: [API_KEY](https://www.omdbapi.com/apikey.aspx)
+const App = () => {
+  const [posts, setPosts] = useState([]);
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
+
+  const updatePost = (id) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+      title: title,
+      body: body,
+    });
+
+    var requestOptions = {
+      method: "PUT",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    fetch(`http://localhost:3030/posts/${id}`, requestOptions)
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  return (
+    <div>
+      <div>
+        <input
+          type="text"
+          placeholder="title"
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="body"
+          onChange={(e) => setBody(e.target.value)}
+        />
+        <button onClick={() => updatePost(1)}>Update Post</button>
+      </div>
+      {posts.map((post) => (
+        <div key={post.id}>
+          <h3>
+            <span>{post.id}</span> {post.title}
+          </h3>
+          <p>{post.body}</p>
+        </div>
+      ))}
+    </div>
+  );
+};
+```
+
