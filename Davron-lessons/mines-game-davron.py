@@ -1,6 +1,6 @@
-alpha = " ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+import random
+alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 counter = 2
-
 
 
 def show_text(text: str) -> None:
@@ -9,31 +9,39 @@ def show_text(text: str) -> None:
     print("============================================")
 
 
-def topRows(r):
-    return f"╔═══════╦{('═══════╦' * (r - 1))}═══════╗\n" \
-        f"║       {('║       ' * (r - 1))}║       ║\n"
+def topRows(rows: int) -> str:
+    numbers = "".join([f'║   {i+1}   ' for i in range(rows-1)])
+    return f"╔═══════╦{('═══════╦' * (rows - 1))}═══════╗\n" \
+        f"║  😮   {numbers}║   {rows}   ║\n"
 
 
-def middleRows(r):
-    return f"╠═══════╬{('═══════╬' * (r - 1))}═══════╣\n" \
-        f"║       {('║   x   ' * (r - 1))}║   x   ║\n"
+def middleRows(rows: int, letter: str) -> str:
+    return f"╠═══════╬{('═══════╬' * (rows - 1))}═══════╣\n" \
+        f"║   {letter}   {('║   *   ' * (rows - 1))}║   *   ║\n"
 
 
-def bottomRows(r):
-    return f"╠═══════╬{('═══════╬' * (r - 1))}═══════╣\n" \
-        f"║       {('║   x   ' * (r - 1))}║   x   ║\n" \
-        f"╚═══════╩{('═══════╩' * (r - 1))}═══════╝\n"
+def bottomRows(rows: int, letter: str) -> str:
+    return f"╠═══════╬{('═══════╬' * (rows - 1))}═══════╣\n" \
+        f"║   {letter}   {('║   *   ' * (rows - 1))}║   *   ║\n" \
+        f"╚═══════╩{('═══════╩' * (rows - 1))}═══════╝\n"
 
 
 def createTable(rows: int, col: int) -> None:
     if rows != 0 and col != 0:
-        print(topRows(rows) + (middleRows(rows) * (col-1)) + bottomRows(rows))
+        middle_rows = "".join([middleRows(rows, alpha[i])
+                              for i in range(rows-1)])
+        print(
+            topRows(rows) + middle_rows + bottomRows(rows, alpha[:rows][-1])
+        )
     else:
         show_text("Please enter a valid number!!!!!!")
 
 
 LIVE = 1
 MONEY = 10
+rows_and_cells = []
+BOMBS_LIST = []
+
 while LIVE > 0:
     print("=========================================================================")
     print("=========================================================================")
@@ -48,30 +56,71 @@ while LIVE > 0:
     print("The more mines the less empty spaces so the more change to win more money")
     print("BUT, if you step on a mine and you will lose. That's all!")
     print("Good luck in the game!")
-    name = input("Enter your name: ")
-    answer1 = input("What size of table would you like to have? (ex: 4x4 to 9x9): ")
+    user_name = input("Enter your name: ")
+    desired_size_of_table = input(
+        "What size of table would you like to have? (ex: 4x4 to 9x9): ")
 
-    res = []
-
-    for u in answer1:
+    for u in desired_size_of_table:
         if u.isnumeric():
-            res.append(u)
+            rows_and_cells.append(int(u))
 
-    if len(res) >= 2:
-        rows = int("".join(res[0]))
-        col = int(res[-1])
+    if len(rows_and_cells) >= 2:
+        rows = rows_and_cells[0]
+        cols = rows_and_cells[1]
 
         mines = input(
-            f"Select the number of mines (select from 1 to {(rows*col)-5}): ")
+            f"Select the number of mines (select from 1 to {(rows*cols)-5}): ")
         print("==========================================")
-        print(f"""Hi {name} you have only 
+        print(f"""Hi {user_name} you have only
 - {LIVE} life ❤️ !!
 - ${MONEY} 💵 !!
 - {mines} mines 💣 in table !!
 """)
+
+        BOMBS_LIST = [
+            alpha[:cols][random.randrange(cols)] +
+            str(random.randint(1, cols))
+            for _ in range(int(mines))
+        ]
         print("==========================================")
         print(f"This is table of mines 👇👇👇 , lets play now 😆!!")
-        createTable(rows, col)
+        createTable(rows, cols)
     else:
         show_text("Invalid input. Please enter table size in the format 'NxM'.")
     break
+
+
+def show_wrong_format_text(cols):
+    show_text(
+        f"WRONG FORMAT! Please enter a cell in the range of 'A1' to '{alpha[cols-1]}{cols}'.")
+
+
+def ask():
+    print("==========================================")
+    rows = rows_and_cells[0]
+    cols = rows_and_cells[1]
+    while True:
+        answer = input("Choose a cell  (ex:  A2, C5 ...): ")
+        if len(answer) == 2:
+            a_rows, a_cols = answer
+            if a_rows.isalpha() and a_cols.isnumeric():
+                if int(a_cols) > cols:
+                    show_wrong_format_text(cols)
+                elif a_rows.upper() not in alpha[:rows]:
+                    show_wrong_format_text(cols)
+                else:
+                    return answer
+            else:
+                show_wrong_format_text(cols)
+        else:
+            show_wrong_format_text(cols)
+
+
+while True:
+    print("BOMB LIST: ", BOMBS_LIST)
+    if ask() in BOMBS_LIST:
+        print("GAME OVER! YOU LOSE! 💥💥💥")
+        break
+    else:
+        print("GOOD JOB! YOU WIN! 💵💵💵")
+        ...
