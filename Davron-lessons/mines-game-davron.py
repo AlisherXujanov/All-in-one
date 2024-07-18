@@ -49,7 +49,7 @@ while LIVE > 0:
     print("=========================================================================")
     print("=========================================================================")
     print("Rules:")
-    print("You can choose number of rows, cols and number of mines in game")
+    print("You can choose number of rows, cols and number of MINES in game")
     print("You have 1 live ❤️  and 10$ dollars 💵 !!")
     print("You must select cells of type (ex: A1).")
     print("You will have more money if it is an empty cell and not a 💣!")
@@ -66,21 +66,21 @@ while LIVE > 0:
 
     if len(rows_and_cells) >= 2:
         rows = rows_and_cells[0]
-        cols = rows_and_cells[1]
+        cols = rows_and_cells[-1]
 
-        mines = input(
-            f"Select the number of mines (select from 1 to {(rows*cols)-5}): ")
+        MINES = input(
+            f"Select the number of mines (select from 1 to {(rows*cols)-1}): ")
         print("==========================================")
         print(f"""Hi {user_name} you have only
 - {LIVE} life ❤️ !!
 - ${MONEY} 💵 !!
-- {mines} mines 💣 in table !!
+- {MINES} mines 💣 in table !!
 """)
 
         BOMBS_LIST = [
             alpha[:cols][random.randrange(cols)] +
             str(random.randint(1, cols))
-            for _ in range(int(mines))
+            for _ in range(int(MINES))
         ]
         print("==========================================")
         print(f"This is table of mines 👇👇👇 , lets play now 😆!!")
@@ -98,15 +98,15 @@ def show_wrong_format_text(cols):
 def ask():
     print("==========================================")
     rows = rows_and_cells[0]
-    cols = rows_and_cells[1]
+    cols = rows_and_cells[-1]
     while True:
-        answer = input("Choose a cell  (ex:  A2, C5 ...): ")
+        answer = input("Choose a cell  (ex:  A2, C5 ...): ".upper())
         if len(answer) == 2:
-            a_rows, a_cols = answer
+            a_rows, a_cols = answer.upper()
             if a_rows.isalpha() and a_cols.isnumeric():
                 if int(a_cols) > cols:
                     show_wrong_format_text(cols)
-                elif a_rows.upper() not in alpha[:rows]:
+                elif a_rows not in alpha[:rows]:
                     show_wrong_format_text(cols)
                 else:
                     return answer
@@ -117,10 +117,34 @@ def ask():
 
 
 while True:
-    print("BOMB LIST: ", BOMBS_LIST)
+    BOMBS_LIST2 = []
+    for b in BOMBS_LIST:
+        for b2 in BOMBS_LIST:
+            if b not in BOMBS_LIST2:
+                BOMBS_LIST2.append(b)
+
+    print("BOMB LIST: ", BOMBS_LIST2)
+
     if ask() in BOMBS_LIST:
         print("GAME OVER! YOU LOSE! 💥💥💥")
+        LIVE = 0
+        MONEY = 0
         break
     else:
+        rows = rows_and_cells[0]
+        cols = rows_and_cells[-1]
         print("GOOD JOB! YOU WIN! 💵💵💵")
-        ...
+        if (int(rows)*int(cols)) - int(MINES) == 1:
+            MONEY *= (MONEY * MONEY)
+            print(f"And now you have {MONEY} dollars!")
+        elif (int(rows)*int(cols)) - int(MINES) < 6 and (int(rows)*int(cols)) - int(MINES) > 2:
+            MONEY *= MONEY
+            print(f"And now you have {MONEY} dollars!")
+        elif (int(rows)*int(cols)) - int(MINES) == 10:
+            MONEY += MONEY
+            print(f"And now you have {MONEY} dollars!")
+        elif (int(rows)*int(cols)) - int(MINES) > 20:
+            MONEY += 5
+            print(f"And now you have {MONEY} dollars!")
+        else:
+            print("ERROR!")
