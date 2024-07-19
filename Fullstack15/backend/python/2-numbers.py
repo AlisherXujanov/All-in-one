@@ -197,5 +197,16 @@ def sum(a, *args) -> int:
         result += num
     return result
 
-print(sum(1, 2, 3, 4, 5))
+# print(sum(1, 2, 3, 4, 5))
 # ----------------------------------------------------------------------
+# PRIME NUMBERS
+# num = 18
+
+# if num == 1 or num == 2 or num == 3 or num == 5 or num == 7:
+#     print("PRIME")
+# elif num % 2 == 0 or num % 3 == 0 or num % 5 == 0 or num % 7 == 0:
+#     print("NOT PRIME")
+# else:
+#     print("PRIME")
+
+
