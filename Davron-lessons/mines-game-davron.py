@@ -26,12 +26,12 @@ def bottomRows(rows: int, letter: str) -> str:
         f"╚═══════╩{('═══════╩' * (rows - 1))}═══════╝\n"
 
 
-def createTable(rows: int, col: int) -> None:
-    if rows != 0 and col != 0:
+def createTable(rows: int, cols: int) -> None:
+    if rows != 0 and cols != 0:
         middle_rows = "".join([middleRows(rows, alpha[i])
-                              for i in range(rows-1)])
+                              for i in range(cols-1)])
         print(
-            topRows(rows) + middle_rows + bottomRows(rows, alpha[:rows][-1])
+            topRows(rows) + middle_rows + bottomRows(rows, alpha[:cols][-1])
         )
     else:
         show_text("Please enter a valid number!!!!!!")
@@ -64,7 +64,7 @@ while LIVE > 0:
         if u.isnumeric():
             rows_and_cells.append(int(u))
 
-    if len(rows_and_cells) >= 2:
+    if len(rows_and_cells) <= 2:
         rows = rows_and_cells[0]
         cols = rows_and_cells[-1]
 
@@ -79,12 +79,17 @@ while LIVE > 0:
 
         BOMBS_LIST = [
             alpha[:cols][random.randrange(cols)] +
-            str(random.randint(1, cols))
+            str(random.randint(1, rows))
             for _ in range(int(MINES))
         ]
+        BOMBS_LIST2 = []
+    for b in BOMBS_LIST:
+        for b2 in BOMBS_LIST:
+            if b not in BOMBS_LIST2:
+                BOMBS_LIST2.append(b)
         print("==========================================")
         print(f"This is table of mines 👇👇👇 , lets play now 😆!!")
-        createTable(rows, cols)
+        table = createTable(rows, cols)
     else:
         show_text("Invalid input. Please enter table size in the format 'NxM'.")
     break
@@ -102,11 +107,11 @@ def ask():
     while True:
         answer = input("Choose a cell  (ex:  A2, C5 ...): ".upper())
         if len(answer) == 2:
-            a_rows, a_cols = answer.upper()
-            if a_rows.isalpha() and a_cols.isnumeric():
-                if int(a_cols) > cols:
+            a_cols, a_rows = answer.upper()
+            if a_cols.isalpha() and a_rows.isnumeric():
+                if int(a_rows) > rows:
                     show_wrong_format_text(cols)
-                elif a_rows not in alpha[:rows]:
+                elif a_cols not in alpha[:cols]:
                     show_wrong_format_text(cols)
                 else:
                     return answer
@@ -117,15 +122,9 @@ def ask():
 
 
 while True:
-    BOMBS_LIST2 = []
-    for b in BOMBS_LIST:
-        for b2 in BOMBS_LIST:
-            if b not in BOMBS_LIST2:
-                BOMBS_LIST2.append(b)
-
     print("BOMB LIST: ", BOMBS_LIST2)
 
-    if ask() in BOMBS_LIST:
+    if ask().upper() in BOMBS_LIST:
         print("GAME OVER! YOU LOSE! 💥💥💥")
         LIVE = 0
         MONEY = 0

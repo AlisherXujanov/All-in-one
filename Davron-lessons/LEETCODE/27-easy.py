@@ -86,10 +86,6 @@ class Solution(object):
         return k
 
 
-
-
-
-
 nums = [3, 2, 2, 3]
 val = 3
 s = Solution()
