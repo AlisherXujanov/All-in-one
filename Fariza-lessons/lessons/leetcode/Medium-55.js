@@ -36,7 +36,7 @@ var canJump = function (nums) {
         if (i > max) return false;
         max = Math.max(max, i + nums[i]);
 
-        // [3,2,1,0,4]
+        // [2,3,1,1,4]
         // 0 < 3 ->  max = 3
     }
     return true;

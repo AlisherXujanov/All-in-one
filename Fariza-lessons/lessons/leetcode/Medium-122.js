@@ -44,7 +44,7 @@
  */
 var maxProfit = function(prices) {
     // -------------------------------------------------
-    // GREEDY ALGORITHM  ||  Pool of local optimal solutions
+    // GREEDY ALGORITHM  ||  Pool of local optimal solutions 
     // -------------------------------------------------
     // 1. Create a variable to store the maximum profit
     let maxProfit = 0;
@@ -55,6 +55,11 @@ var maxProfit = function(prices) {
             // 4. Calculate the profit
             maxProfit += prices[i + 1] - prices[i];
         }
+        // [7,1,5,3,6,4]  
+        // DAY-1   =>   $7 > $1    ==>  $0
+        // DAY-2   =>   $1 < $5    ==>  $4
+        // DAY-3   =>   $5 > $3    ==>  $4
+        // DAY-4   =>   $3 < $6    ==>  4+3  ==  $7
     }
     return maxProfit;
 };
