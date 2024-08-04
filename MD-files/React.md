@@ -70,7 +70,10 @@
 # First steps
 ### Installing necessary packages
 ```bash
-- npm init react-app ... # project-name
+#  npx create-vite your-project-name --template react 
+#  AGAR ISHLAMAY QOLSA
+#  npm uninstall -g create-react-app
+
 - cd ... # project-name
 - npm install axios
 - npm install react-router-dom@latest
