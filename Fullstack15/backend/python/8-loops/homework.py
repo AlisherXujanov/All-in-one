@@ -257,9 +257,17 @@ guess_letters()
 
 s = "ThisIsLoongStringForTestingPurposes"
 
+def find_longest_substring(str:str) -> str:
+    pool = []
+    for letter in str:
+        if len(pool) > 0:
+            if letter not in pool[-1]:
+                pool[-1] += letter
+            else:
+                pool.append(letter)
+        else:
+            pool.append(letter)
+    return max(pool, key=len)
 
-def find_longest_substring(str) -> str:
-    ...
-
-
-find_longest_substring(s)
+r = find_longest_substring(s)
+print(r)
