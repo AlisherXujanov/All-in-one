@@ -241,6 +241,12 @@ x = {
 # print("Using two lists: ", months_dict)
 
 
-person = { "name":"Mirsaid",   "bemiyya":False }
-new_person = {val:key for key,val in person.items()}
-print(new_person)
+# person = { "name":"Mirsaid",   "bemiyya":False }
+# new_person = {val:key for key,val in person.items()}
+# print(new_person)
+
+
+
+
+# HOMEWORK
+# https: //www.w3resource.com/python-exercises/dictionary/
