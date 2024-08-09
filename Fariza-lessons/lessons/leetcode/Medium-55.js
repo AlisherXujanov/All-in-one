@@ -33,11 +33,15 @@ var canJump = function (nums) {
     // This uses the GREEDY ALGORITHM
     let max = 0;
     for (let i = 0; i < nums.length; i++) {
-        if (i > max) return false;
-        max = Math.max(max, i + nums[i]);
-
+        // i == on which step we are
+        if (i > max) return false
+        max = Math.max(max, i + nums[i])
         // [2,3,1,1,4]
-        // 0 < 3 ->  max = 3
+        // i == 0,  max == 0    0 < 2 ->  max = 2
+        // i == 1,  max == 3,   0 < 4 ->  max = 4
+        // i == 2,  max == 4,   4 > 3 ->  max = 4
+        // i == 3,  max == 4,   4 == 4  -> max = 4
+        // i == 4,  max == 4,   4 < 8  ->  max == 8
     }
     return true;
 };
