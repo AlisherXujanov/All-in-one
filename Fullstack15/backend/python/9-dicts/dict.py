@@ -21,8 +21,10 @@ count_occurences("abaaa")
 # RU: Напишите скрипт Python для объединения следующих словарей для создания нового.
 
 def concatenate_dictionaries(*args) -> dict:
-    ...
-
+    pool = {}
+    for d in args:
+        pool.update(d)  # ==  pool |= d
+    return pool
 
 x = {'a': 1, 'b': 2}
 x2 = {'c': 3, 'd': 4}
@@ -38,7 +40,7 @@ concatenate_dictionaries(x, x2, x3, x4)
 
 
 def check_key(dict, key):
-    ...
+    return key in dict.keys()
 
 
 check_key({"a": 1, "b": 2}, "a")  # True
@@ -47,9 +49,9 @@ check_key({"a": 1, "b": 2}, "a")  # True
 # 4. Write a Python program to iterate over dictionaries using for loops.
 # RU: Напишите программу Python для итерации по словарям с помощью циклов for.
 
-
 def iterate_over_dict(dict):
-    ...
+    for key, val in dict.items():
+        print(f"{key}: {val}")
 
 
 iterate_over_dict({
@@ -67,6 +69,9 @@ iterate_over_dict({
 # RU: Напишите скрипт Python для печати словаря, где ключи - числа
 # от 1 до n (оба включены), а значения - квадрат ключей.
 # ex: {1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81, 10: 100}
+
+# ex: {1: "1", 2: "44", 3: "999", ...}
+
 
 
 def generate_dict(n):
