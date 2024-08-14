@@ -1,5 +1,52 @@
-// INTERMEDIATE LEVEL (Junior)
+// Создайте функцию, которая принимает 
+// список целых чисел и находит сумму 
+// всех четных чисел.
 
+function sum_evens(arr) {
+    // [1, 2, 3.....]
+    let sum = 0
+    for (let num of arr) {
+        if (num%2 == 0) {
+            sum += num
+        }
+    }
+    return sum
+}
+// let arr_of_numbers = [10, 123, 43, 22, 55, 100] 
+// let result = sum_evens(arr_of_numbers)
+// console.log(result)  // 132
+
+
+// =============================================================================
+// Создайте функцию, которая принимает список 
+// целых чисел и находит самое большое число  
+// function get_max(arr) {
+//     // [1, 2, 1, 4, 2]
+//     let max = arr[0] // 4
+//     for (let num of arr) {
+//         if (num > max) {  
+//             max = num
+//         }
+//     }
+//     return max
+// }
+// let arr_of_numbers = [10, 123, 43, 22, 55, 100]
+// let result = get_max(arr_of_numbers)
+// console.log(result)  // 123
+// =============================================================================
+// function get_min(arr) {
+//     let min = arr[0]
+//     for (let num of arr) {
+//         if (num < min) {
+//             min = num
+//         }
+//     }
+//     return min
+// }
+// let result = get_min([10, 123, 43, 22, 55, 100])
+// console.log(result)  // 10
+// =============================================================================
+// INTERMEDIATE LEVEL (Junior)
 // -----------------------------------------------------------------------------
 // 3. Create a function that gives us 10 random even numbers from 1 to 100
 // Math.random()  //  0-1   =>    0.002432589862
@@ -16,7 +63,7 @@ function getRandomEvenNumber(how_many = 10) {
     }
     return pool_of_evens
 }
-let r = getRandomEvenNumber()
+// let r = getRandomEvenNumber()
 // console.log(r)
 
 // -----------------------------------------------------------------------------

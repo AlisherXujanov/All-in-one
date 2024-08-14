@@ -1,8 +1,18 @@
 // FUNCTION DECLARATIONS
 
+// function test(counter=10, name="John") {
+//     console.log(`Hello ${name} - ${counter}`)
+// }
+
+// for (let i=0; i<5; i++) {
+//     test(i, i+i)
+// }
+
+// ====================================================
 // function sum_up(a, b) {
 //     return a + b
 // }
+
 // let result = sum_up(1, 2)
 // console.log("Result: ", result) 
 
@@ -86,21 +96,21 @@
 // --------------------------------------------------------
 // --------------------------------------------------------
 // ARROW FUNCTIONS
-let calc = (num1, num2, operator) => {
-    if (operator == '+') {
-        return num1 + num2
-    } else if (operator == '-') {
-        return num1 - num2
-    } else if (operator == '*') {
-        return num1 * num2
-    } else if (operator == '/') {
-        return num1 / num2
-    } else {
-        return "Not a valid operator"
-    }
-}
+// let calc = (num1, num2, operator) => {
+//     if (operator == '+') {
+//         return num1 + num2
+//     } else if (operator == '-') {
+//         return num1 - num2
+//     } else if (operator == '*') {
+//         return num1 * num2
+//     } else if (operator == '/') {
+//         return num1 / num2
+//     } else {
+//         return "Not a valid operator"
+//     }
+// }
 
-let result = calc(9, 8, "/")
-console.log(result)
-result = calc(10, 2, "*")
-console.log(result)
+// let result = calc(9, 8, "/")
+// console.log(result)
+// result = calc(10, 2, "*")
+// console.log(result)
