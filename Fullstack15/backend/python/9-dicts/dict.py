@@ -9,10 +9,9 @@ def count_occurences(string) -> dict:  # подсчитать_вхождения
             pool[letter] += 1
     return pool
 
+
 count_occurences("abaaa")
 # {'a': 4,  "b": 1}
-
-
 
 
 # =================================================================================
@@ -25,6 +24,7 @@ def concatenate_dictionaries(*args) -> dict:
     for d in args:
         pool.update(d)  # ==  pool |= d
     return pool
+
 
 x = {'a': 1, 'b': 2}
 x2 = {'c': 3, 'd': 4}
@@ -49,6 +49,7 @@ check_key({"a": 1, "b": 2}, "a")  # True
 # 4. Write a Python program to iterate over dictionaries using for loops.
 # RU: Напишите программу Python для итерации по словарям с помощью циклов for.
 
+
 def iterate_over_dict(dict):
     for key, val in dict.items():
         print(f"{key}: {val}")
@@ -69,16 +70,14 @@ iterate_over_dict({
 # RU: Напишите скрипт Python для печати словаря, где ключи - числа
 # от 1 до n (оба включены), а значения - квадрат ключей.
 # ex: {1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81, 10: 100}
-
+# THEN
 # ex: {1: "1", 2: "44", 3: "999", ...}
 
-
-
 def generate_dict(n):
-    ...
+    return {i: str(i**2)*i for i in range(1, n+1)}
 
-
-generate_dict(5)
+r = generate_dict(5)
+print(r)
 # {1: 1, 2: 4, 3: 9, 4: 16, 5: 25}
 # =================================================================================
 # =================================================================================
@@ -92,16 +91,13 @@ generate_dict(5)
 # ----------------
 # ex:  x =  {...: "10", ...: 'qwe', ...: 5}  => 15
 # ----------------
-
-
 def sum_dict(dict):
     ...
 
-
 sum_dict({
     'a': 1,
-    'b': 2,
-    'c': 3,
+    'b': "2",
+    'c': "Hello",
     'd': 4,
 })
 # 10
