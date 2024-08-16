@@ -123,25 +123,25 @@
 # RU: Функция обратного вызова должна возвращать True / False
 # в зависимости от значения в итерируемом объекте
 # -----------------------------------------------------------
-words = ['apple', 'banana', 'cherryyyyy', 'orange..', 'kiwi', 'melon', 'mango']
+# words = ['apple', 'banana', 'cherryyyyy', 'orange..', 'kiwi', 'melon', 'mango']
 
-def count_vowels_and_get_longest(word: str) -> int:
-    return len([l for l in word if l.lower() in 'aeiou'])
-
-
-r = max(words,  key=count_vowels_and_get_longest)
-r_holds_n_vowels = len([l for l in r if l.lower() in 'aeiou'])
+# def count_vowels_and_get_longest(word: str) -> int:
+#     return len([l for l in word if l.lower() in 'aeiou'])
 
 
-def get_same_len_of_vowels(word:str) -> bool:
-    vowels_len = len([l for l in word if l.lower() in 'aeiou'])
-    if vowels_len == r_holds_n_vowels:
-        return True
-    else:
-        return False
+# r = max(words,  key=count_vowels_and_get_longest)
+# r_holds_n_vowels = len([l for l in r if l.lower() in 'aeiou'])
 
-samle_len_as_r = list(filter(get_same_len_of_vowels, words))
-print(max(samle_len_as_r, key=len))
+
+# def get_same_len_of_vowels(word:str) -> bool:
+#     vowels_len = len([l for l in word if l.lower() in 'aeiou'])
+#     if vowels_len == r_holds_n_vowels:
+#         return True
+#     else:
+#         return False
+
+# samle_len_as_r = list(filter(get_same_len_of_vowels, words))
+# print(max(samle_len_as_r, key=len))
 # ===========================================================================================
 # ===========================================================================================
 # ===========================================================================================
