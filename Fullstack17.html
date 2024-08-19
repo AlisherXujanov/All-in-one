@@ -1,16 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    
-    <h1>Hello world</h1>    
 
+<body>
+
+    <nav>
+        <button>My dashboard</button>
+        <button>Likes</button>
+        <div class="dropdown">
+            <button class="drp-btn">Views</button>
+            <div class="drp-content">
+                <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-file-earmark-richtext-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0M9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1M7 6.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m-.861 1.542 1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047l1.888.974V9.5a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V9s1.54-1.274 1.639-1.208M5 11h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1m0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1" />
+                    </svg>
+                    Documents
+                </a>
+                <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M16 8c0 3.866-3.582 7-8 7a9 9 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7M5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0m4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
+                    </svg>
+                    Messages
+                </a>
+                <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z" />
+                        <path fill-rule="evenodd"
+                            d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
+                    </svg>
+                    Sign out
+                </a>
+            </div>
+        </div>
+        <button>Uploads</button>
+        <button>Videos</button>
+        <button>Documents</button>
+    </nav>
+
+    
 </body>
 <style>
-    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition: 0.3s;
+        text-align: center;
+    }
+    nav {
+        width: 100%;
+        text-align: center;
+        background: linear-gradient(to bottom, #333, black);
+    }
+    .dropdown {
+        margin: 0 auto;
+        position: relative;
+        display: inline-block;
+    }
+    button {
+        padding: 10px 20px;
+        background: linear-gradient(to bottom, #555, #333, #111);
+        color: greenyellow;
+        font-family: sans-serif;
+        text-shadow: 2px 2px 3px black, -2px -2px 3px black;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100px;
+    }
+    .drp-content {
+        width: 150px;
+        position: absolute;
+        display: none;
+    }
+    .drp-content a {
+        width: 100%;
+        padding: 10px 20px;
+        display: block;
+        background-color: #222;
+        border-bottom: 1px solid #555;
+        text-decoration: none;
+        color: greenyellow;
+        text-shadow: 2px 2px 3px black, -2px -2px 3px black;
+        text-align: left;
+    }
+    .drp-content a:first-child {
+        border-radius: 0 5px 0 0;
+    }
+    .drp-content a:last-child {
+        border-radius: 0 0 5px 5px;
+    }
+    .drp-content a svg {
+        margin-right: 10px;
+    }
+    .dropdown:hover .drp-content {
+        display: block;
+    }
+    .dropdown:hover .drp-btn {
+        border-radius: 5px 5px 0 0;
+        background: linear-gradient(to bottom, #333, black);
+    }
+    button:hover {
+        background: linear-gradient(to bottom, #333, black);
+    }
+    .drp-content a:hover {
+        background-color: black;
+    }
 </style>
 </html>
