@@ -11,6 +11,8 @@ fibonacci = {1, 1, 2, 3, 5, 8, 13}
 
 # 1. Create two sets and merge them into one set.
 # RU: Создайте два множества и объедините их в одно множество.
+set3 = odds.union(evens)
+# print(set3)
 
 
 # =====================================================================================================
@@ -18,16 +20,25 @@ fibonacci = {1, 1, 2, 3, 5, 8, 13}
 
 # 2. Create two sets and exclude the intersection of sets from one set.
 # RU: Создайте два сета и исключите пересечение сеты из одного сета.
+set4 = odds.difference(evens, {1, 3, 5})
+# print(set4)
+
 # =====================================================================================================
 # =====================================================================================================
 
 # 3. Create two sets and compare them. Print the result of comparing the sets.
 # RU: Создайте два сета и сравните их. Распечатайте результат сравнения сетов.
+set5 = odds.symmetric_difference({1, 3, 5})
+# print(set5)
+
 # =====================================================================================================
 # =====================================================================================================
 
 # 4. Create two sets and print the result of their intersection.
 # RU: Создайте два сета и распечатайте результат их пересечения.
+set6 = odds.intersection({1, 3, 5})
+# print(set6)
+
 
 # =====================================================================================================
 # =====================================================================================================
@@ -46,6 +57,8 @@ fibonacci = {1, 1, 2, 3, 5, 8, 13}
 # Вам даны два набора номеров роллов студентов. Один набор имеет подписку на английскую газету,
 # а другой набор подписан на французскую газету. Один и тот же студент может быть в обоих наборах.
 # Ваша задача - найти общее количество студентов, которые подписались хотя бы одну газету.
+def total_subscriptions(set1, set2):
+    return len(set1.union(set2))
 
 
 # =====================================================================================================
@@ -79,6 +92,15 @@ fibonacci = {1, 1, 2, 3, 5, 8, 13}
 # ------------------------------------------------------
 #
 
+def captain_room(rooms, k):
+    # With the help of for loop
+    for i in set(rooms):
+        if rooms.count(i) == 1:
+            return i
+
+    # With the help of comprehension
+    # return ((sum(set(rooms)) * k) - (sum(rooms))) // (k - 1)
+
 
 # EXPLANATION:
     # input:
@@ -89,6 +111,7 @@ fibonacci = {1, 1, 2, 3, 5, 8, 13}
 rooms = [1, 2, 3, 6, 5, 4, 4, 2, 5, 3, 6, 1, 6, 5, 3,
          2, 4, 1, 2, 5, 1, 4, 3, 6, 8, 4, 3, 1, 5, 6, 2]
 k = 5
+# print(captain_room(rooms, k))
 
 # Список номеров комнат содержит 31 элемент. Поскольку K равно 5, должно быть 6 групп семей.
 # В данном списке все числа повторяются 5 раз, кроме номера комнаты 8.
@@ -105,10 +128,18 @@ k = 5
 # RU: Напишите программу на Python, чтобы удалить элемент(ы) из набора.
 
 
+def remove_item(set1: set, *args) -> set:
+    for i in args:
+        set1.remove(i)
+    return set1
+    # --------------------
+    # Comprehension
+    # return set1.difference(args)
 
-# x = {'a', 'b', 'c'}
-# result = remove_item(x, 'c', 'b')
-# print("Result: ", x)
+
+x = {'a', 'b', 'c'}
+result = remove_item(x, 'c', 'b')
+print("Result: ", x)
 
 # =====================================================================================================
 # 8. Create a function that takes a list as an argument and creates a set from it
@@ -120,6 +151,16 @@ k = 5
 # Output {2, 4, 6, 8, 10, 'aa', 'bb', 'cc'}
 # {... for ... in {} if ...}
 
+
+def set_from_list(list1):
+    # Comprehension
+    # return {i*2 for i in set(list1)}
+    # --------------------
+    # With the help of loop
+    result_set = set()
+    for i in list1:
+        result_set.add(i*2)
+    return result_set
 # =====================================================================================================
 # 9. Create a function that takes a dict as an arg and gets all values from it and
 # converts them into set. Then, plus them all together and return the result by
@@ -131,6 +172,17 @@ k = 5
 # Output The sum is: 10 and it is even number
 
 
+def sum_of_values(dict1):
+    # Comprehension
+    # return f"The sum is: {sum({i for i in dict1.values()})} and it is {'even' if sum({i for i in dict1.values()})%2 == 0 else 'odd'} number"
+    # --------------------
+    # With the help of Loop
+    sum = 0
+    for i in dict1.values():
+        sum += i
+    return f"The sum is: {sum} and it is {'even' if sum % 2 == 0 else 'odd'} number"
+
+
 # =====================================================================================================
 # 10. Create a function that takes a list and a number as a target.
 # Find two numbers from that list that when summed up are equal to target.
@@ -140,11 +192,29 @@ x = [1, 4, 11, 114, 12, 24, 55]
 target = 23
 
 
+def find_target(arr, target):
+    for item in arr:
+        for item2 in arr:
+            item1_index = arr.index(item)
+            item2_index = arr.index(item2)
+            sum = item + item2
+            if item != item2 and item1_index != item2_index and sum == target:
+                print(item1_index, item2_index)
+                return
 
-# find_target(x, target)
+
+find_target(x, target)
 
 # =============================================================
 
 
 def del_duplicate_vals_from_dict(dict: dict) -> dict:
-    ...
+    """
+        We should use set() to remove duplicate values from dictionary
+    """
+    result = {}
+    set_vals = set(dict.values())
+    for key, val in dict.items():
+        if val in set_vals and val not in result.values():
+            result[key] = val
+    return result
