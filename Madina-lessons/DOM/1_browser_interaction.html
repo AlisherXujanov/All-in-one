@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <main>
+        <h1>DOM</h1>
+        <p>Document Object Model</p>
+        <button class="btn-1">Click me!</button>
+        <button class="btn-2">Button 2</button>
+    </main>
+    <button class="btn-3">Change everything</button>
+
+
+    <div class="grid">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <script>
+        // {key: value}
+        // console.log(document)
+
+        // JS can listen or see to events from inside the browser
+
+        let h1 = document.querySelector("h1")
+        let btn1 = document.querySelector(".btn-1")
+        let btn2 = document.querySelector(".btn-2")
+        let btn3 = document.querySelector(".btn-3")
+        let main = document.querySelector("main")
+
+        let counter = 0
+        function showMessage() {
+            counter += 1
+            console.log("Hello World! " + counter)
+            h1.style.color = "red"
+            h1.style.backgroundColor = "black"
+        }
+        
+        btn1.onclick = showMessage
+
+
+
+        function showMessage2() {
+            let agree = confirm("Are you sure to revert the changes?")
+            if (agree == true) {
+                h1.style.color = 'black'
+                h1.style.backgroundColor = 'white'
+            } else {
+                // do nothing
+            }
+        }
+        btn2.onclick = showMessage2
+
+
+        function changeAll() {
+            main.style.backgroundColor = 'lavender'
+            main.style.color = 'white'
+        }
+        btn3.onclick = changeAll
+        
+        // h1 {...}
+        // div p {}
+        // .class-name {}
+        // #... {}
+
+    </script>
+    
+</body>
+<style>
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1px;
+    }
+    .grid div {
+        height: 100px;
+        background-color: black;
+    }
+</style>
+</html>
