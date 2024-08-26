@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Quiz App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f7fafc;
+        }
+
+        .quiz-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="quiz-container">
+        <h1 class="text-2xl font-bold mb-4">Simple Quiz App</h1>
+        <div id="quiz" class="mb-4"></div>
+        <button id="next" class="bg-blue-500 text-white p-2 rounded hidden">Next Question</button>
+        <button id="restart" class="bg-green-500 text-white p-2 rounded hidden">Restart Quiz</button>
+        <p id="score" class="mt-4"></p>
+    </div>
+
+    <script>
+        const quizElement = document.getElementById('quiz');
+        const nextButton = document.getElementById('next');
+        const restartButton = document.getElementById('restart');
+        const scoreElement = document.getElementById('score');
+
+        const questions = [
+            {
+                question: "What is the capital of France?",
+                answers: ["Berlin", "Madrid", "Paris", "Lisbon"],
+                correct: 2
+            },
+            {
+                question: "What is 2 + 2?",
+                answers: ["3", "4", "5", "6"],
+                correct: 1
+            },
+            {
+                question: "What is the largest planet in our solar system?",
+                answers: ["Earth", "Mars", "Jupiter", "Saturn"],
+                correct: 2
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        function loadQuestion() {
+            const currentQuestion = questions[currentQuestionIndex];
+            quizElement.innerHTML = `  
+                <h2 class="text-xl font-semibold mb-2">${currentQuestion.question}</h2>  
+                ${currentQuestion.answers.map((answer, index) => `  
+                    <button class="answer bg-gray-200 text-black p-2 rounded mb-2 w-full" data-index="${index}">${answer}</button>  
+                `).join('')}  
+            `;
+            nextButton.classList.add('hidden');
+        }
+
+        function handleAnswer(event) {
+            const selectedAnswerIndex = event.target.dataset.index;
+            if (selectedAnswerIndex == questions[currentQuestionIndex].correct) {
+                score++;
+            }
+            nextButton.classList.remove('hidden');
+            const answers = document.querySelectorAll('.answer');
+            answers.forEach(answer => answer.disabled = true);
+        }
+
+        function showScore() {
+            quizElement.innerHTML = '';
+            scoreElement.textContent = `Your score: ${score} out of ${questions.length}`;
+            nextButton.classList.add('hidden');
+            restartButton.classList.remove('hidden');
+        }
+
+        nextButton.addEventListener('click', () => {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                loadQuestion();
+            } else {
+                showScore();
+            }
+        });
+
+        restartButton.addEventListener('click', () => {
+            currentQuestionIndex = 0;
+            score = 0;
+            scoreElement.textContent = '';
+            restartButton.classList.add('hidden');
+            loadQuestion();
+        });
+
+        quizElement.addEventListener('click', (event) => {
+            if (event.target.classList.contains('answer')) {
+                handleAnswer(event);
+            }
+        });
+
+        loadQuestion();  
+    </script>
+</body>
+
+</html>

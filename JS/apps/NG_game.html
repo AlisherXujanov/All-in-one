@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number Game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="flex flex-col justify-center items-center h-screen bg-gray-200">
+    <h1 class="text-2xl font-bold mb-4">Guess the Number Game</h1>
+    <p class="mb-4">I'm thinking of a number between 1 and 100.</p>
+    <input type="number" id="guess" class="border p-2 rounded" placeholder="Enter your guess" />
+    <button id="submit" class="bg-blue-500 text-white p-2 rounded ml-2">Submit</button>
+    <p id="message" class="mt-4"></p>
+    <button id="restart" class="hidden bg-green-500 text-white p-2 rounded mt-4">Play Again</button>
+
+    <script>
+        let randomNumber = Math.floor(Math.random() * 100) + 1;
+        const message = document.getElementById('message');
+        const guessInput = document.getElementById('guess');
+        const submitButton = document.getElementById('submit');
+        const restartButton = document.getElementById('restart');
+
+        submitButton.addEventListener('click', () => {
+            const userGuess = Number(guessInput.value);
+            if (userGuess < 1 || userGuess > 100) {
+                message.textContent = 'Please enter a number between 1 and 100.';
+            } else if (userGuess === randomNumber) {
+                message.textContent = 'Congratulations! You guessed the number!';
+                restartButton.classList.remove('hidden');
+            } else if (userGuess < randomNumber) {
+                message.textContent = 'Too low! Try again.';
+            } else {
+                message.textContent = 'Too high! Try again.';
+            }
+        });
+
+        restartButton.addEventListener('click', () => {
+            randomNumber = Math.floor(Math.random() * 100) + 1;
+            message.textContent = '';
+            guessInput.value = '';
+            restartButton.classList.add('hidden');
+        });  
+    </script>
+</body>
+
+</html>

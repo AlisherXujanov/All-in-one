@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Weather App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f7fafc;
+        }
+
+        .weather-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="weather-container">
+        <h1 class="text-2xl font-bold mb-4">Weather App</h1>
+        <input id="city-input" type="text" class="border p-2 w-full mb-2" placeholder="Enter city name...">
+        <button id="get-weather" class="bg-blue-500 text-white p-2 rounded w-full">Get Weather</button>
+        <div id="weather-info" class="mt-4"></div>
+    </div>
+
+    <script>
+        const cityInput = document.getElementById('city-input');
+        const getWeatherButton = document.getElementById('get-weather');
+        const weatherInfo = document.getElementById('weather-info');
+
+        async function getWeather() {
+            const city = cityInput.value.trim();
+            if (city === '') return;
+
+            const apiKey = 'YOUR_API_KEY'; // Replace with your OpenWeatherMap API key  
+            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
+            const data = await response.json();
+
+            if (data.cod === 200) {
+                weatherInfo.innerHTML = `  
+                        <h2 class="text-xl font-semibold">${data.name}</h2>  
+                        <p>Temperature: ${data.main.temp} °C</p>  
+                        <p>Weather: ${data.weather[0].description}</p>  
+                    `;
+            } else {
+                weatherInfo.innerHTML = `<p class="text-red-500">City not found!</p>`;
+            }
+        }
+
+        getWeatherButton.addEventListener('click', getWeather);
+        cityInput.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                getWeather();
+            }
+        });  
+    </script>
+</body>
+
+</html>

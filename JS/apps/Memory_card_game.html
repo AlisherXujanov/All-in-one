@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Card Game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .card {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            display: inline-block;
+            background-color: #4A5568;
+            border-radius: 10px;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+        .card.flipped {
+            background-color: #F7FAFC;
+            transform: rotateY(180deg);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .card-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: #2D3748;
+        }
+    </style>
+</head>
+
+<body class="flex flex-col justify-center items-center h-screen bg-gray-200">
+    <h1 class="text-2xl font-bold mb-4">Memory Card Game</h1>
+    <div id="game-board" class="flex flex-wrap justify-center"></div>
+    <button id="restart" class="hidden bg-green-500 text-white p-2 rounded mt-4">Play Again</button>
+
+    <script>
+        const cardValues = ['A', 'A', 'B', 'B', 'C', 'C', 'D', 'D'];
+        let firstCard = null;
+        let secondCard = null;
+        let lockBoard = false;
+        const gameBoard = document.getElementById('game-board');
+        const restartButton = document.getElementById('restart');
+
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function createCard(value) {
+            const card = document.createElement('div');
+            card.classList.add('card');
+            card.dataset.value = value;
+            card.innerHTML = `<div class="card-content hidden">${value}</div>`;
+            card.addEventListener('click', flipCard);
+            return card;
+        }
+
+        function flipCard() {
+            if (lockBoard) return;
+            const card = this;
+            card.classList.add('flipped');
+            card.querySelector('.card-content').classList.remove('hidden');
+
+            if (!firstCard) {
+                firstCard = card;
+            } else {
+                secondCard = card;
+                lockBoard = true;
+                checkForMatch();
+            }
+        }
+
+        function checkForMatch() {
+            if (firstCard.dataset.value === secondCard.dataset.value) {
+                resetBoard();
+            } else {
+                setTimeout(() => {
+                    firstCard.classList.remove('flipped');
+                    firstCard.querySelector('.card-content').classList.add('hidden');
+                    secondCard.classList.remove('flipped');
+                    secondCard.querySelector('.card-content').classList.add('hidden');
+                    resetBoard();
+                }, 1000);
+            }
+        }
+
+        function resetBoard() {
+            [firstCard, secondCard] = [null, null];
+            lockBoard = false;
+            if (Array.from(gameBoard.children).every(card => card.classList.contains('flipped'))) {
+                restartButton.classList.remove('hidden');
+            }
+        }
+
+        function startGame() {
+            const shuffledValues = shuffle(cardValues);
+            gameBoard.innerHTML = '';
+            shuffledValues.forEach(value => {
+                const card = createCard(value);
+                gameBoard.appendChild(card);
+            });
+            restartButton.classList.add('hidden');
+        }
+
+        restartButton.addEventListener('click', startGame);
+        startGame();  
+    </script>
+</body>
+
+</html>
