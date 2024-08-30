@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td><button>Click</button></td>
+            <td><button>Click</button></td>
+            <td><button>Click</button></td>
+            <td><button>Click</button></td>
+            <td><button>Click</button></td>
+        </tr>
+        <tr>
+            <td><button>Click</button></td>
+            <td><button>Click</button></td>
+            <td><button>Click</button></td>
+            <td><button>Click</button></td>
+            <td><button>Click</button></td>
+        </tr>
+        <tr>
+            <td><button>Click</button></td>
+            <td><button>Click</button></td>
+            <td><button>Click</button></td>
+            <td><button>Click</button></td>
+            <td><button>Click</button></td>
+        </tr>
+        <tr>
+            <td><button>Click</button></td>
+            <td><button>Click</button></td>
+            <td><button>Click</button></td>
+            <td><button>Click</button></td>
+            <td><button>Click</button></td>
+        </tr>
+        <tr>
+            <td><button>Click</button></td>
+            <td><button>Click</button></td>
+            <td><button>Click</button></td>
+            <td><button>Click</button></td>
+            <td><button>Click</button></td>
+        </tr>
+    </table>
+
+    <script>
+        const allbuttons = document.querySelectorAll('button')
+        const colorsIWant = ['red', 'blue', 'lavender', 'purple', 'white', 'pink']
+
+        for (let button of allbuttons) {
+            button.onclick = changeParent
+        }
+        function changeParent(event) {
+            let randomIndex = parseInt(Math.random() * colorsIWant.length)
+            let randomColor = colorsIWant[randomIndex]
+
+            let parent = event.target.parentElement
+            parent.style.backgroundColor = randomColor
+            parent.color = 'white'
+        }
+    </script>
+</body>
+<style>
+    td {
+        padding: 20px 30px;
+        background-color: lightgray;
+    }
+    button {
+        padding: 10px 20px;
+        background-color: green;
+        border: none;
+        cursor: pointer;
+        color: snow;
+    }
+
+</style>
+</html>

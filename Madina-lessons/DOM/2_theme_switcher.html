@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <header>
+        <h1>🔥Theme Switcher</h1>
+        <div class="themes">
+            <span class="circle snow"></span>
+            <span class="circle blue"></span>
+            <span class="circle red"></span>
+            <span class="circle gray"></span>
+        </div>
+    </header>
+
+    <main>
+        <div class="left">
+            <!-- "alternate text" - if the image is not found -->
+            <img src="https://t2.gstatic.com/licensed-image?q=tbn:ANd9GcS5cyZ3EJTS7BkXAa7bbmUKSAirR5PfXcYTGq4-KNiBCXfMvsekuBU8mIyZOzbC0zTH" 
+                alt="Bird image"
+                width="100%"
+                height="400"
+            >
+        </div>
+        <div class="right">
+            <h2>A Sweet Heading</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat unde repudiandae molestiae vel, incidunt, veniam aspernatur nam eaque laborum sint tempora fuga fugiat officia molestias, hic id impedit minus quaerat maxime minima similique recusandae libero dignissimos. Aspernatur voluptates quam officiis dignissimos quaerat expedita, voluptas amet iste eaque veritatis corrupti ducimus delectus rerum, sit ipsa suscipit temporibus alias pariatur voluptatem distinctio. Vitae magni aliquid quo veritatis perspiciatis minus expedita repellendus, eligendi possimus nemo quia officia numquam quasi dolorem. Eaque odit debitis molestiae repudiandae similique aut mollitia nobis id! Tempora cum optio numquam iusto, est ipsa exercitationem delectus eveniet consequuntur! Facilis, non?</p>
+        </div>
+    </main>
+
+
+    <script>
+        const circles = document.querySelectorAll('.circle')
+        const header = document.querySelector('header')
+
+
+        circles.forEach(circle => {
+            circle.onclick = changeColor
+        })
+
+        // let bizniList = [1, 2, 3, 4, 5, '...', 1000]
+        // let oxirgiElement = bizniList[999]
+        // let oxirgiElement = bizniList[bizniList.length-1]
+
+        function changeColor(event) {
+            const classList = event.target.classList // ['circle', 'snow']
+            const targetColor = classList[classList.length-1] // 'snow'
+
+            if (targetColor == 'snow') {
+                header.style.backgroundColor = 'white'
+                header.style.color = 'black'
+                document.body.style.backgroundColor = 'white'
+                document.body.style.color = 'black'
+            } 
+            else if (targetColor == 'blue') {
+                header.style.backgroundColor = 'blue'
+                header.style.color = 'snow'
+                document.body.style.backgroundColor = 'skyblue'
+                document.body.style.color = 'black'
+            }
+            else if (targetColor == 'red') {
+                header.style.backgroundColor = 'darkred'
+                header.style.color = 'snow'
+                document.body.style.backgroundColor = 'lightcoral'
+                document.body.style.color = 'black'
+            }
+            else if (targetColor == 'gray') {
+                header.style.backgroundColor = '#333'
+                header.style.color = 'snow'
+                document.body.style.backgroundColor = 'lightgray'
+                document.body.style.color = 'black'
+            }
+        }
+    </script>
+
+</body>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        transition: 0.5s;
+    }
+    header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+        padding: 50px;
+    }
+    header h1 {
+        font-size: 50px;
+    }
+    header .circle {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 2px solid darkgray;
+        cursor: pointer;
+    }
+    header .white { background-color: #eee; }
+    header .blue { background-color: lightskyblue; }
+    header .red { background-color: lightcoral; }
+    header .gray { background-color: gray; }
+
+
+    main {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 100px;
+        padding: 50px 200px;
+    }
+    main .left img {
+        border-radius: 20px;
+        border: solid 3px gray;
+    }
+    main .right h2 {
+        font-size: 30px;
+        margin-bottom: 50px;
+    }
+</style>
+</html>
