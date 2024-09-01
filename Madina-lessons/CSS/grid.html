@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>Grid System</h1>
+
+    <div class="container">
+        <p>Lorem ipsum dolor sit amet.</p>
+        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam cumque est dolore eveniet expedita non eos sint autem repellat atque cupiditate esse corporis eum officia modi natus iste, voluptatibus dolores?</div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, praesentium culpa. Saepe ducimus ex recusandae soluta, laborum architecto dignissimos pariatur!</p>
+        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam cumque est dolore eveniet expedita non eos sint autem repellat atque cupiditate esse corporis eum officia modi natus iste, voluptatibus dolores?</div>
+        <b>Lorem, ipsum.</b>
+        <em>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, nemo?</em>
+    </div>
+
+</body>
+<style>
+    .container > * {
+        background-color: lightgray;
+        height: 150px;
+        padding: 10px;
+        text-align: center;
+        overflow: auto;
+    }
+    .container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /*  ===   1fr 1fr 1fr   */
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+    }
+
+</style>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madina"s website</title>
+</head>
+
+<body>
+    <header>
+        <h1>Hi, welcome!</h1>
+    </header>
+    <main>
+        <div class="first-green">
+            <div class="image-wrapper">
+                🤖
+            </div>
+            <h2>714k</h2>
+            <p>Weekly sales</p>
+            <div class="action-buttons">
+                <button class="red"></button>
+                <button class="blue"></button>
+            </div>
+        </div>
+        <div class="second-blue">
+            <div class="image-wrapper">
+                🍎
+            </div>
+            <h2>1.35m</h2>
+            <p>New users</p>
+
+            <div class="action-buttons">
+                <button class="pink"></button>
+                <button class="green"></button>
+            </div>
+        </div>
+        <div class="third-yellow">
+            <div class="image-wrapper">
+                🪟
+            </div>
+            <h2>1.72m</h2>
+            <p>Item orders</p>
+
+            <div class="action-buttons">
+                <button class="yellow"></button>
+                <button class="orange"></button>
+            </div>
+        </div>
+        <div class="fourth-red">
+            <div class="image-wrapper">
+                🐞
+            </div>
+            <h2>234</h2>
+            <p>Bug reports</p>
+
+            <div class="action-buttons">
+                <button class="purple"></button>
+                <button class="magenta"></button>
+            </div>
+        </div>
+    </main>
+
+
+    <script>
+        const buttons = document.querySelectorAll('button')
+
+        buttons.forEach(button => {
+            button.onclick = changeColor
+        })
+
+        function changeColor(event) {
+            const classList = event.target.classList
+            const targetColor = classList[classList.length - 1]
+            const buttonParent = event.target.parentElement.parentElement
+
+            if (targetColor == 'red') {
+                buttonParent.style.backgroundColor = 'red'
+                buttonParent.style.Color = 'darkred'
+            }
+            else if (targetColor == 'blue') {
+                buttonParent.style.backgroundColor = 'blue'
+                buttonParent.style.Color = 'darkblue'
+            }
+            else if (targetColor == 'pink') {
+                buttonParent.style.backgroundColor = 'pink'
+                buttonParent.style.Color = 'darkpink'
+            }
+            else if (targetColor == 'green') {
+                buttonParent.style.backgroundColor = 'green'
+                buttonParent.style.Color = 'darkgreen'
+            }
+            else if (targetColor == 'yellow') {
+                buttonParent.style.backgroundColor = 'yellow'
+                buttonParent.style.Color = 'darkyellow'
+            }
+            else if (targetColor == 'orange') {
+                buttonParent.style.backgroundColor = 'orange'
+                buttonParent.style.Color = 'red'
+            }
+            else if (targetColor == 'purple') {
+                buttonParent.style.backgroundColor = 'purple'
+                buttonParent.style.Color = 'maroon'
+            }
+            else if (targetColor == 'magenta') {
+                buttonParent.style.backgroundColor = 'magenta'
+                buttonParent.style.Color = 'pink'
+            }
+        }
+
+    </script>
+</body>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        transition: 0.5s;
+    }
+
+    header h1 {
+        margin: 20px;
+        font-family: sans-serif;
+    }
+
+    main {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 50px;
+        padding: 10px 50px;
+    }
+
+    main>div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        border-radius: 20px;
+    }
+
+    main>div .image-wrapper {
+        border-radius: 50%;
+        height: 80px;
+        width: 80px;
+        box-shadow: inset -1px -1px 20px darkgray;
+        border: 1px solid gray;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2em;
+    }
+
+    main>div button {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: none;
+        margin: 10px;
+        cursor: pointer;
+    }
+
+
+
+    .first-green {
+        background-color: lightgreen;
+        color: darkgreen;
+    }
+
+    .second-blue {
+        background-color: lightblue;
+        color: darkblue;
+    }
+
+    .third-yellow {
+        background-color: lightgoldenrodyellow;
+        color: orange;
+    }
+
+    .fourth-red {
+        background-color: lightcoral;
+        color: darkred;
+    }
+
+    .red {
+        background-color: red;
+    }
+
+    .blue {
+        background-color: blue;
+    }
+
+    .pink {
+        background-color: pink;
+    }
+
+    .green {
+        background-color: green;
+    }
+
+    .yellow {
+        background-color: yellow;
+    }
+
+    .orange {
+        background-color: orange;
+    }
+
+    .purple {
+        background-color: purple;
+    }
+
+    .magenta {
+        background-color: magenta;
+    }
+
+    p {
+        font-family: sans-serif;
+        font-weight: bold;
+    }
+</style>
+
+</html>

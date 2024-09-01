@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Flex container</h1>
+
+    <div class="container">
+        <div>div-1</div>
+        <div>div-2</div>
+        <div>div-3</div>
+        <div>div-4</div>
+        <div>div-5</div>
+        <div>div-6</div>
+        <div>div-7</div>
+        <div>div-8</div>
+        <div>div-9</div>
+        <div>div-10</div>
+        <div>div-1</div>
+        <div>div-2</div>
+        <div>div-3</div>
+        <div>div-4</div>
+        <div>div-5</div>
+        <div>div-6</div>
+        <div>div-7</div>
+        <div>div-8</div>
+        <div>div-9</div>
+        <div>div-10</div>
+        <div>div-1</div>
+        <div>div-2</div>
+        <div>div-3</div>
+        <div>div-4</div>
+        <div>div-5</div>
+        <div>div-6</div>
+        <div>div-7</div>
+        <div>div-8</div>
+        <div>div-9</div>
+        <div>div-10</div>
+    </div>
+
+</body>
+<style>
+    .container {
+        background-color: lightgray;
+        height: 80vh;
+        width: 80%;
+        margin: 0 auto;
+        padding: 10px;
+
+
+        display: flex;
+
+        justify-content: center;/* horizontally */
+        align-items: center;/* vertically */
+        flex-wrap: wrap;
+        align-content: space-between;
+    }
+
+    .container>div {
+        width: 50px;
+        height: 50px;
+        background-color: red;
+        margin: 10px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    /*
+        display: flex;   ->  makes the container as flex container (flexbox)
+        ---------------------------------------------------------------------
+        flex-direction: ...;  ->  specifies the direction of the flex items
+            - row;   ->  default value, items are placed in a row
+            - column ->  items are placed in a column
+            - row-reverse -> items are placed in a row but in reverse order
+            - column-reverse -> items are placed in a column but in reverse order
+        ---------------------------------------------------------------------
+        justify-content: ...;   ALIGN the content horizontally
+            - space-evenly   ->  items are evenly distributed in the line
+            - space-between  ->  first and last items are cornered and the rest are evenly distributed          
+            - space-around   ->  first and last items get half of the space and 
+                                                            the rest are evenly distributed
+            - flex-start     ->  on the start of the line
+            - flex-end       ->  on the end of the line
+            - center         ->  in the center of the line
+        ---------------------------------------------------------------------
+        align-content: ...;     ALIGN the content vertically
+            - space-evenly   ->  items are evenly distributed in the line
+            - space-between  ->  first and last items are cornered and the rest are evenly distributed          
+            - space-around   ->  first and last items get half of the space and 
+                                                            the rest are evenly distributed
+            - flex-start     ->  on the start of the line
+            - flex-end       ->  on the end of the line
+            - center         ->  in the center of the line
+        ---------------------------------------------------------------------
+        align-items: ...;       ALIGN the content vertically
+            - flex-start     ->  on the start of the line
+            - flex-end       ->  on the end of the line
+            - center         ->  in the center of the line
+        ---------------------------------------------------------------------
+        flex-wrap: ...;         WRAP the content
+            - nowrap    ->  default value, all items are in one line
+            - wrap      ->  items are wrapped in multiple lines
+            - wrap-reverse -> items are wrapped in multiple lines but in reverse order
+    
+        ---------------------------------------------------------------------
+
+        @media (min-width: ...px) {}
+        @media (max-width: ...px) {}
+
+
+        @media (max-width: 500px) {
+            main {
+                background-color: red;
+            }
+            main div {
+                background-color: black;
+            }
+        }
+
+        @media (min-width: 500px) {
+            main {
+                background-color: black;
+            }
+        }
+
+        @media (min-width: 800px) {
+            main {
+                background-color: #333;
+            }
+            main div {
+                border-radius: 50%;
+            }
+        }
+    */
+</style>
+
+</html>
