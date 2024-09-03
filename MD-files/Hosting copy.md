@@ -1,56 +1,9 @@
-# Very first steps to build django-app
-1. `Create an app`
-```bash
-python manage.py startapp ...
-
-# NOTE: INCLUDE this in settings.py
-# RU: ДОБАВЬТЕ ЭТО В settings.py
-INSTALLED_APPS = [
-    ...
-    'name-of-app',
-    ...
-]
-```
-2. `Update admin.py`
-get the code from [Django.md](Django.md)
-
-3. `Create urls.py`
-```python
-from django.urls import path
-from .views import *
-
-urlpatterns = [
-    path("", function-name, name='some-name'),
-]
-
-# NOTE:  INCLUDE this in urls.py of the main project 
-# RU: ДОБАВЬТЕ ЭТО В urls.py ОСНОВНОГО ПРОЕКТА
-
-# main  urls.py
-# path('name-of-app/', include('name-of-app.urls'))
-```
-4. `Create views.py`
-```python
-def view-name(request):
-    context = {'key': 'value',}
-    return render(request, 'name-of-html-file.html', context)
-```
-
----
----
----
----
----
-
 # Table of Contents
 - [Table of Contents](#table-of-contents)
 - [Deploying a Django project on PythonAnywhere](#deploying-a-django-project-on-pythonanywhere)
 - [Configure WSGI File](#configure-wsgi-file)
 - [Collect Static Files](#collect-static-files)
 - [Configure Virtual Environment](#configure-virtual-environment)
-
-
-
 
 # Deploying a Django project on PythonAnywhere
 To host your Django project on PythonAnywhere for free, you can follow these steps:
@@ -174,3 +127,69 @@ Please note that PythonAnywhere doesn't support Pipfile.lock, so you might need 
 
 - `pipenv lock -r > requirements.txt` - is outdated
 - 🎯 New version is: `pipenv run pip freeze > requirements.txt`
+
+
+---
+<br>
+
+# Security
+
+### Important links
+- [Deployment checklist](https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/)
+- [Security documentation](https://docs.djangoproject.com/en/5.1/topics/security/)
+- [Arno Pretorius checklist](https://www.cloudwithdjango.com/django-web-application-security-checklist/)
+- [Best third-party tools](https://www.cloudwithdjango.com/the-best-third-party-tools-to-utilize-for-django-deployment/)
+- [Check if your site is secure enough](https://observatory.mozilla.org/)
+
+### First commands when deploying a Django project
+```bash
+python manage.py check --deploy
+# This command checks for common misconfigurations and security issues in a deployment environment.
+```
+
+
+
+
+# Restrict Admin access
+
+### Restrict Access by IP Address
+
+1. `Create Middleware`:
+```python
+# myapp/middleware.py
+
+from django.http import HttpResponseForbidden
+
+ALLOWED_IPS = ['127.0.0.1', 'your_ip_address']
+
+class AdminAccessMiddleware:
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        if request.path.startswith('/admin/') and request.META['REMOTE_ADDR'] not in ALLOWED_IPS:
+            return HttpResponseForbidden("You are not allowed to access this page.")
+
+        # ---------------- OR ----------------
+        # CHECK IF USER IS SUPERUSER
+        # if request.path.startswith('/admin/') and not request.user.is_superuser:
+        #     return redirect('home')  # Redirect to home or any other page
+        # ------------------------------------
+
+        # ---------------- OR ----------------
+        # BOTH CHECKS INCLUDED
+        # if request.path.startswith('/admin/') and (request.META['REMOTE_ADDR'] not in ALLOWED_IPS or not request.user.is_superuser):
+        #     return HttpResponseForbidden("You are not allowed to access this page.")
+        # ------------------------------------
+        return self.get_response(request)
+```
+
+2. `Add Middleware to settings.py`:
+```python
+# settings.py
+MIDDLEWARE = [
+    # Other middleware classes
+    'myapp.middleware.AdminAccessMiddleware',
+    # Other middleware classes
+]
+```
