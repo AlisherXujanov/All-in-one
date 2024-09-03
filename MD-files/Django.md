@@ -5,7 +5,7 @@
 5. [Querysets](#querysets)
 6. [Forms](#forms)
 7. [Sign In/Out](#sign-inout)
-8. [CVB](#cvb)
+8. [CBV](#cbv)
 9. [Middleware](#middleware)
 10. [Django-allauth](#📚django-allauth)
 11. [Permissions](#permissions)
@@ -510,18 +510,13 @@ objs = ModelName.objects.filter(field1__gt=F('field2'), field3__lt=F('field4'))
 ```python
 from django.db.models import Q
 
-Q means OR and ~Q means NOT
+Q means OR 
 
 # Q
 # Get all the objects where field1 is greater than field2 or field3 is less than field4
 objs = ModelName.objects.filter(Q(field1__gt=F('field2')) | Q(field3__lt=F('field4')))
 objs = ModelName.objects.filter(Q(field1__gt=F('field2')) | Q(field3__lt=F('field4'))).order_by('field1', 'field2', ...)
 
-
-# ~Q
-# Get all the objects where field1 is greater than field2 and field3 is less than field4
-objs = ModelName.objects.filter(~Q(field1__gt=F('field2')) & Q(field3__lt=F('field4')))
-objs = ModelName.objects.filter(~Q(field1__gt=F('field2')) & Q(field3__lt=F('field4'))).order_by('field1', 'field2', ...)
 ```
 
 
@@ -702,6 +697,20 @@ And in HTML
     <div class="container" id="messages">
        {% bootstrap_messages %}
     </div>
+
+    <!-- 
+     IF WE WANT CUSTOM MESSAGES
+
+     {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+          <li class="{% if message.tags %}{{ message.tags }}{% else %}info{% endif %}">
+            {{ message }}
+          </li>
+          {% endfor %}
+        </ul>
+     {% endif %} 
+    -->
 
     <!-- Make it disappear after a while -->
     <script>
@@ -1165,7 +1174,7 @@ def profile(request):
 
 
 
-# CVB
+# CBV
 # Class Based Views (intermediate)
 Class-based views are an alternative to function-based views. They provide a lot of functionality out of the box, and they are easier to extend and customize.
 
@@ -1556,6 +1565,10 @@ Then in html
 <a href="{% provider_login_url 'google' %}">Login with Google</a>
 <a href="{% provider_login_url 'github' %}">Login with Github</a>
 ```
+
+
+
+
 <br>
 <br>
 
@@ -1569,6 +1582,7 @@ SIGNUP_URL = 'account_signup'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ACCOUNT_EMAIL_VERIFICATION = "none"
 ```
+
 
 <br>
 <br>
