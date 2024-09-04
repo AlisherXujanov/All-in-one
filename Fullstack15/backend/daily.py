@@ -1,34 +1,25 @@
-
-from typing import List
-
-def rotate(nums: List[int], k: int) -> None:
-    """
-    Do not return anything, modify nums in-place instead.
-    """
-    for _ in range(k):
-        last = nums.pop() 
-        nums.insert(0, last)
-        
-# =====================================================================         
-# =====================================================================         
-# =====================================================================         
-# =====================================================================         
-
-def majorityElement(nums:List[int]) -> int:
-    sorted_arr = sorted(nums)
-    majority = sorted_arr[0]
-
-    for num in set(sorted_arr):
-        if nums.count(num) > nums.count(majority):
-            majority = num
-    return majority
+def repeat_three_times(original_function):
+    def wrapper(*args, **kwargs):
+        for _ in range(3):
+            try:
+                return original_function(*args, **kwargs)
+            except ZeroDivisionError as error:
+                print("--------------------------------")
+                print(error)
+                continue
+        return None
+    return wrapper
 
 
+print("==========================================")
+@repeat_three_times
+def multiply(a, b):
+    return a / b
+print("==========================================")
 
 
-
-
-
-
-
-
+r = multiply(9, 3)
+print(r)
+print("==========================================")
+r = multiply(2, 0)
+print(r)
