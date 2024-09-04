@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Ice Cream</title>
+    <link rel="icon" href="logo.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>About Ice Cream Cafe</h1>
+
+        <nav>
+            <div class="left">
+                <a id="logo" href="#">
+                    <img src="logo.png" alt="Cafe Logo" width="60" height="40">
+                </a>
+            </div>
+            <div class="right">
+                <a href="index.html">Home</a>
+                <a class="selected" href="#">About</a>
+                <a href="Menu.html">Menu</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h1>About Ice Cream Site</h1>
+
+        <p class="information">
+            Значимость этих проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности
+            позволяет выполнять важные задания по разработке направлений прогрессивного развития. Равным образом
+            сложившаяся структура организации влечет за собой процесс внедрения и модернизации систем массового участия.
+            Значимость этих проблем настолько очевидна, что начало повседневной работы по формированию позиции позволяет
+            выполнять важные задания по разработке систем массового участия. Повседневная практика показывает, что новая
+            модель организационной деятельности позволяет оценить значение дальнейших направлений развития.
+            <br>
+            <br>
+            Не следует, однако забывать, что реализация намеченных плановых заданий позволяет выполнять важные задания
+            по разработке форм развития. Идейные соображения высшего порядка, а также новая модель организационной
+            деятельности требуют от нас анализа системы обучения кадров, соответствует насущным потребностям.
+            Разнообразный и богатый опыт сложившаяся структура организации требуют определения и уточнения форм
+            развития. Разнообразный и богатый опыт консультация с широким активом представляет собой интересный
+            эксперимент проверки форм развития. С другой стороны консультация с широким активом влечет за собой процесс
+            внедрения и модернизации системы обучения кадров, соответствует насущным потребностям.
+        </p>
+
+        <p class="links">
+            <b>#С шоколадом</b>
+            <b>#Ванильный</b>
+            <b>#Ванильный</b>
+            <b>#Клубничный</b>
+            <b>#Фисташковое</b>
+        </p>
+
+        <div class="thumbs">
+            <span class="t-down">
+                <img onclick="updateDown()" src="imgs/icons/t-down.png">
+                <br>
+                <span class="count-d">3</span>
+            </span>
+            <span class="middle"></span>
+            <span class="t-up">
+                <img onclick="updateUp()" src="imgs/icons/t-up.png">
+                <br>
+                <span class="count-u">124+1</span>
+            </span>
+        </div>
+    </main>
+
+
+
+    <script>
+        const decrement = document.querySelector('.count-d');
+        const increment = document.querySelector('.count-u');
+
+        let initialDown = 3;
+        let initialUp = 125;
+
+        function updateDown() {
+            initialDown++;
+            decrement.textContent = initialDown;
+        }
+        function updateUp() {
+            initialUp++;
+            increment.textContent = initialUp;
+        }
+    </script>
+</body>
+<style>
+    body {
+        background: url(imgs/About_bg.jpg) no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-color: rgb(0, 0, 0, 0.7);
+        background-blend-mode: darken;
+    }
+
+    main {
+        padding: 50px;
+        color: snow;
+    }
+
+    .links b {
+        margin: 50px 0;
+        display: inline-block;
+        padding: 20px;
+        color: #FAC704;
+        cursor: pointer;
+    }
+
+    .information {
+        margin-left: 20px;
+    }
+
+    .thumbs {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #33333380;
+        width: 20%;
+        margin: 0 auto;
+        height: 100px;
+        border-radius: 30px;
+        display: grid;
+        grid-template-columns: 5fr 1fr 5fr;
+        gap: 10px;
+        text-align: center;
+    }
+    .thumbs img {
+        height: 50px;
+        width: 50px;
+        cursor: pointer;
+    }
+    .thumbs img:active { transform: scale(0.6); }
+    .thumbs .t-down img { margin-left: 10px; }
+
+    .thumbs .middle {
+        height: 50px;
+        width: 2px;
+        background-color: gray;
+        border-radius: 10px;
+        margin-left: 10px;
+    }
+    .count-d { color: #F13939; }
+    .count-u { color: #6FFF57; }
+</style>
+</html>

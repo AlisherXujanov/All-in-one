@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <main>
+        <div class="result">0</div>
+
+        <div class="top-colspan">
+            <div class="button" data="+">+</div>
+            <div class="button" data="-">-</div>
+            <div class="button" data="*">*</div>
+            <div class="button" data="/">/</div>
+            <div class="button remove" data="<<">&leftarrow;</div>
+        </div>
+
+        <table>
+            <tr>
+                <td class="button" data="7">7</td>
+                <td class="button" data="8">8</td>
+                <td class="button" data="9">9</td>
+                <th class="button eq" rowspan="4" data="=">=</th>
+            </tr>
+            <tr>
+                <td class="button" data="4">4</td>
+                <td class="button" data="5">5</td>
+                <td class="button" data="6">6</td>
+            </tr>
+            <tr>
+                <td class="button" data="1">1</td>
+                <td class="button" data="2">2</td>
+                <td class="button" data="3">3</td>
+            </tr>
+            <tr>
+                <td class="button zero" data="0">0</td>
+                <td class="button" data=".">.</td>
+                <td class="button c" data="C">C</td>
+            </tr>
+        </table>
+    </main>
+
+    <script>
+        const buttons = document.querySelectorAll('.button')
+        const resultDiv = document.querySelector('.result')
+        const clearButton = document.querySelector('.button.c')
+        const eqButton = document.querySelector('.button.eq')
+        const removeButton = document.querySelector('.button.remove')
+        
+
+        // ---------------------------------------------------
+        buttons.forEach(btn => {
+            btn.onclick = clickHandler
+        })
+        function clickHandler(e) {
+            const symbols = '+-*/.'
+            let data = e.target.getAttribute('data')
+            let len = resultDiv.textContent.length
+            let last = resultDiv.textContent.charAt(len-1)
+
+            if (symbols.includes(data) && symbols.includes(last)) {
+                // do nothing
+            } else {
+                if (len == 1 && last == '0') {
+                    resultDiv.textContent = data
+                } else {
+                    resultDiv.textContent += data
+                }
+            }
+        }
+        clearButton.onclick = function(e) {
+            resultDiv.textContent = '0'
+        }
+        eqButton.onclick = function(e) {
+            resultDiv.textContent = eval(resultDiv.textContent)
+        }
+        removeButton.onclick = function (e) {
+            resultDiv.textContent = resultDiv.textContent.slice(0, -1)
+            if (resultDiv.textContent.length == 0) {
+                resultDiv.textContent = '0'
+            }
+        }
+    </script>
+</body>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        transition: 0.5s;
+    }
+
+    main {
+        margin: 50px auto;
+        width: 50%;
+        border-radius: 10px;
+    }
+
+    table {
+        background-color: #252525;
+        border-radius: 0 0 10px 10px;
+        width: 700px;
+    }
+
+    .result {
+        background-color: #252525;
+        width: 700px;
+        color: snow;
+        text-align: right;
+        padding: 20px;
+        font-size: 1.5em;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .button {
+        padding: 20px;
+        text-align: center;
+        cursor: pointer;
+        width: 150px;
+    }
+
+    .button:active {
+        background-color: #333;
+        color: snow;
+    }
+
+    th.button {
+        background-color: #808080;
+        font-size: 1.5em;
+        color: snow;
+    }
+
+    td.button {
+        background-color: lightgray;
+    }
+
+    th.eq {
+        border-radius: 0 0 10px 0;
+        background-color: #F78764;
+    }
+
+    td.zero {
+        border-radius: 0 0 0 10px;
+    }
+
+
+    .top-colspan {
+        width: 700px;
+        display: grid;
+        border-left: 2px solid #252525;
+        border-right: 2px solid #252525;
+        grid-template-columns: repeat(5, 1fr);
+        font-size: 1.5em;
+    }
+    .top-colspan div {
+        background-color: lightgray;
+        border-left: 1px solid #252525;
+        border-right: 1px solid #252525;
+        text-align: center;
+        width: 100%;
+    }
+</style>
+</html>

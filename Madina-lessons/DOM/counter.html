@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <main>
+        <h1>0</h1>
+
+        <div class="buttons">
+            <button class="dec">- Decrement</button>
+            <button class="inc">+ Increment</button>
+        </div>
+        <hr>
+        <input type="color" class="color-input">
+    </main>
+
+    <script>
+        // STEPS When working in DOM (Document Object Model  ===  HTML file)        
+        // 1 Step  -  Find elements
+        // 2 Step  -  Create function that you want to run that changes the DOM item
+        // 3 Step  -  Connect the function to the element
+
+        // --------------------------------------------------
+        // STEP 1
+        const counter = document.querySelector('main h1')
+        const incBtn  = document.querySelector("main .inc") 
+        const decBtn  = document.querySelector("main .dec") 
+        const colorInput = document.querySelector("main .color-input")
+
+        // --------------------------------------------------
+        // STEP 2
+        function decrementFn(event) {
+            let counterValue = parseInt(counter.textContent) // 0
+            counter.textContent = counterValue - 1
+        }
+        function incrementFn(event) {
+            let counterValue = parseInt(counter.textContent) // 0
+            counter.textContent = counterValue + 1
+        }
+        function changeColorOfParent(event) {
+            const input = event.target
+            input.parentElement.style.backgroundColor = input.value
+        }
+        // --------------------------------------------------
+        // STEP 3
+        decBtn.onclick = decrementFn
+        incBtn.onclick = incrementFn
+        colorInput.onchange = changeColorOfParent
+        // --------------------------------------------------
+    </script>
+
+</body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition: 0.3s ease-in;
+        text-align: center;
+    }
+    body {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f1f1f1;
+    }
+    main {
+        padding: 100px;
+        background-color: white;
+        border-radius: 10px;
+    }
+    main .buttons {
+        margin-top: 20px;
+    }
+    button {
+        padding: 10px 20px;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        background-color: darkcyan;
+        color: snow;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: darkslategray;
+    }
+    button:active {
+        transform: scale(0.6);
+    }
+    main hr {
+        margin: 20px 0;
+    }
+    input {
+        width: 50px;
+        height: 50px;
+        padding: 10px;
+        border-radius: 20px;
+    }
+</style>
+</html>

@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Princess+Sofia&family=Roboto:wght@300&family=Sofia&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Princess+Sofia&family=Sofia&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: 0.1s linear;
+    font-family: 'Roboto', sans-serif;
+}
+::-webkit-scrollbar {
+    width: 8px;
+    background-color: #ccc;
+}
+::-webkit-scrollbar-thumb {
+    width: 8px;
+    border-radius: 20px;
+    background-color: rgb(80, 80, 80);
+}
+body {
+    background-color: #ccc;
+    width: 100%;
+    min-height: 70vh;
+}
+
+h1 {
+    color: rgb(200, 10, 150);
+    text-shadow: 2px 2px 2px magenta;
+    font-family: 'Sofia', sans-serif;
+    font-size: 3em;
+}
+.selected {
+    color: greenyellow;
+    border: 1px dotted yellowgreen;
+}
