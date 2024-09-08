@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <h1>Tic Tac Toe</h1>
+
+    <main>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </main>
+    <button>Restart</button>
+
+
+    <script>
+        const cells = document.querySelectorAll('main div')
+        const refreshBtn = document.querySelector('button')
+
+        // -------------------------------------------------
+        // FUNCTIONS
+        let counter = 0
+        function gameLogic(event) {
+            let pressed_cell = event.target
+
+            if (pressed_cell.textContent == "") {
+                if (counter % 2 == 0) {
+                    pressed_cell.textContent = "⭕"
+                } else {
+                    pressed_cell.textContent = "❌"
+                }
+                counter += 1
+                changeCellBg(event)
+            } else {
+                pressed_cell.textContent = ""
+                counter -= 1
+                changeCellBg(event, true)
+            }
+            // if (pressed_cell.textContent == "") {
+            //     pressed_cell.textContent = "❌"
+            // } 
+            // else if (pressed_cell.textContent == "❌") {
+            //     pressed_cell.textContent = "⭕"
+            // } 
+            // else {
+            //     pressed_cell.textContent = ""
+            // }
+        }
+        function changeCellBg(event, remove=false) {
+            if (remove) {
+                event.target.style.backgroundColor = "#333"
+            } else {
+                event.target.style.backgroundColor = "darkgreen"
+            }
+        }
+
+        function refresh() {
+            cells.forEach(cell => {
+                cell.textContent = ""
+            })
+            counter = 0
+        }
+
+        // -------------------------------------------------
+        // Connections
+        cells.forEach(cell => {
+            cell.onclick = gameLogic
+        })
+        refreshBtn.onclick = refresh
+
+    </script>
+</body>
+</html>

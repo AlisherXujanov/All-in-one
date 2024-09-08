@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Images</title>
+</head>
+
+<body>
+    <main>
+        <div class="imgs">
+            <img src="1.jpg">
+            <img src="2.jpg">
+            <img src="3.jpg">
+        </div>
+        <img src="4.jpg">
+    </main>
+
+    <script>
+        const imgs = document.querySelectorAll('.imgs img');
+        const mainImg = document.querySelector('main > img');
+
+        imgs.forEach(img => {
+            img.onclick = changeMainImg
+        })
+
+        function changeMainImg(e) {
+            mainImg.style.animation = 'fadeOut 0.3s'
+            setTimeout(() => {
+                mainImg.src = e.target.src
+                mainImg.style.animation = 'fadeIn 0.3s'
+            }, 300)
+            setTimeout(() => {
+                mainImg.style.animation = ''
+            }, 600)
+        }
+    </script>
+</body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition: 0.3s;
+    }
+
+    body {
+        background-color: #333;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    main {
+        width: 70%;
+        height: 70vh;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+    }
+
+    main .imgs img {
+        width: 100%;
+        display: block;
+        height: calc(70vh / 3);
+        position: relative;
+        z-index: 2;
+    }
+
+    main .imgs img:active {
+        transform: scale(0.9);
+        cursor: pointer;
+    }
+
+    main>img {
+        width: 100%;
+        height: 70vh;
+        position: relative;
+        z-index: 1;
+    }
+
+    @keyframes fadeOut {
+        from {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        to {
+            opacity: 0;
+            transform: translateX(100%) scale(0);
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateX(-100%) scale(0);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+        }
+    }
+</style>
+
+</html>
