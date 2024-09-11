@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
+
     <h1>Tic Tac Toe</h1>
 
     <main>
@@ -30,44 +32,56 @@
 
         // -------------------------------------------------
         // FUNCTIONS
-        let counter = 0
         function gameLogic(event) {
             let pressed_cell = event.target
 
             if (pressed_cell.textContent == "") {
-                if (counter % 2 == 0) {
-                    pressed_cell.textContent = "⭕"
-                } else {
-                    pressed_cell.textContent = "❌"
-                }
-                counter += 1
-                changeCellBg(event)
-            } else {
-                pressed_cell.textContent = ""
-                counter -= 1
-                changeCellBg(event, true)
+                pressed_cell.textContent = "❌"
+                changeCellBg(event.target)
+
+                // check if the game is over
+
+                setTimeout(() => {
+                    runAI()
+                }, 500)
             }
-            // if (pressed_cell.textContent == "") {
-            //     pressed_cell.textContent = "❌"
-            // } 
-            // else if (pressed_cell.textContent == "❌") {
-            //     pressed_cell.textContent = "⭕"
-            // } 
-            // else {
-            //     pressed_cell.textContent = ""
-            // }
         }
-        function changeCellBg(event, remove=false) {
+        function changeCellBg(cell, remove = false, ai = false) {
             if (remove) {
-                event.target.style.backgroundColor = "#333"
+                cell.style.backgroundColor = "#333"
             } else {
-                event.target.style.backgroundColor = "darkgreen"
+                if (ai) {
+                    cell.style.backgroundColor = "darkred"
+                } else {
+                    cell.style.backgroundColor = "darkgreen"
+                }
             }
         }
+
+        // Run Artificial Intellegence
+        // This function finds one empty cell and fills it with "⭕" and color
+        function runAI() {
+            const emptyCells = Array.from(cells).filter(cell => cell.textContent == "")
+            // emptyCells === [div, div, div, div, div ...]
+            // -------------------------------------------------
+            const randomIndex = parseInt(Math.random() * emptyCells.length)
+            // Math.random() === 0.700456789123 * 5  === 3.5634...
+            // randomIndex === 0, 1, 2, 3, 4 ...
+            // -------------------------------------------------
+            if (emptyCells.length > 0) {
+                let randomCell = emptyCells[randomIndex]
+                randomCell.textContent = "⭕"
+                changeCellBg(randomCell, false, true)
+
+                // check if the game is over
+            }
+        }
+
 
         function refresh() {
             cells.forEach(cell => {
                 cell.textContent = ""
+                cell.style.backgroundColor = "#333"
             })
             counter = 0
         }
@@ -81,4 +95,5 @@
 
     </script>
 </body>
+
 </html>
