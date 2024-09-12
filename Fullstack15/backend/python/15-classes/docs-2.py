@@ -1,9 +1,15 @@
-
 _2 = 'Polymorphism and Encapsulation and Decorators'
-"""
 ################ Polymorphism
 # Polymorphism allows you define one interface and have multiple implementations.
 # Polymorphism means "many forms", and it occurs when we have many classes that are related to each other by inheritance.
+
+
+# len("qweqwe")
+# len([1, 2, 3, 4, 5])
+# len((1, 2, 3, 4, 5))
+# len({1, 2, 3, 4, 5})
+# len({1: 'a', 2: 'b', 3: 'c', 4: 'd', 5: 'e'})
+
 
 class Character:
     def attack(self):
@@ -27,10 +33,12 @@ class Robot(Character):
 # is used to restrict access to methods and variables.
 # This prevents data from direct modification which is called encapsulation.
 
-# class A:
-    # def __init__(self):
-    #     self._a = 2.  # Protected member ‘a’
-    #     self.__b = 2.  # Private member ‘b’
+class A:
+    def __init__(self):
+        self._a = 2.   # Protected member 'a'
+        self.__b = 2.  # Private member 'b'
+
+
 
 # Real world example
 class BankAccount:
@@ -66,6 +74,74 @@ class BankAccount:
         else:
             return "Invalid account details"
 
+# ------------------------------------------------------------------
+# ------------------------------------------------------------------
+# ------------------------------------------------------------------
+# MY_ACC_NUM = 123456789
+# MY_PIN = 'qweqweqwe'
+# # ------------------------
+# my_account = BankAccount()
+# my_account.set_account_details(MY_ACC_NUM, MY_PIN)
+# print("ACCOUNT HAS BEEN CREATED")
+# print("------------------------")
+# # ------------------------
+# # my_account.__balance() # AttributeError: 'BankAccount' object has no attribute '__balance'
+# balance = my_account.get_balance(MY_ACC_NUM, MY_PIN) 
+# print("My balance: $", balance) # 0
+# print("Making a deposit ..... .....")
+# # ------------------------
+# print("------------------------")
+# my_account.deposit(MY_ACC_NUM, MY_PIN, 1000)
+# # ------------------------
+# balance = my_account.get_balance(MY_ACC_NUM, MY_PIN) 
+# print("My balance: $", balance) # 1000
+# # ------------------------
+# print("------------------------")
+# w = my_account.withdraw(MY_ACC_NUM, MY_PIN, 500)
+# print("Making a withdrawal of $500 ...")
+# print(w) # Withdrawal successful
+# print("------------------------")
+# balance = my_account.get_balance(MY_ACC_NUM, MY_PIN) 
+# print("My balance: $", balance) # 0
+# ------------------------------------------------------------------
+# ------------------------------------------------------------------
+# ------------------------------------------------------------------
+# ==================================================================
+# class Restaurant:
+#     def __init__(self) -> None:
+#         self.__chief = "Farzod Oshpaz"
+#         self.__menu = {
+#             'osh': 100,
+#             'lagman': 150,
+#             'plov': 200,
+#             'somsa': 50,
+#             'choy': 10
+#         }
+#     # ================================
+#     # GETTERS
+#     @property
+#     def menu(self):
+#         return self.__menu
+#     @property
+#     def chief(self):
+#         return self.__chief
+#     # ================================
+#     # SETTERS
+#     @chief.setter
+#     def chief(self, new_chief) -> None:
+#         self.__chief = new_chief
+
+# # -------------------------------
+# r = Restaurant()
+# print(r.menu)
+# print(f"The chief is: {r.chief}")
+# # -------------------------------
+# r.chief = "Farzona Oshpaz"
+# print(f"The new chief is: {r.chief}")
+# ------------------------------------------------------------------
+# ------------------------------------------------------------------
+# ==================================================================
+
 
 #############################################################################################
 #################### DECORATORS
@@ -91,19 +167,20 @@ class BankAccount:
 # Link that is about difference of two decorators:
 # https://sparkbyexamples.com/python/python-difference-between-staticmethod-and-classmethod/#h-1-what-is-staticmethod
 
+from datetime import date
 
-# class Student:
-#     def __init__(self, name, age):
-#         self.name = name
-#         self.age = age
+class Student:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
 
-#     @classmethod
-#     def fromBirthYear(cls, name, year):
-#         return cls(name, date.today().year - year)
+    @classmethod
+    def fromBirthYear(cls, name, year):
+        return cls(name, date.today().year - year)
 
-#     @staticmethod
-#     def isAdult(age):
-#         return age > 18
+    @staticmethod
+    def isAdult(age):
+        return age > 18
 
 # student1 = Student('Rolf', 19)
 # student2 = Student.fromBirthYear('Anna', 1990)
@@ -153,7 +230,11 @@ class User(AbstractUserClass):
         # user1("test1", "test2", "test3")  => This is call fn from __call__
 
     def __add__(self, other):
+        # user = "..."
+        # customer = "..."
+        # user + customer  # This user has $...
         return "This user has $" + str(other.budget)
+
 
     def get_info(self):
         print(f'{self.name} {self.surname}')
@@ -194,17 +275,16 @@ class Client(User):
         return ''
 
 
-# # =================================================
-# user1 = User('John', 'Doe', 25, 'test@gmail.com')
-# print(user1.get_info())
-# # =================================================
-# client1 = Client("Cathrine", "Mackwold", 10000)
-# print(client1.get_info())
-# # =================================================
-# result = user1 + client1
-# print(result)
 # =================================================
-# user1 = User.from_string("John, Doe, 25, test@gmail.com")  # classmethod
-# print(user1)
-# print(User.is_adult(user1.age))  # staticmethod
-"""
+user1 = User('John', 'Doe', 25, 'test@gmail.com')
+print(user1.get_info())
+# =================================================
+client1 = Client("Cathrine", "Mackwold", 10000)
+print(client1.get_info())
+# =================================================
+result = user1 + client1
+print(result)
+# =================================================
+user1 = User.from_string("John, Doe, 25, test@gmail.com")  # classmethod
+print(user1)
+print(User.is_adult(user1.age))  # staticmethod
