@@ -5,35 +5,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
+    <h1>Registration Form</h1>
     <form>
-        <div class="form-control">
-            <label for="username">Username</label>
-            <input id="username" type="text" placeholder="Username">
-            <div class="error">This is error field</div>
+        <div id="alert-message">
         </div>
-        <div class="form-control">
-            <label for="password">Password</label>
-            <input id="password" type="password" placeholder="Password">
-            <div class="error">This is error field</div>
+        <div class="form-data">
+            <label for="name">Username</label>
+            <input id="name" type="text" placeholder="Username">
+            <p>
+                <em>
+                    <small id="name-error"></small>
+                </em>
+            </p>
         </div>
-        <div class="form-control">
-            <button type="submit">Submit</button>
-            <button type="reset">Reset</button>
+        <div class="form-data">
+            <label for="pass">Password</label>
+            <input id="pass" type="password" placeholder="Password">
+            <p>
+                <em>
+                    <small id="pass-error"></small>
+                </em>
+            </p>
+        </div>
+        <div class="form-data">
+            <button id="submit" type="submit">Submit</button>
+            <button id="reset" type="reset">Reset</button>
         </div>
     </form>
 
-</body>
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        transition: 0.5s;
-    }
 
-</style>
+    <script>
+        // ----------------------------------------------------------
+        // Find all neccessary elements
+        const form = document.querySelector('form')
+        const nameInput = form.querySelector('#name')
+        const passInput = form.querySelector('#pass')
+        const submitBtn = form.querySelector('#submit')
+        const resetBtn = form.querySelector('#reset')
+        const nameError = form.querySelector("#name-error")
+        const passError = form.querySelector("#pass-error")
+        const alertMessage = form.querySelector("#alert-message")
+        // ----------------------------------------------------------
+        // PATTERNS
+        let namePattern = /^[a-zA-Z0-9]{6,}$/
+        let passPattern = /^[a-zA-Z0-9_$]{6,}$/
+        // ----------------------------------------------------------
+
+        submitBtn.onclick = submit
+        nameInput.oninput = checkNameInput
+        // passInput.oninput = checkPassInput
+
+        // ----------------------------------------------------------
+        function submit(e) {
+            e.preventDefault()
+            if (!nameInput.value || !passInput.value) {
+                alertMessage.textContent = "Please fill all fields"
+                alertMessage.style.backgroundColor = "red"
+                alertMessage.style.color = "yellow"
+                return
+            }
+        }
+
+        function checkNameInput(e) {
+            // e.target = is the element that trigger the event
+            // e.target === input
+            let val = e.target.value
+            if (!val) {
+                nameError.textContent = ""
+                return
+            }
+            if (namePattern.test(val)) {
+                nameError.textContent = ""
+            } else {
+                nameError.textContent = "Only letters and numbers are allowed. length 6 < "
+            }
+        }
+
+        // function ...
+    </script>
+</body>
 </html>
