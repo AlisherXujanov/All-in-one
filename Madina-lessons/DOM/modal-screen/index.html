@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <button class="open-modal">Open modal</button>
+
+    <div class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1>Modal Popup</h1>
+                <span class="close-modal">
+                    &times;
+                </span>
+            </div>
+            <div class="modal-body">
+                <div class="tick">
+                    &#10004;
+                </div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, atque!</p>
+            </div>
+            <div class="modal-footer">
+                <button class="close-modal">Close</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const modalScreen = document.querySelector(".modal")
+        const modalContent = document.querySelector(".modal-content")
+        const closeSpan = document.querySelector('span.close-modal')
+        const closeBtn = document.querySelector('button.close-modal')
+        const openModalBtn = document.querySelector('button.open-modal')
+
+        closeBtn.onclick = closeModalFn
+        closeSpan.onclick = closeModalFn
+        openModalBtn.onclick = openModalFn
+
+        function closeModalFn(e) {
+            modalScreen.style.display = "none"
+        }
+        function openModalFn(e) {
+            modalScreen.style.display = "flex"
+        }
+
+    </script>
+</body>
+</html>

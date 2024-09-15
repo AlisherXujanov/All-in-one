@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="hw_4.css">
+</head>
+
+<body>
+    <h1>Registration Form</h1>
+    <form>
+        <div id="alert-message">
+        </div>
+        <div class="form-data">
+            <label for="name">Username</label>
+            <input id="name" type="text" placeholder="Username">
+            <p>
+                <em>
+                    <small id="name-error"></small>
+                </em>
+            </p>
+        </div>
+        <div class="form-data">
+            <label for="pass">Password</label>
+            <input id="pass" type="password" placeholder="Password">
+            <p>
+                <em>
+                    <small id="pass-error"></small>
+                </em>
+            </p>
+        </div>
+        <div class="form-data">
+            <button id="submit" type="submit">Submit</button>
+            <button id="reset" type="reset">Reset</button>
+        </div>
+    </form>
+
+
+    <script>
+        // ----------------------------------------------------------
+        // Find all neccessary elements
+        const form = document.querySelector('form')
+        const nameInput = form.querySelector('#name')
+        const passInput = form.querySelector('#pass')
+        const submitBtn = form.querySelector('#submit')
+        const resetBtn = form.querySelector('#reset')
+        const nameError = form.querySelector("#name-error")
+        const passError = form.querySelector("#pass-error")
+        const alertMessage = form.querySelector("#alert-message")
+        // ----------------------------------------------------------
+        // PATTERNS
+        let namePattern = /^[a-zA-Z0-9]{6,}$/
+        let passPattern = /^[a-zA-Z0-9_$]{6,}$/
+        // ----------------------------------------------------------
+
+        submitBtn.onclick = submit
+        nameInput.oninput = checkNameInput
+        passInput.oninput = checkPasswordInput
+        alertMessage.onclick = alert
+        // ----------------------------------------------------------
+        function submit(e) {
+            e.preventDefault()
+            if (!nameInput.value || !passInput.value) {
+                alertMessageFunction("Please fill all fields", "error")
+                return
+            } else {
+                alertMessageFunction("Successfully registered", "success")
+            }
+        }
+
+        function alertMessageFunction(msg, type) {
+            alertMessage.textContent = msg
+            
+            if (type == 'success') {
+                alertMessage.style.backgroundColor = '#333'
+                alertMessage.style.color = "yellowgreen"
+            }
+            else if (type == 'error') {
+                alertMessage.style.backgroundColor = "red"
+                alertMessage.style.color = "yellow"
+            }
+
+            setTimeout(() => {
+                alertMessage.style.color = "transparent"
+                alertMessage.style.backgroundColor = "transparent"
+                alertMessage.textContent = ""
+            }, 3000)
+        }
+        function checkNameInput(e) {
+            // e.target = is the element that trigger the event
+            // e.target === input
+            let val = e.target.value
+            if (!val) {
+                nameError.textContent = ""
+                return
+            }
+            if (namePattern.test(val)) {
+                nameError.textContent = ""
+            } else {
+                nameError.textContent = "Only letters and numbers are allowed. length 6-10 "
+            }
+        }
+        function checkPasswordInput(e) {
+            // e.target = is the element that trigger the event
+            // e.target === input
+            let val = e.target.value
+            if (!val) {
+                passError.textContent = ""
+                return
+            }
+            if (passPattern.test(val)) {
+                passError.textContent = ""
+            } else {
+                passError.textContent = "Only letters and numbers are allowed. length 8"
+            }
+        }
+    </script>
+</body>
+
+</html>
