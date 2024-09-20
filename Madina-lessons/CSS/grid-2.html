@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <header>Header</header>
+
+    <main>
+        <div class="left">
+            <div>Menu</div>
+            <div>Ad2</div>
+        </div>
+        <div class="middle">Main</div>
+        <div class="right">Ad1</div>
+    </main>
+
+    <footer>Footer</footer>
+
+</body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-size: 1.2em;
+    }
+
+    header {
+        height: 150px;
+        background-color: darkslateblue;
+        color: snow;
+        text-align: center;
+        padding: 20px;
+    }
+
+    main {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        gap: 10px;
+        margin: 10px 0;
+    }
+
+    main>div {
+        color: snow;
+        text-align: center; 
+    }
+
+    main .left>div,
+    main .right,
+    main .middle {
+        background-color: darkslategray;
+    }
+
+    main .left div:first-child {
+        height: 500px;
+        margin-bottom: 10px;
+    }
+    main .left div:last-child {
+        height: 200px;
+    }
+    main .right,
+    main .middle {
+        height: 100%;
+    }
+
+    footer {
+        height: 200px;
+        background-color: darkslateblue;
+        color: snow;
+        text-align: center;
+        padding: 20px;
+    }
+</style>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <main>
+        <input type="text">
+        <input type="color">
+        <input type="checkbox">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, esse culpa voluptates eius reprehenderit ut! Ab excepturi in minus velit aliquid aspernatur neque quod illum repellendus quas. Adipisci, sequi corporis!</p>
+        <p title="Hello world">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, esse culpa voluptates eius reprehenderit ut! Ab excepturi in minus velit aliquid aspernatur neque quod illum repellendus quas. Adipisci, sequi corporis!</p>
+        <p title="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, esse culpa voluptates eius reprehenderit ut! Ab excepturi in minus velit aliquid aspernatur neque quod illum repellendus quas. Adipisci, sequi corporis!</p>
+    </main>
+
+</body>
+<style>
+    main {
+        width: 50%;
+        margin: 0 auto;
+        background-color: black;
+        color: snow;
+        padding: 20px;
+    }
+
+    p[title] {
+        color: greenyellow;
+    }
+    input[type='checkbox']:checked~p {
+        color: red;
+    }
+    /*
+        SELECTORS
+        ------------------------------------------------
+        *  => universal selector => selects all elements
+        ------------------------------------------------
+        ~  => sibling selector => selects next same level items
+        ------------------------------------------------
+        +  => adjacent sibling selector => selects next first same level item
+        ------------------------------------------------
+        >  => child selector => selects direct child
+        ------------------------------------------------
+        [attribute] => selects elements with attribute
+        ------------------------------------------------
+    */
+
+</style>
+
+</html>

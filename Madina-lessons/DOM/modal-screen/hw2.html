@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="my-modal.css">
+</head>
+
+<body>
+    <button class="open-modal">Open Modal</button>
+    <div class="myModal">
+        <div class="first-modal">
+            <span class="close-modal">
+                &times;
+            </span>
+            <img src="facebook.png" width="60" height="60">
+            <h1>Subscribe for Updates</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, doloremque?</p>
+        </div>
+        <div class="modal-body">
+            <input type="search" placeholder=" abc@gmail.com">
+            <button class="subscribe">Subscribe</button>
+
+        </div>
+        <div class="modal-footer">
+            <span class="socials">
+                <img src="telegram.png" width="30" height="30">
+                <img src="whatsapp.jpeg" width="30" height="30">
+                <img src="instagram.png" width="30" height="30">
+                <img src="twitter.jpeg" width="30" height="30">
+                <p>Made with love by learning robo</p>
+            </span>
+        </div>
+    </div>
+
+    <script>
+        const modalScreen = document.querySelector('.modal')
+        const openModal = document.querySelector('.open-modal')
+        const closeModal = document.querySelector('.close-modal')
+        const modalTop = document.querySelector('.first-modal')
+        const modalBody = document.querySelector('.modal-body')
+        const modalFooter = document.querySelector('.modal-footer')
+
+        openModal.onclick = openModalFn
+        closeModal.onclick = closeModalFn
+
+        function closeModal(e) {
+            modalScreen.style.display = "none"
+        }
+        function openModal(e) {
+            modalScreen.style.display = "flex"
+        }
+
+    </script>
+</body>
+
+</html>
