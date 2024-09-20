@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="mymod.css">
+</head>
+
+<body>
+    <h1>SHARE MODAL AI</h1>
+    <button class="but">USING HTML & CSS</button>
+
+    <div class="modal">
+        <div class="modal-content">
+            <div class="modal-top">
+                <h2 class="modal-heading">Share Modal</h2>
+                <span class="close-modal">
+                    &times;
+                </span>
+                <hr>
+            </div>
+            <div class="modal-share">
+                <p>Share this link via</p>
+                <span class="socials">
+                    <a href="#">🤖</a>
+                    <a href="#">🤖</a>
+                    <a href="#">🤖</a>
+                    <a href="#">🤖</a>
+                    <a href="#">🤖</a>
+                </span>
+            </div>
+            <div class="modal-url">
+                <p>Or copy link</p>
+                <div class="content">
+                    <span>🔗</span>
+                    <input type="url" class="url-input" value="https://example.com/share-link">
+                    <button class="copy">copy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.querySelector(".modal")
+        const OpenModal = document.querySelector('.but')
+        const modalTop = document.querySelector(".modal-top")
+        const spanCloseModal = document.querySelector('.close-modal')
+        const modalShare = document.querySelector('.modal-share')
+        const modalUrl = document.querySelector('.modal-url')
+
+        spanCloseModal.onclick = closeModal
+        OpenModal.onclick = openModal
+
+        function closeModal(e) {
+            modal.style.display = "none"
+        }
+        function openModal(e) {
+            modal.style.display = "flex"
+        }
+    </script>
+</body>
+
+</html>
