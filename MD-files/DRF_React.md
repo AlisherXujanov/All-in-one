@@ -49,19 +49,3 @@ CORS error. To fix this, we need to add the Django Cors Headers
 package to our Django project. This package will add the necessary 
 headers to allow cross-origin requests.
 ```
-
-# Django & React Authentication on JWT
-
-`STEPS must be taken are:`
-- [x] Install djangorestframework_simplejwt in your Django project and set up [JWT Authentication](DRF.md#jwt).
-- [x] [Customizing JWT](DRF.md#customizing-jwt) that returns a JWT token.
-- [x] [Create store](React.md#Create-store.js-file-in-root-folder) file in config folder
-- [x] [Create axios](React.md#Create-axios.js-file-in-root-folder) file in config folder
-- [x] [Create navbar](React.md#Create-navbar)
-- [x] Create a login form in React and use axios to send a POST request to the Django login API and store jwt.
-- [x] Use the stored JWT token in the Authorization header for - subsequent API requests.
-
-
-
-
-- [TABLE OF CONTENTS](#table-of-contents)

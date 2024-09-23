@@ -7,6 +7,7 @@ FOREIGN KEY CONSTRAINT
 -- One-to-One Relationship  (1:1)
 -- One-to-Many Relationship (1:M)
 -- Many-to-One Relationship (M:1)
+-- Many-to-Many Relationship (M:M)
 
 
 CREATE TABLE Customers (
@@ -150,6 +151,8 @@ SELECT * FROM laptops;
 ```sql
 -- SYNTAX:  SELECT SUBSTRING(column_name, start_position, length) FROM table_name;
 
+SELECT * FROM students;
+SELECT name FROM students;
 SELECT SUBSTRING(name, 1, 3) AS FirstName FROM students;
 
 -- This will return the first 3 characters of the first name column
@@ -161,22 +164,14 @@ SELECT SUBSTRING(name, 1, 3) AS FirstName FROM students;
 
 <!-- -------------------------------------------------------------------------------- -->
 **MAX()** - Returns the maximum value in a set of values
-```sql
-SELECT MAX(price) FROM products;
-```
-<!-- -------------------------------------------------------------------------------- -->
 **MIN()** - Returns the minimum value in a set of values
-```sql
-SELECT MIN(price) FROM products;
-```
-<!-- -------------------------------------------------------------------------------- -->
 **AVG()** - Returns the average value in a set of values
-```sql
-SELECT AVG(price) FROM products;
-```
-<!-- -------------------------------------------------------------------------------- -->
 **SUM()** - Returns the sum of all or distinct values in a set of values
 ```sql
+SELECT price FROM products;
+SELECT MAX(price) FROM products;
+SELECT MIN(price) FROM products;
+SELECT AVG(price) FROM products;
 SELECT SUM(price) FROM products;
 ```
 <!-- -------------------------------------------------------------------------------- -->
@@ -240,6 +235,9 @@ In other words, the GROUP BY clause is used to divide the rows in a table into g
 ex:
 ```sql
 SELECT COUNT(*), country FROM customers GROUP BY country;
+-- 50 Uzbekistan
+-- 30 Russia
+-- ...
 
 SELECT COUNT(*), country, city FROM customers GROUP BY country, city;
 
@@ -268,5 +266,6 @@ SELECT country, COUNT(*) FROM customers GROUP BY country HAVING COUNT(*) > 1;
 
 -- ALTER TABLE customers ADD COLUMN full_name VARCHAR(255);
 -- UPDATE customers SET full_name = CONCAT(name, ', email: ', email);
+-- UPDATE customers SET full_name = SUBSTRING(name, 1, 3);
 ```
 

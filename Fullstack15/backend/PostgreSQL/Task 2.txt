@@ -23,8 +23,11 @@ id
 name
 email
 ---------------------------------------------------------------------------
-UPDATE two of the orders' ids with random customer ids that you have created
-RU: обновляем два id заказов с рандомными id клиентов, которые вы создали
+Insert into customers 5 elements
+RU: добавляем 5 элементов
+---------------------------------------------------------------------------
+UPDATE customers id's in orders objects by createing and using ids of customers' objects
+RU: обновляем id's в orders объектах, создав и используя id's объектов customers
 ---------------------------------------------------------------------------
 
 

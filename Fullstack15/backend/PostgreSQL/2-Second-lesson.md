@@ -89,7 +89,7 @@ VALUES (
 > ------------------------------------------------------------
 > > - **Arrays**                  (stores arrays of data)
 >       ARRAY (Stores arrays of data) maximum characters 131072
->           ex: type[1,2,3]
+>           ex: INT[1,2,3]
 >               type['John', 'Jane']
 >               CREATE TABLE customers (
 >                       name TEXT, 
@@ -124,7 +124,8 @@ UPDATE students SET grades = grades || 98 WHERE name = 'John Doe';
 > ------------------------------------------------------------
 > - **UUID**                    (stores Universally Unique Identifiers)
     [8 digits]-[4 digits]-[4 digits]-[4 digits]-[12 digits]
-    
+<!-- 12345678-1234-1234-1234-123456789012 -->
+
     The difference between SERIAL and UUID is that SERIAL is a sequential number and UUID is a random number.
     For example, if we have a table of customers and we want to assign a unique ID to each customer, we can use SERIAL.
     If we want to assign a unique ID to each customer and we don't want to expose the number of customers we have, we can use UUID.
@@ -134,6 +135,17 @@ UPDATE students SET grades = grades || 98 WHERE name = 'John Doe';
     XML looks like HTML but it is not the same. 
     XML is used to store data and HTML is used to display data.
     HTML is designed to be read by humans, while XML is designed to be read by machines.
+
+<!-- 
+<student>
+    <grades>
+        <grade>85</grade>
+        <grade>90</grade>
+        <grade>92</grade>
+    </grades>
+</student>
+-->
+
 >           ex: CREATE TABLE customers (name TEXT, info XML)
 > ------------------------------------------------------------
 
@@ -156,13 +168,13 @@ UPDATE students SET grades = grades || 98 WHERE name = 'John Doe';
     FOREIGN KEY is used to reference a column in ANOTHER TABLE.
     
 
-> - **CHECK**       => CREATE TABLE customers (name TEXT, age INTEGER CHECK (age >= 18))
-> - **EXCLUDE**     => SELECT * FROM users EXCLUDE age < 18;
->                  =>   This constraint is used to exclude data from a table.
->                       For example, if we have a table of customers and we want to exclude customers with the same name and age.
+> - **CHECK**      => CREATE TABLE customers (name TEXT, age INTEGER CHECK (age >= 18))
+> - **EXCLUDE**    => SELECT * FROM users EXCLUDE age < 18;
+>                  => This constraint is used to exclude data from a table.
+>                     For example, if we have a table of customers and we want to exclude customers with the same name and age.
 > ------------------------------------------------------------
 # Operators in the WHERE clause
-> - =	      Equal to   =>  in python we had  == 
+> - = 	      Equal to   =>  in python we had  == 
 > --------------------
 > - <	      Less than
 > --------------------

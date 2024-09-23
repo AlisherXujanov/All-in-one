@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <main>
+        <div class="left">
+            <div class="first">
+                <div class="col1">
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="col2"></div>
+            </div>
+
+            <div class="second">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+            <div class="third"></div>
+        </div>
+
+        <div class="middle"></div>
+
+        <div class="right">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </main>
+</body>
+<style>
+    * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+    }
+    body {
+        background-color: black;
+    }
+    main {
+        width: 100%;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: 3fr 2fr 1fr;
+        gap: 10px;
+    }
+    /* --------------------------------------------------------- */
+    /* --------------------- MIDDLE---------------------------- */
+    /* ------------------------------------------------------- */
+    main>.middle {
+        background-color: orangered;
+    }
+    /* --------------------- RIGHT---------------------------- */
+    main>.right>div {
+        height: 200px;
+        background-color: red;
+        margin-bottom: 10px;
+    }
+    main>.right>div:last-child {
+        margin-bottom: 0;
+    }
+      /* ------------------------------------------------------- */
+    /* --------------------- LEFT  ---------------------------- */
+    /* ------------------------------------------------------- */
+    main > .left > .first {
+        display: grid;
+        grid-template-columns: 2fr 3fr;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+    main > .left > .first .col1 div {
+        height: 200px;
+        background-color: yellowgreen;
+    }
+    main > .left > .first .col1 div:first-child {
+        margin-bottom: 10px;
+    }
+    main > .left > .first .col2 {
+        background-color: magenta;
+    }
+    /* ------------------------------------------------------- */
+    main > .left > .second {
+        display: grid;
+        grid-template-columns: 2fr 1fr 2fr;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+    main > .left > .second div {
+        height: 200px;
+        background-color: darkolivegreen;
+    }
+    main > .left > .second div:nth-child(2) {
+        margin-left: 5px;
+    }   
+    main > .left > .second div:first-child {
+        width: calc(100% + 5px);
+    }  
+    /* ------------------------------------------------------- */ 
+    main > .left > .third {
+        background-color: aquamarine;
+        height: 200px;
+    }
+</style>
+</html>

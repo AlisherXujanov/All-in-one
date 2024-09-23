@@ -44,16 +44,16 @@
             let date = new Date();
             let now = date.toLocaleTimeString()
             const card = `
-                            <div class='card' id='card-${counter}'>
-                                <h2>${titleInp.value}</h2>
-                                <p>${subtitleInp.value}</p>
-                                <hr>
-                                <span>Date: ${now}</span>
-                                <button class='del-card' onclick="deleteCard('card-${counter}')">
-                                    Delete
-                                </button>
-                            </div>
-                        `
+                    <div class='card' id='card-${counter}'>
+                        <h2>${titleInp.value}</h2>
+                        <p>${subtitleInp.value}</p>
+                        <hr>
+                        <span>Date: ${now}</span>
+                        <button class='del-card' onclick="deleteCard('card-${counter}')">
+                            Delete
+                        </button>
+                    </div>
+                `
             cardsLS.push(card)
             setLocalStorageInfo(counter, cardsLS)
 

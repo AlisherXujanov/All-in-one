@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <main>
+        <div class="left">
+            <a href="#p1">Link_1</a>
+            <a href="#p2">Link_2</a>
+            <a href="#p3">Link_3</a>
+        </div>
+        <div class="right">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti dicta non officiis pariatur doloremque
+                modi voluptatibus quos? Quis debitis, perspiciatis inventore, modi quia nemo rerum ut expedita tempora
+                omnis dignissimos!</p>
+            <p>Lorem ipsum dolor csit amet consectetur adipisicing elit. Corrupti dicta non officiis pariatur doloremque
+                modi voluptatibus quos? Quis debitis, perspiciatis inventore, modi quia nemo rerum ut expedita tempora
+                omnis dignissimos!</p>
+            <p id="p1">Lorem ipsum dolor csit amet consectetur adipisicing elit. Corrupti dicta non officiis pariatur
+                doloremque modi voluptatibus quos? Quis debitis, perspiciatis inventore, modi quia nemo rerum ut
+                expedita tempora omnis dignissimos!</p>
+            <p id="p2">Lorem ipsum dolor csit amet consectetur adipisicing elit. Corrupti dicta non officiis pariatur
+                doloremque modi voluptatibus quos? Quis debitis, perspiciatis inventore, modi quia nemo rerum ut
+                expedita tempora omnis dignissimos!</p>
+            <p id="p3">Lorem ipsum dolor csit amet consectetur adipisicing elit. Corrupti dicta non officiis pariatur
+                doloremque modi voluptatibus quos? Quis debitis, perspiciatis inventore, modi quia nemo rerum ut
+                expedita tempora omnis dignissimos!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti dicta non officiis pariatur doloremque
+                modi voluptatibus quos? Quis debitis, perspiciatis inventore, modi quia nemo rerum ut expedita tempora
+                omnis dignissimos!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti dicta non officiis pariatur doloremque
+                modi voluptatibus quos? Quis debitis, perspiciatis inventore, modi quia nemo rerum ut expedita tempora
+                omnis dignissimos!</p>
+        </div>
+    </main>
+</body>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        transition: 0.5s;
+    }
+    body { background-color: black; }
+    main {
+        width: 50%;
+        height: 50%;
+        margin: 0 auto;
+    }
+    main > div {float: left;}
+
+    main .left {
+        width: 0;
+        background-color: #333;
+        overflow: hidden;
+        height: 50vh;
+        padding: 50px 0;
+    }
+    main .left a {
+        display: block;
+        color: yellowgreen;
+        padding: 10px 20px;
+        text-decoration: none;
+    }
+    main .left a:hover {
+        background-color: green;
+        color: snow;
+    }
+    main .right {
+        width: 100%;
+        height: 50vh; 
+        overflow: auto;
+        background-color: #333;
+        color: snow;
+        padding: 10px;
+    }
+
+    main:hover .right,
+    main:hover .left {
+        box-shadow: 5px 5px 15px green;
+    }
+    main:hover .left {width: 20%;}
+    main:hover .right {width: 80%;}
+
+    ::-webkit-scrollbar {
+        width: 10px;
+        border-radius: 10px;
+        background-color: indigo;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        width: 10px;
+        border-radius: 10px;
+        background-color: yellowgreen;
+    }
+    #p1 {
+        color: green;
+        margin: 20px 0;
+    }
+    #p2 {
+        color: greenyellow;
+        margin: 20px 0;
+    }
+    #p3 {
+        color: red;
+        margin: 20px 0;
+    }
+</style>
+
+</html>
