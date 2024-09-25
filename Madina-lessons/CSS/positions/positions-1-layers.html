@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        POSITIONS
+            There a re 5 positions in CSS
+                1. Static  (default)
+                --------------------
+                
+                All other positions allow us use the directions for moving the item
+                DIRECTIONS:
+                    left | right | top | bottom
+
+                Z-INDEX:  ==>>  relative | absolute | fixed
+                    the more z-index the items takes, the more closer it becomes to us
+                    and vice-versa
+
+                    --------------------------
+                2. Relative  ->  works like static but we can use the directions
+                                 For other items, it will be on its place even if it moves around
+                    --------------------------
+                3. Absolute  ->  works like relative but the items
+                                - looses its width 
+                                - looses its place
+                                - will loose its place in the document and will recognize the body as parent
+                                - for identifying the parent, we can use the position of the parent
+                    --------------------------
+                4. Fixed   ->  works like absolute but the items
+                                - will not move when we scroll
+                                - will recognize the body as parent
+                    --------------------------
+                5. Sticky  ->  works like relative
+                                - if we show the place to leap over, 
+                                  it will leap over and becomes fixed
+    -->
+
+    <main>
+        <div class="div1"></div>
+        <div class="div2"></div>
+        <div class="div3"></div>
+        <div class="div4"></div>
+        <div class="div5"></div>
+    </main>
+    
+</body>
+<style>
+    main {
+        width: 50%;
+        margin: 0 auto;
+        background-color: #333;
+        height: 50vh;
+
+        position: relative;
+    }
+    main div {
+        height: 100px;
+        position: absolute;
+        width: 100%;
+    }
+    .div1 { background-color: red; 
+        top: 20px;
+        left: 20px;
+    } 
+    .div2 { background-color: blue;
+        top: 40px;
+        left: 40px;
+    }
+    .div3 { background-color: green; 
+        top: 60px;
+        left: 60px;
+    }
+    .div4 { background-color: orange; 
+        top: 80px;
+        left: 80px;
+    }
+    .div5 { background-color: indigo; 
+        top: 100px;
+        left: 100px;
+    }
+</style>
+</html>

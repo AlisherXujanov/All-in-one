@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main">
+        <div class="div-1">
+            <h3>A</h3>
+            <div>
+                <p>Adam</p>
+                <p>Arthem</p>
+                <p>Azeri</p>
+                <p>A-test</p>
+                <p>A-test</p>
+                <p>A-test</p>
+                <p>A-test</p>
+            </div>
+        </div>
+        <div class="div-2">
+            <h3>B</h3>
+            <div>
+                <p>Badang</p>
+                <p>Butcher</p>
+                <p>Bulldog</p>
+                <p>B-test</p>
+                <p>B-test</p>
+                <p>B-test</p>
+                <p>B-test</p>
+                <p>B-test</p>
+            </div>
+        </div>
+        <div class="div-3">
+            <h3>C</h3>
+            <div>
+                <p>C-test</p>
+                <p>C-test</p>
+                <p>C-test</p>
+                <p>C-test</p>
+                <p>C-test</p>
+                <p>C-test</p>
+                <p>C-test</p>
+                <p>C-test</p>
+            </div>
+        </div>
+    </div>
+</body>
+<style>
+    .main {
+        width: 20%;
+        margin: 0 auto;
+        height: 50vh;
+        overflow: auto;
+        background-color: skyblue;
+        border-radius: 20px 0 0 20px;
+    }
+    .main > div {
+        display: grid;
+        grid-template-columns: 50px 1fr;
+        gap: 5px;
+        padding: 5px;
+        font-size: 2em;
+    }
+    .main h3 {
+        position: sticky;
+        top: 5px;
+        border-radius: 50%;
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background-color: rgb(0,0,0, 0.5);
+        color: snow;
+        padding: 3px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+</html>
