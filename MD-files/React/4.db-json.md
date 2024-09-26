@@ -31,7 +31,9 @@ npm install -g json-server
 ## 4. Start json-server:
     - RU: Запустите json-server:
 ```bash
-json-server --watch db.json
+# json-server --watch db.json
+# ---------------------------
+npx json-server --watch db.json
 ```
 
 For changing the port, use the --port flag:
