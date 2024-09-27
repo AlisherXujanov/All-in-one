@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia ex esse cumque modi laboriosam! Libero adipisci saepe omnis ratione blanditiis tenetur? Dolores fugit numquam voluptatem! Temporibus sit laboriosam porro dolorem?</p>
+    <div class="container">
+        <h3>Focus</h3>
+        <input class="focus-inp" type="text" placeholder="Placeholder-1">
+        <input class="focus-inp" type="text" placeholder="Placeholder-2">
+    </div>
+    <div class="container">
+        <h3>Marker</h3>
+        <ul>
+            <li>text</li>
+            <li>text</li>
+            <li>text</li>
+        </ul>
+    </div>
+    <div class="container">
+        <h2>:before & </h2>
+        <h2>:after</h2>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <p>Lorem ipsum dolor sit amet.</p>
+    </div>
+
+    
+</body>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        transition: 0.3s;
+    }
+    .container {
+        width: 50%;
+        background-color: lightgray;
+        margin: 20px auto;
+        text-align: center;
+    }
+    input {
+        padding: 10px 20px;
+        border: none;
+        outline: none;
+        background-color: darkgray;
+        border-radius: 5px;
+        display: block;
+        margin: 5px auto;
+    }
+    input.focus-inp:focus {
+        padding: 10px 30px;
+        background-color: green;
+        color: snow;
+    }
+    ul {
+        width: 50%;
+        margin: 0 auto;
+    }
+    li {
+        width: 100px;
+        padding: 10px;
+        background-color: darkgray;
+        margin-bottom: 2px;
+    }
+    li::marker {
+        content: "✅";
+    }
+    ::selection {
+        background-color: brown;
+        color: yellow;
+    }
+    ::first-letter {
+        font-size: 1.2em;
+        color: green;
+        font-family: cursive;
+    }
+    ::placeholder {
+        color: darkred;
+    }
+    input.focus-inp:focus::placeholder {
+        color: gray;
+    }
+    .container p:hover::before {
+        content: "👉";
+    }
+    .container p:hover::after {
+        content: "👈";
+    }
+
+</style>
+</html>

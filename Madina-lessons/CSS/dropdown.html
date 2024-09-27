@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="dropdown">
+        <button>Hover me!</button>
+        <div class="content">
+            <a href="#">Link</a>
+            <a href="#">Link</a>
+            <a href="#">Link</a>
+        </div>
+    </div>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo quasi sapiente illum eveniet, sit animi neque maxime
+        nam earum incidunt. Aut perspiciatis dolor atque provident, nesciunt culpa voluptatum eius placeat, porro
+        ducimus incidunt at fugit est quos sed fuga vero architecto, animi libero cupiditate? At sed quaerat distinctio
+        totam sapiente.</p>
+
+</body>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        transition: 0.3s;
+        text-align: center;
+    }
+
+    .dropdown {
+        position: relative;
+        width: 180px;
+        margin: 0 auto;
+        display: inline-block;
+    }
+
+    .dropdown button {
+        background-color: #333;
+        color: cyan;
+        padding: 10px 20px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    .dropdown .content {
+        width: 180px;
+        position: absolute;
+        left: 0;
+        display: none;
+        box-shadow: 0 8px 16px darkgray;
+    }
+
+    .dropdown .content a {
+        display: block;
+        background-color: lightgray;
+        padding: 10px 20px;
+        color: black;
+        text-decoration: none;
+    }
+
+    .dropdown .content a:hover {
+        background-color: darkgray;
+    }
+
+    .dropdown:hover .content {
+        display: block;
+    }
+    .dropdown:hover button {
+        background-color: black;
+    }
+</style>
+
+</html>
