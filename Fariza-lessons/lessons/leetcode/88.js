@@ -47,4 +47,5 @@ var merge = function (nums1, m, nums2, n) {
     nums1.sort((a, b) => a - b)
 }
 
-merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3)
+let x = [1, 2, 3, 0, 0, 0]
+merge(x, 3, [2, 5, 6], 3)

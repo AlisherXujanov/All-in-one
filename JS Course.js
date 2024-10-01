@@ -228,8 +228,6 @@ let numbersLesson
 let StringMethods
 //*  /.../            => regular expression (regExp)
 //!               RU: регулярное выражение
-
-
 //*  /.../i           => insensitive
 //!               RU: нечувствительный
 //*  /.../g           => global

@@ -22,21 +22,21 @@ To host your Django project on PythonAnywhere for free, you can follow these ste
 
 #### 3. Set up a virtual environment: 
   - Go to the "Consoles" tab and start a new Bash console. Then, create a new virtual environment and install your project's dependencies. You can use the Pipfile and Pipfile.lock files in your project to do this.
-- To install requirements.txt file use: 
-  ```bash
-  # IF PIP
-  pip install -r requirements.txt
-  # OR
-  # If PIPENV 
-  # pipenv run pip freeze > requirements.txt
 
-  mkvirtualenv --python=/usr/bin/python3.10 venv
-  ```
-  afterwards, enter just `venv` to activate virtual environment and install requirements.txt file:
+- First set the `venv`
+```bash
+mkvirtualenv --python=/usr/bin/python3.10 venv
+```
   
-  ```bash
-  pip install -r requirements.txt
-  ```
+- Only after you installed venv, install requirements.txt: 
+```bash
+# IF PIP
+pip install -r requirements.txt
+# OR
+# To create a requirements.txt file from a Pipfile, you can use the following command:
+# pipenv run pip freeze > requirements.txt
+```
+afterwards, enter just `venv` to activate virtual environment and install requirements.txt file:
 
 <br>
 
@@ -121,14 +121,6 @@ Now, PythonAnywhere will serve your static files at the URL you specified.
 - RU: Теперь PythonAnywhere будет обслуживать ваши статические файлы по указанному вами URL-адресу.
 
 
-
-# Configure Virtual Environment
-Please note that PythonAnywhere doesn't support Pipfile.lock, so you might need to generate a requirements.txt file from your Pipfile. You can do this using the following command:
-
-- `pipenv lock -r > requirements.txt` - is outdated
-- 🎯 New version is: `pipenv run pip freeze > requirements.txt`
-
-
 ---
 <br>
 
@@ -146,8 +138,6 @@ Please note that PythonAnywhere doesn't support Pipfile.lock, so you might need 
 python manage.py check --deploy
 # This command checks for common misconfigurations and security issues in a deployment environment.
 ```
-
-
 
 
 # Restrict Admin access
