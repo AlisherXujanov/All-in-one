@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav>
+        <div class="left">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+        </div>
+
+        <div class="dropdown">
+            <a class="drp-btn" href="#">dropdown</a>
+            <div class="links">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+            </div>
+        </div>
+    </nav>
+</body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition: 0.5s;
+    }
+
+    nav {
+        background-color: #333;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        display: inline-block;
+        padding: 10px 20px;
+    }
+    nav .dropdown {
+        position: relative;
+        display: inline-block;
+        background-color: #333;
+    }
+    a:hover {
+        background-color: green;
+    }
+
+    .dropdown .links {
+        position: absolute;
+        right: 0;
+        width: 160px;
+        text-align: center;
+        display: none;
+    }
+
+    .dropdown .links a {
+        background: linear-gradient(to right, black, black);;
+        width: 100%;
+    }
+
+    .dropdown .links a:hover {
+        background: linear-gradient(to right, black, darkgreen, black);
+    }
+
+    .dropdown:hover .links {
+        display: block;
+    }
+
+    .dropdown:hover .drp-btn {
+        background: linear-gradient(to right, black, darkgreen, black);
+        color: snow;
+    }
+</style>
+
+</html>
