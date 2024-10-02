@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <main>
+        <div><a href="#">Link</a></div>
+        <div><a href="#">Link 2</a></div>
+        <div><a href="#">Link 3</a></div>
+    </main>
+
+
+</body>
+<style>
+    * {
+        transition: 0.5s;
+    }
+
+    main {
+        width: 50%;
+        margin: 0 auto;
+        background-color: black;
+        padding: 20px 0;
+    }
+
+    main div {
+        background-color: gray;
+        margin: 20px 0;
+        position: relative;
+    }
+
+    main div a {
+        display: inline-block;
+        padding: 20px;
+        margin: 0 0 0 20px;
+        background-color: cyan;
+        color: blue;
+        text-decoration: none;
+        width: 100px;
+        text-align: center;
+    }
+
+    main div:hover {
+        margin: 20px 50px;
+    }
+
+    main div::before {
+        content: "🎃";
+        font-size: 2em;
+        position: absolute;
+        left: -50px;
+        opacity: 0;
+    }
+    main div::after {
+        content: "🎃";
+        font-size: 2em;
+        position: absolute;
+        right: -50px;
+        opacity: 0;
+    }
+
+    main div:hover::before,
+    main div:hover::after {
+        opacity: 1;
+    }
+
+
+</style>
+</html>
