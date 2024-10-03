@@ -35,13 +35,13 @@
  */
 var reverseWords = function(s) {
     // let splittedWords = s.trim().split(" ")  // remove leading and trailing spaces
-    // let reversedWords = splittedWords.map(word => word.trim()).filter(word => word.length > 0).reverse()
+    // let reversedWords = splittedWords.filter(word => word.length > 0).reverse()
     // return reversedWords.join(" ")
     const regex = /\S+/g
     return s.match(regex).reverse().join(" ")
 
     // --->>>  /.../: Delimits the regular expression.
-    // --->>>  \S: Matches any non-whitespace character.
+    // --->>>  \S: Matches any non-whitespace (alpha-numeric) character.
     // --->>>  +: Matches one or more of the preceding token (in this case, one or more non-whitespace characters).
     // --->>>  g: The global flag, which means the regular expression will match all occurrences in the string, not just the first one.
 };

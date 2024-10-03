@@ -7,8 +7,33 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>Login</h1>
+    <form action="https://www.instagram.com" method="POST">
+        <div>
+            <b>Name</b>
+            <input type="text" placeholder="Username" minlength="3" required disabled>
+        </div>
 
-    
+        <div>
+            <b>Email</b>
+            <input type="email">
+        </div>
+
+        <div>
+            <b>Password</b>
+            <input type="password">
+        </div>
+        <div>
+            <b>DOB</b>
+            <input type="date" max="2024-10-02" min="2024-10-01">
+        </div>
+
+        <div>
+            <button>Submit</button>
+            <button type="reset">Reset</button>
+        </div>
+    </form>
+
 
 </body>
 </html>
