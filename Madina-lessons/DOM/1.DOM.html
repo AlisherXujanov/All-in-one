@@ -11,6 +11,7 @@
         <h2>Document Object Model</h2>
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur similique vitae blanditiis quibusdam dignissimos laboriosam a dolores cum perferendis deserunt, inventore quisquam nobis nisi ad perspiciatis vel facere quidem porro.</p>
         <button>Click</button>
+        <input type="color">
     </main>
 
 
@@ -18,26 +19,47 @@
         let main = document.querySelector("main")
         let p = document.querySelector("main p")
         const btn = document.querySelector("button")
+        const input = document.querySelector("input")
         
 
-        function show_message() {
-            // main.style.padding = "10px"
-            // main.style.backgroundColor = "black"
-            // main.style.color = "cyan"
 
-            p.innerHTML = "<b> Hello world </b>"
-            main.setAttribute("style", `
-                padding: 10px;
-                background-color: black;
-                color: cyan;
-            `)
+        btn.addEventListener("click", function(e) {
+            alert("Hello world")
+        })
+        // ---------------------------------------------------------
+        // input === information
+        // input.addEventListener('click', function(e) {
+        //     main.style.backgroundColor = e.target.value
+        // })
+        // ---------------------------------------------------------
+        // ---------------------------------------------------------
+        // main.addEventListener('mouseover', function() {
+        //     input.focus()
+        // })
+        // 
+        // main.addEventListener('mouseout', function() {
+        //     input.blur()
+        // })
+        // ---------------------------------------------------------
+        // ---------------------------------------------------------
+        // function show_message() {
+        //     // main.style.padding = "10px"
+        //     // main.style.backgroundColor = "black"
+        //     // main.style.color = "cyan"
 
-            let styleAttr = main.getAttribute("style")
-            console.log(styleAttr)
-            document.body.classList.toggle("dark-theme")
-        }
+        //     p.innerHTML = "<b> Hello world </b>"
+        //     main.setAttribute("style", `
+        //         padding: 10px;
+        //         background-color: black;
+        //         color: cyan;
+        //     `)
 
-        btn.onclick = show_message
+        //     let styleAttr = main.getAttribute("style")
+        //     console.log(styleAttr)
+        //     document.body.classList.toggle("dark-theme")
+        // }
+
+        // btn.onclick = show_message
     </script>
 </body>
 <style>
