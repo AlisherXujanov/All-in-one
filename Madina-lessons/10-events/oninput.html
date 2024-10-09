@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <main>
+        <input type="color" class="background-color-input">
+        <div class="demo">
+            <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+        <input type="color" class="text-color-input">
+    </main>
+
+    <script>
+        const backgroundColorInput = document.querySelector('.background-color-input')
+        const colorInput = document.querySelector('.text-color-input')
+        const demoDiv = document.querySelector('.demo')
+
+
+        // backgroundColorInput.oninput = changeBackgroundColor
+        // colorInput.oninput = changeTextColor
+        backgroundColorInput.addEventListener("input", changeBackgroundColor)
+        colorInput.addEventListener("input", changeTextColor)
+        
+        function changeBackgroundColor(e) {
+            const color = e.target.value
+            demoDiv.style.backgroundColor = color
+        }
+        function changeTextColor(e) {
+            const color = e.target.value
+            demoDiv.style.color = color
+        }
+    </script>
+</body>
+<style>
+    main {
+        width: 50%;
+        margin: 0 auto;
+        height: 50vh;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: snow;
+        gap: 10px;
+    }
+    main .demo {
+        width: 50%;
+        height: 50%;
+        border-radius: 10px;
+        background-color: aliceblue;
+        color: black;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    input {
+        padding: 0;
+        cursor: pointer;
+        border-radius: 5px;
+        width: 160px;
+        border: none;
+    }
+
+</style>
+</html>
