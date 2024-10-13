@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <form>
+        <div class="form-control alert-message">
+        </div>
+        <div class="form-control">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-control">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-control">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-control">
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" name="confirm-password" required>
+        </div>
+        <div class="form-control">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
+
+    <script>
+        // React.js  ||  Vue.js   =>  Frameworks
+        // next.js   ||  nuxt.js  =>  Upgraded frameworks
+
+        const submitButton = document.querySelector('form button')
+        const alertContainer = document.querySelector('form .alert-message')
+        const Password1 = document.querySelector('form #password')
+        const Password2 = document.querySelector('form #confirm-password')
+
+        submitButton.addEventListener("click", submitFunction)
+
+        function submitFunction(e) {
+            e.preventDefault() // prevents from page-reloading when the submit function has been called
+
+            if (Password1.value == Password2.value) {
+                console.log("Submitted")
+                alertContainer.textContent = "Submitted successfully"
+                alertContainer.style.color = 'greenyellow'
+                alertContainer.style.backgroundColor = '#333'
+            } else {
+                console.log("ERROR")
+                alertContainer.textContent = "Opps!... Error happened"
+                alertContainer.style.color = 'red'
+                alertContainer.style.backgroundColor = 'black'
+            }
+            alertContainer.style.display = 'block'
+
+            const ONE_SECOND = 1000
+            setTimeout(() => {
+                alertContainer.style.display = 'none'
+            }, ONE_SECOND * 5)
+        }
+    </script>
+
+</body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition: 0.5s;
+    }
+
+    form {
+        width: 40%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        background-color: lightgray;
+        padding: 50px;
+        border-radius: 10px;
+    }
+
+    .form-control {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin: 10px 0;
+    }
+
+    label {
+        font-size: 1.2rem;
+    }
+
+    button,
+    input {
+        padding: 10px 20px;
+        font-size: 1rem;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+    }
+
+    button:hover {
+        cursor: pointer;
+        background-color: #333;
+        color: white;
+    }
+
+    .alert-message {
+        padding: 10px 20px;
+        border-radius: 10px;
+        background-color: darkgray;
+        text-align: center;
+        display: none;
+    }
+</style>
+
+</html>
