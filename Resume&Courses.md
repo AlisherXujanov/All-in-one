@@ -50,8 +50,7 @@ Fullstack Frontend/Backend/Mobile developer
 ✅ SQL (PostgreSQL) 
 ✅ Django
 ✅ Django Rest Framework (DRF)
-✅ PWT (Progressive Web App)
-✅ Deployment
+✅ Deployment (Hosting)
 
 -------Testing-------
     ✅ Selenium
