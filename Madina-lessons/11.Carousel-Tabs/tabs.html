@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <main>
+        <div class="header">
+            <div class="tab-btn-1" data-tab="tab-1">Tab 1</div>
+            <div class="tab-btn-2" data-tab="tab-2">Tab 2</div>
+            <div class="tab-btn-3" data-tab="tab-3">Tab 3</div>
+        </div>
+        <div class="content">
+            <div class="tab-1">
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, cum fuga magni impedit minus harum, minima suscipit aliquid quibusdam itaque maiores sint perspiciatis et excepturi repudiandae possimus rerum distinctio reprehenderit?</p>
+            </div>
+            <div class="tab-2">
+                <p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Рот бросил, домах текстами рекламных заголовок единственное использовало запятой пояс предупредила злых пустился коварный несколько подзаголовок проектах текстов рыбными, ты ее? Вершину ipsum грамматики толку рыбного рыбными великий напоивший большой, даже меня снова своих, мир имени языкового заглавных заманивший путь.</p>
+            </div>
+            <div class="tab-3">
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora quis possimus itaque. Obcaecati delectus voluptas quam ut iusto. Quisquam voluptates cupiditate quae eaque nisi modi accusantium quos voluptate vitae consequatur? Saepe, labore! Non adipisci nostrum, labore facilis corporis sit eveniet quae aspernatur. Vel praesentium incidunt, amet totam nesciunt architecto ad excepturi modi ratione quibusdam! Unde natus facilis, iure quod nesciunt ea neque dolores! Sit, dolores provident? Placeat, ea optio nesciunt ratione iusto, fuga cum sapiente ipsam quo fugiat nam? Quibusdam facilis ratione perspiciatis id ex a consectetur sint alias? Cumque magnam repellendus voluptatum possimus consequuntur recusandae dolorem excepturi perspiciatis soluta.</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const tabBtns = document.querySelectorAll('.header div')
+        const tabContents = document.querySelectorAll('.content > div')
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                tabContents.forEach(tab => {
+                    tab.style.display = 'none'
+                })
+                tabBtns.forEach(btn => {
+                    btn.style.backgroundColor = '#333'
+                })
+                const dataTab = e.target.getAttribute('data-tab')
+                e.target.style.backgroundColor = 'black'
+                const targetTab = Array.from(tabContents).find(tab => tab.classList.contains(dataTab))
+                targetTab.style.display = 'flex'
+            })
+        })
+    </script>
+
+</body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition: 0.3s;
+    }
+
+    main {
+        width: 50%;
+        margin: 0 auto;
+        background-color: lightgray;
+    }
+
+    main .header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        height: 50px;
+    }
+
+    main .header>div {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        cursor: pointer;
+        font-family: sans-serif;
+        font-size: 1.3em;
+        background-color: #333;
+        color: snow;
+    }
+
+
+    main>div p,
+    main>div {
+        width: 100%;
+        height: 50vh;
+    }
+    main>div p {
+        padding: 50px;
+        text-align: center;
+    }
+
+    .tab-1 {
+        background-color: black;
+        color: snow
+    }
+
+    .tab-2 {
+        background-color: lightgoldenrodyellow;
+        color: black;
+        display: none;
+    }
+
+    .tab-3 {
+        background-color: darkgreen;
+        color: snow;
+        display: none;
+    }
+</style>
+
+</html>
