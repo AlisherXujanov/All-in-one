@@ -42,6 +42,8 @@
                 })
                 const dataTab = e.target.getAttribute('data-tab')
                 e.target.style.backgroundColor = 'black'
+                //  Array.from(tabContents)   ===>>>  [..., ..., ...]
+                //  [...].find()  ===>>>   
                 const targetTab = Array.from(tabContents).find(tab => tab.classList.contains(dataTab))
                 targetTab.style.display = 'flex'
             })
