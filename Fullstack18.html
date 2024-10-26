@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td class="td-1">
+                <a href="#">Link1</a>
+                <a href="#">Link2</a>
+                <a href="#">Link3</a>
+            </td>
+            <td class="td-2">
+                <img alt="">
+            </td>
+        </tr>
+    </table>
+</body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition: 0.5s;
+    }
+
+    table {
+        width: 80%;
+        margin: 0 auto;
+        background-color: #333;
+    }
+
+    .td-1 {
+        width: 0;
+    }
+
+    .td-2 {
+        width: 100%;
+    }
+
+    a {
+        text-decoration: none;
+        color: #333;
+    }
+    img {
+        width: 100px;
+        height: 100px;
+    }
+    table:hover .td-1 {
+        width: 10%;
+    }
+    table:hover a {
+        color: snow;
+    }
+    table:hover img {
+        width: 100%;
+    }
+
+</style>
+
+</html>

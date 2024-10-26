@@ -125,7 +125,7 @@ So, using UTF-8 ensures that everyone, no matter what language they speak, can s
 3. How to Add Robots Meta Tags:
     - Use the `<meta>` tag with the `name="robots"` attribute.
     - Set the `content` attribute to one of the following values:
-        - `Index`: (default) Tells a search engine to index a page. 
+        - `index`: (default) Tells a search engine to index a page. 
         - `noindex`: Prevent search engines from indexing the page.
         - `follow`: Allow search engines to follow links on the page.
         - `nofollow`: Prevent search engines from following links on the page.

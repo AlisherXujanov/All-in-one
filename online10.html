@@ -1,47 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    
-    <main>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis, asperiores quaerat nesciunt nisi quidem nobis nulla ipsa vel corporis sequi laboriosam ab, reprehenderit eos quos quae cumque neque qui magnam aperiam hic ullam atque dignissimos harum molestias. Illum ullam architecto tempora labore? Consectetur tempora ex a ipsa mollitia obcaecati architecto numquam modi totam, aspernatur dolore quos unde perspiciatis saepe delectus voluptatem ad dicta praesentium voluptatibus! Numquam, animi tempora unde mollitia consequatur eum modi quasi voluptatem, necessitatibus cum quos sed alias iste ipsum eveniet ut nostrum maxime. Id harum fugiat, incidunt sint, recusandae velit, nemo enim laborum iure ab earum a!</p>
-        <a href="#">Link</a>
-        <a href="#">Link</a>
-    </main>
 
-    <p id="p2">
-        Lorem ipsum dolor sit amet.
-    </p>
-    
+<body>
+    <main>
+        <ul>
+            <li>Item</li>
+            <li>Item</li>
+            <li>Item</li>
+            <li>Item</li>
+            <li>Item</li>
+            <li>Item</li>
+        </ul>
+    </main>
 </body>
 <style>
     * {
-        /* resets */
-        transition: 0.5s;
-        padding: 0;
         margin: 0;
+        padding: 0;
         box-sizing: border-box;
+        transition: 0.5s;
     }
     main {
-        background-color: lightgray;
-        padding: 10px;
         width: 50%;
         margin: 0 auto;
-        text-align: center;
-    }
-    a {
-        border: 2px solid red;
+        background-color: #eee;
         padding: 20px;
+    }
+    li {
+       list-style-type: armenian;
+       padding: 10px 20px;
+       width: 80px;
+       border-radius: 20px;
+       position: relative;
+    }
+    li:hover {
+        background: url(1.jpg) no-repeat;
+        background-size: cover;
+        background-position: center;
+        cursor: pointer;
+        color: snow;
+        list-style-type: none;
+    }
+    li:before {
+        content: "🎃";
+        position: absolute;
+        left: -22px;
+        display: none;
+    }
+    li:hover::before {
         display: inline-block;
     }
-    #p2 {
-        background-color: black;
-        color: red;
-        display: inline-block;
-    }
+    
 </style>
 </html>
