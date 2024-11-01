@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="progress-bar">
+        <div class="red">20%</div>
+        <div class="orange">20%</div>
+        <div class="yellow">10%</div>
+        <div class="green">40%</div>
+        <div class="blue">10%</div>
+    </div>
+</body>
+<style>
+    .progress-bar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        position: relative;
+        background:
+            radial-gradient(closest-side, white 74%, transparent 75% 100%),
+            conic-gradient(red 20%, orange 20% 40%, yellow 40% 50%, green 50% 90%, blue 90% 100%);
+    }
+
+    /* Put each number to its corresponding color */
+    .progress-bar div {
+        position: absolute;
+        font-size: 6px;
+        color: black;
+    }
+
+    .progress-bar .red {
+        top: 10%;
+        right: 20%;
+    }
+
+    .progress-bar .orange {
+        top: 55%;
+        right: 2%;
+    }
+
+    .progress-bar .yellow {
+        top: 88%;
+        right: 32%;
+    }
+
+    .progress-bar .green {
+        top: 55%;
+        right: 87%;
+    }
+
+    .progress-bar .blue {
+        top: 5%;
+        right: 57%;
+    }
+</style>
+
+</html>

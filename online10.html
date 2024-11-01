@@ -8,54 +8,61 @@
 </head>
 
 <body>
+
     <main>
-        <ul>
-            <li>Item</li>
-            <li>Item</li>
-            <li>Item</li>
-            <li>Item</li>
-            <li>Item</li>
-            <li>Item</li>
-        </ul>
+        <input type="text" pattern="[a-zA-Z0-9]*">
     </main>
+
 </body>
 <style>
     * {
-        margin: 0;
         padding: 0;
+        margin: 0;
         box-sizing: border-box;
         transition: 0.5s;
     }
+
+    body {
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
     main {
         width: 50%;
+        height: 50vh;
         margin: 0 auto;
-        background-color: #eee;
-        padding: 20px;
-    }
-    li {
-       list-style-type: armenian;
-       padding: 10px 20px;
-       width: 80px;
-       border-radius: 20px;
-       position: relative;
-    }
-    li:hover {
-        background: url(1.jpg) no-repeat;
-        background-size: cover;
-        background-position: center;
-        cursor: pointer;
+        background-color: #333;
         color: snow;
-        list-style-type: none;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-    li:before {
-        content: "🎃";
-        position: absolute;
-        left: -22px;
-        display: none;
+    input {
+        padding: 10px 20px;
+        border: none;
+        outline: none;
+        background-color: gray;
+        color: snow;
     }
-    li:hover::before {
-        display: inline-block;
+    input:focus {
+        background-color: green;
+        padding: 10px 25px;
     }
-    
+    input:invalid {
+        animation: shake 0.1s linear 2;
+        background-color: red;
+    }
+    @keyframes shake {
+        0% {  transform: translateX(0); }
+        25% {  transform: translateX(5px); }
+        50% {  transform: translateX(-5px); }
+        75% {  transform: translateX(5px); }
+        100% {  transform: translateX(-5px); }
+    }
+
 </style>
 </html>
