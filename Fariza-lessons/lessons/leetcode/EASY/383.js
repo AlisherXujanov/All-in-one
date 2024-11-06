@@ -24,14 +24,15 @@
  * @param {string} magazine
  * @return {boolean}
  */
-var canConstruct = function(ransomNote, magazine) {
-        
+var canConstruct = function (ransomNote, magazine) {
+    if (magazine.length < ransomNote.length) return false
+
     let ransomNoteArr = ransomNote.split('');
     let magazineArr = magazine.split('');
-    
-    for(let i = 0; i < ransomNoteArr.length; i++) {
+
+    for (let i = 0; i < ransomNoteArr.length; i++) {
         let index = magazineArr.indexOf(ransomNoteArr[i]);
-        if(index === -1) {
+        if (index === -1) {
             return false;
         } else {
             magazineArr.splice(index, 1);
@@ -39,3 +40,7 @@ var canConstruct = function(ransomNote, magazine) {
     }
     return true;
 };
+
+
+
+

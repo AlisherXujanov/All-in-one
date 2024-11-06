@@ -41,12 +41,34 @@ console.log(res2)
 // =========================================================================================
 // 4. Create a function that takes a string of random letters and numbers and sums all the numbers.
 // RU: Создайте функцию, которая принимает строку из случайных букв и цифр и суммирует все числа.
+function sum_numbers(arr) {
+    let result = 0
+    for (let i=0;  i<arr.length;  i++) {
+        if (typeof(arr[i]) == 'number') {
+            result += arr[i]
+        }
+    }
+    return result
+}
 
 // =========================================================================================
 // 5.  Напишите программу на JavaScript, которая перебирает целые числа от 1 до 100. 
 // Но для кратных троек печатает "Fizz" вместо числа и для кратных пяти печатает "Buzz". 
 // Для чисел, кратных как трем, так и пяти, печатает "FizzBuzz".
-
+function show_fizz_buzz() {
+    for (let i=0;  i<100;  i++) {
+        if (i%3==0  &&  i%5==0) {
+            console.log("FizzBuzz")
+        } else if (i%3==0) {
+            console.log("Fizz")
+        } else if (i%5==0) {
+            console.log("Buzz")
+        } else {
+            console.log("Number: ", i)
+        }
+    }
+}
+show_fizz_buzz()
 
 // ================================================================================
 // INTERMEDIATE LEVEL

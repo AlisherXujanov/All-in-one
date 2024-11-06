@@ -33,7 +33,24 @@ var isHappy = function (n, seen = new Set()) {
     if (seen.has(n)) return false
 
     seen.add(n)
-    const next = String(n).split('').reduce((acc, num) => parseInt(acc) + parseInt(num) ** 2, 0)
+    const next_n = String(n).split('').reduce((acc, num) => parseInt(acc) + parseInt(num) ** 2, 0)
 
-    return isHappy(next, seen)
+    return isHappy(next_n, seen)
 };
+
+let seen = isHappy(19)
+console.log(seen)
+
+
+
+
+// let x = [1,1,1,1,1, 2, 3, 4,4,4, 5]
+// let z = new Set(x)
+// console.log(z)
+
+// console.log(z.has(3))
+// console.log(z.has(10))
+
+
+
+

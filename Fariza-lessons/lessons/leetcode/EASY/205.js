@@ -57,9 +57,11 @@ var isIsomorphic = function (s, t) {
             mapping2[letter2] = letter1 // Add the mapping from letter2 to letter1
         }
     }
-
     return true // If all characters are consistently mapped, return true
 };
+
+// 'Hello',     'Hello',    2,     3,    'Hello'
+// 'a',         'a',       'b',    'c',   'a'
 
 
 // The first set is [red, blue, green, red].
