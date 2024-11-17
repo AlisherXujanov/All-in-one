@@ -1,7 +1,7 @@
+@import "../../../assets/styles/settings";
+
 nav.main-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex();
     padding: 10px 300px;
     font-family: Arial, Helvetica, sans-serif;
 
@@ -23,6 +23,4 @@ nav.main-nav {
             text-transform: uppercase;
         }
     }
-
-    .right {}
 }

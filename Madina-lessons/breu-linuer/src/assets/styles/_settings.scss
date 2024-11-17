@@ -1,0 +1,15 @@
+// Buefy colors
+$green: #00d1b2;
+$blue: #3273dc;
+$red: #ff3860;
+$yellow: #ffdd57;
+$purple: #b86bff;
+$orange: #ff9f00;
+$brown: #8a6d3b;
+
+// MIXINS
+@mixin flex() {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

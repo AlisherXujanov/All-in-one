@@ -1,5 +1,5 @@
 import Nav from "@/components/Header/Nav"
-import Ad from "@/components/Header/Ad"
+import Ad from "@/components/Header/Ad.jsx"
 import "./globals.css"
 
 export const metadata = {
