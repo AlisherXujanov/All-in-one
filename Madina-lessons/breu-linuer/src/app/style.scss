@@ -1,0 +1,21 @@
+.wrapper {
+    width: 50%;
+    margin: 0 auto;
+    background-color: #eee;
+    padding: 20px;
+
+    .toggle-paragraph {
+        border: 1px solid green;
+        padding: 10px 20px;
+
+        &:hover {
+            color: snow;
+            background-color: green;
+        }
+
+        &:active {
+            color: blue;
+            background-color: snow;
+        }
+    }
+}

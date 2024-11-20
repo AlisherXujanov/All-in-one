@@ -10,7 +10,7 @@ import Sidebar from "@/components/Header/Sidebar"
 
 
 function Nav(props) {
-    const [showSidebar, setShowSidebar] = useState(true)
+    const [showSidebar, setShowSidebar] = useState(false)
 
     return (
         <>
