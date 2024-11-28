@@ -1,47 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <!-- 
-    VISIBILITY
-        opacity:  0-1;
-            0 == 0%
-            0.5 == 50%
-            1 == 100%
-        ---------------
-        visibility: visible | hidden
-            - visible (default)
-            - hidden - the element will be hidden, but it will take the space
-        ---------------
-        display: none; - the element will be removed from DOM (Document Object Model)
-    -->
+
+    <!-- ::before, ::after -->
     <main>
-        <input type="checkbox">
-        <img src="pics/1.jpg" width="100" height="100">
-        <img src="pics/1.jpg" width="100" height="100">
-        <img src="pics/1.jpg" width="100" height="100">
+        <ul>
+            <li>Text</li>
+            <li>Text</li>
+            <li>Text</li>
+            <li>Text</li>
+            <li>Text</li>
+        </ul>
     </main>
+
 </body>
 <style>
+    ::before,
+    ::after,
     * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
         transition: 0.5s;
+        box-sizing: border-box;
     }
+
     main {
         width: 50%;
         margin: 0 auto;
-        padding: 10px;
         background-color: lightgray;
+        padding: 20px;
     }
-    input[type="checkbox"]:checked + img {
-        opacity: 0;
+
+    ul {
+        list-style: none;
     }
+
    
 </style>
+
 </html>
+
+

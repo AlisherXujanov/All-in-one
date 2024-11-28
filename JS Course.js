@@ -448,30 +448,42 @@ let lesson = "Alert, Prompt, Confirm & Условные операторы Else 
 
 
 let dateLesson
-//! UTC => Coordinated Universal Time
-//! GMT => Greenwich Mean Time Zone
-//! January 1970 == UNIX-time  //  UTC  //  GMT
+//! UTC  => Coordinated Universal Time
+//! GMT  => Greenwich Mean Time Zone
+//! UNIX => January 1970
 //! offset => UTC +- offset  (UZB => UTC+5)
-//* Creation
-//! With one parameter => milliseconds (13 digits) 
-//!                             for displaying date-time
-//! new Date(2022, 11, 30, 12, 0, 0) => in local timezone
-//! date.getTimezoneOffset() / -60  =>  gets offset from current TZ
-//!                                 defaults to -minutes 
-//! GETTERS  =>  ...getDay(), ...getHour(), ...getMinutes() ...
-//! SETTERS  =>  new Date(2022, 12, ....)
-//! date.toUTCString() => UTC time
-//! date.toISOString()  =>  “2022-11-12T12:00:00+5:00” GMT  => in UTC ( Standart version of time )
+// ---------------------------------------------
+// GETTERS  -> are used to get a part of the total time
+// date.get...()
+// ...getDay(), ...getHour(), ...getMinutes() ...
 
-//! .toLocaleString(“en-US”)
+// ---------------------------------------------
+// SETTERS  -> are used to create special time
+// SETTERS  =>  new Date(2022, 12, ....)
+// ==============
+// With one parameter => milliseconds (13 digits) for displaying date-time
+// ==============
+// let date = new Date(2024, 10, 20, 9, 0, 30)
+// console.log(date)
+// ---------------------------------------------
+// date.getTimezoneOffset() / -60  =>  gets offset from current TZ
+//                                     defaults to -minutes 
+// ---------------------------------------------
+// let date = new Date()
+// console.log(date.toUTCString())
+// console.log(date.toISOString())
+//! date.toUTCString()  => is used to convert date to UTC
+//! date.toISOString()  => is used for JSON.stringify 
+// ---------------------------------------------
+//! .toLocaleString("en-US")
 //* https://www.w3schools.com/jsref/jsref_tolocalestring.asp
 // Persian => "fa-IR"  => ۱۴۰۱/۱۱/۱۵،‏ ۱۷:۱۲:۴۲
 // Korea  =>  "ko-KR"  =>  2023. 2. 3. 오전 11:45:30
 // Arabic =>  "ar-EG"  =>  /٢‏/٢٠٢٣ ١١:٤٧:٢٢ ص
 //! console.log(JSON.stringify({ date }))  =>  for interacting with Backend
+// let date = new Date()
+// console.log(date.toLocaleString("de-CH"))
 
-// const weekDays = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-// let today = weekDays[new Date().getDay()]
 
 
 
