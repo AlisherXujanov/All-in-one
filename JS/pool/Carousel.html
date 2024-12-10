@@ -29,24 +29,41 @@
 
         function showSlide(index) {
             slides.forEach((slide, i) => {
-                slide.style.transform = `translateX(${100 * (i - index)}%)`;
-            });
+                slide.style.transform = `translateX(${100 * (i - index)}%)`
+                // ---------------------------------------------------
+                // index == 1  => 
+                //           0-index  ==>  translateX(-100%)
+                //           1-index  ==>  translateX(0%)
+                //           2-index  ==>  translateX(100%)
+                // ---------------------------------------------------
+                // index == 0  => 
+                //           0-index  ==>  translateX(0%)
+                //           1-index  ==>  translateX(100%)
+                //           2-index  ==>  translateX(200%)
+                // ---------------------------------------------------
+                // index == 2  => 
+                //           0-index  ==>  translateX(-200%)
+                //           1-index  ==>  translateX(-100%)
+                //           2-index  ==>  translateX(0%)
+                // ---------------------------------------------------
+            })
         }
         // ================================================================
         function prevFn() {
-            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-            showSlide(currentIndex);
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length
+            showSlide(currentIndex)
         }
-        document.querySelector('.prev').addEventListener('click', prevFn);
+        document.querySelector('.prev').addEventListener('click', prevFn)
         // ================================================================
         function nextFn() {
-            currentIndex = (currentIndex + 1) % slides.length;
-            showSlide(currentIndex);
+            currentIndex = (currentIndex + 1) % slides.length
+            showSlide(currentIndex)
         }
-        document.querySelector('.next').addEventListener('click', nextFn);
+        document.querySelector('.next').addEventListener('click', nextFn)
+        // ================================================================
 
 
-        setInterval(nextFn, 2000);
+        setInterval(nextFn, 2000)
     </script>
 
 </body>

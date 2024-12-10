@@ -70,7 +70,7 @@
         document.getElementById('htmlForm').addEventListener('submit', function (event) {
             event.preventDefault();
             const html = document.getElementById('htmlInput').value;
-            const preview = document.getElementById('preview');
+            const preview = document.getElementById('my_html_preview');
             preview.innerHTML = html;  // This allows HTML tags to be rendered
             window.print();
         });

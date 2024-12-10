@@ -34,30 +34,30 @@
     </div>
 
     <script>
-        const cityInput = document.getElementById('city-input');
-        const getWeatherButton = document.getElementById('get-weather');
-        const weatherInfo = document.getElementById('weather-info');
+        const cityInput = document.getElementById('city-input')
+        const getWeatherButton = document.getElementById('get-weather')
+        const weatherInfo = document.getElementById('weather-info')
 
         async function getWeather() {
-            const city = cityInput.value.trim();
-            if (city === '') return;
+            const city = cityInput.value.trim()
+            if (city === '') return
 
-            const apiKey = 'YOUR_API_KEY'; // Replace with your OpenWeatherMap API key  
-            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
-            const data = await response.json();
+            const apiKey = 'caa9e43197f51790b70e9654848e6d2b' // Replace with your OpenWeatherMap API key  
+            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
+            const data = await response.json()
 
             if (data.cod === 200) {
                 weatherInfo.innerHTML = `  
                         <h2 class="text-xl font-semibold">${data.name}</h2>  
                         <p>Temperature: ${data.main.temp} °C</p>  
                         <p>Weather: ${data.weather[0].description}</p>  
-                    `;
+                    `
             } else {
-                weatherInfo.innerHTML = `<p class="text-red-500">City not found!</p>`;
+                weatherInfo.innerHTML = `<p class="text-red-500">City not found!</p>`
             }
         }
 
-        getWeatherButton.addEventListener('click', getWeather);
+        getWeatherButton.addEventListener('click', getWeather)
         cityInput.addEventListener('keypress', (event) => {
             if (event.key === 'Enter') {
                 getWeather();

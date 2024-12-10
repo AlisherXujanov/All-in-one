@@ -1,48 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
 <body>
-
-    <!-- ::before, ::after -->
     <main>
-        <ul>
-            <li>Text</li>
-            <li>Text</li>
-            <li>Text</li>
-            <li>Text</li>
-            <li>Text</li>
-        </ul>
+        <div class="box"></div>
     </main>
-
 </body>
 <style>
-    ::before,
-    ::after,
     * {
-        transition: 0.5s;
+        margin: 0;
+        padding: 0;
         box-sizing: border-box;
+        transition: 0.5s;
     }
-
     main {
         width: 50%;
-        margin: 0 auto;
-        background-color: lightgray;
-        padding: 20px;
+        margin: 100px auto;
+        background-color: black;
+        height: 50vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .box {
+        height: 150px;
+        width: 150px;
+        background-color: red;
+        transform-origin: 150% 0%;
+    }
+    main:hover .box {
+        transform: rotate(360deg);
+    }
+    main a {
+        border: 2px solid red;
+        display: inline-block;
     }
 
-    ul {
-        list-style: none;
-    }
-
-   
 </style>
-
 </html>
-
-
