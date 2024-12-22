@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form>
+        <div class="alert">
+            Lorem ipsum dolor sit amet.
+        </div>
+        <div class="form-control">
+            <label for="name">Username</label>
+            <input id="name" type="text" placeholder="Username">
+            <p class="error"></p>
+        </div>
+        <div class="form-control">
+            <label for="pass">Password</label>
+            <input id="pass" type="password" placeholder="Password">
+            <p class="error"></p>
+        </div>
+        <div class="form-control">
+            <button class="submit" type="submit">Submit</button>
+            <button class="reset" type="reset">Reset</button>
+        </div>
+    </form>
+
+    <script>
+        const form = document.querySelector('form')
+        const nameInput = document.querySelector('#name')
+        const passInput = document.querySelector('#pass')
+        const submitBtn = form.querySelector('.submit')
+        const alertDiv = document.querySelector('.alert')
+
+
+        nameInput.addEventListener('input', (e) => {
+            const namePattern = /^[a-zA-Z]*$/ // only alphabets
+            // DEFINITION of pattern
+            // /.../ -> pattern
+            // ^     -> start of the string
+            // $     -> end of the string
+            // [...] -> range of characters
+            // a-z   -> all small alphabets
+            // A-Z   -> all capital alphabets
+            // *     -> 0 or more occurences
+
+            if (e.target.value == "") {
+                e.target.nextElementSibling.textContent = ''
+                e.target.style.border = 'none'
+                return
+            }
+            if (namePattern.test(e.target.value)) {
+                e.target.nextElementSibling.textContent = ''
+                e.target.style.border = 'none'
+            } else {
+                e.target.nextElementSibling.textContent = 'Only letters are allowed'
+                e.target.style.border = '1px solid red'
+            }
+        })
+
+        passInput.addEventListener('input', (e) => {
+            const passPattern = /^[a-zA-Z0-9_$@-]*$/ // only alphabets and numbers and symbols
+
+
+            if (e.target.value == "") {
+                e.target.nextElementSibling.textContent = ''
+                e.target.style.border = 'none'
+                return
+            }
+            if (passPattern.test(e.target.value)) {
+                e.target.nextElementSibling.textContent = ''
+                e.target.style.border = 'none'
+            } else {
+                e.target.nextElementSibling.textContent = 'Only letters, numbers and (-_@$) are allowed'
+                e.target.style.border = '1px solid red'
+            }
+        })
+
+        submitBtn.addEventListener('click', (e) => {
+            e.preventDefault()
+            const inputs = form.querySelectorAll('input')
+            inputs.forEach(input => {
+                if (input.value == "") {
+                    input.nextElementSibling.textContent = 'This field is required'
+                    return showAlert('Please fill all the fields', 'error')
+                } 
+                else if (input.nextElementSibling.textContent != "") {
+                    input.nextElementSibling.textContent = 'Invalid input'
+                    return showAlert('Invalid inputs', 'error')
+                }
+                else {
+                    input.nextElementSibling.textContent = ''
+                    showAlert('Successfully submitted', 'success')
+                }
+            })
+        })
+
+        function showAlert(msg, type) {
+            alertDiv.style.display = 'block'
+            alertDiv.textContent = msg
+
+            if (type=='success') {
+                alertDiv.style.backgroundColor = '#333'
+                alertDiv.style.color = 'greenyellow'
+            } else {
+                alertDiv.style.backgroundColor = 'orange'
+                alertDiv.style.color = 'snow'
+            }
+        }
+    </script>
+
+</body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition: 0.5s;
+    }
+
+    form {
+        width: 50%;
+        padding: 10px;
+        background-color: lightgray;
+        margin: 0 auto;
+        border-radius: 10px;
+    }
+
+    .form-control {
+        margin: 10px 0;
+    }
+
+    .form-control * {
+        margin: 5px 0;
+        width: 100%;
+        display: block;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+    }
+
+    .form-control .error {
+        color: red;
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .form-control input {
+        padding: 10px 20px;
+        background-color: darkgray;
+    }
+
+    .form-control input:focus {
+        background-color: snow;
+        outline: 3px solid rgb(168, 168, 168, 0.3);
+    }
+
+    .form-control button {
+        padding: 10px 20px;
+        cursor: pointer;
+        color: snow;
+    }
+
+    .form-control button.submit {
+        background: linear-gradient(to right, rgb(0, 155, 0, 0.3), rgb(0, 155, 0, 0.7), rgb(0, 155, 0, 0.3));
+    }
+
+    .form-control button.submit:hover {
+        background: linear-gradient(to right, rgb(0, 155, 0, 0.7), rgb(0, 155, 0), rgb(0, 155, 0, 0.7));
+    }
+
+
+    .form-control button.reset {
+        background: linear-gradient(to right, rgb(255, 0, 0, 0.3), rgb(255, 0, 0, 0.7), rgb(255, 0, 0, 0.3));
+    }
+
+    .form-control button.reset:hover {
+        background: linear-gradient(to right, rgb(255, 0, 0, 0.7), rgb(255, 0, 0), rgb(255, 0, 0, 0.7));
+    }
+
+    .alert {
+        padding: 10px 20px;
+        background-color: darkgray;
+        width: 100%;
+        border-radius: 10px;
+        display: none;
+    }
+</style>
+
+</html>

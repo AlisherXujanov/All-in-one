@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <!-- 
+        Single page appliction  (SPA)
+        It contains only one html file and controls it with the help of javascript
+
+        It uses static html file and updates the content dynamically.
+
+        There are also other traditional sites worlwide but they are not 
+        fast as single page application. They use html files for each page
+        and each time browser would have to reload the page.
+
+        On the other hand, static sites are faster because they don't have to
+        reload the page. They just update the content dynamically.
+
+        It reminds us DOM. Which is a tree structure that is controlled by javascript.
+        -----------------------------------------------------------------------------
+        RULES:
+            1. In VUE, we have to create a root element. It is called app.
+            2. We will need to create a vue instance.
+    -->
+
+
+    <main id="root">
+        {{ person.name }}
+        {{ person.age  }}
+        person.age
+        <hr>
+        <button @click="updateAge">{{ person.age }}</button>
+        <!-- 
+            v-on:click
+            @click
+        -->
+    </main>
+
+
+    <script>
+        const { createApp, ref, reactive  } = Vue
+
+        createApp({
+            setup() {
+                // const name = ref('John!')
+                // const age = ref(25) // reference  == { value: 25 }
+
+                const person = reactive({
+                    name: 'John',
+                    age: 25
+                })
+
+                function updateAge() {
+                    // age.value ++    // =>  in case if you use ref
+                    person.age ++      // => in case if you use reactive
+                }
+
+                return {
+                    updateAge,
+                    person
+                }
+            }
+        }).mount('#root')
+
+
+        // let obj = {
+        //     name: 'John',
+        //     age: 25,
+        //     fullname: function() {
+        //         const message = this.name + ' ' + this.age
+        //         return { message }
+        //     }
+        // }
+
+        // obj.fullname()
+
+    </script>
+</body>
+
+</html>
