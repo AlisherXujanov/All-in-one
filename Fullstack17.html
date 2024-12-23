@@ -1,165 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en">-
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="create-card">
-        <span>➕</span>
-        <p>Add new note</p>
-    </div>
-
-
-    <div class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <form>
-                <div class="form-control">
-                    <label for="title">Title</label>
-                    <input id="title" type="text" placeholder="Title">
-                </div>
-                <div class="form-control">
-                    <label for="content">Content</label>
-                    <textarea id="content" placeholder="Content" rows="4"></textarea>
-                </div>
-                <div class="form-control">
-                    <button type="submit">Create</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <div class="cards-wrapper">
-        <div class="card">
-            <div class="card-body">
-                <h1>Test card</h1>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque labore, aut vitae itaque debitis
-                    possimus accusantium, quidem nam molestiae, natus iure ea necessitatibus veniam id ab quisquam sit
-                    quod. Doloribus.</p>
-            </div>
-            <hr>
-            <div class="card-footer">
-                <div class="left">
-                    <span>12/5/2024</span>
-                </div>
-                <div class="right">
-                    <button>...</button>
-                    <div class="menu">
-                        <span class="delete" onclick="deleteFn(event)">🗑️</span>
-                        <span class="edit" onclick="updateFn(event)">✍️</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <button onclick="getUsers()">Get users</button>
 
     <script>
-        const createCardBtn = document.querySelector('.create-card')
-        const closeModalBtn = document.querySelector('.close-modal')
-        const modalScreen = document.querySelector('.modal')
-
-        const titleInput = document.querySelector('#title')
-        const contentInput = document.querySelector('#content')
-        const sumbitBtn = document.querySelector('.form-control button[type="submit"]')
-        const cardsWrapper = document.querySelector('.cards-wrapper')
-
-        let TARGET_CARD = null
-        let UPDATE_MODE = false
-
-        createCardBtn.addEventListener('click', openModalFn)
-        function openModalFn(e) {
-            modalScreen.style.display = 'flex'  
-            setTimeout(() => {
-                modalScreen.style.opacity = '1'
-            }, 100)
-        }
-
-        closeModalBtn.addEventListener('click', closeModalFn)
-        function closeModalFn(e) {
-            modalScreen.style.opacity = '0'
-            setTimeout(() => {
-                modalScreen.style.display = 'none'
-            }, 500)
-
-            titleInput.value = ''
-            contentInput.value = ''
-            sumbitBtn.textContent = 'Create'
-            TARGET_CARD = null
-            UPDATE_MODE = false
-        }
-        
-        window.addEventListener('click', (e) => {
-            if (e.target == modalScreen) {  closeModalFn()  }
-        })
-        
-        function deleteFn(e) {
-            // console.log(e.target.parentElement.parentElement.parentElement.parentElement) 
-            // console.log(e.target.closest('.card'))
-            if (confirm("Are you sure to delete this card? ")) {
-                e.target.closest('.card').remove()
-            }
-        }
-        function updateFn(e) {
-            const card = e.target.closest('.card')
-            const title = card.querySelector('h1').textContent
-            const content = card.querySelector('p').textContent
-
-            titleInput.value = title
-            contentInput.value = content
-            sumbitBtn.textContent = 'Update'
-
-            TARGET_CARD = card
-            UPDATE_MODE = true
-            openModalFn(e)
-        }
-
-        sumbitBtn.addEventListener('click', (e) => {
-            e.preventDefault()
-            const title = titleInput.value
-            const content = contentInput.value
-
-            if (title.length == 0 || content.length == 0) {
-                alert('Please fill all fields')
-                return
-            }
-
-            if (UPDATE_MODE) {
-                TARGET_CARD.querySelector("h1").textContent = title
-                TARGET_CARD.querySelector("p").textContent = content
-            } else {
-                const card = `
-                    <div class="card">
-                        <div class="card-body">
-                            <h1>${title}</h1>
-                            <p>${content}</p>
+        let page = 1
+        function getUsers() {
+            const URL = 'https://reqres.in/api/users?page=' + page
+            page += 1*
+            fetch(URL)
+                .then(response => response.json())
+                .then(data => {
+                let users = data.data
+                for (let user of users) {
+                    let userContainer = `
+                        <div class="container">
+                            <h1>${user.first_name} ${user.last_name}</h1>
+                            <img src='${user.avatar}'
+                                alt="Image not found"
+                                width="100"   height="100"
+                                style="border-radius: 50%;"
+                            >
+                            <br>
+                            <p>Email: ${user.email}</p>
                         </div>
-                        <hr>
-                        <div class="card-footer">
-                            <div class="left">
-                                <span>${new Date().toLocaleDateString()}</span>
-                            </div>
-                            <div class="right">
-                                <button>...</button>
-                                <div class="menu">
-                                    <span class="delete" onclick='deleteFn(event)'>🗑️</span>
-                                    <span class="edit" onclick="updateFn(event)">✍️</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `
-                cardsWrapper.innerHTML += card
-            }
-            closeModalFn()
-        })
+                    `
+                    document.body.innerHTML += userContainer
+                }
+            })
+        }
+        // There are a lot of this kind of sites in the internet. 
+        // And any of the could help us to learn how to deal with APIs.
+        // RU: В интернете существует множество таких сайтов.
+        // И любой из них может помочь нам научиться работать с API.
+
+        // -------------------------------------------------------
+        // STATUS CODES
+        // 100-200   - Informational
+        // 200-300   - Success
+        // 300-400   - Redirection
+        // 400-500   - Client Error
+        // 500-600   - Server Error
+        // -------------------------------------------------------
+
     </script>
-
 </body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition: 0.5s;
+    }
+
+    body {
+        background-color: #333;
+        color: snow;
+        text-align: center;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .container {
+        width: 250px;
+        border-radius: 10px;
+        padding: 10px;
+        background-color: #111;
+    }
+</style>
+
 </html>

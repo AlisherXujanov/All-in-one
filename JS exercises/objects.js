@@ -11,7 +11,8 @@
 
 // 3. Create a function that takes object and a key as parameters.
 // Then delete the key from the object and return remaining object.
-// RU: Создайте функцию, которая принимает объект и ключ в качестве параметров. Затем удалите ключ из объекта и верните оставшийся объект.
+// RU: Создайте функцию, которая принимает объект и ключ в качестве параметров.
+//     Затем удалите ключ из объекта и верните оставшийся объект.
 
 // 4. Createa a function to sort an array of users objects by their age.
 // RU: Создайте функцию для сортировки массива объектов пользователей по их возрасту.

@@ -12,14 +12,14 @@
 // "use strict"
 // This is strict mode that helps to avoid mistakes
 // -------------------------------------------------------
-//* String  ==  "...."  ==  simple text  == обычний текст
+// * String  ==  "...."  ==  simple text  == обычний текст
 // -------------------------------------------------------
-//* "",   '',   ``   =>  these quotes are used 
+// * "",   '',   ``   =>  these quotes are used 
 //                      to create a string
 // -------------------------------------------------------
-//* Number  ==  1, 2, 3, ...
+// * Number  ==  1, 2, 3, ...
 // -------------------------------------------------------
-//* VARIABLES
+// * VARIABLES
 // 1. var       =>  5%
 // 2. let       =>  55%
 // 3. const     =>  40%
@@ -38,11 +38,11 @@
 //           can NOT be updated
 //           can NOT leave block
 // ----------------------------------------------
-//* ---- SYNTAX ----
+// * ---- SYNTAX ----
 // keyword variable-name = value
 // ключавое-слово имя-переменной = значение
 // ----------------------------------------------
-//* Variables inside of BLOCK OF CODE
+// * Variables inside of BLOCK OF CODE
 // {
 //     var test1 = "var test"
 //     let test2 = "let test"
@@ -52,7 +52,7 @@
 // console.log(test2)
 // console.log(TEST3)
 // ----------------------------------------------
-//* CASES  =>  Стили надписи имён
+// * CASES  =>  Стили надписи имён
 // camelCase  =>  ...^..^.. =>  greatBigAndBeautifulCity
 // snake_case =>  ..._..._. =>  great_big_and_beautiful_
 // PascalCase =>  ^..^..^.. =>  GreatBigAndBeautifulCity
