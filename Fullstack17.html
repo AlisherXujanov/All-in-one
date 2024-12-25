@@ -1,55 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">-
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <button onclick="getUsers()">Get users</button>
+    <button>Get new joke</button>
+    <div class="container">
+        <b class="spinner">
+            <div class="semipolar-spinner">
+                <div class="ring"></div>
+                <div class="ring"></div>
+                <div class="ring"></div>
+                <div class="ring"></div>
+                <div class="ring"></div>
+            </div>
+        </b>
+        <div class="content">
+            <p class="main-part"></p>
+            <p class="secondary-part"></p>
+        </div>
+    </div>
 
     <script>
-        let page = 1
-        function getUsers() {
-            const URL = 'https://reqres.in/api/users?page=' + page
-            page += 1*
-            fetch(URL)
-                .then(response => response.json())
-                .then(data => {
-                let users = data.data
-                for (let user of users) {
-                    let userContainer = `
-                        <div class="container">
-                            <h1>${user.first_name} ${user.last_name}</h1>
-                            <img src='${user.avatar}'
-                                alt="Image not found"
-                                width="100"   height="100"
-                                style="border-radius: 50%;"
-                            >
-                            <br>
-                            <p>Email: ${user.email}</p>
-                        </div>
-                    `
-                    document.body.innerHTML += userContainer
-                }
-            })
-        }
-        // There are a lot of this kind of sites in the internet. 
-        // And any of the could help us to learn how to deal with APIs.
-        // RU: В интернете существует множество таких сайтов.
-        // И любой из них может помочь нам научиться работать с API.
+        const button = document.querySelector('button')
+        const mainPart = document.querySelector('.main-part')
+        const secondaryPart = document.querySelector('.secondary-part')
+        const spinner = document.querySelector('.spinner')
+        const content = document.querySelector('.content')
 
-        // -------------------------------------------------------
-        // STATUS CODES
-        // 100-200   - Informational
-        // 200-300   - Success
-        // 300-400   - Redirection
-        // 400-500   - Client Error
-        // 500-600   - Server Error
-        // -------------------------------------------------------
+        button.addEventListener('click', getJoke)
+
+
+        async function getJoke(e) {
+            const URL = 'https://official-joke-api.appspot.com/jokes/random'
+            content.style.display = 'none'
+            spinner.style.display = 'flex'
+
+            const response = await fetch(URL)
+            const joke = await response.json()
+            mainPart.textContent = joke.setup
+            secondaryPart.textContent = joke.punchline
+            content.style.display = 'block'
+            spinner.style.display = 'none'
+            // fetch(URL)
+            //     .then(res => res.json())
+            //     .then(joke => {
+            //         mainPart.textContent = joke.setup
+            //         secondaryPart.textContent = joke.punchline
+            //         content.style.display = 'block'
+            //         spinner.style.display = 'none'
+            //     })
+        }
 
     </script>
 </body>
@@ -61,20 +68,60 @@
         transition: 0.5s;
     }
 
-    body {
-        background-color: #333;
-        color: snow;
-        text-align: center;
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
+    .container {
+        width: 50%;
+        margin: 0 auto;
+        background-color: #eee;
+        padding: 20px;
+        border-radius: 10px;
     }
 
-    .container {
-        width: 250px;
+    .main-part {
+        margin-bottom: 10px;
+    }
+
+    .secondary-part {
+        text-align: right;
+        color: green;
+        font-style: italic;
+    }
+
+    button {
+        display: block;
+        width: 50%;
+        margin: 0 auto;
         border-radius: 10px;
+        border: none;
         padding: 10px;
-        background-color: #111;
+        background-color: darkgreen;
+        color: snow;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: green;
+    }
+
+    button:active {
+        transform: scale(0.7);
+    }
+
+    .spinner {
+        font-size: 12px;
+        text-align: center;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgb(0,0,0, 0.5);
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .content {
+        display: none;
     }
 </style>
 

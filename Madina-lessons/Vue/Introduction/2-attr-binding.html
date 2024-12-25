@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+
+    <main id="root">
+        <p v-bind:class="colored ? 'red'  :  ''">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, aliquam impedit nulla rerum optio explicabo
+            facere sed recusandae quas voluptatum nemo non cumque, nihil consequuntur aliquid ipsum assumenda fugiat
+            quae?
+        </p>
+
+        <button @click="toggleColor">Toggle</button>
+
+        <hr>
+
+        <div>
+            <h2 :class="colored ? 'green' : 'red'">{{ count }}</h2>
+            <button @click="decrement">Decrement --</button>
+            <button @click="increment">Increment ++</button>
+        </div>
+    </main>
+
+
+    <script>
+        const { createApp, ref, reactive } = Vue
+
+        createApp({
+            setup() {
+                const colored = ref(false)
+                const count = ref(0)
+
+                function toggleColor() { colored.value = !colored.value }
+                function increment() { 
+                    count.value++ 
+                    colored.value = true
+                }
+                function decrement() { 
+                    count.value-- 
+                    colored.value = false
+                }
+
+                return { colored, toggleColor, increment,
+                    decrement, count,
+                }
+            }
+        }).mount('#root')
+    </script>
+</body>
+<style>
+    .red {
+        color: red;
+    }
+    .green {
+        color: green;
+    }
+</style>
+
+</html>

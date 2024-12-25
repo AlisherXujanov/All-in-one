@@ -1,66 +1,43 @@
-// Number Guessing Game
+// RECURSIVE FUNCTIONs
 
-// We will have 7 lives
-// Computer will generate a random number between 1 and 100
+// RULSEs:
+// 1. Recursive function should always have to call itself.
+// RU: Рекурсивная функция должна всегда вызывать саму себя.
+// UZ: Qaytaruvchi funksiya doimo o'zini chaqirishi kerak.
+// --------------------------------------------------------
+// 2. It always has to pass a different parameter to itself
+// RU: Она всегда должна передавать самой себе другой параметр.
+// UZ: U doimo o'ziga boshqa parametr uzatishi kerak.
+// --------------------------------------------------------
+// 3. It always should check for a condition to escape the infinite loop
+// RU: Она всегда должна проверять условие для выхода из бесконечного цикла.
+// UZ: U har doim shartni tekshirib kurishi kerak cheksiz qaytarilishdan chiqish uchun.
 
 
-let randomNumber = parseInt(Math.random() * 100)
-let lives = 7
-// Math.random()   =>    0  ->  1
-// Math.random() * 100   =>    0  ->  100
-
-alert(`
-Hello! Welcome to the Number Guessing Game!     
-You will have 7 lives to guess the number between 1 and 100.
-`)
-
-while (true) { // When the game is not over
-
-    if (lives == 0) {
-        alert("Game Over! You lost!")
-        if (confirm("Would you like to play again?")) {
-            randomNumber = parseInt(Math.random() * 100)
-            lives = 7
-            continue
-        } else {
-            alert("Goodbye!")
-            break
-        }
+// EXAMPLE 1:
+// countDown   ->  считаетВниз   ->  pastgaSanash
+function countDown(number) {
+    console.log(number)
+    if (number == 1){ 
+        return
     }
-
-    let answer = prompt("Please enter your guess: ")
-
-    if (!isNaN(answer)) {
-        // Number
-        let number = parseInt(answer)  //  string -> number
-        if (number > 100 || number < 0) {
-            alert("Please enter a number between 1 and 100!")
-            continue
-        }
-        else {
-            if (number == randomNumber) {
-                alert("Congratulations! You won!")
-                if (confirm("Would you like to play again?")) {
-                    randomNumber = parseInt(Math.random() * 100)
-                    lives = 7
-                    continue
-                } else {
-                    alert("Goodbye!")
-                    break
-                }
-            } else {
-                lives--
-                if (number > randomNumber) {
-                    alert(`Too hight! You have ${lives} lives left!`)
-                } else {
-                    alert(`Too low! You have ${lives} lives left!`)
-                }
-                continue
-            }
-        }
-    } else {
-        // not a number
-        alert("Please enter a valid number!")
-        continue
-    }
+    return countDown(number - 1)
 }
+countDown(10)
+// 10
+// 9
+// ...
+// 1
+// ========================================================
+// EXAMPLE 2:
+// countUp   ->  считаетВверх   ->  yuqorigaSanash
+function countUp(number, counter=1) {
+    console.log(counter)
+    if (number == counter){ 
+        return
+    }
+    return countUp(number, counter+1)
+}
+countUp(10)
+// ========================================================
+
