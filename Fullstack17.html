@@ -9,56 +9,64 @@
 </head>
 
 <body>
+    <!-- 
+        https://domain-name/country-name/API-key
+    -->
 
-    <button>Get new joke</button>
-    <div class="container">
-        <b class="spinner">
-            <div class="semipolar-spinner">
-                <div class="ring"></div>
-                <div class="ring"></div>
-                <div class="ring"></div>
-                <div class="ring"></div>
-                <div class="ring"></div>
+    <main>
+        <input type="number" placeholder="Enter amount of UZS">
+        <div class="result"></div>
+        <div class="spinner">
+            <div class="hollow-dots-spinner">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
             </div>
-        </b>
-        <div class="content">
-            <p class="main-part"></p>
-            <p class="secondary-part"></p>
         </div>
-    </div>
+        <button>Get exchange rate</button>
+    </main>
+
 
     <script>
+        const API_KEY = "6933ceb4ed44039fd34f0090"
+        const URL = `https://v6.exchangerate-api.com/v6/${API_KEY}/latest/USD`
         const button = document.querySelector('button')
-        const mainPart = document.querySelector('.main-part')
-        const secondaryPart = document.querySelector('.secondary-part')
+        const input = document.querySelector('input')
+        const result = document.querySelector('.result')
         const spinner = document.querySelector('.spinner')
-        const content = document.querySelector('.content')
 
-        button.addEventListener('click', getJoke)
+        button.addEventListener('click', getRates)
 
+        function getRates(e) {
+            if (input.value == '') {
+                alert("Please enter amount of UZS")
+                return
+            }
 
-        async function getJoke(e) {
-            const URL = 'https://official-joke-api.appspot.com/jokes/random'
-            content.style.display = 'none'
+            result.style.display = 'none'
             spinner.style.display = 'flex'
 
-            const response = await fetch(URL)
-            const joke = await response.json()
-            mainPart.textContent = joke.setup
-            secondaryPart.textContent = joke.punchline
-            content.style.display = 'block'
-            spinner.style.display = 'none'
-            // fetch(URL)
-            //     .then(res => res.json())
-            //     .then(joke => {
-            //         mainPart.textContent = joke.setup
-            //         secondaryPart.textContent = joke.punchline
-            //         content.style.display = 'block'
-            //         spinner.style.display = 'none'
-            //     })
+            fetch(URL)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    const uzs_rate = data.conversion_rates.UZS
+
+                    const summ = input.value / uzs_rate
+                    setTimeout(() => {
+                        result.innerHTML = `
+                            <h4>
+                               $${summ.toFixed(2)}
+                            </h4>
+                        `
+                        result.style.display = 'block'
+                        spinner.style.display = 'none'
+                    }, 1000)
+                })
         }
 
     </script>
+
 </body>
 <style>
     * {
@@ -68,60 +76,115 @@
         transition: 0.5s;
     }
 
-    .container {
-        width: 50%;
-        margin: 0 auto;
-        background-color: #eee;
-        padding: 20px;
-        border-radius: 10px;
+    body {
+        display: flex;
+        width: 100%;
+        height: 100vh;
+        background-color: #333;
+        color: snow;
+        justify-content: center;
+        align-items: center;
     }
 
-    .main-part {
+    main {
+        width: 50%;
+        background-color: black;
+        color: snow;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    input,
+    button {
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        background-color: lightgray;
+        cursor: pointer;
         margin-bottom: 10px;
     }
 
-    .secondary-part {
-        text-align: right;
-        color: green;
-        font-style: italic;
-    }
-
-    button {
-        display: block;
-        width: 50%;
-        margin: 0 auto;
-        border-radius: 10px;
-        border: none;
-        padding: 10px;
-        background-color: darkgreen;
-        color: snow;
-        cursor: pointer;
+    input:focus {
+        background-color: snow;
     }
 
     button:hover {
         background-color: green;
+        color: snow;
     }
 
-    button:active {
-        transform: scale(0.7);
+    .spinner,
+    .result {
+        padding: 20px;
+        background-color: #222;
+        border-radius: 10px;
+        text-align: center;
+        margin-bottom: 10px;
+        display: none;
     }
 
     .spinner {
-        font-size: 12px;
-        text-align: center;
-        position: fixed;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100vh;
-        background-color: rgb(0,0,0, 0.5);
         display: none;
         justify-content: center;
         align-items: center;
     }
 
-    .content {
-        display: none;
+    .hollow-dots-spinner {
+        position: relative;
+        left: 20px;
+    }
+
+
+    /* ==================================================== */
+    /* ==================================================== */
+    /* ====================== SPINNER ===================== */
+    /* ==================================================== */
+    /* ==================================================== */
+    .hollow-dots-spinner,
+    .hollow-dots-spinner * {
+        box-sizing: border-box;
+    }
+
+    .hollow-dots-spinner {
+        height: 8px;
+        width: calc(30px * 3);
+    }
+
+    .hollow-dots-spinner .dot {
+        width: 8px;
+        height: 8px;
+        margin: 0 calc(8px / 2);
+        border: calc(8px / 5) solid greenyellow;
+        border-radius: 50%;
+        float: left;
+        transform: scale(0);
+        animation: hollow-dots-spinner-animation 1000ms ease infinite 0ms;
+    }
+
+    .hollow-dots-spinner .dot:nth-child(1) {
+        animation-delay: calc(300ms * 1);
+    }
+
+    .hollow-dots-spinner .dot:nth-child(2) {
+        animation-delay: calc(300ms * 2);
+    }
+
+    .hollow-dots-spinner .dot:nth-child(3) {
+        animation-delay: calc(300ms * 3);
+    }
+
+    @keyframes hollow-dots-spinner-animation {
+        50% {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+        }
     }
 </style>
 

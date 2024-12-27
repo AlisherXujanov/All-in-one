@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <main id="app">
+        <div class="tab-buttons">
+            <button v-for="color in Object.keys(colors)" :name="color" @click="activteTab">
+                {{ color[0].toUpperCase() + color.slice(1) }}
+            </button>
+            <!-- <button @click="activteTab" name="green">Green</button>
+            <button @click="activteTab" name="red">Red</button>
+            <button @click="activteTab" name="blue">Blue</button>
+            <button @click="activteTab" name="orange">Orange</button> -->
+        </div>
+        <div class="tab-content">
+            <div v-for="color in Object.keys(colors)">
+                <div v-if="colors[color] == true">
+                    <h1>{{ color[0].toUpperCase() + color.slice(1) }}</h1>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor commodi, nobis sunt tempore rem
+                        natus id vitae. Incidunt consectetur asperiores porro possimus quas ea fugit dolorum molestiae
+                        expedita! Iure, excepturi!</p>
+                </div>
+            </div>
+            <!-- <div class="green" v-if="colors.green == true">
+                <h1>Green</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum iure eos hic, dicta quasi soluta
+                    sint nesciunt, laudantium nisi eveniet esse. Necessitatibus suscipit culpa voluptatum dolores ipsum!
+                    Dolor, dignissimos eveniet.</p>
+            </div>
+            <div class="red" v-if="colors.red == true">
+                <h1>Red</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum iure eos hic, dicta quasi soluta
+                    sint nesciunt, laudantium nisi eveniet esse. Necessitatibus suscipit culpa voluptatum dolores ipsum!
+                    Dolor, dignissimos eveniet.</p>
+            </div>
+            <div class="blue" v-if="colors.blue == true">
+                <h1>Blue</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum iure eos hic, dicta quasi soluta
+                    sint nesciunt, laudantium nisi eveniet esse. Necessitatibus suscipit culpa voluptatum dolores ipsum!
+                    Dolor, dignissimos eveniet.</p>
+            </div>
+            <div class="orange" v-if="colors.orange == true">
+                <h1>Orange</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum iure eos hic, dicta quasi soluta
+                    sint nesciunt, laudantium nisi eveniet esse. Necessitatibus suscipit culpa voluptatum dolores ipsum!
+                    Dolor, dignissimos eveniet.</p>
+            </div> -->
+        </div>
+    </main>
+
+    <script>
+        const { createApp, reactive } = Vue
+
+        createApp({
+            setup() {
+                const colors = reactive({
+                    green: false,
+                    red: true,
+                    blue: false,
+                    orange: false
+                })
+
+                function activteTab(e) {
+                    let targetColor = e.target.name
+                    for (let color in colors) {
+                        colors[color] = false
+                    }
+                    colors[targetColor] = true
+                }
+
+
+                return {
+                    colors,
+                    activteTab
+                }
+            }
+        }).mount('#app')
+
+
+        // Object.keys({...})   =>   get only keys from object
+
+    </script>
+
+</body>
+<style>
+    #app {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        margin: 0 auto;
+        padding: 10px;
+        background-color: lightgray;
+        border-radius: 10px;
+    }
+</style>
+
+</html>
