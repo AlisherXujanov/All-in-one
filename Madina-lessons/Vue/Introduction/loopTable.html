@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+
+    <main id="app">
+
+        <table border="1" bordercolor="blue">
+            <tr v-for="(_, rowIdx) in range(tableRows)">
+                <td v-for="(_, colIdx) in range(tableCols)">
+                    <p>
+                        {{ inputs[rowIdx*5 + colIdx] }}
+                    </p>
+                    <input 
+                        type="text" 
+                        placeholder="Write a text"
+                        v-model="inputs[rowIdx*5 + colIdx]"
+                    >
+                </td>
+            </tr>
+        </table>
+
+    </main>
+
+    <script>
+        const { createApp, reactive, ref } = Vue
+
+        createApp({
+            setup() {
+                const tableRows = ref(5)
+                const tableCols = ref(5)
+
+                function range(num) {
+                    return '-'.repeat(num)
+                }
+
+                let result = []
+                for (let i = 0; i < tableRows * tableCols; i++) {
+                    result.push('')
+                }
+                const inputs = reactive(result)
+
+                return {
+                    tableCols,
+                    tableRows,
+                    range,
+                    inputs
+                }
+            }
+        }).mount('#app')
+    </script>
+
+</body>
+<style>
+    table {
+        background-color: #333;
+        color: snow;
+        border-radius: 10px;
+        padding: 10px;
+    }
+
+    td {
+        padding: 10px 20px;
+        font-style: italic;
+        font-family: cursive;
+        text-align: center;
+        font-size: 12px;
+    }
+
+    input {
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        background-color: darkgray;
+        width: 100px;
+    }
+
+    input:focus {
+        background-color: white;
+    }
+</style>
+
+</html>
