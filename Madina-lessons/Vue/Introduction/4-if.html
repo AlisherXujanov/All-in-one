@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+
+    <main id="app">
+        <!-- <div class="content" 
+            :style="{
+                backgroundColor: theme == 'light' ? '#eee' : '#333',
+                color:           theme == 'light' ? '#333' : '#eee'
+            }"
+        > -->
+
+        <button @click="toggleShowButton">Show button:  {{showButton}}</button>
+
+        <div v-if="theme == 'light'" class="light">
+            <button v-if="showButton"  @click="toggleTheme">Toggle ☀️</button>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis ipsum eaque pariatur explicabo
+                cupiditate et recusandae labore non consequuntur natus sapiente, perspiciatis id inventore ratione
+                quibusdam, tenetur consequatur dignissimos a tempore similique incidunt cum nisi repellendus. Harum
+                numquam id maxime sed velit consectetur quos quia? Laborum odio ex, quo magni unde aut magnam ab! Vel
+                atque explicabo placeat saepe repudiandae voluptatum incidunt expedita, at velit modi alias iusto
+                possimus magni quibusdam vitae laudantium omnis nihil sapiente obcaecati error quas dolores corrupti ex
+                temporibus. Est quae, corporis voluptatum suscipit distinctio tempore excepturi similique blanditiis ab
+                quas quia recusandae non vitae veritatis.</p>
+        </div>
+        <div v-else class="dark">
+            <button v-if="showButton" @click="toggleTheme">Toggle 🌙</button>
+            <p>Далеко-далеко за, словесными горами в стране гласных и согласных живут рыбные тексты. Злых собрал
+                использовало безорфографичный но толку, рукописи снова ее всемогущая силуэт не речью они вопроса, жизни
+                пор образ о, рот всеми подзаголовок маленькая от всех дороге своего взгляд? Свое точках если рукописи
+                переписали не реторический подпоясал, заглавных продолжил дорогу, жаренные, единственное ты коварных
+                меня взгляд она одна правилами даже власти он сих вскоре? Реторический вскоре языкового инициал речью
+                что рот пор. Рекламных текста назад инициал? Вдали даль диких заманивший ведущими единственное запятых
+                но домах назад взобравшись коварный, продолжил вскоре силуэт ipsum парадигматическая рукопись моей имени
+                напоивший путь запятой деревни вопрос безорфографичный!</p>
+        </div>
+    </main>
+
+    <script>
+        const { createApp, ref, reactive } = Vue
+
+        createApp({
+            setup() {
+                const showButton = ref(true)
+                const theme = ref("dark")
+
+                function toggleTheme() {
+                    // if (theme.value == 'light') {
+                    //     theme.value = 'dark'
+                    // } else {
+                    //     theme.value = 'light'
+                    // }
+                    theme.value = theme.value == 'light' ? 'dark' : 'light'
+                }
+                function toggleShowButton() {
+                    showButton.value = !showButton.value
+                }
+
+                return {
+                    theme,
+                    toggleTheme,
+                    showButton,
+                    toggleShowButton
+                }
+            }
+
+        }).mount('#app')
+    </script>
+</body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition: 0.5s;
+    }
+
+    main .content {
+        width: 100%;
+        height: 100vh;
+        padding: 50px;
+    }
+
+    .light {
+        background-color: #eee;
+        color: #333;
+    }
+    .dark {
+        background-color: #333;
+        color: #eee;
+    }
+</style>
+
+</html>

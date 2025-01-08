@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+</head>
+
+<body>
+    <!-- JSON   ->  JavaScript Object Notation -->
+
+    <main>
+        <form class="login-form">
+            <h2>Login</h2>
+            <div class="form-control">
+                <label for="login-name">Username</label>
+                <input id="login-name" type="text" placeholder="Username">
+            </div>
+            <div class="form-control">
+                <button>Submit</button>
+            </div>
+        </form>
+        <form class="registration-form">
+            <h2>Registration</h2>
+            <div class="form-control">
+                <label for="reg-name">Username</label>
+                <input id="reg-name" type="text" placeholder="Username">
+            </div>
+            <div class="form-control">
+                <button>Submit</button>
+            </div>
+        </form>
+
+    </main>
+
+    <script>
+        const loginForm = document.querySelector(".login-form")
+        const regForm = document.querySelector(".registration-form")
+
+        const loginNameInp = loginForm.querySelector("#login-name")
+        const loginBtn = loginForm.querySelector("button")
+
+        const regNameInp = regForm.querySelector("#reg-name")
+        const regBtn = regForm.querySelector("button")
+
+        const URL = "http://localhost:3000/users"
+
+        regBtn.addEventListener('click', registerUser)
+        loginBtn.addEventListener('click', loginUser)
+
+        // async  =>   ascynchronous   =>  асинхронный
+        // await  =>   wait            =>  ждать
+
+        async function registerUser(e) {
+            e.preventDefault()
+            let users = await getAllUsersFromDb()
+            let names_of_users = users.map(user => user.name)
+
+            if (names_of_users.includes(regNameInp.value)) {
+                showAlert("User already exists", 'error')
+                return
+            }
+
+            let response = await fetch(URL, {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name: regNameInp.value })
+            })
+            const data = await response.json()
+            console.log(data)
+        }
+
+        async function loginUser(e) {
+            e.preventDefault()
+            let users = await getAllUsersFromDb()
+            let names_of_users = users.map(user => user.name)
+
+            if (names_of_users.includes(loginNameInp.value)) {
+                showAlert("Successfully logged in")
+            } else {
+                showAlert("Ooops... user does not exist!", 'error')
+            }
+        }
+
+        async function getAllUsersFromDb() {
+            let response = await fetch(URL)
+            let data = await response.json()
+            return data
+        }
+
+        function showAlert(msg, type = 'success') {
+            let color = "linear-gradient(to right, #00b09b, #96c93d)"
+
+            if (type != 'success' && type == 'error') {
+                color = "linear-gradient(to right, #ff416c, #ff4b2b)"
+            }
+            Toastify({
+                text: msg,
+                duration: 3000,
+                newWindow: true,
+                close: true,
+                gravity: "top", // `top` or `bottom`
+                position: "center", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                style: { background: color },
+            }).showToast();
+        }
+    </script>
+</body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition: 0.5s;
+    }
+
+    .form-control {
+        margin-bottom: 10px;
+    }
+
+    main {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 200px;
+        padding: 0 100px;
+    }
+
+    input,
+    button {
+        width: 100%;
+        display: block;
+        padding: 10px 20px;
+        outline: none;
+        border: none;
+        background-color: lightgray;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    input:focus {
+        border: green 1px solid;
+    }
+</style>
+
+</html>
