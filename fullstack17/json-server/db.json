@@ -8,12 +8,10 @@
       "role": "admin"
     },
     {
-      "id": "929e",
-      "name": "Aziz"
-    },
-    {
-      "id": "5df9",
-      "name": "Onur"
+      "id": "d952",
+      "name": "Aziz",
+      "email": "aziz@test.com",
+      "password": "1234"
     }
   ]
 }

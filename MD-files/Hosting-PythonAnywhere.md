@@ -1,9 +1,21 @@
 # Table of Contents
 - [Table of Contents](#table-of-contents)
 - [Deploying a Django project on PythonAnywhere](#deploying-a-django-project-on-pythonanywhere)
+      - [1. Create an account on PythonAnywhere:](#1-create-an-account-on-pythonanywhere)
+      - [2. Upload your code:](#2-upload-your-code)
+      - [3. Set up a virtual environment:](#3-set-up-a-virtual-environment)
+      - [4. Configure the WSGI file:](#4-configure-the-wsgi-file)
+      - [5. Set up the database:](#5-set-up-the-database)
+      - [6. Start the web app:](#6-start-the-web-app)
 - [Configure WSGI File](#configure-wsgi-file)
+  - [Your Django app should now be live on PythonAnywhere.](#your-django-app-should-now-be-live-on-pythonanywhere)
 - [Collect Static Files](#collect-static-files)
-- [Configure Virtual Environment](#configure-virtual-environment)
+      - [4. Reload your web app:](#4-reload-your-web-app)
+- [Security](#security)
+    - [Important links](#important-links)
+    - [First commands when deploying a Django project](#first-commands-when-deploying-a-django-project)
+- [Restrict Admin access](#restrict-admin-access)
+    - [Restrict Access by IP Address](#restrict-access-by-ip-address)
 
 # Deploying a Django project on PythonAnywhere
 To host your Django project on PythonAnywhere for free, you can follow these steps:
@@ -113,12 +125,10 @@ To configure static files for your Django project on PythonAnywhere, follow thes
 
 #### 4. Reload your web app: 
 After saving your changes, click on the "Reload" button at the top of the "Web" tab to apply your changes.
-- RU: После сохранения изменений нажмите кнопку "Reload" в верхней части вкладки "Web", чтобы применить изменения.
 
 ---
 
 Now, PythonAnywhere will serve your static files at the URL you specified.
-- RU: Теперь PythonAnywhere будет обслуживать ваши статические файлы по указанному вами URL-адресу.
 
 
 ---

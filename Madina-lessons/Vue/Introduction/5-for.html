@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+
+
+    <main id="app">
+        <input type="text" v-model="text">
+        <button @click="createTodo">Create</button>
+
+        <div class="container">
+            <ul>
+                <li v-for="todo in todos">
+                    {{ todo }}
+                </li>
+            </ul>
+        </div>
+    </main>
+
+    <script>
+        const { createApp, ref, reactive } = Vue
+
+        createApp({
+            setup() {
+                const todos = ref([  // todos={ value: [...] }
+                    "This is first todo",
+                    "This is second todo",
+                ])
+                const text = ref("") // text={ value: "" }
+
+                function createTodo(e) {
+                    // [].push(...)  - adds to the end of the array
+                    if (text.value.length == 0) {
+                        alert("Please enter a todo")
+                        return
+                    }
+                    todos.value.push(text.value)
+                    text.value = ""
+                }
+                return { todos, text, createTodo }
+            }
+        }).mount('#app')
+
+    </script>
+</body>
+
+</html>

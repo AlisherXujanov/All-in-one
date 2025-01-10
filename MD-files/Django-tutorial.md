@@ -14,12 +14,38 @@
 14. [PostgreSQL](#postgresql)
 
 
-# Introduction
-# (first lesson)
-    > pipenv  init  	      &&   pipenv  shell
-    > python -m venv my_env	  &&   my_env/Scripts/activate.bat
+# Introduction (poetry installation)
+```sh
+mkdir my_project
+cd my_project
+# - Initialize a new Poetry project:
+     
+poetry init
+# - Follow the prompts to set up your project.
+
+#  - To add a dependency, use the following command:
+     
+poetry add <package_name>
+# - For example, to add `requests`:
+# poetry add requests
+     
+
+# To delete a dependency
+poetry remove <package_name>
+
+# **Install dependencies** 
+- To install all dependencies listed in the `pyproject.toml` file, run:
+     
+poetry install
+
+### **Activate the virtual environment**:
+# - Poetry automatically creates a virtual environment for your project. To activate it, run:
+     
+poetry shell
+```
+
 #### Django installation   
-    > python -m pip install Django
+    > poetry add Django
     - django-admin --version
 #### Create Django project   
     > django-admin startproject first_project
@@ -28,13 +54,10 @@
     > python manage.py startapp first_app
 #### Views       **(basics)
 >- Views are the logic behind the application’s code. They are responsible for processing the request from the user, interacting with the models (db), and returning the data to the user.
->- RU: Views - это логика кода приложения. Они отвечают за обработку запроса от пользователя, взаимодействие с моделями (бд) и возврат данных пользователю. 
 #### Urls        **(basics)
 >- Urls are the paths that the user can take in the application. They are responsible for mapping the views to a specific path.
->- RU: Urls - это пути, которые пользователь может пройти в приложении. Они отвечают за сопоставление представлений с определенным путем.
 #### Templates   **(basics)
 >- Templates are the HTML files that are rendered by the views. They are responsible for the user interface of the application.
->- RU: Шаблоны - это HTML-файлы, которые отображаются представлениями. Они отвечают за пользовательский интерфейс приложения.
 
 
 ---
@@ -78,7 +101,6 @@
 
 #### Create and Get Objects inside views.py
 - We can do this by importing the models from the first_app folder.
-- RU: Мы можем сделать это, импортировав модели из папки first_app.
 ```python
 from django.shortcuts import render
 from first_app.models import *
@@ -303,13 +325,9 @@ https://jinja.palletsprojects.com/en/3.1.x/templates/#builtin-filters
 
 ### base.html
 >- We need the base.html for the following reasons:
->> RU: Нам нужен base.html по следующим причинам:
 >-  To avoid repeating the same code in every page
->> RU: Чтобы избежать повторения одного и того же кода на каждой странице
 >-  To have a consistent look and feel across the website
->> RU: Чтобы иметь единый внешний вид и ощущение на всем сайте
 >-  To make it easier to make changes to the website
->> RU: Чтобы было легче вносить изменения на сайт
 
 ```html
 <!-- base.html -->
@@ -357,9 +375,7 @@ https://jinja.palletsprojects.com/en/3.1.x/templates/#builtin-filters
 
 ### Include .html files in other html
 > 1. Create a file with the html code that you want to include
->> RU: Создайте файл с html-кодом, который вы хотите включить
 > 2. In the file that you want to include the html code, add the following code:
->> RU: В файле, в котором вы хотите включить html-код, добавьте следующий код
 ```
         {% include 'file_name.html' %}
 ```
@@ -390,7 +406,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 # Routing (intermediate)  &&  Details  &&  CRUD operations
 ### Bootstrap
 1. Install bootstrap
-```pip install django-bootstrap5```
+```poetry add django-bootstrap5```
 2. Add bootstrap to INSTALLED_APPS in settings.py
 ```python
 INSTALLED_APPS = [
@@ -579,7 +595,6 @@ from myapp.models import Book
 all_books = Book.objects.all()
 
 # Get only books that are currently in stock
-# RU: Получить только книги, которые в настоящее время есть в наличии
 in_stock_books = Book.in_stock_objects.all()
 ```
 
@@ -756,7 +771,7 @@ class UserForm(forms.Form):
 
 #### Uploading Images
 First we need to install Pillow
-```pip install Pillow```
+```poetry add Pillow```
 
 Then we need to add the following code to settings.py
 ```python
@@ -901,13 +916,8 @@ class UserForm(forms.Form):
 
 
 
-
-
-
-
-
 #### TinyMCE
-`pip3 install django-tinymce4-lite`
+`poetry add django-tinymce4-lite`
 
 
 Next is open your setting.py and add ‘tinymce’ on your INSTALLED_APPS.
@@ -1468,7 +1478,7 @@ def my_view(request):
 <br>
 
 # 📚Django-allauth 
-```pip install django-allauth```
+```poetry add django-allauth```
 <br>
 <br>
 
@@ -1714,7 +1724,7 @@ This is a type of attack where a malicious user tricks a user into submitting a 
 #### BeautifulSoup
 To install BeautifulSoup, run the following command:
 ```bash
-pip install beautifulsoup4
+poetry add beautifulsoup4
 ```
 
 ```python
@@ -1771,7 +1781,7 @@ for key, value in os.environ.items():
 
 
 #### Django debug toolbar
-```pip install django-debug-toolbar```
+```poetry add django-debug-toolbar```
 ```python
 # settings.py
 INSTALLED_APPS = [
@@ -1942,7 +1952,7 @@ Then we can use this code in our templates
 First of all, we need to install PostgreSQL on our computer.
 And then we need to install psycopg2-binary to let django
 communicate with PostgreSQL
-`pip install psycopg2-binary`
+`poetry add psycopg2-binary`
 
 
 #### Create AWS account
@@ -1974,11 +1984,8 @@ DATABASES = {
 
 #### Unit Tests
 To run unittests we can use local buily-in unittest library
-RU: Чтобы запустить unittests, мы можем использовать встроенную в локальную библиотеку unittest
 
 Firstly, we install selenium and we can initialize it with the help of 
-unittest.TestCase
-RU: Во-первых, мы устанавливаем selenium, и мы можем инициализировать его с помощью
 unittest.TestCase
 
 ```python
@@ -2007,8 +2014,6 @@ class Test...(TestCase):
 #### Debugging
 We can also use VSCode debugging tools to debug our code
 So, we can just pass args to test instead of running the server
-RU: Мы также можем использовать инструменты отладки VSCode для отладки нашего кода
-Поэтому мы можем просто передавать аргументы в тест вместо запуска сервера
 
 ```python
   {
@@ -2026,5 +2031,3 @@ RU: Мы также можем использовать инструменты �
 
 Afterwards, we can use breakpoints to stop anywhere 
 and see what is going on in our code if there is smth happened
-RU: После этого мы можем использовать точки останова, чтобы остановиться где угодно
-и посмотреть, что происходит в нашем коде, если что-то произошло

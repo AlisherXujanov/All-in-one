@@ -11,11 +11,9 @@
 
 ### What is an API?
 - API stands for Application Programming Interface. It is a set of rules that allow programs to talk to each other. The developer creates the API on the server and allows the client to talk to it.
-- RU: API - это набор правил, которые позволяют программам общаться друг с другом. Разработчик создает API на сервере и позволяет клиенту общаться с ним.
 
 ### What is HTTP
 - HTTP stands for Hypertext Transfer Protocol. It's a stateless, application-layer protocol for communicating between distributed systems, and is the foundation of the modern web.
-- RU: HTTP - это протокол передачи гипертекста. Это безсостоятельный протокол прикладного уровня для обмена данными между распределенными системами и является основой современной веб-технологии.
 
 
 ### `TOPIC AGENDA`  
@@ -130,7 +128,6 @@ class BookView(APIView):
 
 ### ViewSets
 - ViewSets are simple class-based views, but they come with benefits. There are a few ViewSets classes available in DRF that you can use to quickly scaffold a functioning API CRUD project. You can also provide permission classes and throttle classes to allow authenticated API calls and rate limiting.
-- RU: ViewSets - это простые представления на основе классов, но они имеют свои преимущества. В DRF доступно несколько классов ViewSets, которые вы можете использовать для быстрого создания функционирующего проекта API CRUD. Вы также можете предоставить классы разрешений и классы ограничения пропускной способности, чтобы разрешить аутентифицированные вызовы API и ограничение скорости.
 
 Here are some of them that are mostly used:
 1. **ViewSet** - does not provide any actions by default, and does not include the base set of generic view behavior.
@@ -176,7 +173,6 @@ class MyReadOnlyModelViewSet(viewsets.ReadOnlyModelViewSet):
 
 ### Generic views 
 - Generic views are another way of quickly writing class-based views to scaffold fully functional CRUD API projects. There are several generic views that offer a particular functionality, like displaying resources or creating a new resource and so on. All you must do is extend these generic views to make your API endpoints work.
-- RU: Обобщенные представления - это еще один способ быстрого написания представлений на основе классов для создания полностью функциональных проектов API CRUD. Существует несколько обобщенных представлений, которые предлагают определенную функциональность, например, отображение ресурсов или создание нового ресурса и т. Д. Все, что вам нужно сделать, это расширить эти обобщенные представления, чтобы ваши конечные точки API работали.
 
 - CreateAPIView           - `POST` - Used for creating objects.
 - ListAPIView             - `GET`  - Used for listing objects.
@@ -263,7 +259,6 @@ path('api/.../', ...APIView.as_view(), name='...'),
 
 ### Serializer
 - In easy words, serializers are used to convert complex data, such as querysets and model instances, to native Python datatypes that can then be easily rendered into JSON, XML, or other content types. Serializers also provide deserialization, allowing parsed data to be converted back into complex types, after first validating the incoming data.
-- RU: В простых словах сериализаторы используются для преобразования сложных данных, таких как наборы запросов и экземпляры моделей, в собственные типы данных Python, которые затем можно легко преобразовать в JSON, XML или другие типы контента. Сериализаторы также обеспечивают десериализацию, позволяя преобразовывать разобранные данные обратно в сложные типы после первичной проверки входных данных.
 
 
 ```python
@@ -290,7 +285,6 @@ class BookSerializer(serializers.Serializer):
 
 ### ModelSerializer
 - ModelSerializer is a shortcut to create a serializer class with fields that correspond to the Model fields. It will create a set of default fields for you, based on the model.
-- RU: ModelSerializer - это сокращение для создания класса сериализатора с полями, соответствующими полям модели. Он создаст для вас набор полей по умолчанию на основе модели.
 
 ```python
 
@@ -328,7 +322,6 @@ class BookSerializer(serializers.ModelSerializer):
 
 ### Relationship serializer
 - Let's say we have another model for 'genre' field of Books model.
-- RU: Допустим, у нас есть другая модель для поля «жанр» модели Books.
 ```python
 # models.py
 class Genre(models.Model):
@@ -351,7 +344,6 @@ class Books(models.Model):
 ```
 
 - So, we need to create a serializer for it and then use it in BooksSerializer
-- RU: Итак, нам нужно создать для него сериализатор, а затем использовать его в BooksSerializer
 
 ```python
 # serializers.py
@@ -371,7 +363,6 @@ class BooksSerializer(serializers.ModelSerializer):
 Then, we need to create a view for it.
 ```python
 # NOTE: There is a convention you must follow when you create this view name. The rule is that you have to add -detail after the related field name, which is category in the MenuItemSerializer. This is why the view name was category-detail in this code. If the related field name was user, the view name would be user-detail. 
-# RU: Существует соглашение, которого вы должны придерживаться при создании этого имени представления. Правило таково, что вы должны добавить -detail после имени связанного поля, которое является категорией в MenuItemSerializer. Вот почему имя представления было category-detail в этом коде. Если бы имя связанного поля было пользователь, имя представления было бы user-detail.
 
 from .models import Genre 
 from .serializers import GenreSerializer
@@ -394,19 +385,14 @@ urlpatterns = [
 
 ### General information
 - Authentication is the process of verifying the credentials of a user. Logging into websites with a username and password is a typical example of authentication. When the username and password match, the website recognizes the user and sets some cookies in the user’s browser. When the user visits another page on that website, the browser sends those cookies within the HTTP request header. The website recognizes the cookies as well as server-side session data and therefore doesn’t ask for credentials until the user logs out again.  
-- RU: Аутентификация - это процесс проверки учетных данных пользователя. Вход на веб-сайты с именем пользователя и паролем - типичный пример аутентификации. Когда имя пользователя и пароль совпадают, веб-сайт распознает пользователя и устанавливает некоторые файлы cookie в браузере пользователя. Когда пользователь посещает другую страницу на этом веб-сайте, браузер отправляет эти файлы cookie в заголовке HTTP-запроса. Веб-сайт распознает файлы cookie, а также данные сеанса на стороне сервера и поэтому не запрашивает учетные данные до тех пор, пока пользователь снова не выйдет из системы.
 - So, how does this work? Token-based authentication usually involves two steps in the API Architecture. First, the client identifies itself with a username and password. Then the API server gives it a bearer token. From there, the client includes the bearer token with every API call that it places. The API server verifies it and then allows the client to perform the action or not. This is where authorization comes in
-- RU: Итак, как это работает? Аутентификация на основе токенов обычно включает два шага в архитектуре API. Сначала клиент идентифицирует себя с именем пользователя и паролем. Затем сервер API дает ему маркер-носитель. Оттуда клиент включает маркер-носитель в каждый вызов API, который он размещает. Сервер API проверяет его, а затем разрешает клиенту выполнять действие или нет. Вот тут и вступает авторизация.
 
 
 - If the credentials are not valid, the client will receive a **`401 - Unauthorized`** HTTP status code.
-- RU: Если учетные данные недействительны, клиент получит код состояния HTTP **`401 - Unauthorized`**.
 
 - This is like coming to the office on the first day, submitting all your papers and documents, and then receiving your employee card. After that, only your employee card will be sufficient to get inside. Authentication works just like that!
-- RU: Это похоже на то, как вы приходите в офис в первый день, сдаете все свои бумаги и документы, а затем получаете свою служебную карту. После этого только ваша служебная карта будет достаточна, чтобы попасть внутрь. Аутентификация работает так же!
   
 - The two steps in the API authentication process can be represented by the following two diagrams.
-- RU: Два шага в процессе аутентификации API можно представить следующими двумя диаграммами.
 
 ```markdown
 1. Authentication      2. Authorization
@@ -448,7 +434,6 @@ if DEBUG:
 
 - For allowing token authentication, we need to create a token for each user. 
 There, we would need obtain_auth_token
-- RU: Для разрешения аутентификации токенов нам нужно создать токен для каждого пользователя.
   Там нам понадобится obtain_auth_token
 
 ```python
@@ -462,7 +447,6 @@ urlpatterns = [
 ```
 
 - Then, we need to create a view for it.
-- RU: Затем нам нужно создать для этого представления.
 
 ```python
 # views.py
@@ -487,9 +471,6 @@ def login(request):
 Authorization is the process of determining whether a user has access to a resource.
 For example, if the user can delete or update something or not.
 We can do this by adding certain user to a group and then check if the user is in that group or not. So, by doing this we authorize the user to do certain actions.
-- RU: Авторизация - это процесс определения, имеет ли пользователь доступ к ресурсу.
-  Например, может ли пользователь что-то удалить или обновить или нет.
-  Мы можем сделать это, добавив определенного пользователя в группу, а затем проверив, находится ли пользователь в этой группе или нет. Таким образом, мы авторизуем пользователя на выполнение определенных действий.
 
 ```python
 # views.py
@@ -506,10 +487,6 @@ def is_admin(request):
 For example, we can allow only 5 requests per minute.
 We need this to prevent the server from overloading.
 Sometimes, a user can try to break in by trying to guess the password. So, we can prevent this by adding throttling. This way, that user will be able to make only 5 requests per minute.
-- RU: Throttling означает, что мы можем отложить запрос на определенное время.
-  Например, мы можем разрешить только 5 запросов в минуту.
-  Нам нужно это, чтобы предотвратить перегрузку сервера.
-  Иногда пользователь может попытаться взломать, пытаясь угадать пароль. Таким образом, мы можем предотвратить это, добавив ограничение. Таким образом, этот пользователь сможет делать только 5 запросов в минуту.
 
 ```python
 # settings.py
@@ -560,16 +537,14 @@ DEFAULT_THROTTLE_RATES = {
 
 ### Djoser
 - Djoser is a REST implementation of Django authentication system. It provides a set of endpoints for authentication, registration, password reset, etc.
-- RU: Djoser - это реализация REST системы аутентификации Django. Он предоставляет набор конечных точек для аутентификации, регистрации, сброса пароля и т. Д.
 
-`pipenv || pip   install djoser`
+`poetry add djoser`
 
 ```python
 INSTALLED_APPS = [
     ...
     'rest_framework',
     'djoser', # It is vital to add it after rest_framework
-    # RU: Важно добавить его после rest_framework
     ...
 ]
 
@@ -605,9 +580,8 @@ urlpatterns = [
 # JWT
 ### JWT Authentication
 - JSON Web Token (JWT) is  a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed. (Digitally signed means that it is signed using a secret key that only the server knows.)
-- RU: JSON Web Token (JWT) - это компактный и автономный способ безопасной передачи информации между сторонами в виде объекта JSON. Эту информацию можно проверить и доверять, потому что она цифровая подпись. (Цифровая подпись означает, что она подписана с использованием секретного ключа, который знает только сервер.)
 
-`pipenv || pip   install djangorestframework_simplejwt`
+`poetry add djangorestframework_simplejwt`
 
 [JWT-documentation](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/settings.html?highlight=settings)
 
@@ -653,7 +627,6 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LIFETIME': timedelta(days=REFRESH_TOKEN_LIFETIME_SIX_WEEKS),
     'ROTATE_REFRESH_TOKENS': True, # If True, refresh tokens will be rotated
     # That means that after each request we will get a new refresh token
-    # RU: Если True, токены обновления будут поворачиваться
     # Это означает, что после каждого запроса мы получим новый токен обновления
     'AUTH_HEADER_TYPES': ('Bearer',),
     # In the client we need to send the token in the header like this:
@@ -663,8 +636,6 @@ SIMPLE_JWT = {
 `NOTE`
 - access token expires and is not valid after settings.SIMPLE_JWT['ACCESS_TOKEN_LIFETIME']
 But, this does NOT mean that client has to login again. Client can use refresh token to get a new access token. 
-- RU: токен доступа истекает и не действителен после settings.SIMPLE_JWT['ACCESS_TOKEN_LIFETIME']
-  Но это НЕ означает, что клиенту нужно снова войти в систему. Клиент может использовать токен обновления, чтобы получить новый токен доступа.  
 
 ---
 ---
@@ -861,14 +832,10 @@ when we visit it again it loads faster because it is cached.
 @method_decorator(cache_page(LONG_CACHING_TIME)) 
 # cache_page => This means that we cache the page for a certain amount of time
 # By default, it caches the page for 15 minutes
-# RU: Это означает, что мы кэшируем страницу на определенное время
-# По умолчанию он кэширует страницу на 15 минут
 
 @method_decorator(vary_on_headers("Authorization",))
 # vary_on_headers => We need this because we want to cache the page for each user separately
 # By default, it caches the page for all users together
-# RU: Нам это нужно, потому что мы хотим кэшировать страницу для каждого пользователя отдельно
-# По умолчанию он кэширует страницу для всех пользователей вместе
 ```
 
 [This is the link that we can visit for filtering](https://www.django-rest-framework.org/api-guide/caching/)

@@ -16,8 +16,12 @@
         <form class="login-form">
             <h2>Login</h2>
             <div class="form-control">
-                <label for="login-name">Username</label>
-                <input id="login-name" type="text" placeholder="Username">
+                <label for="login-email">Email</label>
+                <input id="login-email" type="email" placeholder="Email">
+            </div>
+            <div class="form-control">
+                <label for="login-pass">Password</label>
+                <input id="login-pass" type="password" placeholder="Password">
             </div>
             <div class="form-control">
                 <button>Submit</button>
@@ -30,6 +34,22 @@
                 <input id="reg-name" type="text" placeholder="Username">
             </div>
             <div class="form-control">
+                <label for="reg-email">Email</label>
+                <input id="reg-email" type="email" placeholder="Email">
+            </div>
+            <div class="form-control">
+                <label for="reg-pass">Password</label>
+                <input id="reg-pass" type="password" placeholder="Password">
+            </div>
+            <div class="form-control">
+                <label for="reg-pass-conf">Password confirmation</label>
+                <input id="reg-pass-conf" type="password" placeholder="Password confirmation">
+            </div>
+            <div class="form-control" style="text-align: left;">
+                <label for="reg-remember">Remember me:</label>
+                <input id="reg-remember" type="checkbox" placeholder="Remember me">
+            </div>
+            <div class="form-control">
                 <button>Submit</button>
             </div>
         </form>
@@ -40,10 +60,14 @@
         const loginForm = document.querySelector(".login-form")
         const regForm = document.querySelector(".registration-form")
 
-        const loginNameInp = loginForm.querySelector("#login-name")
+        const loginEmailInp = loginForm.querySelector("#login-email")
+        const loginPassInp = loginForm.querySelector("#login-pass")
         const loginBtn = loginForm.querySelector("button")
 
         const regNameInp = regForm.querySelector("#reg-name")
+        const regEmailInp = regForm.querySelector("#reg-email")
+        const regPasswordInp = regForm.querySelector("#reg-pass")
+        const regPasswordConfInp = regForm.querySelector("#reg-pass-conf")
         const regBtn = regForm.querySelector("button")
 
         const URL = "http://localhost:3000/users"
@@ -56,12 +80,31 @@
 
         async function registerUser(e) {
             e.preventDefault()
-            let users = await getAllUsersFromDb()
-            let names_of_users = users.map(user => user.name)
 
-            if (names_of_users.includes(regNameInp.value)) {
-                showAlert("User already exists", 'error')
+            if (regPasswordInp.value == "" || regPasswordConfInp.value == "" || regNameInp.value == "" || regEmailInp.value == "") {
+                showAlert("Please, fill in all fields", 'error')
                 return
+            }
+            if (regPasswordInp.value != regPasswordConfInp.value) {
+                showAlert("Passwords do not match", 'error')
+                regPasswordInp.value = ""
+                regPasswordConfInp.value = ""
+                return
+            }
+
+            let users = await getAllUsersFromDb()
+            let user_emails = users.map(user => user.email)
+
+            if (user_emails.includes(regEmailInp.value)) {
+                showAlert("Email already exists", 'error')
+                regEmailInp.value = ""
+                return
+            }
+
+            const new_user = {
+                name: regNameInp.value,
+                email: regEmailInp.value,
+                password: regPasswordInp.value
             }
 
             let response = await fetch(URL, {
@@ -69,7 +112,7 @@
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ name: regNameInp.value })
+                body: JSON.stringify(new_user)
             })
             const data = await response.json()
             console.log(data)
@@ -78,13 +121,24 @@
         async function loginUser(e) {
             e.preventDefault()
             let users = await getAllUsersFromDb()
-            let names_of_users = users.map(user => user.name)
-
-            if (names_of_users.includes(loginNameInp.value)) {
-                showAlert("Successfully logged in")
-            } else {
-                showAlert("Ooops... user does not exist!", 'error')
+            let existing_users = users.map(user => {
+                return {
+                    email: user.email,
+                    password: user.password
+                }
+            })
+            for (let user of existing_users) {
+                if (user.email == loginEmailInp.value && user.password == loginPassInp.value) {
+                    console.log("user:", user)
+                    console.log("Input email:", loginEmailInp.value)
+                    console.log("Input password:", loginPassInp.value)
+                    showAlert("Successfully logged in")
+                    loginEmailInp.value = ""
+                    loginPassInp.value = ""
+                    return
+                }
             }
+            showAlert("Incorrect credentials", 'error')
         }
 
         async function getAllUsersFromDb() {
@@ -124,6 +178,11 @@
         margin-bottom: 10px;
     }
 
+    input::selection,
+    label::selection {
+        background-color: transparent;
+    }
+
     main {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -141,6 +200,12 @@
         background-color: lightgray;
         border-radius: 10px;
         cursor: pointer;
+    }
+
+    input[type='checkbox'] {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
     }
 
     input:focus {
