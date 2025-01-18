@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <h1>Hello world</h1>
+
+    <main id="app">
+        <h2> <!-- mustache syntax  == Синтаксис усовой  === {{ data }} -->
+            {{ counter }}
+        </h2>
+        <button v-on:click="decrement">- Decrement</button>
+        <button @click="increment">+ Increment</button>
+        <hr>
+
+        <div 
+            v-bind:style="{ backgroundColor:color }" 
+            v-bind:class="darkTheme ? 'dark' : ''"
+        >
+            <p>
+                {{ text }}
+                <span v-if="darkTheme" @click="toggleTheme">☀️</span>
+                <span v-else @click="toggleTheme">🌑</span>
+            </p>
+            <input type="text" v-model="text">
+            <input type="color" v-model="color">
+            <input type="checkbox" v-model="darkTheme">
+        </div>
+
+        <hr>
+        <input type="text" v-model="bookName">
+        <button @click="createBook">Create a book</button>
+        <ul>
+            <li v-for="book in books" class="book-li">
+                {{ book }}
+                <span @click="deleteBook(book)" class="delete-book">❌</span>
+            </li>
+        </ul>
+    </main>
+
+    <!-- 
+        DOM -> Document Object Model  === HTML file
+
+        Virtual DOM
+        --------------------------------------------
+        COMPONENTS  ->  Building blocks of web pages
+        --------------------------------------------
+        Vue.js 2   ==>>  Vue.js 3
+
+        Vue.js 2   Options API
+        Vue.js 3   Composition API
+    -->
+    <script>
+        const { createApp, ref, reactive } = Vue
+        // createApp  =>  creates an app instance
+        //            RU: создает экземпляр приложения
+        // -----------------------------------------
+        // ref        =>  creates a reactive reference
+        //            RU: создает реактивную ссылку
+        // -----------------------------------------
+        createApp({
+            // data  -->> information
+            setup() {
+                const darkTheme = ref(false)
+                const text = ref("")    // { value: "" }
+                const color = ref("")    // { value: "" }
+                const counter = ref(0)  // { value: 0 }
+                const bookName = ref("")
+                const books = reactive([
+                    "Harry Potter", "Lord of the Rings", "The Hobbit",
+                    "The Witcher", "The Alchemist", "The Da Vinci Code",
+                    "The Catcher in the Rye", "The Great Gatsby", "The Hunger Games",
+                    "The Kite Runner", "The Little Prince", "The Notebook",
+                    "The Picture of Dorian Gray", "The Road", "The Secret Garden",
+                    "The Shining", "The Stranger", "The Sun Also Rises",
+                ])
+                // const reactiveData = reactive({
+                //     a: 1,
+                //     b: 2,
+                //     c: 3,
+                // })
+                // reactiveData.a
+                // reactiveData.b
+                // text.value
+
+
+                function increment() { counter.value += 1 }
+                function decrement() { counter.value -= 1 }
+
+                function toggleTheme() {
+                    darkTheme.value = !darkTheme.value
+                }
+
+                function createBook() {
+                    if (bookName.value == "") return alert("Enter a name of the book, please!")
+
+                    books.unshift(bookName.value)
+                    bookName.value = ""
+                }
+
+                function deleteBook(bookTitle) {
+                    // books = books.filter(book => book !== bookTitle)
+                    const indexOfBook = books.indexOf(bookTitle)
+                    books.splice(indexOfBook, 1)
+                }
+
+                return {
+                    text,
+                    color,
+                    counter,
+                    darkTheme,
+                    books,
+                    increment,
+                    decrement,
+                    toggleTheme,
+                    bookName,
+                    createBook,
+                    deleteBook,
+                }
+            }
+        }).mount('#app')
+        // ----------------------------------------
+        // let x = {
+        //     a: 1,
+        //     b: 2,
+        //     c: function() {}
+        // }
+        // x.a = 3
+        // x.c = 4
+        // ----------------------------------------
+    </script>
+</body>
+<style>
+    .dark {
+        background-color: black;
+        color: white;
+        padding: 20px;
+    }
+    .book-li {
+        padding: 10px;
+    }
+    .delete-book {
+        cursor: pointer;
+    }
+    .delete-book:hover {
+        background-color: black;
+        padding: 5px;
+        border-radius: 5px;
+    }
+</style>
+</html>
