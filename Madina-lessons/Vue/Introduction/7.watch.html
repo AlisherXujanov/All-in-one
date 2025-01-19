@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</head>
+<body>
+
+    <div id="app">
+        <h3 v-if="summ.length > 3">Entered value in USD: {{ USD }}</h3>
+        <input type="text" placeholder="Enter a sum value" v-model="summ">
+    </div>
+
+    <script>
+        const { createApp, ref, reactive, computed, watch } = Vue
+
+        createApp({
+            setup() {
+                const summ = ref(0)
+                const USD = ref(0)
+
+                function inUSD(oldValue, newValue) {
+                    let one_usd = 13000
+                    let result = newValue / one_usd
+                    USD.value = result
+                }
+
+                watch(summ, inUSD)
+                
+                return {
+                    summ,
+                    inUSD,
+                    USD
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>
