@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+
+
+
+    <div id="app">
+        <h1>UZS in USD</h1>
+
+        <p class="result" ref="myP">
+            ${{ USD }}
+        </p>
+
+        <div class="container">
+            <input type="text" placeholder="Enter Uzbek Sum" v-model="UZS">
+        </div>
+    </div>
+
+    <script>
+        const { createApp, ref, reactive, computed, onMounted, watch } = Vue
+
+        // created                  =>  при создании приложения
+        // mounted                  =>  при начале работы приложения
+        // updated                  =>  при обновлении данных
+        // unmounted == destroyed   =>  при удалении приложения
+
+        createApp({
+            setup() {
+                const myP = ref(null)
+                const UZS = ref(0) // 1 USD = 13000 UZS
+                // const USD = ref(0)
+
+                let USD = computed(() => {
+                    return UZS.value / 13000 
+                })
+
+                onMounted(() => {
+                    myP.value.textContent = "Hello world"
+                })
+
+
+                function convertToUSD() {
+                    USD.value = UZS.value / 13000
+                }
+
+
+                function watchFn(oldValue, newValue) {
+                    myP.value.textContent = "Updated"
+                    setTimeout(() => {
+                        myP.value.textContent = "$..."
+                    }, 3000)
+                }
+
+                watch(UZS, watchFn)
+
+                return {
+                    UZS,
+                    USD,
+                    myP,
+                    convertToUSD
+                }
+            }
+        }).mount("#app")
+    </script>
+</body>
+</html>
