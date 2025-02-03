@@ -1,15 +1,10 @@
+<script setup></script>
+
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="about-page-wrapper">
+    <h1 class="page-title">ABOUT</h1>
   </div>
 </template>
 
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
+<style lang="scss" scoped>
 </style>
