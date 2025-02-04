@@ -3,7 +3,7 @@
 
 <template>
   <div class="menu-page-wrapper">
-    <h1 class="page-title">Sushi Sensation</h1>
+    <h1 class="page-title">Menu</h1>
   </div>
 </template>
 

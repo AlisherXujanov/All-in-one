@@ -5,8 +5,10 @@ import { RouterLink } from 'vue-router';
 <template>
   <nav>
     <button class="navbar-btn">🍔</button>
-    <h1 class="logo-h1">Ratatouille</h1>
-    <RouterLink to="/" class="navbar-item">MENU</RouterLink>
+    <h1 class="logo-h1">
+      <RouterLink to="/" class="navbar-item">Ratatouille</RouterLink>
+    </h1>
+    <RouterLink to="/menu" class="navbar-item">MENU</RouterLink>
     <RouterLink to="/about" class="navbar-item">ABOUT</RouterLink>
     <RouterLink to="/book-a-table" class="navbar-btn">BOOK A TABLE</RouterLink>
   </nav>

@@ -1,21 +1,12 @@
 @use 'base';
 
-
-
-
 body {
     max-width: 100%;
     max-height: 100vh;
     color: snow;
-    padding: 50px;
     position: relative;
-    background: url(./images/main-bg.png);
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    background-color: rgb(0, 0, 0, 0.2);
-    background-blend-mode: darken;
     overflow: hidden;
+    background-color: $dark;
 
 
     main.main-content {
@@ -27,7 +18,7 @@ body {
             position: absolute;
             bottom: 100px;
             width: 500px;
-            left: 0;
+            left: 100px;
             font-size: 120px;
             font-family: 'Forum', serif;
             font-weight: 100;

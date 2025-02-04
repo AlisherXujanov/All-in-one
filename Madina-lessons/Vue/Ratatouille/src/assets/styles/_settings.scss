@@ -1,0 +1,16 @@
+$light: #fff;
+$dark: #0A0B0A;
+
+$heading-color: #EFE7D2;
+$text-color: #F5F2EA;
+
+
+
+// -------- MIXINS --------
+@mixin flex($direction: row, $justify: center, $align: center, $gap: 10px) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+    gap: $gap;
+}
