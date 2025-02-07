@@ -1,0 +1,124 @@
+{
+    "featuredProducts": [
+        {
+            "id": 1,
+            "name": "Cantilever Chair",
+            "image": "https://example.com/cantilever-chair.jpg",
+            "colors": [
+                "red",
+                "blue",
+                "green"
+            ],
+            "code": "Y523201",
+            "price": 42.00
+        },
+        {
+            "id": 2,
+            "name": "Dining Table",
+            "image": "https://example.com/dining-table.jpg",
+            "colors": [
+                "brown",
+                "white",
+                "black"
+            ],
+            "code": "A123400",
+            "price": 250.00
+        },
+        {
+            "id": 3,
+            "name": "Bookshelf",
+            "image": "https://example.com/bookshelf.jpg",
+            "colors": [
+                "oak",
+                "walnut",
+                "black"
+            ],
+            "code": "B987654",
+            "price": 150.00
+        },
+        {
+            "id": 4,
+            "name": "Office Desk",
+            "image": "https://example.com/office-desk.jpg",
+            "colors": [
+                "white",
+                "gray",
+                "brown"
+            ],
+            "code": "C234589",
+            "price": 199.99
+        },
+        {
+            "id": 5,
+            "name": "Sofa",
+            "image": "https://example.com/sofa.jpg",
+            "colors": [
+                "blue",
+                "gray",
+                "beige"
+            ],
+            "code": "D786543",
+            "price": 799.00
+        },
+        {
+            "id": 6,
+            "name": "Coffee Table",
+            "image": "https://example.com/coffee-table.jpg",
+            "colors": [
+                "black",
+                "white",
+                "wood"
+            ],
+            "code": "E564738",
+            "price": 120.00
+        },
+        {
+            "id": 7,
+            "name": "Accent Chair",
+            "image": "https://example.com/accent-chair.jpg",
+            "colors": [
+                "yellow",
+                "green",
+                "purple"
+            ],
+            "code": "F123456",
+            "price": 85.00
+        },
+        {
+            "id": 8,
+            "name": "TV Stand",
+            "image": "https://example.com/tv-stand.jpg",
+            "colors": [
+                "black",
+                "white",
+                "brown"
+            ],
+            "code": "G987654",
+            "price": 200.00
+        },
+        {
+            "id": 9,
+            "name": "Bed Frame",
+            "image": "https://example.com/bed-frame.jpg",
+            "colors": [
+                "pine",
+                "dark brown",
+                "black"
+            ],
+            "code": "H234578",
+            "price": 450.00
+        },
+        {
+            "id": 10,
+            "name": "Nightstand",
+            "image": "https://example.com/nightstand.jpg",
+            "colors": [
+                "white",
+                "black",
+                "natural"
+            ],
+            "code": "I563214",
+            "price": 75.00
+        }
+    ]
+}

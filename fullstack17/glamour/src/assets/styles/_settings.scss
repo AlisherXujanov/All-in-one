@@ -1,0 +1,126 @@
+@use "sass:color";
+
+// ==============================================================
+$violet: #7E33E0;
+$violet-light: #F1F0FF;
+$violet-lighter: #F6F5FF;
+$violet-dark: #E7E4F8;
+
+$light: #fff;
+
+$blue: #2F1AC4;
+$dark-blue: #0D0E43;
+$light-blue: #1DB4E7;
+
+$red: #FB2E86;
+$red-lighter: #FEBAD7;
+
+$text-color-transparent: #BBB6CE;
+$green: #08D15F;
+$khai: #FFEAC1;
+$black: #000;
+
+
+$red-gradient: linear-gradient(to right, #FB2E86, #ff8f77);
+$purple-gradient: linear-gradient(to right, #6e56ff, #9b73ff, #7E33E0);
+$green-gradient: linear-gradient(to right, #56c2ff, #08D15F);
+$danger-modal-bg: radial-gradient(circle, $light 50%, #a084c5);
+
+
+
+// ------------------ @media sizes ------------------
+$small: 600px;
+$medium: 950px;
+$large: 1200px;
+$x-large: 1350px;
+$xx-large: 1525px;
+
+// @media (max-width: $x-large) {}
+// @media (max-width: $large) {}
+// @media (max-width: $medium) {}
+// @media (max-width: $small) {}
+
+
+
+// ==============================================================
+// ======================= FLEXBOX ==============================
+// ==============================================================
+@mixin flex($direction: row, $justify: center, $align: center, $gap: 10px, $wrap: wrap) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+    gap: $gap;
+    flex-wrap: $wrap;
+}
+
+
+
+// ======================================================================
+// ======================= GRID =========================================
+// ======================================================================
+@mixin grid($columns: 12, $size: 1fr, $gap: 10px) {
+    display: grid;
+    grid-template-columns: repeat($columns, $size);
+    gap: $gap;
+}
+
+// ======================================================================
+@mixin darken_bg_on_hover($color, $percent: 20%) {
+    position: relative;
+    z-index: 1;
+
+    &::before {
+        content: "";
+        transition: 0.4s;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 100%;
+        z-index: 0;
+        border-radius: inherit;
+        background: color.adjust($color, $lightness: -$percent);
+    }
+
+    &:hover::before {
+        z-index: -1;
+        left: 0;
+        right: 0;
+    }
+}
+
+@mixin card_hover($color: $violet) {
+    position: relative;
+    cursor: pointer;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 200%;
+        background-color: $color;
+        z-index: 0;
+    }
+
+    &:hover::before {
+        left: 0;
+        right: 0;
+        z-index: -1;
+    }
+
+    &:hover {
+        color: $light;
+        scale: 1.1;
+
+        .icons {
+            color: $violet;
+        }
+
+        h4 {
+            color: $light;
+        }
+    }
+}

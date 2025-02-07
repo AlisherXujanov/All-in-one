@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A First App</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div id="app">
+    <div>
+      <label for="goal">Goal</label>
+      <input type="text" id="goal" />
+      <button>Add Goal</button>
+    </div>
+    <ul>
+
+    </ul>
+  </div>
+  <script>
+    const buttonEl = document.querySelector('button');
+    const inputEl = document.querySelector('input');
+    const listEl = document.querySelector('ul');
+
+    function addGoal() {
+      const enteredValue = inputEl.value;
+      const listItemEl = document.createElement('li');
+      listItemEl.textContent = enteredValue;
+      listEl.appendChild(listItemEl);
+      inputEl.value = '';
+    }
+
+    buttonEl.addEventListener('click', addGoal);
+  </script>
+</body>
+
+</html>

@@ -6,12 +6,12 @@
     2. Create a new file called style.scss
             RU: создайте новый файл с именем style.scss
     3. @use is used for importing files and using them
-            ex: @use '_resets';
+            ex: @use 'resets';
             NOTE: all files that are getting imported or used should start with an underscore
             RU: все файлы, которые импортируются или используются, должны начинаться с подчеркивания
 
     4. @import is used for importing files and using them
-            ex: @import '_vars';
+            ex: @import 'vars';
             NOTE: all files that are getting imported or used should start with an underscore
             RU: все файлы, которые импортируются или используются, должны начинаться с подчеркивания
 

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="Vue-div">
+        <!-- <div align="center">
+            <p>{{ message }}</p>
+            <input type="text" v-model="message">
+        </div>
+
+        <br>
+        <br>
+        <br> -->
+        <div class="container" v-bind:class="darkMode ? 'dark-mode' : ''">
+            <div class="theme-toggler">
+                <input type="checkbox" v-model="darkMode">
+                <span class="slider"></span>
+            </div>
+            <input type="text" v-model="enteredValue" @keyup.enter="addGoal">
+            <button v-on:click="addGoal">Add Goal</button>
+            <ul>
+                <li v-for="(goal, index) in goals">
+                    {{goal}}
+                    <span v-on:click="delGoal(index)">❌</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    message: "Shoxa",
+                    goals: [],
+                    enteredValue: '',
+                    darkMode: false
+                }
+            },
+            methods: {
+                addGoal() {
+                    if (this.enteredValue != '') {
+                        this.goals.push(this.enteredValue)
+                        this.enteredValue = ''
+                    } else {
+                        alert('Please enter a goal')
+                    }
+                },
+                delGoal(index) {
+                    let goal = this.goals[index]
+                    if (confirm(`Are you sure to delete ${goal}?`)) {
+                        this.goals.splice(index, 1)
+                        // ["1", "2", "5", "6"].splice(2, 1, '1', "1")
+                        // splice(start, deleteCount,  addEl1, addEl2, ...)
+                    } else {
+                        return
+                    }
+                },
+                toggleDarkMode() {
+                    this.darkMode = !this.darkMode
+                }
+            },
+            created() {
+                if (localStorage.getItem('goals')) {
+                    this.goals = JSON.parse(localStorage.getItem('goals'))
+                }
+                this.darkMode = JSON.parse(localStorage.getItem('dark-mode'))
+            },
+            beforeUpdate() {
+                localStorage.setItem('goals', JSON.stringify(this.goals))
+                localStorage.setItem('dark-mode', JSON.stringify(this.darkMode))
+            }
+        }).mount('#Vue-div')
+    </script>
+</body>
+
+</html>

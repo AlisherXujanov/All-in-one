@@ -43,7 +43,8 @@
 
 // 5. Create an array of strings with names. 
 // Then create another array with ages.
-// Then find the min age and the max age and print who is the oldest and who is the youngest.
+// Then find the min age and the max age and print who is the 
+// oldest and who is the youngest.
 // RU: Создайте массив строк с именами.
 // Затем создайте другой массив с возрастами.
 // Затем найдите минимальный возраст и максимальный возраст и напечатайте, кто старше и кто младше.
@@ -51,3 +52,5 @@
 // 6. Create an array of numbers. Find the max number (ex: 12345) the add up each digit in the number (ex: 1+2+3+4+5=15)
 // RU: Создайте массив чисел. Найдите максимальное число (например, 12345), затем сложите каждую цифру в числе (например, 1 + 2 + 3 + 4 + 5 = 15).
 
+// 7. Create a function that takes array as an argument and sums only numbers
+// RU: Создайте функцию, которая принимает массив в качестве аргумента и суммирует только числа

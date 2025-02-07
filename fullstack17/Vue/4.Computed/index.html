@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="Vue-div">
+        <div class="container">
+            <input type="text" v-model="enteredValue" @keyup.enter="addGoal">
+            <button v-on:click="addGoal">Add Goal</button>
+            <ul>
+                <li v-for="(goal, index) in goals">
+                    {{goal}}
+                    <span v-on:click="delGoal(index)">❌</span>
+                </li>
+            </ul>
+            <p>Total Goals: {{ goalCount }}</p>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    message: "Shoxa",
+                    goals: [],
+                    enteredValue: '',
+                    darkMode: false
+                }
+            },
+            methods: {
+                addGoal() {
+                    if (this.enteredValue != '') {
+                        this.goals.push(this.enteredValue)
+                        this.enteredValue = ''
+                    } else {
+                        alert('Please enter a goal')
+                    }
+                },
+                delGoal(index) {
+                    let goal = this.goals[index]
+                    if (confirm(`Are you sure to delete ${goal}?`)) {
+                        this.goals.splice(index, 1)
+                    } else {
+                        return
+                    }
+                }
+            },
+            computed: {
+                goalCount() {
+                    return this.goals.length;
+                }
+            }
+        }).mount('#Vue-div')
+    </script>
+</body>
+
+</html>

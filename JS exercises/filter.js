@@ -57,7 +57,7 @@ function find_numbers_from_str(str) {
     return numbers
 }
 // --------------------
-// FIND EVENs  and ODDs
+// FIND EVENs and ODDs
 function find_evens_odds_from_str(str) {
     let numbers = find_numbers_from_str(str)
 

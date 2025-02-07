@@ -1,15 +1,10 @@
 <script setup>
-import { RouterLink } from 'vue-router'
-
+import MainLayout from './components/layouts/MainLayout.vue'
 </script>
 
 <template>
-  
-
-  <RouterView />
+  <MainLayout />
 </template>
 
 
-<style>
-
-</style>
+<style></style>

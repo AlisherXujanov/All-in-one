@@ -1,14 +1,15 @@
 <script setup>
-import HelloWorld from "@/components/HelloWorld.vue"
-import { ref } from 'vue';
-let msg_from_parent = ref("Parent message")
-
+import HeadingVue from '@/components/HeadingVue.vue'
+import FeaturedProducts from '@/components/products/FeaturedProducts.vue';
 </script>
 
 <template>
-    <HelloWorld :msg="msg_from_parent" />
+  <div>
+    <heading-vue heading="Home page" path="Home page" />
+
+
+    <FeaturedProducts />
+  </div>
 </template>
 
-<style>
-
-</style>
+<style></style>

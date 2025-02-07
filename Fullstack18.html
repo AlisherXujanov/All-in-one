@@ -7,7 +7,25 @@
 </head>
 <body>
     
+    <div class="box">
+        <p class="text"></p>
+        <br>
+        <input id="text" type="text">
+        <input id="color" type="color">
+    </div>
 
-    <script src="main.js"></script>
+    <script>
+        const text = document.querySelector('.text')
+        const inputText = document.querySelector('#text')
+        const inputColor = document.querySelector('#color')
+
+        inputText.addEventListener('input', (e) => {
+            text.textContent = e.target.value
+        })
+        inputColor.addEventListener('input', (e) => {
+            text.style.color = e.target.value
+        })
+
+    </script>
 </body>
 </html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Local Storage</h1>
+    <div class="container">
+        <input type="text" id="text" placeholder="Enter your text ...">
+        <button id="btn">Save</button>
+
+        <ul class="items"></ul>
+    </div>
+
+    <script>
+        const inputText = document.querySelector('#text')
+        const btn = document.querySelector('#btn')
+        const ul = document.querySelector('ul')
+
+        setUpWindow()
+
+        btn.addEventListener('click', createItem)
+
+        function createItem(event) {
+            setItemToLS('items', inputText.value)
+            setUpWindow()
+            inputText.value = ''
+        }
+
+        function setItemToLS(key, item) {
+            // localStorage - ga elementni saqlash funksiyasi
+            let items = getItemFromLS(key)
+            items.push(item)
+            localStorage.setItem(key, JSON.stringify(items))
+        }
+
+        function getItemFromLS(key) {
+            return JSON.parse(localStorage.getItem(key) || "[]")
+        }
+
+        function setUpWindow() {
+            let items = getItemFromLS('items')
+            ul.innerHTML = ''
+            for (let item of items) {
+                // let li = document.createElement('li')
+                // li.textContent = item
+                // ul.appendChild(li)
+                // --------------------------------------
+                const li = `
+                    <li>
+                        <span class="item-text">${item}</span>
+                        <span class='delete-item' onclick="deleteItem(event)">❌</span>
+                    </li>
+                `
+                ul.innerHTML += li
+            }
+        }
+        function deleteItem(event) {
+            if (!confirm('Are you sure?')) { return }
+
+            let itemText = event.target.previousElementSibling.textContent
+            let items = getItemFromLS('items')
+            let itemIndex = items.indexOf(itemText)
+            items.splice(itemIndex, 1)
+            localStorage.setItem('items', JSON.stringify(items))
+            setUpWindow()
+        }
+
+        // - localStorage.setItem(key, value)
+        // - localStorage.getItem(key)
+        // - localStorage.removeItem(key)
+        // - localStorage.clear()
+
+
+    </script>
+</body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition: 0.5s;
+    }
+    .container {
+        width: 50%;
+        margin: 0 auto;
+        padding: 10px;
+        border-radius: 10px;
+        text-align: center;
+        background-color: lightgray;
+    }
+    .items {
+        padding: 20px;
+        background-color: #333;
+        color: snow;
+        margin-top: 20px;
+    }
+    li {
+        padding: 10px 20px;
+        text-align: left;
+        background-color: #222;
+        margin-bottom: 5px;
+    }
+    .delete-item {
+        float: right;
+        cursor: pointer;
+    }
+    input,
+    button {
+        padding: 10px 20px;
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+        outline: none;
+        background-color: #eee;
+        cursor: pointer;
+        border: none;
+    }
+    input:focus { background-color: snow; }
+    button:hover { background-color: green;  color:snow; }
+</style>
+</html>

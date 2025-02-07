@@ -1,0 +1,109 @@
+* {
+    transition: 0.5s;
+    padding: 0;
+    margin: 0;
+}
+.container {
+    box-sizing: border-box;
+    
+    background-color: #eee;
+    width: 50%;
+    padding: 20px;
+    margin: 0 auto;
+    position: relative;
+}
+@media (max-width: 768px) {
+    .container { width: 100%; }
+    input { display: block; }
+}
+input[type="text"], button {
+    display: block;
+    border: none;
+    background-color: gray;
+    border-radius: 5px;
+    color: snow;
+    outline: none;
+    margin: 5px 0;
+    padding: 5px 10px;
+}
+button:hover {
+    background-color: green;
+    cursor: pointer;
+}
+li {
+    list-style: none;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #ccc;
+    border: 1px gray solid;
+}
+
+li span {
+    color: red;
+    cursor: pointer;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.dark-mode { background-color: #333; }
+
+
+.theme-toggler {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 20px;
+    padding: 2px;
+    box-sizing: border-box;
+}
+input[type='checkbox'] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 1;
+}
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+.slider:before {
+    position: absolute;
+    content: "☀️";
+    color: #fff;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    left: 0;
+    bottom: 0;
+    background-color: #2196F3;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+input[type='checkbox']:checked,
+input[type='checkbox']:checked + .slider {
+    background-color: #2196F3;
+}
+input[type='checkbox']:checked,
+input[type='checkbox']:checked + .slider:before {
+    content: "🌙";
+    transform: translateX(20px);
+}
+
+
+
+
