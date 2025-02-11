@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import { toast } from 'vue3-toastify';
+import { auth } from '@/firebase/config'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -21,11 +23,13 @@ const router = createRouter({
       path: '/menu',
       name: 'menu',
       component: () => import('../views/MenuView.vue'),
+      meta: { requiresAuth: true },
     },
     {
       path: '/book-a-table',
       name: 'booking',
       component: () => import('../views/BookingView.vue'),
+      meta: { requiresAuth: true },
     },
     {
       path: '/login',
@@ -39,5 +43,21 @@ const router = createRouter({
     },
   ],
 })
+
+
+
+// Navigation guard
+router.beforeEach(async (to, from, next) => {
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
+  const isAuthenticated = auth.currentUser
+
+  if (requiresAuth && !isAuthenticated) {
+    toast.error('You need to be logged in to access this page')
+    next('/login')
+  } else {
+    next()
+  }
+})
+
 
 export default router

@@ -52,7 +52,7 @@ const app = initializeApp(firebaseConfig)
 export const auth = getAuth(app)
 ```
 
-### Sign up component
+### Registration component
 
 ```js
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";

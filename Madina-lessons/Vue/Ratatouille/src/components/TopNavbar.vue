@@ -2,6 +2,24 @@
 import { RouterLink } from 'vue-router';
 import { GlProfile } from '@kalimahapps/vue-icons';
 import { ChMenuHamburger } from '@kalimahapps/vue-icons';
+
+import { auth } from '@/firebase/config'
+import { useRouter } from 'vue-router'
+import { useAuth } from '@/composables/useAuth';
+
+
+
+const { user, isLoading } = useAuth()
+const router = useRouter()
+
+const handleLogout = async () => {
+  try {
+    await auth.signOut()
+    router.push('/login')
+  } catch (error) {
+    console.error('Logout error:', error)
+  }
+}
 </script>
 
 <template>
@@ -15,7 +33,14 @@ import { ChMenuHamburger } from '@kalimahapps/vue-icons';
     <RouterLink to="/menu" class="navbar-item">MENU</RouterLink>
     <RouterLink to="/about" class="navbar-item">ABOUT</RouterLink>
     <RouterLink to="/book-a-table" class="navbar-item">BOOK A TABLE</RouterLink>
-    <RouterLink to="/login" class="navbar-btn">
+
+
+
+    <RouterLink v-if="user" to="#" class="navbar-btn" @click="handleLogout">
+      <GlProfile />
+      Logout
+    </RouterLink>
+    <RouterLink v-else to="/login" class="navbar-btn">
       <GlProfile />
       Login
     </RouterLink>
