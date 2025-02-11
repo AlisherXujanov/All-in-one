@@ -27,6 +27,16 @@ const router = createRouter({
       name: 'booking',
       component: () => import('../views/BookingView.vue'),
     },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/authentication/LoginView.vue'),
+    },
+    {
+      path: '/registration',
+      name: 'registration',
+      component: () => import('../views/authentication/RegistrationView.vue'),
+    },
   ],
 })
 

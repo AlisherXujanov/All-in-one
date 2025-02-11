@@ -5,6 +5,14 @@ $heading-color: #EFE7D2;
 $text-color: #F5F2EA;
 
 
+$green: #4CAF50;
+$red: #F44336;
+$blue: #2196F3;
+$yellow: #FFEB3B;
+$orange: #FF9800;
+$purple: #9C27B0;
+$grey: #9E9E9E;
+
 
 // -------- MIXINS --------
 @mixin flex($direction: row, $justify: center, $align: center, $gap: 10px) {

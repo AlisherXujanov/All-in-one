@@ -1,16 +1,24 @@
 <script setup>
 import { RouterLink } from 'vue-router';
+import { GlProfile } from '@kalimahapps/vue-icons';
+import { ChMenuHamburger } from '@kalimahapps/vue-icons';
 </script>
 
 <template>
   <nav>
-    <button class="navbar-btn">🍔</button>
+    <RouterLink to="/" class="navbar-btn">
+      <ChMenuHamburger />
+    </RouterLink>
     <h1 class="logo-h1">
       <RouterLink to="/" class="navbar-item">Ratatouille</RouterLink>
     </h1>
     <RouterLink to="/menu" class="navbar-item">MENU</RouterLink>
     <RouterLink to="/about" class="navbar-item">ABOUT</RouterLink>
-    <RouterLink to="/book-a-table" class="navbar-btn">BOOK A TABLE</RouterLink>
+    <RouterLink to="/book-a-table" class="navbar-item">BOOK A TABLE</RouterLink>
+    <RouterLink to="/login" class="navbar-btn">
+      <GlProfile />
+      Login
+    </RouterLink>
   </nav>
 </template>
 
@@ -18,12 +26,12 @@ import { RouterLink } from 'vue-router';
 @import url('https://fonts.googleapis.com/css2?family=Sofia&display=swap');
 
 nav {
-  background-color: black;
+  background-color: $dark;
   position: absolute;
   top: 50px;
   left: 50px;
   z-index: 1;
-  width: 500px;
+  width: 600px;
   display: flex;
   padding: 0 20px;
   border-radius: 10px;
@@ -39,18 +47,15 @@ nav {
   }
 
   a {
-    color: white;
+    color: $light;
     text-decoration: none;
     display: inline-block;
 
     &.navbar-btn {
-      border: solid 1px gray;
+      border: solid 1px $text-color;
       padding: 10px;
       border-radius: 10px;
-
-      &:hover {
-        background-color: gray;
-      }
+      @include flex();
     }
   }
 }
