@@ -1,3 +1,5 @@
+@use 'settings' as *;
+
 @font-face {
     font-family: "Forum";
     src: url(./fonts/Forum-Regular.ttf);
@@ -11,4 +13,19 @@
     box-sizing: border-box;
     transition: 0.1s;
     font-family: 'Forum', serif;
+}
+
+button {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    background-color: $dark;
+    color: $text-color;
+    border-radius: 10px;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+    color: $text-color;
 }

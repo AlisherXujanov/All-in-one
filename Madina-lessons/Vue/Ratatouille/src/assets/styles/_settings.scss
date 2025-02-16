@@ -1,17 +1,23 @@
 $light: #fff;
 $dark: #0A0B0A;
+$middle: #727272;
+$midnight: #232323;
 
 $heading-color: #EFE7D2;
 $text-color: #F5F2EA;
+$brown: #472c19;
 
 
-$green: #4CAF50;
-$red: #F44336;
-$blue: #2196F3;
-$yellow: #FFEB3B;
-$orange: #FF9800;
-$purple: #9C27B0;
-$grey: #9E9E9E;
+$green: #3c5f3c;
+$blue: #1a4ba8;
+$red: #692828;
+
+
+
+$yellow: #ebeba4;
+$orange: #d9aa52;
+$purple: #ab5cab;
+
 
 
 // -------- MIXINS --------
@@ -20,5 +26,11 @@ $grey: #9E9E9E;
     flex-direction: $direction;
     justify-content: $justify;
     align-items: $align;
+    gap: $gap;
+}
+
+@mixin grid($columns: 1, $gap: 10px) {
+    display: grid;
+    grid-template-columns: repeat($columns, 1fr);
     gap: $gap;
 }
