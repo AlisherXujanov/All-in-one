@@ -1,11 +1,17 @@
 <script setup>
-import { reactive } from 'vue';
+import LoadingSpinner from '../components/LoadingSpinner.vue'
+import { reactive, ref } from 'vue';
+
+
 
 const booking = reactive({
     fullname: '',
     count_of_people: 1,
     date: ''
 });
+const disabled = ref(false)
+const loading = ref(false)
+
 
 async function handleSubmit(e) {
     const URL = 'http://localhost:3000/reservations'
@@ -14,21 +20,30 @@ async function handleSubmit(e) {
         count_of_people: booking.count_of_people,
         date: booking.date
     }
+    disabled.value = true
+    loading.value = true
     // const response = await fetch(URL, {})
-    const response = await fetch(URL, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(newReservation)
-    })
-    const data = await response.json()
-    console.log(data)
 
+    try {
+        const response = await fetch(URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newReservation)
+        })
+        const data = await response.json()
+        console.log(data)
+    } catch (error) {
+        console.log("OOps! Something went wrong")
+        console.log(error)
+    }
+
+    disabled.value = false
+    loading.value = false
     booking.fullname = ''
     booking.count_of_people = 1
     booking.date = ''
-    e.target.reset()
 };
 </script>
 
@@ -38,6 +53,10 @@ async function handleSubmit(e) {
             <h1 class="page-title">Book a table</h1>
         </div>
 
+        <div v-if="loading" class="loading-spinner">
+            <LoadingSpinner />
+        </div>
+
         <div class="right-book">
             <h1>Reservation</h1>
             <p>Secure your spot at Qitchen, where exceptional sushi and a <br> remarkable dining experience await.</p>
@@ -45,7 +64,7 @@ async function handleSubmit(e) {
                 <input type="text" v-model="booking.fullname" placeholder="Full Name" required>
                 <input type="number" v-model="booking.count_of_people" placeholder="Number of guests" min="1" required>
                 <input type="date" v-model="booking.date" required>
-                <button type="submit">BOOK NOW</button>
+                <button type="submit" v-on:click.enter="handleSubmit" :disabled="disabled">BOOK NOW</button>
             </form>
         </div>
     </div>
@@ -105,6 +124,11 @@ async function handleSubmit(e) {
         border-radius: 10px;
         border: solid 1px $middle;
         background-color: $midnight;
+
+        &:disabled {
+            background-color: $middle;
+            cursor: not-allowed;
+        }
     }
 
     input {
@@ -118,5 +142,17 @@ async function handleSubmit(e) {
         font-size: large;
     }
 
+
+    .loading-spinner {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        width: 100%;
+        height: 100vh;
+        background-color: rgb(0,0,0,  0.8);
+        color: white;
+        @include flex();
+    }
 }
 </style>
