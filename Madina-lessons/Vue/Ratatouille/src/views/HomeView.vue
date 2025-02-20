@@ -20,6 +20,10 @@ const links = [
   }
 ]
 
+function handleCustomEvent({ id, message, date }) {
+  alert(message)
+}
+
 </script>
 
 <template>
@@ -33,6 +37,7 @@ const links = [
           :link="links[i].link"
           :image="links[i].image"
           :link-text="links[i].linkText"
+          @my-event="handleCustomEvent"
         />
       </div>
     </div>

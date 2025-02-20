@@ -2,16 +2,49 @@
 import { RouterLink } from 'vue-router';
 
 const props = defineProps({
-  link: String,
-  image: String,
-  linkText: String
+  link: {
+    type: String,
+    required: false,
+    default: '/'
+  },
+  image: {
+    type: String,
+    required: false,
+    default: '/'
+  },
+  linkText: {
+    type: String,
+    required: false,
+    default: '/'
+  },
 })
+
+
+// in order to create a custom event to use in emits we can use the following syntax:
+// const emit = defineEmits(['custom-event'])
+// then we can use it like this:
+// emit('custom-event', payload)
+// and we can listen to it in the parent component like this:
+// <HomeImageLink @custom-event="handleCustomEvent" />
+
+const emit = defineEmits(['my-event'])
+
+
+
+const payload = {
+  id: '...',
+  message: parseInt(Math.random() * 1000),
+  date: "...",
+}
+function callEvent() {
+  emit('my-event', payload)
+}
 
 </script>
 
 <template>
+  <img :src="image" width="100%" height="100%" @click="callEvent">
   <RouterLink :to="link" class="image-link">
-    <img :src="image" width="100%" height="100%">
     <div class="link-text-wrapper">
       <p>{{ linkText }}</p>
       <span>&rArr;</span>
