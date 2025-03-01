@@ -33,7 +33,7 @@ function handleCustomEvent({ id, message, date }) {
     </div>
     <div class="right-side">
       <div v-for="i in [...Array(links.length).keys()]" :key="i" class="image-link-wrapper">
-        <HomeImageLink
+        <home-image-link
           :link="links[i].link"
           :image="links[i].image"
           :link-text="links[i].linkText"
