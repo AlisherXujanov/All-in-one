@@ -1,4 +1,5 @@
 <script setup>
+import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
 import { GlProfile } from '@kalimahapps/vue-icons';
 import { ChMenuHamburger } from '@kalimahapps/vue-icons';
@@ -6,11 +7,11 @@ import { ChMenuHamburger } from '@kalimahapps/vue-icons';
 import { auth } from '@/firebase/config'
 import { useRouter } from 'vue-router'
 import { useAuth } from '@/composables/useAuth';
-
-
+import BurgerMenu from './BurgerMenu.vue';
 
 const { user, isLoading } = useAuth()
 const router = useRouter()
+const showBurgerMenu = ref(false)
 
 const handleLogout = async () => {
   try {
@@ -20,12 +21,21 @@ const handleLogout = async () => {
     console.error('Logout error:', error)
   }
 }
+const toggleBurgerMenu = (bool) => { showBurgerMenu.value = bool }
 </script>
 
 <template>
   <nav>
-    <RouterLink to="/" class="navbar-btn">
-      <ChMenuHamburger />
+    <RouterLink to="#" class="navbar-btn">
+      <ChMenuHamburger @click="toggleBurgerMenu(true)" />
+      <burger-menu v-if="showBurgerMenu" @close-menu="toggleBurgerMenu(false)" />
+      <!-- <modal-view v-if="showBurgerMenu" @close-modal="toggleBurgerMenu(false)">
+        <h2>MENU</h2>
+        <h2>RESERVATION</h2>
+        <h2>ABOUT</h2>
+        <h2>CONTACT</h2>
+        <h2>BLOG</h2>
+      </modal-view> -->
     </RouterLink>
     <h1 class="logo-h1">
       <RouterLink to="/" class="navbar-item">Ratatouille</RouterLink>
