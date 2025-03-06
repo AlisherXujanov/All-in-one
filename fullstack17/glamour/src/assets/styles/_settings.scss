@@ -5,6 +5,7 @@ $violet: #7E33E0;
 $violet-light: #F1F0FF;
 $violet-lighter: #F6F5FF;
 $violet-dark: #E7E4F8;
+$violet-blue: #5625DF;
 
 $light: #fff;
 
@@ -13,18 +14,25 @@ $dark-blue: #0D0E43;
 $light-blue: #1DB4E7;
 
 $red: #FB2E86;
+$magenta: #FF27B7;
 $red-lighter: #FEBAD7;
 
 $text-color-transparent: #BBB6CE;
+
 $green: #08D15F;
+$green-light: #1BE982;
+
 $khai: #FFEAC1;
 $black: #000;
+$cyan: #37DAF3;
+$orange: #FFB265;
 
 
 $red-gradient: linear-gradient(to right, #FB2E86, #ff8f77);
 $purple-gradient: linear-gradient(to right, #6e56ff, #9b73ff, #7E33E0);
 $green-gradient: linear-gradient(to right, #56c2ff, #08D15F);
 $danger-modal-bg: radial-gradient(circle, $light 50%, #a084c5);
+
 
 
 
@@ -64,6 +72,15 @@ $xx-large: 1525px;
     grid-template-columns: repeat($columns, $size);
     gap: $gap;
 }
+
+
+@mixin circle($size) {
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+    display: inline-block;
+}
+
 
 // ======================================================================
 @mixin darken_bg_on_hover($color, $percent: 20%) {

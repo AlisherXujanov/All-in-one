@@ -6,25 +6,25 @@
     <title>Document</title>
 </head>
 <body>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla doloremque velit voluptatum cumque cupiditate impedit incidunt! Recusandae voluptatum in culpa quos, facilis, provident quasi corporis minus sequi dicta magni maiores!</p>
+    <input type="range" min="6" max="50">
+    <input id="text-input" type="text">
     
-    <div class="box">
-        <p class="text"></p>
-        <br>
-        <input id="text" type="text">
-        <input id="color" type="color">
-    </div>
-
     <script>
-        const text = document.querySelector('.text')
-        const inputText = document.querySelector('#text')
-        const inputColor = document.querySelector('#color')
+        const p = document.querySelector('p')
+        const input = document.querySelector('input')
+        const textInput = document.querySelector('#text-input')
 
-        inputText.addEventListener('input', (e) => {
-            text.textContent = e.target.value
-        })
-        inputColor.addEventListener('input', (e) => {
-            text.style.color = e.target.value
-        })
+        input.addEventListener('input', changeSize)
+        textInput.addEventListener('input', showText)
+
+        function changeSize(e) {
+            p.style.fontSize = e.target.value + 'px'
+        }
+        function showText(e) {
+            p.textContent = e.target.value
+        }
 
     </script>
 </body>

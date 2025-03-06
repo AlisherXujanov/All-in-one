@@ -1028,6 +1028,9 @@ let ErrorHandling
 // catch (error) {
 //     console.warn("Error happedend")
 // }
+// finally {
+//   ...
+// }
 // console.log("Continue...")
 
 

@@ -42,7 +42,7 @@ const devidedHeading = computed(() => {
 
 <style lang='scss' scoped>
 .main-heading-wrapper {
-  padding: 50px 200px;
+  padding: 50px 370px;
   @include flex(column, flex-start, flex-start);
   background-color: $violet-lighter;
 }

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button onclick="getJoke()">Get</button>
+
+    <script>
+        const BASE_URL = "https://official-joke-api.appspot.com"
+
+        // synchronous function (default in JS) => won't wait until the line of code is finished
+        // asyncronous function => will wait until the line of code is finished
+
+        // JSON  ->  Java Script Object Notation
+        // "{...}"
+        // - JSON.stringify() => converts JS object to JSON
+        // - JSON.parse()     => converts JSON to JS object
+
+        // HTTP Methods
+        // GET (default) | POST | PUT | PATCH | DELETE 
+
+        // API  ->  Application Programming Interface 
+        // (a set of information that we requested from a server)
+
+        async function getJoke() {
+            // we are sending a request to this URL (also known as backend)
+            const PATH = "/jokes/random/"
+            const URL = BASE_URL + PATH
+            const response = await fetch(URL)
+
+            // we are converting the response to JSON format
+            const data = await response.json() 
+            
+        }
+    </script>
+</body>
+</html>

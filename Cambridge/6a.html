@@ -8,36 +8,36 @@
 <body>
    
    <div class="box">
-      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae sint labore est fuga repellendus magnam ratione pariatur eveniet iure in unde veniam voluptatibus et asperiores nostrum, maxime molestias sed magni.</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt laborum fuga, deleniti iure veritatis quas nemo neque asperiores reiciendis. Deleniti ad eos iste maiores quam eaque obcaecati illum, repudiandae nisi?</p>
+      <p class="second">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi aperiam amet similique nemo sequi architecto dolorum unde aliquam odit optio dignissimos veritatis temporibus, perspiciatis deserunt minima maxime corporis quasi assumenda?</p>
+      <p class="third">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi aperiam amet similique nemo sequi architecto dolorum unde aliquam odit optio dignissimos veritatis temporibus, perspiciatis deserunt minima maxime corporis quasi assumenda?</p>
    </div>
-
 </body>
 <style>
-   body {
-      background-color: black;
-      color: snow;
-   }
+   * {  transition: 1s;  }
    .box {
       width: 50%;
       margin: 0 auto;
-      box-shadow: 0 8px 16px red;
+      background-color: lightgrey;
       padding: 20px;
-      transition: 1s;
-      background-color: #333;
    }
    .box:hover {
-      box-shadow: 0 8px 16px blue;
-      background-color: #111;
-      color: red;
-      text-shadow: 3px 3px 6px yellow;
-
-      background: url(1.jpg);
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      background-color: rgb(0,0,0, 0.5);
-      background-blend-mode: darken;
+      background-color: black;
+      color: cyan;
    }
-
+   .box:hover p {
+      color: cyan;
+   }
+   .box:hover .second {
+      font-size: 2em;
+      opacity: 0;
+   }
+   .box:hover .third {
+      color: red;
+      padding: 50px;
+      margin-top: 20px;
+      box-shadow: 0 8px 16px snow;
+   }
+   
 </style>
 </html>

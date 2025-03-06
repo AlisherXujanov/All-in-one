@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div>
+        <input type="text" placeholder="Enter UZS: ...">
+        <p id="convertion-rate"></p>
+        <button onclick="convertIntoUSD()">Convert</button>
+    </div>
+
+    <script>
+        const p = document.querySelector('#convertion-rate')
+        const input = document.querySelector('input')
+        const BASE_URL = "https://v6.exchangerate-api.com"
+
+        async function convertIntoUSD() {
+            const API_KEY = "6933ceb4ed44039fd34f0090"
+            const PATH = `/v6/${API_KEY}/latest/USD`
+            const URL = BASE_URL + PATH
+            const response = await fetch(URL)
+
+            const data = await response.json() 
+            console.log(data)
+            const UZS = data.conversion_rates.UZS // == $1
+
+            p.innerHTML = `
+                <b>${input.value}-sum</b> will be equal to <b>$${(input.value / UZS).toFixed(2)}</b>
+            `
+            input.value = ""
+        }
+    </script>
+</body>
+</html>

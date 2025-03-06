@@ -2,7 +2,8 @@
 import { reactive } from 'vue'
 import HeadingVue from '@/components/HeadingVue.vue'
 import { toast } from 'vue3-toastify'
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRouter } from 'vue-router'
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 const form = reactive({
     username: '',
@@ -11,19 +12,37 @@ const form = reactive({
     password_confirmation: '',
 })
 
+const auth = getAuth()
+const router = useRouter()
+
+
 const submitForm = (e) => {
+    if (form.password !== form.password_confirmation) {
+        toast("Passwords do not match...", { autoClose:2000,   type:toast.TYPE.ERROR });
+        form.password = ""
+        form.password_confirmation = ""
+        return
+    }
+
     const passwordPattern = /^[a-zA-Z0-9$#@-_]*$/
     if (passwordPattern.test(form.password)) {
-        toast("Registered successfully", {
-            autoClose: 1000,
-            type: toast.TYPE.SUCCESS,
-            theme: toast.THEME.DARK,
-            icon: "🚀",
-        });
-
-        // Fetch the information from the database
-    } else {
-        toast("Ooops... Something wrong happened!", { autoClose: 1000, type: toast.TYPE.ERROR, });
+        createUserWithEmailAndPassword(auth, form.email, form.password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                if (user) {
+                    toast("Registered successfully. You can now login", {
+                        autoClose: 2000,
+                        type: toast.TYPE.SUCCESS,
+                        theme: toast.THEME.DARK,
+                    });
+                    router.push('/login') // Redirect to login page after registration
+                }
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                toast("Ooops... Something wrong happened!", { autoClose: 1000, type: toast.TYPE.ERROR, });
+            });
     }
     e.target.reset()
     form.email = ''
@@ -36,7 +55,7 @@ const submitForm = (e) => {
 
 <template>
     <div>
-        <heading-vue heading="My Account" path="Home . Pages . Registration" />
+        <heading-vue heading="My Account" path="Home . Authentication . Registration" />
         <form @submit.prevent="submitForm" class="form-wrapper text-center">
             <div class="">
                 <h1>Create account</h1>

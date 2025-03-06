@@ -1,12 +1,15 @@
 <script setup>
-import { RouterLink } from 'vue-router'
-import { ref, computed } from 'vue';
-import { AkSearch } from '@kalimahapps/vue-icons';
-import { MdOutlinedLanguage } from '@kalimahapps/vue-icons';
-import { ReAccountPinCircleFill } from '@kalimahapps/vue-icons';
-import { LuShoppingCart } from '@kalimahapps/vue-icons';
+import { RouterLink, useRouter } from 'vue-router'
+import { ref, computed, inject } from 'vue'
+import { AkSearch } from '@kalimahapps/vue-icons'
+import { MdOutlinedLanguage } from '@kalimahapps/vue-icons'
+import { ReAccountPinCircleFill } from '@kalimahapps/vue-icons'
+import { LuShoppingCart } from '@kalimahapps/vue-icons'
+import { auth } from '@/firebase/config'
+import { useAuth } from '@/composables/useAuth.js'
+import { MiLogout } from '@kalimahapps/vue-icons'
 
-
+const router = useRouter()
 const search = ref('')
 const isSearchOpen = ref(false)
 
@@ -14,6 +17,17 @@ const testUsers = [
   "Alisher", "John", "Doe", "Jane", "Doe", "Alijon",
   "Aziz", "Bemiyya", "Abu-bubu", "Donik", "Jonik", "Onur",
 ]
+
+const { user, isLoading } = inject('auth')
+
+const handleLogout = async () => {
+  try {
+    await auth.signOut()
+    router.push('/login')
+  } catch (error) {
+    console.error('Logout error:', error)
+  }
+}
 
 const filteredNames = computed(() => {
   return testUsers.filter((name) => name.toLowerCase().includes(search.value.toLowerCase()))
@@ -44,14 +58,23 @@ const filteredNames = computed(() => {
           <div class="nav-dropdown">
             <span>USD</span>
           </div>
-          <RouterLink to="/login">
-            <ReAccountPinCircleFill />
-            <span>Login</span>
-          </RouterLink>
-          <RouterLink to="/wishlist">
-            <LuShoppingCart />
-            <span>Wishlist</span>
-          </RouterLink>
+
+          <div v-if="user" class="logged-in-menu">
+            <RouterLink to="/wishlist">
+              <LuShoppingCart />
+              <span>Wishlist</span>
+            </RouterLink>
+            <RouterLink to="#" @click="handleLogout">
+              <MiLogout />
+              <span>Logout</span>
+            </RouterLink>
+          </div>
+          <div v-else class="logged-out-menu">
+            <RouterLink to="/login">
+              <ReAccountPinCircleFill />
+              <span>Login</span>
+            </RouterLink>
+          </div>
         </div>
       </div>
     </div>
@@ -140,6 +163,10 @@ nav {
         display: flex;
         align-items: center;
         gap: 1.5rem;
+
+        .logged-in-menu {
+          @include flex($gap: 20px);
+        }
 
         a,
         .nav-dropdown {

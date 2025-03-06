@@ -5,7 +5,10 @@ import FeaturedProducts from '@/components/products/FeaturedProducts.vue';
 
 <template>
   <div>
-    <heading-vue heading="Home page" path="Home page" />
+    <heading-vue
+      heading="Leading the way in fashion"
+      path=""
+    />
 
 
     <FeaturedProducts />

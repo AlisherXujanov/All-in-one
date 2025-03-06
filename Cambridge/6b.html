@@ -6,39 +6,32 @@
     <title>Document</title>
 </head>
 <body>
-
-    <!-- 
-        BOX  
-            RU: каробка
-            UZ: quti
-            TR: kutu
-    -->
-    <div class="box" id="unique" style="color:cyan;">
-        <h1>Hello world</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus blanditiis explicabo reiciendis inventore minima, perferendis praesentium odio quos mollitia! Odit quo laudantium similique excepturi ab aperiam eaque aliquid provident saepe?</p>
+    
+    <div class="box">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet harum tempore illo similique eligendi quia dolores iusto veniam eum officiis. Iste hic rerum magni natus sit quibusdam, obcaecati accusamus. Fugiat.</p>
+        <img class="img-1" src="1.jpg"  width="50"  height="50">
+        <img class="img-2" src="1.jpg"  width="50"  height="50">
+        <img class="img-3" src="1.jpg"  width="50"  height="50">
     </div>
-
 </body>
 <style>
-    /*
-        SYNTAX:
-            selector { property: value; }
-        RU: 
-            селектор { свойство: значение; }
-        UZ:
-            tanlov { xususiyat: qiymat; }
-        TR:
-            seçici { özellik: değer; }
-    */
+    * { transition: 0.5s; }
     .box {
-        background-color: lightgray;
-        color: red;
+        width: 50%;
+        padding: 10px;
+        background-color: #eee;
+        margin: 0 auto;
+        text-align: center;
     }
-    #unique {
+    .box:hover {
         background-color: black;
+        color: red;
+        box-shadow: 0 8px 16px blue;
+        border-radius: 50px 0 50px 0;
     }
-    div {
-        color: blue;
-    }
+    .box:hover .img-2 { opacity: 0; }
+    .box:hover .img-1 { border-radius: 50%; }
+    .box:hover .img-3 { border: 10px solid greenyellow; }
+
 </style>
 </html>

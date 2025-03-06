@@ -200,16 +200,18 @@ $newsletter-padding-mobile: 20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 30px;
-  background-color: #E7E4F8;
-  padding: 15px;
-  color: #9DA0AE;
+  background-color: $violet;
+  padding: 5px 15px;
+  color: $violet-light;
   text-align: center;
 
   .social-icons {
+    @include flex();
+
     img {
-      margin: 0 10px;
       cursor: pointer;
       transition: transform 0.3s ease;
+      margin: 0 10px;
 
       &:hover {
         transform: scale(1.1);

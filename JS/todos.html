@@ -55,7 +55,9 @@
             spinner.style.display = "flex"
             todosDiv.style.display = "none"
 
+            // CDN
             let response = await axios.get(url)
+            // let response = await fetch(url)
             if (response.data.length > 0) {
                 setTimeout(() => {
                     spinner.style.display = "none"

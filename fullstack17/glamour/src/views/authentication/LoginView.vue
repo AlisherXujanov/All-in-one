@@ -9,6 +9,7 @@ import {
     signInWithPopup
 } from 'firebase/auth'
 import { auth } from '@/firebase/config'
+import { DeGoogleOriginal } from '@kalimahapps/vue-icons';
 
 
 const router = useRouter()
@@ -22,22 +23,44 @@ const submitForm = async (e) => {
         try {
             await signInWithEmailAndPassword(auth, form.email, form.password)
             toast("Logged in successfully", {
-                autoClose: 1000,
-                type:toast.TYPE.SUCCESS,
+                autoClose: 2000,
+                type: toast.TYPE.SUCCESS,
                 theme: toast.THEME.DARK,
             });
-            router.push('/') // Redirect to home page after login
+            setTimeout(() => {
+                router.push('/') // Redirect to home page after login
+            }, 2000)
         } catch (err) {
-            toast(err.message, {
-                autoClose: 1000,
-                type: toast.TYPE.ERROR,
-                theme: toast.THEME.DARK,
-            });
+            if (err.code == 'auth/invalid-credential') {
+                toast("Invalid credentials", {
+                    autoClose: 2000,
+                    type: toast.TYPE.ERROR,
+                    theme: toast.THEME.DARK,
+                });
+            }
+
         }
     }
     e.target.reset()
     form.email = ''
     form.password = ''
+}
+
+const handleGoogleLogin = async () => {
+    try {
+        const provider = new GoogleAuthProvider()
+        await signInWithPopup(auth, provider)
+        toast("Logged in successfully", {
+            autoClose: 2000,
+            type: toast.TYPE.SUCCESS,
+            theme: toast.THEME.DARK,
+        });
+        setTimeout(() => {
+            router.push('/') // Redirect to home page after login
+        }, 2000)
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 
@@ -46,7 +69,8 @@ const submitForm = async (e) => {
 
 <template>
     <div>
-        <heading-vue heading="My Account" path="Home . Pages . Login" />
+        <heading-vue heading="My Account" path="Home . Authentication . Login" />
+
         <form @submit.prevent="submitForm" class="form-wrapper text-center">
             <div class="">
                 <h1>Login</h1>
@@ -60,10 +84,15 @@ const submitForm = async (e) => {
                     required />
             </div>
             <div class="mb-3 form-text">
-                <router-link to="#" class="text-decoration-none">Forgot your password?</router-link>
+                <router-link to="/reset-password" class="text-decoration-none">Forgot your password?</router-link>
             </div>
             <div class="mb-3 ">
                 <button @keyup.enter="submitForm" class="btn btn-primary">Sign In</button> <br>
+
+                <button type="button" @click="handleGoogleLogin" class="btn my-3 btn-sm btn-outline-dark">
+                    <DeGoogleOriginal style="width: 30px; height: 30px;" />
+                    Sign in with Google
+                </button>
                 <p class="form-text">Don’t have an Account?
                     <router-link to="/registration" class="text-decoration-none">Create account</router-link>
                 </p>

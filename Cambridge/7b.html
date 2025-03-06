@@ -1,44 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
 
     <div class="box">
-        <h1>Box manipulation</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, vitae beatae temporibus voluptates dicta obcaecati quis dolore in ut, suscipit, deleniti omnis enim magni id quia nemo deserunt qui aspernatur.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, vitae beatae temporibus voluptates dicta obcaecati quis dolore in ut, suscipit, deleniti omnis enim magni id quia nemo deserunt qui aspernatur.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, vitae beatae temporibus voluptates dicta obcaecati quis dolore in ut, suscipit, deleniti omnis enim magni id quia nemo deserunt qui aspernatur.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, vitae beatae temporibus voluptates dicta obcaecati quis dolore in ut, suscipit, deleniti omnis enim magni id quia nemo deserunt qui aspernatur.</p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis quam voluptatem nesciunt dolorem,
+            itaque excepturi sunt est ut ipsam id nobis molestiae laborum, harum cumque nam hic, voluptas odio labore.
+        </p>
+        <img class="img-1" src="1.jpg" width="50" height="50">
+        <img class="img-2" src="1.jpg" width="50" height="50">
+        <img class="img-3" src="1.jpg" width="50" height="50">
     </div>
-    
+
 </body>
 <style>
-    * {
-        box-sizing: border-box;
-    }
     .box {
-        background: linear-gradient(to top right, skyblue, yellow);
-        width: 300px;
-        height: 300px;
-        padding: 50px;
+        width: 50%;
         margin: 0 auto;
-        border: 10px double black;
-        border-radius: 20px;
-        overflow: auto;
+        background-color: #eee;
+        padding: 20px;
+        text-align: center;
+        transition: 0.5s;
     }
-    ::-webkit-scrollbar {
-        width: 10px;
-        background-color: transparent;
-        border-radius: 10px;
+    .img-2 { transition: 500ms; /* эффект перехода при изменении свойств элемента */
+        opacity: 0;
     }
-    ::-webkit-scrollbar-thumb {
-        width: 8px;
-        background: linear-gradient(to right, skyblue, yellow);
-        border-radius: 10px;
+    .box:hover .img-2 { /* при прикосновении к элементу box */
+        opacity: 1;
     }
+    .box:hover {
+        background-color: black;
+        color: cyan;
+    }
+
+
 </style>
+
 </html>

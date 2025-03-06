@@ -1,64 +1,40 @@
-function game() {
-    let lives = 5
-    let random_number = parseInt(Math.random() * 100);
-    let pool = []
+const BASE_URL = "http://localhost:3000/"
+const USERS_URL = BASE_URL + "users"
 
-    while (true) {
-        // запуск бесконечного цикла
-        if (lives === 0) {
-            alert("Game over")
-
-            if (confirm("Хотите сыграть еще?")) {
-                random_number = parseInt(Math.random() * 100)
-                lives = 5
-                pool = []
-                continue
-            } else {
-                break
-            }
-        }
-        let answer = prompt("Угадайте число от 1 до 100");
-
-        answer = parseInt(answer);
-        if (!isNaN(answer)) {
-            if (0 < answer && answer < 100) {
-                if (pool.includes(answer)) {
-                    alert("Вы уже вводили это число")
-                    continue
-                } else {
-                    pool.push(answer)
-                }
-
-                if (answer == random_number) {
-                    alert("Поздравляю, вы угадали число ✅");
-                    if (confirm("Хотите сыграть еще?")) {
-                        random_number = parseInt(Math.random() * 100)
-                        lives = 5
-                        pool = []
-                        continue;
-                    } else {
-                        break;
-                    }
-                } else {
-                    lives--
-                    if (answer > random_number) {
-                        alert("Меньше, осталось жизней: " + lives);
-                    } else {
-                        alert("Больше, осталось жизней: " + lives);
-                    }
-                }
-            } else {
-                alert("Введите число от 1 до 100!!!");
-                continue;
-            }
-        }
-        else {
-            alert("Введите число!");
-            continue;
-        }
-    }
+const [inputName, inputEmail, inputPassword, submitBtn] = [
+    document.querySelector('#name'),
+    document.querySelector('#email'),
+    document.querySelector('#password'),
+    document.querySelector('#submit'),
+]
+// ============================================================================
+// ============================================================================
+async function getUsers() {
+    let response = await fetch(USERS_URL)
+    let data = await response.json()
+    console.log(data)
 }
+getUsers()
 
-
-
-game()
+// ============================================================================
+// ============================================================================
+async function createUser() {
+    let newUser = {
+        name: inputName.value,
+        email: inputEmail.value,
+        password: inputPassword.value
+    }
+    let response = await fetch(USERS_URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newUser)
+    })
+    let data = await response.json()
+    console.log(data)
+}
+submitBtn.addEventListener('click', (e) => {
+    e.preventDefault() // Prevent the form from submitting
+    createUser()
+})

@@ -1,1 +1,0 @@
-# This is next.js course from Alisher Khujanov
