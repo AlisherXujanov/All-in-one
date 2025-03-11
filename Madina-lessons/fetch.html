@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button onclick="getNewPost()">Get new post</button>
+    <div class="post">
+        <h1 class="post-title"></h1>
+        <p class="post-body"></p>
+    </div>
+
+
+    <script>
+        const URL = "https://jsonplaceholder.typicode.com/posts"
+        const title = document.querySelector(".post-title")
+        const body = document.querySelector(".post-body")
+
+        // HTTP methods
+        // 1. GET (default) ->  Get the info from backend 
+        // 2. POST          ->  Send the info to the backend
+        // 3. PUT           ->  Update the info in the backend
+        // 4. DELETE        ->  Delete the info from the backend
+        // 5. PATCH         ->  Update the info in the backend (partial update)
+        // ex:  const response = await fetch(URL, {method: "POST", body: JSON.stringify(...)})
+
+        async function getNewPost() {
+            // 1. Fetch data from the API
+            // 2. Get the result and convert it to JSON
+            // 3. Get the random post from the result
+            // 4. Display the post on the page
+            const response = await fetch(URL)
+            const result = await response.json() // [...,] may be 1000 posts or etc...
+            const randomIndex = parseInt(Math.random()*result.length)
+            const randomPost = result[randomIndex]
+            // {
+            //   body: ...
+            //   id: ...,
+            //   title: ...,
+            //   userId: ...,
+            // }
+            title.innerHTML = randomPost.title
+            body.innerHTML = randomPost.body
+        }
+
+    </script>
+</body>
+<style>
+    * {
+        text-align: center;
+    }
+    .post {
+        width: 50%;
+        padding: 15px;
+        border-radius: 10px;
+        margin: 10px auto;
+        background-color: #f4f4f4;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .post-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin: 0;
+    }
+    .post-body {
+        font-size: 18px;
+        margin: 0;
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 18px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+    }
+</style>
+</html>
