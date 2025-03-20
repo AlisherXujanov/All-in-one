@@ -5,9 +5,13 @@ import NavVue from '../NavVue.vue'
 import { useAuth } from '@/composables/useAuth.js'
 import SpinnerVue from "@/components/SpinnerVue.vue";
 import { provide } from 'vue'
+import { AUTH } from '@/store';
 
 const { user, isLoading } = useAuth()
-provide('auth', { user, isLoading })
+
+// provide("KEY", "VALUE")
+provide(AUTH, { user, isLoading })
+
 </script>
 
 

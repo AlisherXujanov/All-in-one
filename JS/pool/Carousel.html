@@ -4,105 +4,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slider Carousel</title>
-
+    <title>Image Carousel</title>
 </head>
 
 <body>
     <div class="slider">
-        <div class="slide active">
-            <img src="../../1.jpg" width="100%" height="200">
+        <div class="slide">
+            <img src="../../pics/1.jpg" alt="Image 1">
         </div>
         <div class="slide">
-            <img src="../../1.jpg" width="100%" height="200">
+            <img src="../../pics/2.jpg" alt="Image 2">
         </div>
         <div class="slide">
-            <img src="../../1.jpg" width="100%" height="200">
+            <img src="../../pics/3.jpg" alt="Image 3">
         </div>
-        <button class="prev">Prev</button>
-        <button class="next">Next</button>
+        <div class="slide">
+            <img src="../../pics/4.jpg" alt="Image 4">
+        </div>
+        <div class="slide">
+            <img src="../../pics/5.jpg" alt="Image 5">
+        </div>
+        <button class="prev">❮</button>
+        <button class="next">❯</button>
+
+        <div class="indicators"></div>
     </div>
 
     <script>
-        let slides = document.querySelectorAll('.slide');
-        let currentIndex = 0;
+        let slides = document.querySelectorAll('.slider .slide')
+        let indicatorsContainer = document.querySelector('.slider .indicators')
+        let indicators = document.querySelectorAll('.slider .indicators span')
+
+        // Create indicators
+        slides.forEach((_, index) => {
+            const span = document.createElement('span')
+            if (index === 0) span.classList.add('active')
+            indicatorsContainer.appendChild(span)
+        })
+
+        // Update indicators after creation
+        indicators = document.querySelectorAll('.slider .indicators span')
+
+        let currentIndex = 0
+        let autoSlideInterval
+
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                currentIndex = index
+                showSlide(currentIndex)
+                updateIndicators()
+                resetAutoSlide()
+            })
+        })
+
+        function updateIndicators() {
+            indicators.forEach((indicator, index) => {
+                if (index === currentIndex) {
+                    indicator.classList.add('active')
+                } else {
+                    indicator.classList.remove('active')
+                }
+            })
+        }
 
         function showSlide(index) {
             slides.forEach((slide, i) => {
                 slide.style.transform = `translateX(${100 * (i - index)}%)`
-                // ---------------------------------------------------
-                // index == 1  => 
-                //           0-index  ==>  translateX(-100%)
-                //           1-index  ==>  translateX(0%)
-                //           2-index  ==>  translateX(100%)
-                // ---------------------------------------------------
-                // index == 0  => 
-                //           0-index  ==>  translateX(0%)
-                //           1-index  ==>  translateX(100%)
-                //           2-index  ==>  translateX(200%)
-                // ---------------------------------------------------
-                // index == 2  => 
-                //           0-index  ==>  translateX(-200%)
-                //           1-index  ==>  translateX(-100%)
-                //           2-index  ==>  translateX(0%)
-                // ---------------------------------------------------
             })
+            updateIndicators()
         }
-        // ================================================================
+
         function prevFn() {
             currentIndex = (currentIndex - 1 + slides.length) % slides.length
             showSlide(currentIndex)
+            resetAutoSlide()
         }
-        document.querySelector('.prev').addEventListener('click', prevFn)
-        // ================================================================
+
         function nextFn() {
             currentIndex = (currentIndex + 1) % slides.length
             showSlide(currentIndex)
+            resetAutoSlide()
         }
+
+        function resetAutoSlide() {
+            clearInterval(autoSlideInterval)
+            autoSlideInterval = setInterval(nextFn, 3000)
+        }
+
+        document.querySelector('.prev').addEventListener('click', prevFn)
         document.querySelector('.next').addEventListener('click', nextFn)
-        // ================================================================
-
-
-        setInterval(nextFn, 2000)
+        
+        // Initialize the first slide and auto-sliding
+        showSlide(currentIndex)
+        resetAutoSlide()
     </script>
 
 </body>
 <style>
-    * {
-        transition: 0.5s;
-    }
     .slider {
-        width: 50%;
-        margin: 50px auto;
-        height: 400px;
+        width: 100%;
+        margin: 0 auto;
+        height: 600px;
         overflow: hidden;
         position: relative;
+        transition: 0.2s;
     }
 
-    .slide {
-        width: 100%;
-        height: 100%;
+    .slider .title {
         position: absolute;
-        transition: transform 1s;
-        transform: translateX(0);
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
     }
 
-    .prev,
-    .next {
+    .slider .slide {
+        width: 100%;
+        height: 600px;
+        position: absolute;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .slider .slide img {
+        width: 100%;
+        height: 600px;
+    }
+
+    .slider .prev,
+    .slider .next {
         cursor: pointer;
         position: absolute;
-        top: 25%;
-        background-color: lightgray;
+        transition: 0.2s;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(255, 255, 255, 0.5);
+        color: rgb(0, 45, 100);
         border: none;
+        width: 50px;
+        height: 50px;
+        font-size: 18px;
+        border-radius: 50%;
+        transition: background-color 0.3s;
+        z-index: 1;
+        display: none;
     }
 
-    .prev {
+    .slider .prev:hover,
+    .slider .next:hover {
+        background-color: rgb(0, 45, 100);
+        color: white;
+    }
+
+    .slider .prev {
         left: 10px;
     }
 
-    .next {
+    .slider .next {
         right: 10px;
     }
-</style>
+    .slider:hover .prev,
+    .slider:hover .next {
+        display: block;
+        font-weight: bold;
+    }
 
+    .slider .indicators {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+    }
+    .slider .indicators span {
+        cursor: pointer;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #fff;
+        margin: 0 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .slider .indicators span.active {
+        background-color: rgb(0, 45, 100);
+        box-shadow: 0 0 15px rgba(0, 45, 100, 0.5);
+        border: 2px solid rgb(0, 45, 100);
+        transform: scale(1.2);
+    }
+
+    .slider .indicators span.active::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 4px;
+        height: 4px;
+        background-color: white;
+        border-radius: 50%;
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+
+    .slider .indicators span:hover {
+        background-color: rgb(0, 45, 100);
+        box-shadow: 0 0 15px rgba(0, 45, 100, 0.5);
+        border: 2px solid rgb(0, 45, 100);
+        transform: scale(1.2);
+    }
+</style>
 </html>

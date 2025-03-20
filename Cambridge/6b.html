@@ -7,31 +7,58 @@
 </head>
 <body>
     
-    <div class="box">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet harum tempore illo similique eligendi quia dolores iusto veniam eum officiis. Iste hic rerum magni natus sit quibusdam, obcaecati accusamus. Fugiat.</p>
-        <img class="img-1" src="1.jpg"  width="50"  height="50">
-        <img class="img-2" src="1.jpg"  width="50"  height="50">
-        <img class="img-3" src="1.jpg"  width="50"  height="50">
-    </div>
+    <!-- navigation -->
+    <nav>
+        <div class="left">
+            <a href="#">Logo</a>
+        </div>
+        <div class="right">
+            <a href="#">About</a>
+            <a href="#">Pricing</a>
+            <a href="#">Profile</a>
+        </div>
+    </nav>
+
+    <main>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis aliquid enim quaerat molestiae nulla ducimus nisi nesciunt. Inventore exercitationem, tempora officia quisquam dolor obcaecati maiores! Voluptatum tempore ducimus ipsam unde reiciendis commodi, ad voluptatibus quibusdam earum voluptate inventore hic ipsum at. Provident culpa numquam in ipsum officiis harum rem quia exercitationem, alias, consectetur quaerat. Cumque, soluta, exercitationem perspiciatis, blanditiis atque similique veniam laboriosam saepe expedita incidunt ad placeat? Minus corrupti voluptatum optio sint praesentium, similique est labore itaque quod, explicabo officia soluta! Cupiditate amet non, nobis nihil eveniet ea quasi laborum animi, error odit consequatur ipsam, facere sit ab ad!</p>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis aliquid enim quaerat molestiae nulla ducimus nisi nesciunt. Inventore exercitationem, tempora officia quisquam dolor obcaecati maiores! Voluptatum tempore ducimus ipsam unde reiciendis commodi, ad voluptatibus quibusdam earum voluptate inventore hic ipsum at. Provident culpa numquam in ipsum officiis harum rem quia exercitationem, alias, consectetur quaerat. Cumque, soluta, exercitationem perspiciatis, blanditiis atque similique veniam laboriosam saepe expedita incidunt ad placeat? Minus corrupti voluptatum optio sint praesentium, similique est labore itaque quod, explicabo officia soluta! Cupiditate amet non, nobis nihil eveniet ea quasi laborum animi, error odit consequatur ipsam, facere sit ab ad!</p>
+    </main>
+
 </body>
 <style>
-    * { transition: 0.5s; }
-    .box {
-        width: 50%;
-        padding: 10px;
-        background-color: #eee;
-        margin: 0 auto;
+    * {
+        margin: 0;
+        padding: 0;
+        transition: 0.2s;
+    }
+    nav {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        box-shadow: 0 8px 16px lightgray;
+        padding: 20px;
+    }
+    .right {
+        text-align: right;
+    }
+    a {
+        padding: 10px 20px;
+        text-decoration: none;
+    }
+    a:hover {
+        color: snow;
+        background-color: darkcyan;
+    }
+    main {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 20px;
         text-align: center;
     }
-    .box:hover {
-        background-color: black;
+    p:hover {
         color: red;
-        box-shadow: 0 8px 16px blue;
-        border-radius: 50px 0 50px 0;
     }
-    .box:hover .img-2 { opacity: 0; }
-    .box:hover .img-1 { border-radius: 50%; }
-    .box:hover .img-3 { border: 10px solid greenyellow; }
 
 </style>
 </html>

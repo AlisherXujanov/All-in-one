@@ -1,0 +1,47 @@
+@import "vars";
+
+@font-face {
+  font-family: 'ClashDisplay-Medium';
+  src: url('../fonts/WEB/fonts/ClashDisplay-Medium.woff2') format('woff2'),
+    url('../fonts/WEB/fonts/ClashDisplay-Medium.woff') format('woff'),
+    url('../fonts/WEB/fonts/ClashDisplay-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.main-layout-wrapper {
+  width: 1350px;
+  margin: 0 auto;
+}
+
+body {
+  // @include wave_effect();
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'ClashDisplay-Medium', sans-serif;
+}
+
+
+.page-wrapper {
+  padding: 50px 0 20px 0;
+}

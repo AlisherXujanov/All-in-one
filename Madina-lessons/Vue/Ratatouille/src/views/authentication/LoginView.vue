@@ -1,5 +1,5 @@
 <script setup>
-import { reactive } from 'vue';
+import { reactive, onMounted, onBeforeUnmount } from 'vue';
 import { toast } from 'vue3-toastify';
 import { useRouter } from 'vue-router'
 import {
@@ -45,6 +45,22 @@ const submit = async () => {
     })
   }
 }
+onMounted(() => {
+  //  - getItem(key) => get info from store data
+  let info = localStorage.getItem('info') || "{}"
+  info = JSON.parse(info)
+
+  form.email = info.email || ''
+  form.password = info.password || ''
+})
+onBeforeUnmount(() => {
+  // localStorage  => is a storage that is available through browser
+  //               => it gives us in total 10mb of storage
+  //  - setItem(key, value) => to store data
+  localStorage.setItem('info', JSON.stringify(form))
+})
+// stringify  =>   "..."      =>  converts to string form  (integer, object, arr, etc)
+// parse      =>   { ... }    =>  converts back to the original form
 </script>
 
 

@@ -9,12 +9,9 @@
 </head>
 
 <body>
-    <!-- use camera and allow to get a picture -->
     <div>
         <video id="video" width="640" height="480" autoplay></video>
-        <button id="snap">Snap Photo</button>
         <canvas id="canvas" width="640" height="480"></canvas>
-        <img id="photo" alt="The screen capture will appear in this box.">
     </div>
 
     <script>
@@ -26,15 +23,6 @@
                 video.play();
             });
         }
-        // Elements for taking the snapshot
-        let canvas = document.getElementById('canvas');
-        let context = canvas.getContext('2d');
-        let video = document.getElementById('video');
-
-        // Trigger photo take
-        document.getElementById("snap").addEventListener("click", function () {
-            context.drawImage(video, 0, 0, 640, 480);
-        });
     </script>
 </body>
 </html>

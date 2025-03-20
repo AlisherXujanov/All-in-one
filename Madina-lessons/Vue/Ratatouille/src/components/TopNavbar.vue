@@ -1,15 +1,14 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, inject } from 'vue';
 import { RouterLink } from 'vue-router';
 import { GlProfile } from '@kalimahapps/vue-icons';
 import { ChMenuHamburger } from '@kalimahapps/vue-icons';
 
 import { auth } from '@/firebase/config'
 import { useRouter } from 'vue-router'
-import { useAuth } from '@/composables/useAuth';
 import BurgerMenu from './BurgerMenu.vue';
 
-const { user, isLoading } = useAuth()
+const { user, isLoading } = inject('user')
 const router = useRouter()
 const showBurgerMenu = ref(false)
 

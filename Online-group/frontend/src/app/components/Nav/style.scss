@@ -1,0 +1,59 @@
+@import "../../assets/styles/vars";
+
+nav.global-nav {
+    padding: 20px 0;
+    @include grid(2);
+
+    .left {
+        @include flex($justify: flex-start, $gap: 20px);
+
+        .global-searchbox {
+            width: 284px;
+            background-color: $light-gray;
+            padding: 10px 5px 10px 20px;
+            border-radius: 10px;
+            @include flex();
+
+            svg {
+                color: $dark-gray;
+
+                &.active {
+                    color: $dark;
+                }
+            }
+
+            input {
+                background-color: $light-gray;
+                border: none;
+                outline: none;
+                padding: 5px 10px;
+                width: 100%;
+                color: $text-color;
+
+                &::placeholder {
+                    color: $dark-gray;
+                }
+
+                &:focus {
+                    color: $dark;
+                }
+            }
+        }
+    }
+
+    .right {
+        @include flex($justify: flex-end, $gap: 0);
+
+        a {
+            padding: 10px 20px;
+            color: $dark;
+            text-decoration: none;
+            font-family: "ClashDisplay-Medium", sans-serif;
+
+            &.active {
+                font-weight: 600;
+                color: $red;
+            }
+        }
+    }
+}

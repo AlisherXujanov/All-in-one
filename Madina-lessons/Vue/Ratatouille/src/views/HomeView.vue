@@ -1,28 +1,13 @@
 <script setup>
 import HomeImageLink from "@/components/HomeImageLink.vue"
-import mainBgImage from "@/assets/images/main-bg.png"
+import { inject } from "vue"
 
-const links = [
-  {
-    image: mainBgImage,
-    linkText: "MENU",
-    link: "/menu",
-  },
-  {
-    image: mainBgImage,
-    linkText: "RESERVATION",
-    link: "/book-a-table",
-  },
-  {
-    image: mainBgImage,
-    linkText: "OUR RESTAURANT",
-    link: "/about",
-  }
-]
 
 function handleCustomEvent({ id, message, date }) {
   alert(message)
 }
+const links = inject("links")
+
 
 </script>
 

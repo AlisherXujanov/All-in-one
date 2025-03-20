@@ -1,24 +1,21 @@
 <script setup>
 import { RouterLink, useRouter } from 'vue-router'
-import { ref, computed, inject } from 'vue'
+import { ref, computed, inject, onMounted } from 'vue'
 import { AkSearch } from '@kalimahapps/vue-icons'
 import { MdOutlinedLanguage } from '@kalimahapps/vue-icons'
 import { ReAccountPinCircleFill } from '@kalimahapps/vue-icons'
 import { LuShoppingCart } from '@kalimahapps/vue-icons'
 import { auth } from '@/firebase/config'
-import { useAuth } from '@/composables/useAuth.js'
 import { MiLogout } from '@kalimahapps/vue-icons'
+import { useStore } from 'vuex'
 
 const router = useRouter()
 const search = ref('')
 const isSearchOpen = ref(false)
 
-const testUsers = [
-  "Alisher", "John", "Doe", "Jane", "Doe", "Alijon",
-  "Aziz", "Bemiyya", "Abu-bubu", "Donik", "Jonik", "Onur",
-]
-
-const { user, isLoading } = inject('auth')
+const store = useStore()
+const products = computed(() => store.state.products)
+onMounted(() => { store.dispatch('fetchProducts') })
 
 const handleLogout = async () => {
   try {
@@ -28,10 +25,10 @@ const handleLogout = async () => {
     console.error('Logout error:', error)
   }
 }
-
-const filteredNames = computed(() => {
-  return testUsers.filter((name) => name.toLowerCase().includes(search.value.toLowerCase()))
+const filteredProducts = computed(() => {
+  return store.state.products.filter((obj) => obj.title.toLowerCase().includes(search.value.toLowerCase()))
 })
+
 </script>
 
 <template>
@@ -90,6 +87,7 @@ const filteredNames = computed(() => {
             <RouterLink to="/blog" active-class="active">Blog</RouterLink>
             <RouterLink to="/shop" active-class="active">Shop</RouterLink>
             <RouterLink to="/contact" active-class="active">Contact</RouterLink>
+            <RouterLink to="/faq" active-class="active">FAQ</RouterLink>
           </div>
         </div>
         <div class="right">
@@ -102,8 +100,8 @@ const filteredNames = computed(() => {
               </button>
             </div>
             <ul class="search-results" v-if="search.length > 0">
-              <li v-for="name in filteredNames" :key="name">
-                {{ name }}
+              <li v-for="product in filteredProducts" :key="product.id">
+                {{ product.title }}
               </li>
             </ul>
           </div>

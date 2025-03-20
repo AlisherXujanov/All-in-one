@@ -24,6 +24,12 @@ const META_URLS = [
     component: () => import('../views/ContactView.vue'),
     meta: { requiresAuth: true },
   },
+  {
+    path: '/product-details/:id',
+    name: "product-details",
+    component: () => import('../views/ProductDetails.vue'),
+    meta: { requiresAuth: true },
+  },
 ]
 
 
@@ -63,7 +69,19 @@ const router = createRouter({
       name: 'reset-password',
       component: () => import('../views/authentication/ResetPassword.vue'),
     },
+    {
+      path: '/faq',
+      name: 'faq',
+      component: () => import('../views/FAQ.vue'),
+    },
     ...META_URLS,
+
+    // =====================================================================================
+    {
+      path: '/:catchAll(.*)', // 404 page
+      name: 'NotFound',
+      component: () => import('../views/NotFound.vue')
+    }
   ],
 })
 

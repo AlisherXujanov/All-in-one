@@ -21,6 +21,128 @@
             "stars": 3,
             "liked": false,
             "likes": []
+        },
+        {
+            "id": 3,
+            "title": "Lorem ipsum dolor",
+            "price": 200,
+            "discount": 0.2,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid ipsam sit in omnis? Commodi unde laudantium asperiores et quos suscipit.",
+            "colors": ["blue", "orange", "red"],
+            "stars": 5,
+            "liked": false,
+            "likes": []
+        },
+        {
+            "id": 4,
+            "title": "Consectetur adipisicing",
+            "price": 150,
+            "discount": 0.1,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid ipsam sit in omnis? Commodi unde laudantium asperiores et quos suscipit.",
+            "colors": ["orange", "red", "blue"],
+            "stars": 2,
+            "liked": false,
+            "likes": []
+        },
+        {
+            "id": 5,
+            "title": "Aliquid ipsam sit",
+            "price": 300,
+            "discount": 0.4,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid ipsam sit in omnis? Commodi unde laudantium asperiores et quos suscipit.",
+            "colors": ["red", "blue", "orange"],
+            "stars": 1,
+            "liked": false,
+            "likes": []
+        },
+        {
+            "id": 6,
+            "title": "In omnis commodi",
+            "price": 250,
+            "discount": 0.6,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid ipsam sit in omnis? Commodi unde laudantium asperiores et quos suscipit.",
+            "colors": ["blue", "orange", "red"],
+            "stars": 4,
+            "liked": false,
+            "likes": []
+        },
+        {
+            "id": 7,
+            "title": "Unde laudantium asperiores",
+            "price": 350,
+            "discount": 0.7,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid ipsam sit in omnis? Commodi unde laudantium asperiores et quos suscipit.",
+            "colors": ["orange", "red", "blue"],
+            "stars": 3,
+            "liked": false,
+            "likes": []
+        },
+        {
+            "id": 8,
+            "title": "Et quos suscipit",
+            "price": 400,
+            "discount": 0.8,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid ipsam sit in omnis? Commodi unde laudantium asperiores et quos suscipit.",
+            "colors": ["red", "blue", "orange"],
+            "stars": 2,
+            "liked": false,
+            "likes": []
+        },
+        {
+            "id": 9,
+            "title": "Aliquid ipsam sit",
+            "price": 300,
+            "discount": 0.4,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid ipsam sit in omnis? Commodi unde laudantium asperiores et quos suscipit.",
+            "colors": ["blue", "orange", "red"],
+            "stars": 1,
+            "liked": false,
+            "likes": []
+        },
+        {
+            "id": 10,
+            "title": "In omnis commodi",
+            "price": 250,
+            "discount": 0.6,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid ipsam sit in omnis? Commodi unde laudantium asperiores et quos suscipit.",
+            "colors": ["orange", "red", "blue"],
+            "stars": 4,
+            "liked": false,
+            "likes": []
+        },
+        {
+            "id": 11,
+            "title": "Unde laudantium asperiores",
+            "price": 350,
+            "discount": 0.7,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid ipsam sit in omnis? Commodi unde laudantium asperiores et quos suscipit.",
+            "colors": ["red", "blue", "orange"],
+            "stars": 3,
+            "liked": false,
+            "likes": []
+        },
+        {
+            "id": 12,
+            "title": "Et quos suscipit",
+            "price": 400,
+            "discount": 0.8,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid ipsam sit in omnis? Commodi unde laudantium asperiores et quos suscipit.",
+            "colors": ["blue", "orange", "red"],
+            "stars": 2,
+            "liked": false,
+            "likes": []
+        },
+        {
+            "id": 13,
+            "title": "Aliquid ipsam sit",
+            "price": 300,
+            "discount": 0.4,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid ipsam sit in omnis? Commodi unde laudantium asperiores et quos suscipit.",
+            "colors": ["orange", "red", "blue"],
+            "stars": 1,
+            "liked": false,
+            "likes": []
         }
-    ]
+    ],
+    "blogs": []
 }
