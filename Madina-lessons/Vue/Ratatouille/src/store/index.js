@@ -1,9 +1,11 @@
 import { createStore } from "vuex"
 
+const BASE_URL = 'http://localhost:3001'
+
 const initialState = {
   state: {
     count: 0,
-    posts: [],
+    dishes: [],
   },
   mutations: {
     // Mutations are always synchronous
@@ -22,8 +24,8 @@ const initialState = {
     decrement(state, payload) {
       return state.count -= payload.amount
     },
-    setPosts(state, payload) {
-      return state.posts = payload
+    setDishes(state, payload) {
+      return state.dishes = payload
     }
   },
   actions: {
@@ -34,12 +36,12 @@ const initialState = {
     // dispatch('actionName', payload)
     // --------------------------------
     // The payload is optional and is used to pass data to the action
-    async fetchData({ commit }, payload) {
-      const URL = "https://jsonplaceholder.typicode.com/posts"
+    async fetchDishes({ commit }, payload) {
+      const URL = BASE_URL + "/dishes"
       const response = await fetch(URL)
       const data = await response.json()
       console.log(data)
-      commit('setPosts', data)
+      commit('setDishes', data)
     }
   }
 }

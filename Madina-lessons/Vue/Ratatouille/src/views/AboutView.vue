@@ -5,11 +5,11 @@ const store = useStore()
 
 const count = computed(() => store.state.count)
 
-function fetchPosts() {
-  store.dispatch('fetchData')
+function fetchDishes() {
+  store.dispatch('fetchDishes')
 }
 
-const posts = computed(() => store.state.posts)
+const dishes = computed(() => store.state.dishes)
 </script>
 
 <template>
@@ -21,12 +21,13 @@ const posts = computed(() => store.state.posts)
       <button @click="() => store.commit('decrement', { amount: 2 })">- Decrement</button>
       <button @click="() => store.commit('increment', { amount: 4 })">+ Incement</button>
       <hr>
-      <button @click="fetchPosts">Fetch Posts</button>
-      <div v-if="posts.length > 0">
+      <button @click="fetchDishes">Fetch dishes</button>
+      <div v-if="dishes.length > 0">
         <ul>
-          <li v-for="post in posts" :key="post.id">
-            <h3>{{ post.title }}</h3>
-            <p>{{ post.body }}</p>
+          <li v-for="dish in dishes" :key="dish.id">
+            <h3>{{ dish.name }}</h3>
+            <p>{{ dish.description }}</p>
+            <p>{{ dish.price }}</p>
           </li>
         </ul>
       </div>

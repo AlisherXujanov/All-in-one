@@ -1,29 +1,17 @@
 {
-    "posts": [
-        {
-            "id": "1",
-            "title": "a title",
-            "views": 100
-        },
-        {
-            "id": "2",
-            "title": "another title",
-            "views": 200
-        }
+    "dishes": [
+        { "id": 1, "name": "Pizza", "description": "A delicious dish of pizza", "price": 10.00 },
+        { "id": 2, "name": "Salad", "description": "A delicious dish of salad", "price": 5.00 },
+        { "id": 3, "name": "Soup", "description": "A delicious dish of soup", "price": 8.00 },
+        { "id": 4, "name": "Ice Cream", "description": "A delicious dish of ice cream", "price": 12.00 },
+        { "id": 5, "name": "Burger", "description": "A delicious dish of burger", "price": 15.00 }
     ],
-    "comments": [
-        {
-            "id": "1",
-            "text": "a comment about post 1",
-            "postId": "1"
-        },
-        {
-            "id": "2",
-            "text": "another comment about post 1",
-            "postId": "1"
-        }
+    "desserts": [
+        { "id": 1, "name": "Ice Cream", "description": "A delicious dish of ice cream", "price": 12.00 },
+        { "id": 2, "name": "Cake", "description": "A delicious dish of cake", "price": 15.00 }
     ],
-    "profile": {
-        "name": "typicode"
-    }
+    "drinks": [
+        { "id": 1, "name": "Coffee", "description": "A delicious dish of coffee", "price": 12.00 },
+        { "id": 2, "name": "Tea", "description": "A delicious dish of tea", "price": 15.00 }
+    ]
 }
