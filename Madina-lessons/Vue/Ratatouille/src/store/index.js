@@ -42,6 +42,24 @@ const initialState = {
       const data = await response.json()
       console.log(data)
       commit('setDishes', data)
+    },
+    async createDish({ commit }, payload) {
+      const URL = BASE_URL + "/dishes"
+      const response = await fetch(URL, {
+        method: 'POST',
+        body: JSON.stringify(payload),
+      })
+      const data = await response.json()
+      console.log(data)
+    },
+    async editDish({ commit }, payload) {
+      const URL = BASE_URL + "/dishes/" + payload.id
+      const response = await fetch(URL, {
+        method: 'PUT',
+        body: JSON.stringify(payload),
+      })
+      const data = await response.json()
+      console.log(data)
     }
   }
 }
