@@ -1,7 +1,7 @@
 // let string  = "text  =>  текст"
 // DATA TYPES
 // 1. String    =>   текст
-// 2. Number    =>   числа
+// 2. Number    =>   числа  (17 digits max)
 // 3. Bigint    =>   большие цыфры
 // 4. Boolean   =>   true/false  (истина / ложь) (haqiqtan / yolg'on)
 // 5. Undefined =>   не определён  (not defined) (aniqlanmagan)

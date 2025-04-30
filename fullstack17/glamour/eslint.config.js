@@ -7,6 +7,11 @@ export default [
   {
     name: 'app/files-to-lint',
     files: ['**/*.{js,mjs,jsx,vue}'],
+    languageOptions: {
+      globals: {
+        process: 'readonly'
+      }
+    }
   },
 
   {
@@ -16,7 +21,7 @@ export default [
 
   js.configs.recommended,
   ...pluginVue.configs['flat/essential'],
-  
+
   {
     ...pluginPlaywright.configs['flat/recommended'],
     files: ['e2e/**/*.{test,spec}.{js,ts,jsx,tsx}'],

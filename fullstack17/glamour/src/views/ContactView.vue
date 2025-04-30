@@ -13,11 +13,8 @@ const submitForm = (e) => {
 
     <div class="contact-details">
       <div class="left">
-        <h2>Information About us</h2>
-        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis neque ultrices
-          mattis aliquam,
-          malesuada diam est. Malesuada sem tristique amet erat vitae eget dolor lobortis. Accumsan faucibus
-          vitae lobortis quis bibendum quam.</p>
+        <h2>About Our Store</h2>
+        <p class="text-muted">Welcome to Glamour Fashion Store, your premier destination for trendy and high-quality fashion items. We pride ourselves on offering the latest styles, exceptional customer service, and a seamless shopping experience. Our carefully curated collection includes clothing, accessories, and footwear for all occasions.</p>
         <div class="colors">
           <span class="indigo"></span>
           <span class="red"></span>
@@ -25,27 +22,27 @@ const submitForm = (e) => {
         </div>
       </div>
       <div class="right">
-        <h2>Contact Way</h2>
+        <h2>Contact Information</h2>
         <div class="different-contacts">
           <div class="contact-way">
             <span class="indigo"></span>
             <p class="text-muted">
-              Tel:877 676767
+              Phone: (555) 123-4567
               <br>
-              E-Mail: shop@store.com
+              Email: support@glamourfashion.com
             </p>
           </div>
           <div class="contact-way">
             <span class="red"></span>
-            <p class="text-muted">Support Forum <br> For over 24hr</p>
+            <p class="text-muted">Customer Support <br> Available 24/7</p>
           </div>
           <div class="contact-way">
             <span class="orange"></span>
-            <p class="text-muted">20 Margaret st, London <br> Great britain, 3NM98-LK</p>
+            <p class="text-muted">123 Fashion Avenue <br> New York, NY 10001</p>
           </div>
           <div class="contact-way">
             <span class="green"></span>
-            <p class="text-muted">Free standard shipping on all orders.</p>
+            <p class="text-muted">Free shipping on orders over $50</p>
           </div>
         </div>
       </div>
@@ -54,8 +51,7 @@ const submitForm = (e) => {
     <div class="contact-form">
       <div class="left">
         <h2>Get In Touch</h2>
-        <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae aliquid velit minus
-          architecto voluptas quos alias cupiditate accusantium qui atque!</p>
+        <p class="text-muted">Have questions about our products or services? We're here to help! Fill out the form below and our customer service team will get back to you within 24 hours.</p>
         <form @submit.prevent="submitForm">
           <div>
             <input id="contact-name" type="text" placeholder="First name*" required>

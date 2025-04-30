@@ -42,9 +42,65 @@ const devidedHeading = computed(() => {
 
 <style lang='scss' scoped>
 .main-heading-wrapper {
-  padding: 50px 370px;
+  padding: 1rem;
   @include flex(column, flex-start, flex-start);
   background-color: $violet-lighter;
+
+  .heading {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    font-size: 2rem;
+    font-weight: 700;
+    color: $dark-blue;
+    margin-bottom: 0.5rem;
+  }
+
+  .path {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    font-size: 1rem;
+    color: $dark-blue;
+
+    .text-danger {
+      color: $red;
+      font-weight: 500;
+    }
+  }
 }
 
+@media screen and (min-width: 768px) {
+  .main-heading-wrapper {
+    padding: 2rem;
+
+    .heading {
+      font-size: 2.5rem;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .main-heading-wrapper {
+    padding: 3rem;
+
+    .heading {
+      font-size: 3rem;
+    }
+
+    .path {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .main-heading-wrapper {
+    padding: 4rem;
+
+    .heading {
+      font-size: 3.5rem;
+    }
+  }
+}
 </style>

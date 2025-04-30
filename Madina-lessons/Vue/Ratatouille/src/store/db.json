@@ -1,10 +1,10 @@
 {
   "dishes": [
     {
-      "id": "1",
-      "name": "Pizza",
+      "name": "Pizza (UPDATED)",
       "description": "A delicious dish of pizza",
-      "price": 10
+      "price": 10,
+      "id": "1"
     },
     {
       "id": "2",
@@ -29,12 +29,6 @@
       "name": "Burger",
       "description": "A delicious dish of burger",
       "price": 15
-    },
-    {
-      "name": "Test UPDATED",
-      "description": "Hello world",
-      "price": 100,
-      "id": "607e"
     }
   ],
   "desserts": [

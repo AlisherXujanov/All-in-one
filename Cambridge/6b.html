@@ -1,64 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
 </head>
+
 <body>
-    
-    <!-- navigation -->
-    <nav>
-        <div class="left">
-            <a href="#">Logo</a>
-        </div>
-        <div class="right">
-            <a href="#">About</a>
-            <a href="#">Pricing</a>
-            <a href="#">Profile</a>
-        </div>
-    </nav>
+    <h2>Demo JavaScript in Head</h2>
 
-    <main>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis aliquid enim quaerat molestiae nulla ducimus nisi nesciunt. Inventore exercitationem, tempora officia quisquam dolor obcaecati maiores! Voluptatum tempore ducimus ipsam unde reiciendis commodi, ad voluptatibus quibusdam earum voluptate inventore hic ipsum at. Provident culpa numquam in ipsum officiis harum rem quia exercitationem, alias, consectetur quaerat. Cumque, soluta, exercitationem perspiciatis, blanditiis atque similique veniam laboriosam saepe expedita incidunt ad placeat? Minus corrupti voluptatum optio sint praesentium, similique est labore itaque quod, explicabo officia soluta! Cupiditate amet non, nobis nihil eveniet ea quasi laborum animi, error odit consequatur ipsam, facere sit ab ad!</p>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis aliquid enim quaerat molestiae nulla ducimus nisi nesciunt. Inventore exercitationem, tempora officia quisquam dolor obcaecati maiores! Voluptatum tempore ducimus ipsam unde reiciendis commodi, ad voluptatibus quibusdam earum voluptate inventore hic ipsum at. Provident culpa numquam in ipsum officiis harum rem quia exercitationem, alias, consectetur quaerat. Cumque, soluta, exercitationem perspiciatis, blanditiis atque similique veniam laboriosam saepe expedita incidunt ad placeat? Minus corrupti voluptatum optio sint praesentium, similique est labore itaque quod, explicabo officia soluta! Cupiditate amet non, nobis nihil eveniet ea quasi laborum animi, error odit consequatur ipsam, facere sit ab ad!</p>
-    </main>
+    <p id="demo">A Paragraph</p>
+    <button type="button" onclick="myFunction()">Try it</button>
 
+
+    <script>
+        function myFunction() {
+            document.getElementById("demo").innerHTML = "Paragraph changed.";
+        }
+    </script>
 </body>
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        transition: 0.2s;
-    }
-    nav {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-        box-shadow: 0 8px 16px lightgray;
-        padding: 20px;
-    }
-    .right {
-        text-align: right;
-    }
-    a {
-        padding: 10px 20px;
-        text-decoration: none;
-    }
-    a:hover {
-        color: snow;
-        background-color: darkcyan;
-    }
-    main {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-        padding: 20px;
-        text-align: center;
-    }
-    p:hover {
-        color: red;
-    }
 
-</style>
 </html>

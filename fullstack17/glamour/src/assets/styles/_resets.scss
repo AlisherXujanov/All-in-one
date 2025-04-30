@@ -6,11 +6,40 @@ svg::selection {
     background-color: transparent;
 }
 
+body {
+    padding-top: 115px;
+    /* Default for desktop */
+}
+
+@media (max-width: 1024px) {
+    body {
+        padding-top: 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 56px;
+    }
+}
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     transition: 0.2s ease-in-out;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 10px;
+    background-color: $light;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: $violet;
+    border-radius: 10px;
+    border: 1px solid $light;
 }
 
 h1,

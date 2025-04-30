@@ -1,14 +1,26 @@
-# glamour
+# Glamour
 
-This template should help get you started developing with Vue 3 in Vite.
 
-## Recommended IDE Setup
+## Working with Git
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+### Create a new branch and send pull request
 
-## Customize configuration
+When you finish working on the task and the branch is ready to be merged, you need to create a pull request.
+And afterwards you will need to checkout into main branch and merge the branch.
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+1. `git checkout -b <branch-name>`
+2. `git add .`
+3. `git commit -m "commit message"`
+4. `git push origin <branch-name>`
+5. Send a pull request on GitHub.
+    - First git to the github repo and click on the `Pull requests` tab. (green button on the right)
+    - Click on the `New pull request` button.
+    - Select the branch you want to merge with the main branch. (if it is not auto selected)
+    - Write a description of the changes you made.
+    - Click on the `Create pull request` button. (click on me AlisherXujanov as a reviewer)
+
+
+
 
 ## Project Setup
 

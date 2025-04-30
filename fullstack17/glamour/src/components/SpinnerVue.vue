@@ -20,7 +20,6 @@
   height: 100vh;
   width: 100%;
   z-index: 999999;
-  backdrop-filter: blur(10px);
   background-color: rgb(0, 0, 0, 0.8);
   @include flex();
 }
@@ -52,7 +51,7 @@
 }
 
 .half-circle-spinner .circle.circle-2 {
-  border-bottom-color: $red;
+  border-bottom-color: $violet;
   animation: half-circle-spinner-animation 1s infinite alternate;
 }
 

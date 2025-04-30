@@ -60,6 +60,14 @@ const initialState = {
       })
       const data = await response.json()
       console.log(data)
+    },
+    async deleteDish({ commit }, dishID) {
+      const URL =BASE_URL +"/dishes/" + dishID
+      const response = await fetch(URL, {
+        method: 'DELETE'
+      })
+      const data = await response.json()
+      console.log(data)
     }
   }
 }

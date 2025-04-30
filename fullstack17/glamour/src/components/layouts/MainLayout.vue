@@ -4,13 +4,17 @@ import FooterVue from '../FooterVue.vue'
 import NavVue from '../NavVue.vue'
 import { useAuth } from '@/composables/useAuth.js'
 import SpinnerVue from "@/components/SpinnerVue.vue";
-import { provide } from 'vue'
+import { provide, onMounted } from 'vue'
 import { AUTH } from '@/store';
+import { useStore } from 'vuex'
 
 const { user, isLoading } = useAuth()
+const store = useStore()
 
 // provide("KEY", "VALUE")
 provide(AUTH, { user, isLoading })
+onMounted(() => { store.dispatch('fetchProducts') })
+
 
 </script>
 

@@ -1,43 +1,167 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
+
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Document</title>
+   <title>Landing Page</title>
+   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-   
-   <div class="box">
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt laborum fuga, deleniti iure veritatis quas nemo neque asperiores reiciendis. Deleniti ad eos iste maiores quam eaque obcaecati illum, repudiandae nisi?</p>
-      <p class="second">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi aperiam amet similique nemo sequi architecto dolorum unde aliquam odit optio dignissimos veritatis temporibus, perspiciatis deserunt minima maxime corporis quasi assumenda?</p>
-      <p class="third">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi aperiam amet similique nemo sequi architecto dolorum unde aliquam odit optio dignissimos veritatis temporibus, perspiciatis deserunt minima maxime corporis quasi assumenda?</p>
-   </div>
+
+   <header>
+      <div class="logo">ЛОГО</div>
+      <nav>
+         <a href="#">ГЛАВНАЯ</a>
+         <a href="#">КОМАНДА</a>
+         <a href="#">НАШИ РАБОТЫ</a>
+         <a href="#">КОНТАКТЫ</a>
+      </nav>
+      <div class="phone">+7 (499) 000 00 00</div>
+   </header>
+
+   <section class="hero">
+      <h1>ВАШ ЦЕПЛЯЮЩИЙ ЗАГОЛОВОК</h1>
+      <p>Этот <span class="highlight">подзаголовок</span> должен раскрывать основные выгоды<br>вашего уникального
+         предложения</p>
+      <button onclick="scrollToBenefits()">Наши работы</button>
+   </section>
+
+   <section class="benefits" id="benefits">
+      <div class="benefit-item">
+         <img src="https://via.placeholder.com/300x200" alt="Природа">
+         <div class="timeline">
+            <div class="circle">Ц</div>
+            <div class="line"></div>
+         </div>
+         <div class="text">
+            <h2>Выгода #1</h2>
+            <p>Таким образом новая модель организационной деятельности позволяет выполнять важные задания по разработке
+               направлений прогрессивного развития...</p>
+         </div>
+      </div>
+
+      <div class="benefit-item reverse">
+         <img src="https://via.placeholder.com/300x200" alt="Природа">
+         <div class="timeline">
+            <div class="circle">Р</div>
+            <div class="line"></div>
+         </div>
+         <div class="text">
+            <h2>Выгода #2</h2>
+            <p>Продолжение текста с еще одной выгодой, оформленной аналогично предыдущей.</p>
+         </div>
+      </div>
+   </section>
+
+   <script>
+      function scrollToBenefits() {
+         document.getElementById('benefits').scrollIntoView({ behavior: 'smooth' });
+      }
+
+   </script>
 </body>
 <style>
-   * {  transition: 1s;  }
-   .box {
-      width: 50%;
-      margin: 0 auto;
-      background-color: lightgrey;
+   body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      color: #333;
+   }
+
+   header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       padding: 20px;
+      border-bottom: 1px solid #ccc;
    }
-   .box:hover {
-      background-color: black;
-      color: cyan;
+
+   .logo {
+      font-size: 24px;
+      font-weight: bold;
    }
-   .box:hover p {
-      color: cyan;
+
+   nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
    }
-   .box:hover .second {
-      font-size: 2em;
-      opacity: 0;
+
+   .phone {
+      font-size: 14px;
    }
-   .box:hover .third {
+
+   .hero {
+      text-align: center;
+      background: linear-gradient(to bottom, #2c3e50, #34495e);
+      color: white;
+      padding: 100px 20px;
+   }
+
+   .hero .highlight {
       color: red;
-      padding: 50px;
-      margin-top: 20px;
-      box-shadow: 0 8px 16px snow;
    }
-   
+
+   .hero button {
+      background-color: red;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      margin-top: 20px;
+      cursor: pointer;
+   }
+
+   .benefits {
+      padding: 50px 20px;
+   }
+
+   .benefit-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 50px;
+      position: relative;
+   }
+
+   .benefit-item.reverse {
+      flex-direction: row-reverse;
+   }
+
+   .benefit-item img {
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+   }
+
+   .timeline {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 20px;
+   }
+
+   .circle {
+      width: 30px;
+      height: 30px;
+      background-color: red;
+      color: white;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 30px;
+      font-weight: bold;
+   }
+
+   .line {
+      width: 2px;
+      height: 100px;
+      background-color: red;
+   }
+
+   .text {
+      max-width: 400px;
+   }
 </style>
+
 </html>

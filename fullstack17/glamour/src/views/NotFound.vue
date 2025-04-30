@@ -1,8 +1,9 @@
 <template>
   <div class="not-found">
-    <h1>404 - Not Found</h1>
-    <p>Sorry, the page you are looking for does not exist.</p>
-    <router-link to="/">Go back to home</router-link>
+    <h1>Oops! Page Not Found</h1>
+    <p>We're sorry, but the page you're looking for seems to have gone out of style.</p>
+    <p>Don't worry though - you can always return to our latest fashion collection.</p>
+    <router-link to="/" class="home-link">Return to Homepage</router-link>
   </div>
 </template>
 

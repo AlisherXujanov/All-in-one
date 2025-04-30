@@ -1,15 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
-    <div class="box">
-        <p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Языкового если коварных парадигматическая то инициал пояс, рекламных букв свой встретил которой необходимыми за путь предупреждал продолжил заголовок великий. Инициал?</p>
+
+    <button id="open-modal">Open modal</button>
+    <p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Пояс знаках вдали последний большой. Ipsum, сбить жаренные использовало, страну назад текстами от всех решила предупредила путь страна силуэт семь, рыбного рыбными осталось маленькая щеке. Собрал большого свой, необходимыми, о путь вскоре вопрос имеет маленький решила речью бросил напоивший. Своих эта текст предупредила ее пустился возвращайся парадигматическая инициал послушавшись маленькая обеспечивает, прямо от всех приставка злых подзаголовок первую не вскоре? Продолжил реторический власти текстов от всех эта предупреждал свой назад раз сбить. Путь всемогущая встретил силуэт, заголовок не моей ему последний ведущими пустился она. Грамматики рыбными, строчка инициал жизни рекламных правилами это он?</p>
+
+    <div class="modal-screen">
+        <div class="modal-content">
+            <div class="header">
+                <h2>ADD USER</h2>
+                <span id="close-modal">&times;</span>
+            </div>
+            <div class="body">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex odit commodi nesciunt, delectus laborum
+                    nostrum illum placeat doloremque asperiores officia quasi, debitis nulla quam esse nisi culpa? Hic,
+                    illo labore.</p>
+
+                <button>👍🏻 Confirm Request</button>
+            </div>
+        </div>
     </div>
 
+    <script>
+        const openModalBtn = document.querySelector("#open-modal")
+        const closeModalBtn = document.querySelector("#close-modal")
+
+        const modalScreen = document.querySelector(".modal-screen")
+
+        function openModal() {
+            modalScreen.style.display = "flex"
+        }
+        function closeModal() {
+            modalScreen.style.display = "none"
+        }
+        
+        openModalBtn.onclick = openModal
+        closeModalBtn.onclick = closeModal
+    </script>
+
 </body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition: 0.3s;
+    }
+
+    /* 
+        POSITIONS:
+            static    => default  =>  works normally
+            ------------------------------------------------
+            relative => allows us to move the item to 4 sides
+                        left, right, top, bottom
+            ------------------------------------------------
+            absolute  =>  relative to the nearest positioned ancestor
+            ------------------------------------------------
+            fixed     =>  relative to the viewport
+            ------------------------------------------------
+            sticky    =>  relative to the viewport, but only when scrolling
+            ------------------------------------------------
+    */
+    .modal-screen {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        background-color: rgb(0, 50, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: sans-serif;
+    }
+
+    .modal-content {
+        width: 500px;
+        border-radius: 10px;
+        background-color: white;
+    }
+
+    .header,
+    .body {
+        padding: 20px;
+    }
+
+    .header {
+        background-color: darkcyan;
+        border-radius: 10px 10px 0 0;
+        color: snow;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    span {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background-color: green;
+        font-family: fantasy;
+        font-size: 1.5em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+    button {
+        padding: 10px 20px;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        background-color: green;
+        color: snow;
+        border-radius: 10px;
+
+        width: 200px;
+        display: block;
+        margin: 20px auto;
+    }
+</style>
 </html>

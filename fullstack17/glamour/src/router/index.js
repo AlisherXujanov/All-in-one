@@ -1,34 +1,29 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { auth } from '@/firebase/config'
 import HomeView from '../views/HomeView.vue'
+import AboutView from '../views/AboutView.vue'
 import { onAuthStateChanged } from 'firebase/auth'
 
 
 
 const META_URLS = [
   {
-    path: '/products',
-    name: 'products',
-    component: () => import('../views/ProductsView.vue'),
-    meta: { requiresAuth: true },
-  },
-  {
     path: '/shop',
     name: 'shop',
     component: () => import('../views/ShopView.vue'),
-    meta: { requiresAuth: true },
+    // meta: { requiresAuth: true },
   },
   {
     path: '/contact',
     name: 'contact',
     component: () => import('../views/ContactView.vue'),
-    meta: { requiresAuth: true },
+    // meta: { requiresAuth: true },
   },
   {
     path: '/product-details/:id',
     name: "product-details",
-    component: () => import('../views/ProductDetails.vue'),
-    meta: { requiresAuth: true },
+    component: () => import('../components/products/ProductDetails.vue'),
+    // meta: { requiresAuth: true },
   },
 ]
 
@@ -44,10 +39,7 @@ const router = createRouter({
     {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue'),
+      component: AboutView,
     },
     {
       path: '/blog',
@@ -83,6 +75,26 @@ const router = createRouter({
       component: () => import('../views/NotFound.vue')
     }
   ],
+  scrollBehavior(to, from, savedPosition) {
+    // If the route has a hash, scroll to the element with that id
+    if (to.hash) {
+      return {
+        el: to.hash,
+        behavior: 'smooth',
+        top: 80 // offset for fixed header if you have one
+      }
+    }
+    // If there's a saved position (like when using browser back/forward buttons)
+    if (savedPosition) {
+      return savedPosition
+    }
+    // For all other cases, scroll to top smoothly
+    return {
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    }
+  },
 })
 
 

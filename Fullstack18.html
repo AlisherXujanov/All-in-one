@@ -3,29 +3,378 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Complex Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(45deg, #0a0a0a, #3a4452);
+        }
+        
+        .calculator {
+            width: 340px;
+            padding: 20px;
+            border-radius: 20px;
+            background: #222;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .display {
+            position: relative;
+            height: 80px;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #333;
+            border-radius: 10px;
+            text-align: right;
+            overflow: hidden;
+        }
+        
+        .history {
+            font-size: 14px;
+            color: #aaa;
+            height: 20px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .current {
+            font-size: 36px;
+            color: #fff;
+            height: 40px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 12px;
+        }
+        
+        .btn {
+            height: 55px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+        }
+        
+        .btn:hover {
+            filter: brightness(120%);
+            transform: scale(1.03);
+        }
+        
+        .operator {
+            background-color: #ff9500;
+        }
+        
+        .function {
+            background-color: #505050;
+        }
+        
+        .number {
+            background-color: #707070;
+        }
+        
+        .memory {
+            background-color: #3d5a80;
+        }
+        
+        .equal {
+            background-color: #ff375f;
+        }
+        
+        .clear, .backspace {
+            background-color: #9c2525;
+        }
+        
+        .toggle-sci {
+            background-color: #3a6ea5;
+        }
+        
+        .scientific {
+            display: none;
+            margin-top: 12px;
+        }
+        
+        .scientific.show {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 12px;
+        }
+    </style>
 </head>
 <body>
+    <div class="calculator">
+        <div class="display">
+            <div class="history" id="history"></div>
+            <div class="current" id="current">0</div>
+        </div>
+        
+        <div class="buttons">
+            <button class="btn clear" onclick="clearAll()">AC</button>
+            <button class="btn backspace" onclick="backspace()">⌫</button>
+            <button class="btn function" onclick="calculate('%')">%</button>
+            <button class="btn operator" onclick="appendOperator('/')">÷</button>
+            
+            <button class="btn number" onclick="appendNumber('7')">7</button>
+            <button class="btn number" onclick="appendNumber('8')">8</button>
+            <button class="btn number" onclick="appendNumber('9')">9</button>
+            <button class="btn operator" onclick="appendOperator('*')">×</button>
+            
+            <button class="btn number" onclick="appendNumber('4')">4</button>
+            <button class="btn number" onclick="appendNumber('5')">5</button>
+            <button class="btn number" onclick="appendNumber('6')">6</button>
+            <button class="btn operator" onclick="appendOperator('-')">−</button>
+            
+            <button class="btn number" onclick="appendNumber('1')">1</button>
+            <button class="btn number" onclick="appendNumber('2')">2</button>
+            <button class="btn number" onclick="appendNumber('3')">3</button>
+            <button class="btn operator" onclick="appendOperator('+')">+</button>
+            
+            <button class="btn toggle-sci" onclick="toggleScientific()">f(x)</button>
+            <button class="btn number" onclick="appendNumber('0')">0</button>
+            <button class="btn number" onclick="appendDecimal()">.</button>
+            <button class="btn equal" onclick="calculate('=')">=</button>
+        </div>
+        
+        <div class="scientific" id="scientific">
+            <button class="btn memory" onclick="memoryStore()">MS</button>
+            <button class="btn memory" onclick="memoryRecall()">MR</button>
+            <button class="btn memory" onclick="memoryAdd()">M+</button>
+            <button class="btn memory" onclick="memoryClear()">MC</button>
+            
+            <button class="btn function" onclick="calculate('sqrt')">√</button>
+            <button class="btn function" onclick="calculate('square')">x²</button>
+            <button class="btn function" onclick="calculate('cube')">x³</button>
+            <button class="btn function" onclick="appendOperator('^')">xʸ</button>
+            
+            <button class="btn function" onclick="calculate('sin')">sin</button>
+            <button class="btn function" onclick="calculate('cos')">cos</button>
+            <button class="btn function" onclick="calculate('tan')">tan</button>
+            <button class="btn function" onclick="calculate('log')">log</button>
+            
+            <button class="btn function" onclick="appendNumber('3.14159')">π</button>
+            <button class="btn function" onclick="appendNumber('2.71828')">e</button>
+            <button class="btn function" onclick="calculate('1/x')">1/x</button>
+            <button class="btn function" onclick="calculate('|x|')">|x|</button>
+        </div>
+    </div>
 
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla doloremque velit voluptatum cumque cupiditate impedit incidunt! Recusandae voluptatum in culpa quos, facilis, provident quasi corporis minus sequi dicta magni maiores!</p>
-    <input type="range" min="6" max="50">
-    <input id="text-input" type="text">
-    
     <script>
-        const p = document.querySelector('p')
-        const input = document.querySelector('input')
-        const textInput = document.querySelector('#text-input')
-
-        input.addEventListener('input', changeSize)
-        textInput.addEventListener('input', showText)
-
-        function changeSize(e) {
-            p.style.fontSize = e.target.value + 'px'
+        let currentInput = '0';
+        let previousInput = '';
+        let operation = null;
+        let shouldResetScreen = false;
+        let memory = 0;
+        
+        const currentDisplay = document.getElementById('current');
+        const historyDisplay = document.getElementById('history');
+        const scientificPanel = document.getElementById('scientific');
+        
+        function updateDisplay() {
+            currentDisplay.textContent = currentInput;
         }
-        function showText(e) {
-            p.textContent = e.target.value
+        
+        function appendNumber(number) {
+            if (currentInput === '0' || shouldResetScreen) {
+                currentInput = number;
+                shouldResetScreen = false;
+            } else {
+                currentInput += number;
+            }
+            updateDisplay();
         }
-
+        
+        function appendDecimal() {
+            if (shouldResetScreen) {
+                currentInput = '0.';
+                shouldResetScreen = false;
+            } else if (!currentInput.includes('.')) {
+                currentInput += '.';
+            }
+            updateDisplay();
+        }
+        
+        function appendOperator(op) {
+            if (operation !== null) calculate('=');
+            previousInput = currentInput;
+            operation = op;
+            historyDisplay.textContent = previousInput + ' ' + getOperatorSymbol(op);
+            shouldResetScreen = true;
+        }
+        
+        function getOperatorSymbol(op) {
+            switch(op) {
+                case '+': return '+';
+                case '-': return '−';
+                case '*': return '×';
+                case '/': return '÷';
+                case '^': return '^';
+                default: return op;
+            }
+        }
+        
+        function clearAll() {
+            currentInput = '0';
+            previousInput = '';
+            operation = null;
+            historyDisplay.textContent = '';
+            updateDisplay();
+        }
+        
+        function backspace() {
+            if (currentInput.length === 1 || (currentInput.length === 2 && currentInput.startsWith('-'))) {
+                currentInput = '0';
+            } else {
+                currentInput = currentInput.slice(0, -1);
+            }
+            updateDisplay();
+        }
+        
+        function calculate(action) {
+            let calculation;
+            const current = parseFloat(currentInput);
+            const previous = parseFloat(previousInput);
+            
+            if (action === '=') {
+                if (isNaN(previous) || isNaN(current)) return;
+                
+                switch(operation) {
+                    case '+':
+                        calculation = previous + current;
+                        break;
+                    case '-':
+                        calculation = previous - current;
+                        break;
+                    case '*':
+                        calculation = previous * current;
+                        break;
+                    case '/':
+                        if (current === 0) {
+                            currentInput = 'Error';
+                            updateDisplay();
+                            return;
+                        }
+                        calculation = previous / current;
+                        break;
+                    case '^':
+                        calculation = Math.pow(previous, current);
+                        break;
+                    default:
+                        return;
+                }
+                
+                historyDisplay.textContent = previousInput + ' ' + getOperatorSymbol(operation) + ' ' + currentInput + ' =';
+                currentInput = calculation.toString();
+                operation = null;
+                shouldResetScreen = true;
+                updateDisplay();
+                return;
+            }
+            
+            // Single operand functions
+            switch(action) {
+                case '%':
+                    calculation = current / 100;
+                    historyDisplay.textContent = current + '% =';
+                    break;
+                case 'sqrt':
+                    if (current < 0) {
+                        currentInput = 'Error';
+                        updateDisplay();
+                        return;
+                    }
+                    calculation = Math.sqrt(current);
+                    historyDisplay.textContent = '√(' + current + ') =';
+                    break;
+                case 'square':
+                    calculation = current * current;
+                    historyDisplay.textContent = current + '² =';
+                    break;
+                case 'cube':
+                    calculation = current * current * current;
+                    historyDisplay.textContent = current + '³ =';
+                    break;
+                case 'sin':
+                    calculation = Math.sin(current * Math.PI / 180);
+                    historyDisplay.textContent = 'sin(' + current + '°) =';
+                    break;
+                case 'cos':
+                    calculation = Math.cos(current * Math.PI / 180);
+                    historyDisplay.textContent = 'cos(' + current + '°) =';
+                    break;
+                case 'tan':
+                    calculation = Math.tan(current * Math.PI / 180);
+                    historyDisplay.textContent = 'tan(' + current + '°) =';
+                    break;
+                case 'log':
+                    if (current <= 0) {
+                        currentInput = 'Error';
+                        updateDisplay();
+                        return;
+                    }
+                    calculation = Math.log10(current);
+                    historyDisplay.textContent = 'log(' + current + ') =';
+                    break;
+                case '1/x':
+                    if (current === 0) {
+                        currentInput = 'Error';
+                        updateDisplay();
+                        return;
+                    }
+                    calculation = 1 / current;
+                    historyDisplay.textContent = '1/(' + current + ') =';
+                    break;
+                case '|x|':
+                    calculation = Math.abs(current);
+                    historyDisplay.textContent = '|' + current + '| =';
+                    break;
+                default:
+                    return;
+            }
+            
+            currentInput = calculation.toString();
+            shouldResetScreen = true;
+            updateDisplay();
+        }
+        
+        function toggleScientific() {
+            scientificPanel.classList.toggle('show');
+        }
+        
+        // Memory functions
+        function memoryStore() {
+            memory = parseFloat(currentInput);
+            shouldResetScreen = true;
+        }
+        
+        function memoryRecall() {
+            currentInput = memory.toString();
+            updateDisplay();
+        }
+        
+        function memoryAdd() {
+            memory += parseFloat(currentInput);
+        }
+        
+        function memoryClear() {
+            memory = 0;
+        }
     </script>
 </body>
 </html>

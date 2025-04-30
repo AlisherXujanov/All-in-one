@@ -141,3 +141,137 @@ $xx-large: 1525px;
         }
     }
 }
+
+
+@mixin product-colors {
+    span {
+        margin-right: 5px;
+        @include circle(15px);
+        border: 2px solid transparent;
+
+        &.red {
+            background-color: $magenta;
+            border-color: color.adjust($magenta, $lightness: 20%);
+        }
+
+        &.blue {
+            background-color: $violet-blue;
+            border-color: color.adjust($violet-blue, $lightness: 20%);
+        }
+
+        &.green {
+            background-color: $green;
+            border-color: color.adjust($green, $lightness: 20%);
+        }
+
+        &.yellow {
+            background-color: #FFD700;
+            border-color: color.adjust(#FFD700, $lightness: 20%);
+        }
+
+        &.purple {
+            background-color: $violet;
+            border-color: color.adjust($violet, $lightness: 20%);
+        }
+
+        &.orange {
+            background-color: $orange;
+            border-color: color.adjust($orange, $lightness: 20%);
+        }
+
+        &.brown {
+            background-color: #8B4513;
+            border-color: color.adjust(#8B4513, $lightness: 20%);
+        }
+
+        &.black {
+            background-color: #000000;
+            border-color: color.adjust(#000000, $lightness: 20%);
+        }
+
+        &.white {
+            background-color: #FFFFFF;
+            border: 1px solid #E0E0E0;
+        }
+
+        &.gray {
+            background-color: #808080;
+            border-color: color.adjust(#808080, $lightness: 20%);
+        }
+
+        &.pink {
+            background-color: #FFC0CB;
+            border-color: lighten(#FFC0CB, 20%);
+        }
+
+        &.gold {
+            background-color: #FFD700;
+            border-color: lighten(#FFD700, 20%);
+        }
+
+        &.silver {
+            background-color: #C0C0C0;
+            border-color: lighten(#C0C0C0, 20%);
+        }
+
+        &.teal {
+            background-color: #008080;
+            border-color: lighten(#008080, 20%);
+        }
+
+        &.lime {
+            background-color: #32CD32;
+            border-color: lighten(#32CD32, 20%);
+        }
+
+        &.maroon {
+            background-color: #800000;
+            border-color: lighten(#800000, 20%);
+        }
+
+        &.navy {
+            background-color: #000080;
+            border-color: lighten(#000080, 20%);
+        }
+
+        &.olive {
+            background-color: #808000;
+            border-color: lighten(#808000, 20%);
+        }
+
+        &.turquoise {
+            background-color: #40E0D0;
+            border-color: lighten(#40E0D0, 20%);
+        }
+
+        &.violet {
+            background-color: $violet;
+            border-color: lighten($violet, 20%);
+        }
+
+        &.beige {
+            background-color: #F5F5DC;
+            border-color: lighten(#F5F5DC, 20%);
+        }
+
+        &.cream {
+            background-color: #FFFDD0;
+            border-color: lighten(#FFFDD0, 20%);
+        }
+
+        &.mahogany {
+            background-color: #C04000;
+            border-color: lighten(#C04000, 20%);
+        }
+
+        &.walnut {
+            background-color: #773F1A;
+            border-color: lighten(#773F1A, 20%);
+        }
+
+        &.tan {
+            background-color: #D2B48C;
+            border-color: lighten(#D2B48C, 20%);
+        }
+    }
+}
