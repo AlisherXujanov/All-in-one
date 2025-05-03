@@ -1,21 +1,321 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat Dialog</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Добавляем библиотеку transformers.js для локальной работы моделей в браузере -->
+    <script src="https://unpkg.com/@xenova/transformers"></script>
 </head>
 
 <body>
-    <h2>Demo JavaScript in Head</h2>
-
-    <p id="demo">A Paragraph</p>
-    <button type="button" onclick="myFunction()">Try it</button>
-
-
+    <div class="chat-container">
+        <div id="chat-box"></div>
+        <div class="status-box">Статус: <span id="status">Загрузка модели...</span></div>
+        <div class="input-area">
+            <input type="text" id="user-input" placeholder="Type your message..." disabled />
+            <button id="send-btn" disabled>Send</button>
+        </div>
+    </div>
     <script>
-        function myFunction() {
-            document.getElementById("demo").innerHTML = "Paragraph changed.";
+        const chatBox = document.getElementById('chat-box');
+        const userInput = document.getElementById('user-input');
+        const sendBtn = document.getElementById('send-btn');
+        const statusSpan = document.getElementById('status');
+        
+        // Глобальная переменная для хранения модели
+        let modelPipeline = null;
+        
+        // Инициализируем модель при загрузке страницы
+        async function initializeModel() {
+            try {
+                statusSpan.textContent = "Загрузка модели (это может занять некоторое время)...";
+                
+                // Проверяем доступность библиотеки
+                if (typeof Xenova === 'undefined') {
+                    throw new Error("Библиотека Transformers не загружена");
+                }
+                
+                // Используем более легкую модель, которая быстрее загрузится
+                const { pipeline } = Xenova.transformers;
+                
+                console.log("Инициализация pipeline...");
+                
+                // Загружаем легкую модель
+                modelPipeline = await pipeline('text-generation', 'Xenova/gpt2-tiny-russian');
+                
+                console.log("Модель успешно загружена!");
+                
+                // Включаем интерфейс
+                userInput.disabled = false;
+                sendBtn.disabled = false;
+                statusSpan.textContent = "Модель загружена и готова!";
+                
+                // Добавляем приветственное сообщение
+                addMessage("Привет! Я локальный ИИ-ассистент, работающий прямо в вашем браузере. Чем могу помочь?", "bot");
+            } catch (error) {
+                console.error("Ошибка при загрузке модели:", error);
+                statusSpan.textContent = "Ошибка при загрузке модели. Используются запасные ответы.";
+                
+                // Пробуем использовать другой метод загрузки
+                tryAlternativeLoad();
+            }
         }
+        
+        // Альтернативный метод загрузки
+        async function tryAlternativeLoad() {
+            try {
+                statusSpan.textContent = "Пробуем альтернативный способ загрузки...";
+                
+                // Загружаем библиотеку динамически
+                const script = document.createElement('script');
+                script.src = 'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.6.0/dist/transformers.min.js';
+                script.onload = async function() {
+                    try {
+                        const { pipeline } = window.transformers;
+                        modelPipeline = await pipeline('text-generation', 'Xenova/gpt2-tiny-russian');
+                        
+                        // Включаем интерфейс
+                        userInput.disabled = false;
+                        sendBtn.disabled = false;
+                        statusSpan.textContent = "Модель загружена и готова!";
+                        
+                        // Добавляем приветственное сообщение
+                        addMessage("Привет! Я локальный ИИ-ассистент, работающий прямо в вашем браузере. Чем могу помочь?", "bot");
+                    } catch (err) {
+                        console.error("Ошибка во втором способе загрузки:", err);
+                        enableFallbackMode();
+                    }
+                };
+                script.onerror = function() {
+                    console.error("Не удалось загрузить скрипт transformers.js");
+                    enableFallbackMode();
+                };
+                document.head.appendChild(script);
+            } catch (error) {
+                console.error("Ошибка при альтернативной загрузке:", error);
+                enableFallbackMode();
+            }
+        }
+        
+        // Активация запасного режима
+        function enableFallbackMode() {
+            statusSpan.textContent = "Не удалось загрузить ИИ-модель. Используются предустановленные ответы.";
+            userInput.disabled = false;
+            sendBtn.disabled = false;
+            addMessage("Привет! Я работаю в режиме предустановленных ответов. Чем могу помочь?", "bot");
+        }
+        
+        // Запускаем инициализацию
+        initializeModel();
+
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message ' + sender;
+            messageDiv.innerText = text;
+            chatBox.appendChild(messageDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        async function getBotResponse(input) {
+            try {
+                // Если модель загружена
+                if (modelPipeline) {
+                    // Показываем индикатор набора текста
+                    const typingDiv = document.createElement('div');
+                    typingDiv.className = 'message bot typing';
+                    typingDiv.innerText = 'ИИ думает...';
+                    chatBox.appendChild(typingDiv);
+                    
+                    try {
+                        console.log("Генерация ответа на запрос:", input);
+                        
+                        // Используем локальную модель для генерации ответа
+                        const result = await modelPipeline(input, {
+                            max_new_tokens: 50,
+                            temperature: 0.7,
+                            top_p: 0.9
+                        });
+                        
+                        // Удаляем индикатор набора текста
+                        chatBox.removeChild(typingDiv);
+                        
+                        // Получаем сгенерированный текст и форматируем его
+                        let generatedText = result[0].generated_text;
+                        
+                        console.log("Полученный ответ:", generatedText);
+                        
+                        // Если текст начинается с исходного запроса, удаляем его
+                        if (generatedText.startsWith(input)) {
+                            generatedText = generatedText.substring(input.length).trim();
+                        }
+                        
+                        // Если получили пустой текст, используем запасной ответ
+                        if (!generatedText) {
+                            console.log("Пустой ответ от модели, использую запасной ответ");
+                            return getFallbackResponse(input);
+                        }
+                        
+                        console.log("Финальный ответ:", generatedText);
+                        return generatedText;
+                    } catch (modelError) {
+                        console.error("Ошибка при генерации текста:", modelError);
+                        
+                        // Удаляем индикатор набора текста если он есть
+                        if (typingDiv.parentNode) {
+                            chatBox.removeChild(typingDiv);
+                        }
+                        
+                        return getFallbackResponse(input);
+                    }
+                } else {
+                    console.log("Модель не загружена, используем запасные ответы");
+                    // Если модель не загружена, используем запасные ответы
+                    return getFallbackResponse(input);
+                }
+            } catch (error) {
+                console.error('Error getting AI response:', error);
+                return getFallbackResponse(input);
+            }
+        }
+        
+        function getFallbackResponse(input) {
+            // Запасные ответы на случай проблем с API
+            const lowerInput = input.toLowerCase();
+            if (lowerInput.includes('hello') || lowerInput.includes('hi') || lowerInput.includes('привет')) {
+                return 'Привет! Чем я могу помочь вам сегодня?';
+            } else if (lowerInput.includes('bye') || lowerInput.includes('пока')) {
+                return 'До свидания! Хорошего дня!';
+            } else if (lowerInput.includes('how are you') || lowerInput.includes('как дела')) {
+                return 'Я просто компьютер, но я функционирую хорошо!';
+            } else if (lowerInput.includes('name') || lowerInput.includes('имя')) {
+                return 'Меня зовут Локальный Ассистент. Я работаю прямо в вашем браузере!';
+            } else if (lowerInput.includes('thanks') || lowerInput.includes('спасибо')) {
+                return 'Всегда рад помочь!';
+            } else if (lowerInput.includes('who') || lowerInput.includes('кто')) {
+                return 'Я простой ИИ-ассистент, работающий локально в вашем браузере.';
+            } else {
+                return "Я обрабатываю ваш запрос. Чем еще могу помочь?";
+            }
+        }
+
+        async function handleSend() {
+            const userText = userInput.value.trim();
+            if (userText === '') return;
+            addMessage(userText, 'user');
+            userInput.value = '';
+
+            // Получаем ответ от ИИ
+            const response = await getBotResponse(userText);
+            addMessage(response, 'bot');
+        }
+
+        sendBtn.addEventListener('click', handleSend);
+        userInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                handleSend();
+            }
+        });
     </script>
 </body>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .chat-container {
+        background: #fff;
+        border-radius: 8px;
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+        height: 80vh;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #chat-box {
+        flex: 1;
+        padding: 10px;
+        overflow-y: auto;
+        border-bottom: 1px solid #ccc;
+    }
+    
+    .status-box {
+        padding: 8px;
+        background-color: #f5f5f5;
+        border-bottom: 1px solid #ccc;
+        font-size: 0.9em;
+        color: #555;
+    }
+
+    .message {
+        margin: 8px 0;
+        padding: 8px 12px;
+        border-radius: 20px;
+        max-width: 70%;
+    }
+
+    .user {
+        background-color: #e0f7fa;
+        align-self: flex-end;
+        margin-left: auto;
+    }
+
+    .bot {
+        background-color: #c8e6c9;
+        align-self: flex-start;
+        margin-right: auto;
+    }
+    
+    .typing {
+        background-color: #e0e0e0;
+        font-style: italic;
+    }
+
+    .input-area {
+        display: flex;
+        padding: 10px;
+    }
+
+    #user-input {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        outline: none;
+    }
+
+    #user-input:disabled {
+        background-color: #f5f5f5;
+    }
+
+    #send-btn {
+        margin-left: 10px;
+        padding: 10px 20px;
+        background-color: #2196f3;
+        color: #fff;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    #send-btn:disabled {
+        background-color: #cccccc;
+        cursor: not-allowed;
+    }
+
+    #send-btn:hover:not(:disabled) {
+        background-color: #1976d2;
+    }
+</style>
 
 </html>

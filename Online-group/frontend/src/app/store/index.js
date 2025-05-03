@@ -6,8 +6,10 @@ const links = {
         { name: "Explore", path: "/" },
         { name: "About", path: "/about" },
         { name: "NFTs", path: "/nfts" },
-        { name: "Trending🔥", path: "/trending" },
-        { name: "FAQ💬", path: "/faq" }
+        { name: "Trending", path: "/trending" },
+        { name: "FAQ", path: "/faq" },
+        { name: "Profile", path: "/profile" },
+
     ],
     // non-protected routes
     nonAuthLinks: [

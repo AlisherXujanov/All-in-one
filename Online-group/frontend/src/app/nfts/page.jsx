@@ -8,7 +8,7 @@ import { FiEdit } from "react-icons/fi"
 import { RiDeleteBin6Line } from "react-icons/ri"
 import { toast } from 'react-toastify'
 import "./style.scss"
-
+import { useAuth } from "../hooks/useAuth"
 
 // CRUD  ->  Create, Read, Update, Delete
 
@@ -17,6 +17,7 @@ function NFTs(props) {
     const [nfts, setNFTs] = useState([])
     const [showModal, setShowModal] = useState(false)
     const [editMode, setEditMode] = useState(false)
+    const { user } = useAuth()
     const [form, setForm] = useState({
         name: '',
         price: '',
@@ -41,11 +42,20 @@ function NFTs(props) {
     async function submitForm(e) {
         e.preventDefault()
 
-        try{ 
+        try {
             const URL = BASE_URL + "/nfts" + (editMode ? `/${form.id}` : "")
+
+            const REQUEST_BODY = editMode ? form : {
+                ...form, 
+                user: {
+                    displayName: user?.displayName,
+                    photoURL: user?.photoURL
+                }
+            }
+
             const response = await fetch(URL, {
                 method: editMode ? "PUT" : "POST",
-                body: JSON.stringify(form),
+                body: JSON.stringify(REQUEST_BODY),
             })
             console.log(response)
             let msg = editMode ? "NFT updated successfully" : "NFT created successfully"
@@ -59,13 +69,18 @@ function NFTs(props) {
     }
 
     function handleEdit(e, nft) {
+        console.log(user)
         e.preventDefault()
         setForm({
             name: nft.name,
             price: nft.price,
             description: nft.description,
             image: nft.image,
-            id: nft.id
+            id: nft.id,
+            user: {
+                displayName: user.displayName,
+                photoURL: user.photoURL
+            }
         })
         setEditMode(true)
         setShowModal(true)
@@ -179,6 +194,15 @@ function NFTs(props) {
                                         <p>${nft.price}</p>
                                     </div>
                                     <p className="nft-item-description">{nft.description}</p>
+                                    <div className="item-footer">
+                                        {
+                                            nft.user?.photoURL ?
+                                                <img className="author-image" src={user?.photoURL} alt="profile" />
+                                                :
+                                                <img className="author-image" src={"https://static-00.iconduck.com/assets.00/profile-default-icon-2048x2045-u3j7s5nj.png"} alt="profile" />
+                                        }
+                                        <span>{nft.user?.displayName}</span>
+                                    </div>
                                 </div>
                             )
                         })

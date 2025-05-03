@@ -1,32 +1,48 @@
 {
   "nfts": [
     {
-      "id": "1",
       "name": "NFT 1",
       "price": 100,
-      "description": "Description of NFT 1",
-      "image": "https://www.openaccessgovernment.org/wp-content/uploads/2018/02/what-is-bitcoin-cryptocurrency-001.jpg"
-    },
-    {
-      "name": "Top Bitcoin NFT Collections",
-      "price": "80.000",
-      "description": "Bitcoin NFTs are a new development, and there's existing infrastructure within the Bitcoin ecosystem to create them. NFTs are ranked across multiple chains, including Ethereum, BNB Chain, Polygon, and Immutable X. Understanding the creation process and the current infrastructure is key to exploring Bitcoin NFTs. This includes understanding what NFTs are, how they work, and why they can be valuable.",
-      "image": "https://miro.medium.com/v2/resize:fit:1400/0*YQPVZRabo4nC6Px6",
-      "id": "2"
+      "description": "NFTs are a new development, and there's existing infrastructure within the Bitcoin ecosystem to create them. NFTs are ranked across multiple chains, including Ethereum, BNB Chain, Polygon, and Immutable X. Understanding the creation process and the current infrastructure is key to exploring Bitcoin NFTs. This includes understanding what NFTs are, how they work, and why they can be valuable.",
+      "image": "https://www.openaccessgovernment.org/wp-content/uploads/2018/02/what-is-bitcoin-cryptocurrency-001.jpg",
+      "id": "1",
+      "user": {
+        "displayName": "Alisher Xujanov",
+        "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocI7qSycxc-dDRjMh6xmp-afi9p-1NHKRjAfWMgaPjOLAa0W8mk=s96-c"
+      }
     },
     {
       "name": "NFT 3",
       "price": "500",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis non, nisi sed, velit eaque deserunt nobis, minus molestiae animi harum consequuntur repellat commodi. Quam, nulla rerum quod laudantium et voluptatibus!",
-      "image": "https://www.openaccessgovernment.org/wp-content/uploads/2018/02/what-is-bitcoin-cryptocurrency-001.jpg",
-      "id": "3"
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7TjxGkHU_38n-FiWUmGivPPklhOoQPSJTEw&s",
+      "id": "3",
+      "user": {
+        "displayName": "Alisher Xujanov",
+        "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocI7qSycxc-dDRjMh6xmp-afi9p-1NHKRjAfWMgaPjOLAa0W8mk=s96-c"
+      }
     },
     {
       "id": "4",
       "name": "What is NFT?",
       "price": "10000",
       "description": "Non-fungible tokens, often referred to as NFTs, are blockchain-based tokens that each represent a unique asset like a piece of art, digital content, or media.",
-      "image": "https://bernardmarr.com/wp-content/uploads/2021/11/What-Are-NFTs-An-Easy-Explanation-For-Anyone.jpg"
+      "image": "https://bernardmarr.com/wp-content/uploads/2021/11/What-Are-NFTs-An-Easy-Explanation-For-Anyone.jpg",
+      "user": {
+        "displayName": "Jim Kerry",
+        "photoURL": ""
+      }
+    },
+    {
+      "id": "e4d2",
+      "name": "Gala Games",
+      "price": "1",
+      "description": "Gala NFTs are digital assets that can be bought, sold, and discovered on platforms like marketplaces. These NFTs may have utility within games, such as limited edition items, and can potentially be used to earn Gala tokens. The focus appears to be on community engagement and the creation of a platform for gamers and NFT enthusiasts. These NFTs are part of the broader ecosystem of crypto collectibles and are likely associated with the Gala Games platform.",
+      "image": "https://nft-arty.com/wp-content/uploads/2022/03/gala_games_vlozhit_5_mlrd_v_razvitie_proektov_nft.jpg",
+      "user": {
+        "displayName": "Alisher Xujanov",
+        "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocI7qSycxc-dDRjMh6xmp-afi9p-1NHKRjAfWMgaPjOLAa0W8mk=s96-c"
+      }
     }
   ]
 }

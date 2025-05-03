@@ -25,6 +25,7 @@ function Auth(props) {
             const user = result.user
             setSessionCookie(user.uid)
             toast.success("Signed in with Google successfully!", { theme: "dark" })
+            props.closeModal()
         } catch (error) {
             toast.error(error.message, { theme: "dark" })
         }
