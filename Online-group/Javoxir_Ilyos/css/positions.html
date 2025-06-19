@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <div class="div-1"></div>
+        <div class="div-2"></div>
+        <div class="div-3"></div>
+        <div class="div-4"></div>
+    </main>
+</body>
+<style>
+    main {
+        width: 50%;
+        height: 200vh;
+        background-color: lightgray;
+        margin: 0 auto;
+    }
+    main > div {
+        width: 50px;
+        height: 50px;
+        background-color: red;
+        border-radius: 50%;
+    }
+    .div-1 {
+        background-color: blue;
+        position: sticky;
+        top: 0;
+    }
+    .div-3 {
+        background-color: green;
+        position: sticky;
+        top: 0;
+    }
+</style>
+</html>
+
+
+
+<!-- 
+    POSITIONS:
+
+        1. static (default)
+        --------------------------------
+        EN: All other positions can use all directions to move the item
+        RU: Все остальные позиции могут использовать все направления 
+            для перемещения элемента
+
+        -top | -bottom | -left | -right
+        - z-index: number;   =>  controls layers  => управляет слоями
+
+
+
+        2. relative  
+            EN: the item can move but other items nearby can not notice that
+            RU: Элемент может перемещаться, но другие элементы рядом 
+                не замечают этого
+        --------------------------------
+        3. absolute
+            EN: - the item can move but other items nearby can not notice that
+                - the item looses its width and parent
+            RU: Элемент может перемещаться, но другие элементы рядом 
+                не замечают этого
+                - элемент теряет свою ширину и родитель
+        --------------------------------
+        4. fixed
+            EN: - the item can move but other items nearby can not notice that
+                - the item looses its width and parent
+            RU: Элемент может перемещаться, но другие элементы рядом 
+                не замечают этого
+                - элемент теряет свою ширину и родитель
+        --------------------------------
+        5. sticky
+            EN: - the item can move but other items nearby can not notice that
+                - the item looses its width and parent
+            RU: Элемент может перемещаться, но другие элементы рядом 
+                не замечают этого
+                - элемент теряет свою ширину и родитель
+        --------------------------------
+-->

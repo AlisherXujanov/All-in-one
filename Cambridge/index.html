@@ -1,15 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
 
-    <h1>String methods</h1>
-    
+    <h1>E-commerce website</h1>
 
-    <script src="main.js"></script>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus vitae similique sit tempora, veritatis
+        autem eos cum reprehenderit deserunt illo aperiam cumque in necessitatibus, ducimus beatae alias commodi, atque
+        perferendis!</p>
+
+    <main>
+        <h3>Products</h3>
+
+        <div class="products">
+            <div class="item">
+                <h4>Banana</h4>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis, officiis?</p>
+            </div>
+            <div class="item">
+                <h4>Apple</h4>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis, officiis?</p>
+            </div>
+            <div class="item">
+                <h4>Orange</h4>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis, officiis?</p>
+            </div>
+        </div>
+    </main>
+
 </body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition: 0.5s;
+    }
+    body {
+        text-align: center;
+    }
+    main {
+        width: 80%;
+        margin: 20px auto;
+    }
+    .products {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 20px;
+    }
+    .products .item {
+        text-align: center;
+        border-radius: 10px;
+        background: linear-gradient(45deg, #333, darkblue);
+        color: snow;
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    .products .item:hover {
+        background: linear-gradient(45deg, darkblue, #333);
+        color: cyan;
+        box-shadow: 5px 5px 15px red, -5px -5px 15px green;
+        transform: translateY(-5px);
+        border: 1px solid blue;
+    }
+</style>
+
 </html>

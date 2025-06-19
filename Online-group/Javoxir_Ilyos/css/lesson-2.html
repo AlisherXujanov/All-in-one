@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <main>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat nam aspernatur, labore rerum illo
+            voluptates consequuntur quia error voluptatum enim beatae, alias ducimus quae quis voluptas quos nostrum.
+            Esse alias maiores itaque, veritatis voluptas eum modi, porro perspiciatis veniam quas officiis hic dolores
+            beatae ad debitis praesentium est. Iste, possimus dignissimos nemo, earum sequi blanditiis impedit quam
+            praesentium pariatur vitae incidunt dolor quisquam voluptatum illum quis quasi dolores laborum. Odio veniam
+            incidunt qui voluptate, explicabo sint fugit totam laudantium numquam ipsa quibusdam harum voluptatem rerum
+            est nulla delectus, laboriosam dolore culpa! Laudantium numquam soluta sed corporis sint, sit aut quasi.</p>
+    </main>
+</body>
+<style>
+    main {
+        background-color: #333;
+        color: red;
+        width: 50%;
+        margin: 0 auto;
+        height: 100px;
+        overflow: auto;
+    }
+    
+    
+</style>
+
+</html>
+
+
+
+<!-- 
+    BACKGROUN_BLEND_MODE: darken | lighten
+        background-color: rgba(0, 0, 0, 0.5);
+        background-blend-mode: darken;
+    ------------------------------------------------------
+    HOVER + transition
+
+        Syntax:
+            selector { transition: 1s; }
+            selector:hover {...}
+    ------------------------------------------------------
+    SPACING
+        - PADDING: ...px;
+            padding: 10px 20px;  =>  vertical horizontal
+            padding: 10px 20px 30px 40px;  =>  clockwise
+
+            Padding:
+                padding-top: 10px;
+                padding-right: 20px;
+                padding-bottom: 30px;
+                padding-left: 40px;
+        - MARGIN: ...px;
+            margin: 10px 20px;  =>  vertical horizontal
+            margin: 10px 20px 30px 40px;  =>  clockwise
+
+            Margin:
+                margin-top: 10px;
+                margin-right: 20px;
+                margin-bottom: 30px;
+                margin-left: 40px;
+    ------------------------------------------------------
+    FONTS:
+        - family   ->  google fonts
+        - variant  ->  small-caps
+        - size     -> 
+                - px  =>  16px-default text
+                - em  =>  1em == 16px  |  1.5em  => 24px
+                - rem =>  root em
+                - %   =>  parent element
+                - vw  =>  window width
+
+        - weight
+        - style
+    ------------------------------------------------------
+    BOX_SIZING  -> prevents additional width | padding-width | border-width ... etc.
+    ------------------------------------------------------
+    BOX_SHADOW: 
+        SYNTAX:
+            box-shadow: x y spread;
+            box-shadow: inset x y direction spread color;
+    TEXT_SHADOW:
+            box-shadow: x y spread color;
+    ------------------------------------------------------
+    NTH_CHILD:
+        SYNTAX:
+            selector:first-child     => первый ребенок
+            selector:nth-child(even) => четные
+            selector:nth-child(odd)  => нечетные
+            selector:nth-child(n)    => n-й ребенок
+            selector:nth-child(n+1)  => n+1-й ребенок
+            selector:last-child      => последний ребенок
+    ------------------------------------------------------
+    OVERFLOW:
+        SYNTAX:
+            - visible;  ->  видимый (default value)
+            - hidden;   ->  скрывает
+            - scroll;   ->  скроллбары
+            - auto;     ->  скроллбары (если контент больше родителя)
+
+        ::-webkit-scrollbar {
+            width: 10px;
+            background-color: red;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: yellow;
+            border-radius: 10px;
+            width: 10px;
+        }
+-->

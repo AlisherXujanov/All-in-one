@@ -14,14 +14,14 @@
             <a href="#">Contact <span></span></a>
             <a href="#">About <span></span></a>
         </div>
-        <img src="/pics/event.jpg" />
+        <img src="../../1.jpg" />
     </div>
 </body>
 <style>
     * {
         padding: 0;
         margin: 0;
-        box-sizing: border-box;
+        box-sizing: border-box; 
         transition: 1s;
     }
     .hover-menu {
@@ -29,6 +29,9 @@
         height: 300px;
         background-color: #333;
         margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        overflow: hidden;
     }
     .hover-menu div {
         height: 300px;
@@ -37,10 +40,17 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        overflow: hidden;
-        float: left;
+        background-color: #333;
+        transition: all 1s ease;
     }
-    a { margin: 5px 0; text-decoration: none; color: snow; }
+    a { 
+        margin: 5px 0; 
+        text-decoration: none; 
+        color: snow;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
     a span {
         display: block;
         width: 100%;
@@ -49,14 +59,16 @@
     }
     a:hover span {
         box-shadow: inset -100px 0 red;
-    }
-    img {
+    }    img {
         width: 100%;
         height: 300px;
-        float: left;
-    }
-    .hover-menu:hover div {
+        object-fit: cover;
+        transition: all 1s ease;
+    }    .hover-menu:hover div {
         width: 20%;
+    }
+    .hover-menu:hover a {
+        opacity: 1;
     }
     .hover-menu:hover img {
         width: 80%;

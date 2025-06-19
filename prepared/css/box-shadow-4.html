@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Card Task</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="profile-card">
+        <header>
+            <h1>Alex Doe</h1>
+            <h2>Creative Director</h2>
+        </header>
+
+        <p class="tagline">Designing experiences, one pixel at a time.</p>
+
+        <div class="content">
+            <h3>Contact Information</h3>
+            <p>
+                Email: <a href="mailto:alex.doe@example.com">alex.doe@example.com</a>
+            </p>
+            <p>
+                Phone: <span>(555) 123-4567</span>
+            </p>
+        </div>
+
+        <footer>
+            <a href="#" data-social="linkedin">LinkedIn</a>
+            <a href="#" data-social="twitter">Twitter</a>
+        </footer>
+
+    </div>
+
+</body>
+<style>
+    /* TASK: Style the profile card using only the allowed CSS properties.
+  Allowed properties:
+  - Selectors: *, element, .class, #id, attribute, ancestors, children, siblings (+, ~)
+  - Colors, gradients, text-(decoration, transform, spacing)
+  - Borders (groove, ridge, inset, outset), backgrounds, hover, transition
+  - Margins, paddings, height, width, max-width, min-width
+  - Fonts (-family, -style, -variant, -weight, -size)
+  - box-sizing, box-shadow
+*/
+
+
+    /* == UNIVERSAL STYLES == */
+    /* Use the universal selector '*' to apply border-box sizing to all elements. */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Style the body to have a nice background. */
+    /* - Use a linear-gradient for the background. */
+    /* - Set a default font-family (e.g., 'Roboto', sans-serif). */
+    body {
+        background: linear-gradient(to right, #ece9e6, #ffffff);
+        font-family: 'Roboto', sans-serif;
+        padding: 50px;
+        /* Add some padding so the card isn't stuck to the edge */
+    }
+
+
+    /* == PROFILE CARD CONTAINER == */
+    /* Select the .profile-card */
+    .profile-card {
+        /* Sizing and Spacing */
+        margin: 50px auto;
+        width: 100%;
+        max-width: 400px;
+        padding: 25px;
+
+        /* Background and Border */
+        background-color: #fdfdfd;
+        border: 8px groove #cccccc;
+
+        /* Shadow and Effects */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s;
+    }
+
+    /* Add a hover effect to the profile card. */
+    .profile-card:hover {
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.2);
+        border-color: #2193b0;
+    }
+
+
+    /* == HEADER & TEXT STYLING == */
+    /* Select the header element directly inside .profile-card (child selector) */
+    .profile-card>header {
+        border-bottom: 4px inset #e0e0e0;
+        padding-bottom: 15px;
+    }
+
+    /* Style the h1 inside the header */
+    header h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.5em;
+        /* 1em is the base font size */
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #333;
+    }
+
+    /* Style the h2 inside the header */
+    header h2 {
+        color: #777;
+        font-style: italic;
+        font-size: 1.1em;
+        font-weight: 400;
+        /* Normal weight */
+    }
+
+
+    /* == SIBLING SELECTORS == */
+    /* Select the .tagline that is an adjacent sibling to the header */
+    header+.tagline {
+        margin: 20px 0;
+        font-style: italic;
+        color: #555;
+        font-size: 1.1em;
+    }
+
+    /* Select the footer that is a general sibling of the .content div */
+    .content~footer {
+        margin-top: 25px;
+        border-top: 1px solid #eee;
+        padding-top: 20px;
+    }
+
+
+    /* == CONTENT & ATTRIBUTE SELECTORS == */
+    /* Select the h3 inside the .content div */
+    .content h3 {
+        text-decoration: underline;
+        margin-bottom: 15px;
+        color: #444;
+    }
+
+    /* Select the links 'a' that are inside the footer */
+    footer a {
+        text-decoration: none;
+        margin-right: 10px;
+        background-color: #f0f0f0;
+        padding: 8px 12px;
+        border: 2px outset #dddddd;
+        color: #333;
+        transition: background-color 0.3s;
+    }
+
+    /* Add a hover effect for footer links */
+    footer a:hover {
+        background-color: #e0e0e0;
+    }
+
+    /* Use an attribute selector to style the LinkedIn link differently */
+    a[data-social="linkedin"] {
+        background-color: #e4f3ff;
+        border-color: #0077b5;
+    }
+
+    /* Use an attribute selector to style the Twitter link differently */
+    a[data-social="twitter"] {
+        background-color: #e8f5fe;
+        border-color: #1da1f2;
+    }
+</style>
+
+</html>

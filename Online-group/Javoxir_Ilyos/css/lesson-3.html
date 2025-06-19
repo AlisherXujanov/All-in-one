@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main>
+        <div class="top">
+            <div></div>
+            <div class="hidden"></div>
+            <div></div>
+        </div>
+        <div class="bottom">
+            <div class="left"></div>
+            <div class="right">
+                <div class="r-top">
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="r-bottom">
+                    <div class="first">
+                        <div></div>
+                        <div class="red"></div>
+                    </div>
+                    <div class="second">
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="third">
+                        <div class="red"></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+<style>
+    main {
+        padding: 20px;
+        width: 60%;
+        margin: 0 auto;
+        background-color: #333;
+    }
+
+    main .top {
+        display: grid;
+        grid-template-columns: 3fr 2fr 1fr;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    main .top div {
+        height: 100px;
+        background-color: lightgray;
+    }
+
+    .hidden {
+        visibility: hidden;
+    }
+
+    main .bottom {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        gap: 10px;
+    }
+
+    .bottom .left,
+    .bottom .right {
+        padding: 10px;
+        background-color: lightgray;
+    }
+
+    .bottom .right .r-top {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: 1fr 2fr;
+    }
+
+    .bottom .right .r-top div {
+        background-color: #696868;
+        height: 100px;
+    }
+
+    .bottom .right .r-bottom {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .bottom .right .r-bottom div div {
+        background-color: #696868;
+    }
+
+    .bottom .right .r-bottom .first div,
+    .bottom .right .r-bottom .third div {
+        height: 100px;
+    }
+
+    .bottom .right .r-bottom .first .red,
+    .bottom .right .r-bottom .third .red {
+        background-color: red;
+    }
+
+    .bottom .right .r-bottom .second div:first-child {
+        height: 75px;
+        visibility: hidden;
+    }
+
+    .bottom .right .r-bottom .second div:last-child {
+        background-color: #696868;
+        height: 125px;
+    }
+</style>
+
+</html>
+
+
+<!-- 
+    Grid layout
+    Basic layout (макет)
+
+
+    VISIBILITY:
+        - display: block | inline | inline-block | none;
+        - visibility: visible | hidden;
+        - opacity: 0 | 1;   
+
+    display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+
+        justify-content: ...;
+            - center
+            - space-between
+            - space-around
+            - space-evenly
+-->

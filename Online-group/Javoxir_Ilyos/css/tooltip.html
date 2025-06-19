@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <main>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut qui laudantium iste nesciunt exercitationem ducimus totam, incidunt tempore mollitia asperiores dolorem nisi. <span class="tooltip">Pariatur <span>This is a tooltip</span></span> quaerat impedit laudantium quod atque natus, corrupti voluptas, culpa qui nobis placeat, dolor hic eveniet rerum quae voluptatem sed numquam voluptates maxime? Beatae ab eligendi ad quo. Voluptate reprehenderit voluptatum nulla odit nisi officiis facere. Nihil perspiciatis vel rem eius quo nulla esse laboriosam id odit possimus fugit blanditiis natus autem dolores, quidem quibusdam adipisci repudiandae amet ad ducimus fugiat quam nemo? Explicabo cumque dolorem repellendus dolorum facere quae fuga harum perferendis autem ab, assumenda quam eaque.</p>
+    </main>
+
+</body>
+<style>
+    main {
+        padding: 10px;
+        width: 50%;
+        margin: 0 auto;
+        background-color: #eee;
+    }
+    .tooltip {
+        position: relative;
+        cursor: pointer;
+        border-bottom: 1px dotted orange;
+        display: inline-block;
+        padding: 3px 0;
+    }
+    .tooltip span {
+        position: absolute;
+        width: 120px;
+        background-color: #333;
+        color: snow;
+        border-radius: 4px;
+        text-align: center;
+        padding: 2px 2px 10px 2px;
+        top: -100%;
+        left: -50%;
+        clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 60% 76%, 50% 100%, 40% 76%, 0% 75%);
+        display: none;
+    }
+    .tooltip:hover span {
+        display: inline-block;
+    }
+</style>
+</html>

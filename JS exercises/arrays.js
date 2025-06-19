@@ -1,45 +1,48 @@
-// Array tasks (without looping over arrays)
-
 // BEGINNER LEVEL
 
-// 1. Create an array with 4 items. Then, access the 2nd item in the array and print it to the console.
-// RU: Создайте массив с 4 элементами. Выведите в консоль второй элемент массива.
+// 1. Создайте массив с 4 элементами. Выведите в консоль второй элемент массива.
 
-// 2. Create an array with 5 numbers. Get first from the end of the array and check if it is even. Print result to the console.
-// RU: Создайте массив с 5-ю числами. Получите первое с конца число и проверьте его на четность. Выведите результат в консоль.
+// 2. Создайте массив с 5-ю числами. Получите первое с конца число и проверьте его на четность. Выведите результат в консоль.
+let numbers = [1,2,3,4,5]
+let last = numbers[numbers.length-1]
+if (last % 2 == 0) {
+    console.log("Even")
+} else {
+    console.log("Odd")
+}
+//  /  =>  7/2  => 3.5
+//  %  =>  7%2  => 1
 
-// 3. Use prompt() to get a random number from user.
-// Then add this number, it's half and quarter to the array.
-// RU: Используйте prompt(), чтобы получить случайное число от пользователя. 
+// 3. Используйте prompt(), чтобы получить случайное число от пользователя. 
 // Затем добавьте это число, его половину и четверть в массив и выведите результат в консоль.
+// let arr = []
+// let number = parseInt(prompt("..."))
+// arr.push(number / 2)
+// arr.push(number / 4)
+// console.log(arr)
 
-// 4. Create an array that contains some strings. 
-// Then push a text that is asked from user by prompt() into the middle of array.
-// Then show array in the console
-// RU: Создайте массив с несколькими строками.
-// Затем добавьте текст, который запрашивается у пользователя с помощью prompt(), в середину массива.
-// Затем покажите массив в консоли.
+// 4. Создайте массив с несколькими строками.
+// Затем добавьте текст, который запрашивается у пользователя с помощью prompt(), в середину массива. Затем покажите массив в консоли.
+let arr = ["a", "b", "c", "d", "e"]
+let text = prompt("What's your name: ")
+let middle = parseInt(arr.length/2)
+arr.splice(middle, 0, text)
+console.log(arr)
 
-// 5. Create an array that contains some numbers. 
-// Then delete the last item in the array and save it into another variable.
-// Then, check if this number that is deleted even or odd. Print the result to the console.
-// RU: Создайте массив с несколькими числами. 
+
+// 5. Создайте массив с несколькими числами. 
 // Затем удалите последний элемент в массиве и сохраните его в другую переменную.
 // Затем проверьте, четное ли это число или нет. Выведите результат в консоль.
 
 // INTERMEDIATE LEVEL
 
-// 1. Write a logic that finds the longest string in an array of strings.
-// RU: Напишите логику, которая находит самую длинную строку в массиве строк.
+// 1. Напишите логику, которая находит самую длинную строку в массиве строк.
 
-// 2. Write a logic that finds the shortest string in an array of strings.
-// RU: Напишите логику, которая находит самую короткую строку в массиве строк.
+// 2. Напишите логику, которая находит самую короткую строку в массиве строк.
 
-// 3. Write a logic that finds the max number from an array of numbers.
-// RU: Напишите логику, которая находит самое большое число в массиве чисел.
+// 3. Напишите логику, которая находит самое большое число в массиве чисел.
 
-// 4. Write a logic that finds the min number from an array of numbers.
-// RU: Напишите логику, которая находит самое маленькое число в массиве чисел.
+// 4. Напишите логику, которая находит самое маленькое число в массиве чисел.
 
 // 5. Create an array of strings with names. 
 // Then create another array with ages.

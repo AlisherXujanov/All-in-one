@@ -3,226 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        .header {
-            position: fixed;
-            width: 100%;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-menu a {
-            text-decoration: none;
-            color: #333;
-            text-transform: uppercase;
-            font-size: 14px;
-        }
-
-        .phone {
-            color: #333;
-            text-decoration: none;
-        }
-
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-                        url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-            padding: 0 20px;
-        }
-
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 18px;
-            margin-bottom: 30px;
-        }
-
-        .cta-button {
-            background: #ff0000;
-            color: white;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 5px;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-
-        .benefits {
-            padding: 80px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .benefit-item {
-            display: flex;
-            margin-bottom: 50px;
-            gap: 30px;
-        }
-
-        .benefit-content {
-            flex: 1;
-        }
-
-        .benefit-image {
-            flex: 1;
-            height: 300px;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .benefit-number {
-            color: #ff0000;
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
-
-        .burger-menu {
-            display: none;
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        .burger-menu div {
-            width: 25px;
-            height: 3px;
-            background-color: #333;
-            margin: 5px 0;
-            transition: all 0.3s ease;
-        }
-
-        @media screen and (max-width: 768px) {
-            .nav-menu {
-                position: fixed;
-                right: -100%;
-                top: 70px;
-                flex-direction: column;
-                background-color: rgba(255, 255, 255, 0.95);
-                width: 100%;
-                height: calc(100vh - 70px);
-                padding: 20px;
-                transition: 0.3s;
-                gap: 40px;
-                align-items: center;
-            }
-
-            .nav-menu.active {
-                right: 0;
-            }
-
-            .burger-menu {
-                display: block;
-            }
-
-            .burger-menu.active .line1 {
-                transform: rotate(-45deg) translate(-5px, 6px);
-            }
-
-            .burger-menu.active .line2 {
-                opacity: 0;
-            }
-
-            .burger-menu.active .line3 {
-                transform: rotate(45deg) translate(-5px, -6px);
-            }
-
-            .phone {
-                display: none;
-            }
-        }
-    </style>
+    <title>Document</title>
 </head>
 <body>
-    <header class="header">
-        <div class="logo">ЛОГО</div>
-        <nav class="nav-menu">
-            <a href="#">Главная</a>
-            <a href="#">Команда</a>
-            <a href="#">Наши работы</a>
-            <a href="#">Контакты</a>
-        </nav>
-        <div class="burger-menu">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
-        </div>
-        <a href="tel:+74990000000" class="phone">+7 (499) 000 00 00</a>
-    </header>
 
-    <section class="hero">
-        <h1>ВАШ ЦЕПЛЯЮЩИЙ ЗАГОЛОВОК</h1>
-        <p>Этот подзаголовок должен раскрывать основные выгоды<br>вашего уникального предложения</p>
-        <a href="#" class="cta-button">Наши работы</a>
-    </section>
-
-    <section class="benefits">
-        <div class="benefit-item">
-            <div class="benefit-content">
-                <div class="benefit-number">Выгода #1</div>
-                <p>Таким образом новая модель организационной деятельности позволяет выполнять важные задания по разработке направлений прогрессивного развития. Не следует, однако забывать, что сложившаяся структура организации позволяет оценить значение систем массового участия. Повседневная практика показывает, что постоянный количественный рост и сфера нашей активности позволяет выполнять важные задания по разработке направлений прогрессивного развития.</p>
-            </div>
-            <div class="benefit-image" style="background-image: url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
-        </div>
-
-        <div class="benefit-item">
-            <div class="benefit-image" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
-            <div class="benefit-content">
-                <div class="benefit-number">Выгода #2</div>
-                <p>С другой стороны постоянное информационно-пропагандистское обеспечение нашей деятельности позволяет оценить значение соответствующий условий активизации. Значимость этих проблем настолько очевидна, что рамки и место обучения кадров способствует подготовки и реализации систем массового участия.</p>
-            </div>
-        </div>
-    </section>
-
-    <script>
-        const burgerMenu = document.querySelector('.burger-menu');
-        const navMenu = document.querySelector('.nav-menu');
-
-        burgerMenu.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            burgerMenu.classList.toggle('active');
-        });
-
-        // Close menu when clicking on a link
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                burgerMenu.classList.remove('active');
-            });
-        });
-    </script>
+    <main>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat earum ex, cupiditate minus molestiae unde similique et laboriosam deserunt officia, sapiente nostrum dignissimos, eius animi esse culpa! Accusantium maiores, maxime, illo saepe mollitia porro libero similique itaque quis aliquid nemo est suscipit adipisci vel! Placeat voluptatibus soluta nesciunt iusto nostrum. Sunt, sit! Facilis maxime tenetur ex hic possimus unde excepturi libero repellat! Dolorum omnis fugit totam eligendi hic ad officia, accusamus aliquid sit voluptatum obcaecati quia ullam nobis nemo ipsum non aperiam, sint maxime provident animi tempora saepe vel enim consequatur. Quo, debitis tempore assumenda iure commodi quod exercitationem consequuntur?</p>
+    </main>
+    
 </body>
+<style>
+
+    main {
+        width: 50%;
+        height: 50vh;
+        margin: 0 auto;
+        border: 1px solid red;
+        overflow: auto;
+    }
+
+</style>
 </html>
+

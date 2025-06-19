@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Adding elements to demonstrate CSS properties -->
+    <div class="container">
+        <h1>Welcome to the CSS Task</h1>
+        <p>Explore gradients, text styles, spacing, and borders</p>
+    </div>
+</body>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to right, #ff7e5f, #feb47b);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .container {
+        text-align: center;
+        padding: 20px;
+        border: double 5px #333;
+        background: radial-gradient(circle, green, #feb47b);
+    }
+
+    h1 {
+        text-transform: uppercase;
+        text-decoration: underline solid 3px #333;
+        letter-spacing: 2px;
+        word-spacing: 5px;
+        line-height: 1.5;
+        color: #fff;
+    }
+
+    p {
+        text-transform: capitalize;
+        text-decoration: wavy 2px #fff;
+        letter-spacing: 1px;
+        word-spacing: 3px;
+        line-height: 1.8;
+        color: #333;
+    }
+</style>
+
+</html>
