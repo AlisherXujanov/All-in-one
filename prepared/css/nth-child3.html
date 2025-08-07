@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Card Task</title>
+    <style>
+        /* ------------------------------------------------------------------
+        YOUR CSS TASK STARTS HERE
+        ------------------------------------------------------------------
+
+        Instructions: Use only the allowed CSS properties to style this
+        recipe card. The properties you can use are:
+
+        - Selectors: *, element, class, ID, attribute, ancestor, child, 
+          sibling (adjacent and general), :nth-child(odd|even), :hover
+        - Colors: color, background-color, linear-gradient
+        - Text: text-decoration, text-transform, text-spacing (letter-spacing/word-spacing)
+        - Borders: border, border-style (groove, ridge, inset, outset)
+        - Backgrounds: background
+        - Transitions: transition
+        - Box Model: margin, padding, height, width, max-width, min-width
+        - Fonts: font-family, font-style, font-variant, font-weight, font-size (em, vw units)
+        - Box Model Extras: box-sizing, box-shadow
+        - Lists: list-style
+        - Tables: table properties like border-collapse
+
+        ------------------------------------------------------------------
+        Part 1: General Body & Card Layout
+        ------------------------------------------------------------------
+        1.  Use the universal selector (*) to set 'box-sizing' to 'border-box' 
+            and remove default margins and paddings.
+        2.  Set the 'font-family' for the entire page to something classic like 
+            'Georgia' or 'Times New Roman'.
+        3.  Give the <body> a light grey background color and a subtle 
+            linear gradient.
+        4.  Center the '.recipe-card' on the page. Give it a 'max-width' of 600px
+            and a 'min-width' of 300px so it's responsive.
+        5.  Add some 'margin' to the top and bottom of the card.
+        6.  Give the card a white 'background-color' and a 'ridge' style border.
+        7.  Add a 'box-shadow' to the card to make it "lift" off the page.
+        8.  Add 'padding' inside the card to give the content space.
+
+        ------------------------------------------------------------------
+        Part 2: Typography & Text Styling
+        ------------------------------------------------------------------
+        1.  Target the main heading ('h1') inside the card. Make the text 
+            uppercase using 'text-transform', increase the 'font-size' (try using vw for responsiveness), 
+            and add some 'letter-spacing'.
+        2.  Style the 'p' element that has the 'description' attribute. 
+            Make its 'font-style' italic.
+        3.  Give all 'h2' elements a bottom border with an 'inset' style.
+        4.  For the link in the footer, remove the 'text-decoration'. On 'hover',
+            change its color and add a smooth 'transition'.
+
+        ------------------------------------------------------------------
+        Part 3: Lists and Table Styling
+        ------------------------------------------------------------------
+        1.  For the ingredients list ('ul'), remove the default bullet points.
+        2.  For the instructions list ('ol'), keep the numbers but add some
+            'padding' to the left.
+        3.  Style the 'table'. Set its 'width' to 100%.
+        4.  Style the 'th' and 'td' elements with padding and a solid border.
+        5.  Use the ':nth-child(odd)' pseudo-class to give every odd table row
+            a slightly different background color, creating a "striped" effect.
+
+        Good luck!
+        */
+
+        /* WRITE YOUR CSS HERE */
+    </style>
+</head>
+
+<body>
+
+    <div class="recipe-card">
+        <h1>Classic Tomato Soup</h1>
+
+        <p attribute="description">A simple, comforting, and delicious homemade tomato soup.</p>
+
+        <h2>Ingredients</h2>
+        <ul>
+            <li>2 tbsp Olive Oil</li>
+            <li>1 large Onion, chopped</li>
+            <li>2 cloves Garlic, minced</li>
+            <li>800g Canned Tomatoes</li>
+            <li>500ml Vegetable Broth</li>
+            <li>1 tsp Sugar</li>
+            <li>Salt and Pepper to taste</li>
+        </ul>
+
+        <h2>Instructions</h2>
+        <ol>
+            <li>Heat olive oil in a large pot over medium heat.</li>
+            <li>Add chopped onion and cook until soft. Add garlic and cook for 1 more minute.</li>
+            <li>Pour in the canned tomatoes and vegetable broth. Add sugar.</li>
+            <li>Bring to a boil, then reduce heat and let it simmer for 20 minutes.</li>
+            <li>Carefully blend the soup until smooth.</li>
+            <li>Season with salt and pepper. Serve hot.</li>
+        </ol>
+
+        <h2>Nutrition Facts</h2>
+        <table>
+            <tr>
+                <th>Nutrient</th>
+                <th>Amount</th>
+            </tr>
+            <tr>
+                <td>Calories</td>
+                <td>150 kcal</td>
+            </tr>
+            <tr>
+                <td>Protein</td>
+                <td>3g</td>
+            </tr>
+            <tr>
+                <td>Carbs</td>
+                <td>20g</td>
+            </tr>
+            <tr>
+                <td>Fat</td>
+                <td>7g</td>
+            </tr>
+        </table>
+
+        <div class="footer">
+            <p>Source: <a href="#">A Very Good Cookbook</a></p>
+        </div>
+    </div>
+
+</body>
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        background-color: #f0f0f0;
+        background: linear-gradient(to bottom, #e9e9e9, #f5f5f5);
+    }
+
+    .recipe-card {
+        max-width: 600px;
+        min-width: 300px;
+        margin: 2em auto;
+        /* 'auto' for left/right centers it */
+        background-color: white;
+        border: 4px ridge #cccccc;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+        padding: 1.5em;
+    }
+
+    /* Part 2: Typography & Text Styling */
+    .recipe-card h1 {
+        text-transform: uppercase;
+        font-size: 5vw;
+        /* Responsive font size */
+        letter-spacing: 2px;
+        text-align: center;
+    }
+
+    p[attribute="description"] {
+        font-style: italic;
+        text-align: center;
+        margin-bottom: 2em;
+    }
+
+    h2 {
+        border-bottom: 2px inset #888888;
+        padding-bottom: 0.25em;
+        margin-top: 1.5em;
+        margin-bottom: 1em;
+        font-variant: small-caps;
+    }
+
+    .footer a {
+        text-decoration: none;
+        color: #d9534f;
+        font-weight: bold;
+        transition: color 0.4s;
+    }
+
+    .footer a:hover {
+        color: #c9302c;
+    }
+
+    .footer {
+        margin-top: 2em;
+        text-align: center;
+    }
+
+    /* Part 3: Lists and Table Styling */
+    ul {
+        list-style: none;
+        /* Removes bullet points */
+    }
+
+    ul li {
+        padding: 0.25em 0;
+    }
+
+    ol {
+        padding-left: 2em;
+        /* Adds space for numbers */
+    }
+
+    ol li {
+        padding: 0.25em 0;
+        line-height: 1.5;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        /* Merges borders */
+        margin-top: 1em;
+    }
+
+    th,
+    td {
+        border: 1px groove #ddd;
+        padding: 0.75em;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f9f9f9;
+        text-transform: uppercase;
+        font-size: 0.9em;
+    }
+
+    tr:nth-child(even) {
+        /* Switched to even for better contrast with header */
+        background-color: #fdfdfd;
+    }
+</style>
+</html>

@@ -76,12 +76,19 @@
 
         function prevFn() {
             currentIndex = (currentIndex - 1 + slides.length) % slides.length
+            // (5 - 1 + 5) % 5 ==> 4
+            // (0 - 1 + 5) % 5 ==> 4
             showSlide(currentIndex)
             resetAutoSlide()
         }
 
         function nextFn() {
             currentIndex = (currentIndex + 1) % slides.length
+            // 1 % 5  ==>  1
+            // 2 % 5  ==>  2
+            // ...
+            // 7 % 5  ==>  2
+            // 9 % 5  ==>  4
             showSlide(currentIndex)
             resetAutoSlide()
         }

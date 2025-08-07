@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complex Nth-Child & Backgrounds</title>
+</head>
+<body>
+
+    <div class="gallery-container">
+        <div class="gallery-item">
+            <h3>Title Alpha</h3>
+            <p>A brief description for the first item, demonstrating complex nth-child effects.</p>
+        </div>
+        <div class="gallery-item">
+            <h3>Title Beta</h3>
+            <p>This item will have distinct background patterns based on its position.</p>
+        </div>
+        <div class="gallery-item">
+            <h3>Title Gamma</h3>
+            <p>Every third item will feature a unique visual style and interaction.</p>
+        </div>
+        <div class="gallery-item">
+            <h3>Title Delta</h3>
+            <p>Watch how the backgrounds shift and blend without any fancy transformations.</p>
+        </div>
+        <div class="gallery-item">
+            <h3>Title Epsilon</h3>
+            <p>The patterns created with nth-child can be surprisingly intricate.</p>
+        </div>
+        <div class="gallery-item">
+            <h3>Title Zeta</h3>
+            <p>This item wraps up the row, showing off another custom blend.</p>
+        </div>
+        <div class="gallery-item">
+            <h3>Title Eta</h3>
+            <p>The sequence repeats, showcasing the power of advanced selectors.</p>
+        </div>
+        <div class="gallery-item">
+            <h3>Title Theta</h3>
+            <p>Notice the subtle text changes and overlay adjustments on hover.</p>
+        </div>
+        <div class="gallery-item">
+            <h3>Title Iota</h3>
+            <p>The final item in this set, bringing all the complex styles together.</p>
+        </div>
+    </div>
+
+</body>
+<style>
+    /* Global Styles & Resets */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition: all 0.6s ease-in-out; /* Smooth transition for property changes */
+    }
+
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #2c3e50; /* Dark blue-grey background */
+        color: #ecf0f1; /* Light text color */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 40px;
+    }
+
+    .gallery-container {
+        width: 95%;
+        max-width: 1200px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        background-color: #34495e; /* Slightly lighter dark background for container */
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Base Gallery Item Styling */
+    .gallery-item {
+        position: relative;
+        overflow: hidden; /* Important for background layers */
+        border-radius: 10px;
+        min-height: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end; /* Align content to bottom */
+        padding: 25px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        border: 3px solid transparent; /* For border transition */
+        text-align: center;
+    }
+
+    .gallery-item h3 {
+        font-size: 2em;
+        margin-bottom: 10px;
+        color: #fff; /* White text for contrast */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Stronger shadow for readability */
+        z-index: 2; /* Ensure text is above backgrounds */
+        position: relative;
+    }
+
+    .gallery-item p {
+        font-size: 1.1em;
+        line-height: 1.5;
+        color: #f0f0f1;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+        z-index: 2; /* Ensure text is above backgrounds */
+        position: relative;
+    }
+
+    /* --- Difficult nth-child with Multiple Background Layers --- */
+
+    /* Generic background properties for all items */
+    .gallery-item {
+        background-size: cover, cover, cover; /* Three layers, each covering */
+        background-position: center center, center center, center center;
+        background-repeat: no-repeat;
+    }
+
+    /* Item 1, 4, 7... (3n + 1) */
+    .gallery-item:nth-child(3n + 1) {
+        /* Layer 1: Dark translucent overlay */
+        /* Layer 2: Linear gradient */
+        /* Layer 3: Image */
+        background-image:
+            linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), /* Top dark gradient */
+            linear-gradient(to top right, #3498db, #2ecc71), /* Blue to Green */
+            url('https://picsum.photos/id/1015/800/600'); /* Image: Sunset */
+        background-blend-mode: overlay, screen, normal; /* Blend modes for each layer */
+    }
+
+    .gallery-item:nth-child(3n + 1):hover {
+        background-position: center top, center center, center bottom; /* Shift layers differently */
+        border-color: #2ecc71; /* Green border on hover */
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), inset 0 0 100px rgba(52, 152, 219, 0.3); /* Outer & Inner shadow */
+        padding-bottom: 35px; /* Increase padding */
+        color: #aaffaa; /* Text color change */
+    }
+
+    .gallery-item:nth-child(3n + 1):hover h3,
+    .gallery-item:nth-child(3n + 1):hover p {
+        color: #fff; /* Ensure white text */
+    }
+
+
+    /* Item 2, 5, 8... (3n + 2) */
+    .gallery-item:nth-child(3n + 2) {
+        background-image:
+            linear-gradient(rgba(0, 0, 0, 0.7), transparent), /* Dark gradient from top */
+            radial-gradient(circle at center, rgba(230, 126, 34, 0.5), transparent), /* Orange radial */
+            url('https://picsum.photos/id/1039/800/600'); /* Image: Desert */
+        background-blend-mode: multiply, overlay, normal; /* Blend modes */
+    }
+
+    .gallery-item:nth-child(3n + 2):hover {
+        background-position: center center, 50% 70%, center center; /* Shift radial gradient down */
+        border-color: #e67e22; /* Orange border on hover */
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), inset 0 0 100px rgba(230, 126, 34, 0.3);
+        padding-top: 35px; /* Increase padding from top */
+        color: #f1c40f; /* Text color change */
+    }
+
+    .gallery-item:nth-child(3n + 2):hover h3,
+    .gallery-item:nth-child(3n + 2):hover p {
+        color: #fff;
+    }
+
+    /* Item 3, 6, 9... (3n) */
+    .gallery-item:nth-child(3n) {
+        background-image:
+            linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), /* Dark gradient from top to bottom */
+            radial-gradient(circle at top left, #9b59b6, transparent 70%), /* Purple radial from top-left */
+            url('https://picsum.photos/id/1043/800/600'); /* Image: Aurora */
+        background-blend-mode: luminosity, screen, normal; /* Blend modes */
+    }
+
+    .gallery-item:nth-child(3n):hover {
+        background-position: center center, 60% 80%, center center; /* Shift radial further */
+        border-color: #9b59b6; /* Purple border on hover */
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), inset 0 0 100px rgba(155, 89, 182, 0.3);
+        padding-right: 35px; /* Increase padding from right */
+        color: #bd93f9; /* Text color change */
+    }
+
+    .gallery-item:nth-child(3n):hover h3,
+    .gallery-item:nth-child(3n):hover p {
+        color: #fff;
+    }
+
+    /* First-child and Last-child with unique background image changes */
+    /* This overrides the nth-child for the very first and last item */
+    .gallery-item:first-child {
+        background-image:
+            linear-gradient(rgba(0, 0, 0, 0.7), transparent), /* A different dark overlay */
+            linear-gradient(to right, #e74c3c, #f1c40f), /* Red to Yellow gradient */
+            url('https://picsum.photos/id/1025/800/600'); /* Image: Forest Path */
+        background-blend-mode: multiply, screen, normal;
+    }
+
+    .gallery-item:first-child:hover {
+        border-color: #f1c40f;
+        background-position: center top, center bottom, center center; /* More aggressive shift */
+        padding: 30px; /* Uniform padding increase */
+    }
+
+    .gallery-item:last-child {
+        background-image:
+            linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4)), /* Very dark from bottom */
+            radial-gradient(circle at bottom right, #f39c12, transparent 60%), /* Darker orange radial */
+            url('https://picsum.photos/id/1084/800/600'); /* Image: Mountains with clouds */
+        background-blend-mode: soft-light, overlay, normal;
+    }
+
+    .gallery-item:last-child:hover {
+        border-color: #f39c12;
+        background-position: center bottom, 80% 20%, center center; /* Shift radial to top-left */
+        padding: 30px; /* Uniform padding increase */
+    }
+
+    /* Pseudo-elements for subtle decorative lines on item hover */
+    .gallery-item::before,
+    .gallery-item::after {
+        content: '';
+        position: absolute;
+        opacity: 0;
+        background-color: #fff; /* White line */
+    }
+
+    .gallery-item::before {
+        top: 10px;
+        left: 10px;
+        width: 0;
+        height: 2px;
+    }
+
+    .gallery-item::after {
+        bottom: 10px;
+        right: 10px;
+        width: 2px;
+        height: 0;
+    }
+
+    .gallery-item:hover::before {
+        width: calc(100% - 20px); /* Extend horizontally */
+        opacity: 1;
+    }
+
+    .gallery-item:hover::after {
+        height: calc(100% - 20px); /* Extend vertically */
+        opacity: 1;
+    }
+
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .gallery-container {
+            padding: 20px;
+            gap: 20px;
+        }
+        .gallery-item {
+            min-height: 200px;
+            padding: 20px;
+        }
+        .gallery-item h3 {
+            font-size: 1.6em;
+        }
+        .gallery-item p {
+            font-size: 0.9em;
+        }
+    }
+</style>
+</html>

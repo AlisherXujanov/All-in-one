@@ -39,50 +39,62 @@ Fullstack Frontend/Backend/Mobile developer
 <!-- ============================================== -->
 <!-- ============================================== -->
 <!-- ============================================== -->
-✅ HTML 
-✅ CSS 
-✅ JS 
-✅ SASS && SCSS
-✅ Github && Git (UNIX commands)
-✅ ( Nuxt-JS ) || React-JS
-✅ Python (OOPS - Object Oriented Programming)
-✅ Telegram Bots
-✅ SQL (PostgreSQL) 
-✅ Django
-✅ Django Rest Framework (DRF)
-✅ Deployment (Hosting)
+🎓 Курс Fullstack AI Разработки 🚀
+Изучение Искусственного Интеллекта и разработка приложений на Python и JavaScript.
 
--------Testing-------
-    ✅ Selenium
-    ✅ Cypress
-    ✅ Unit-testing 
-    ✅ Playwright
------ UI && UX  - designs ----- 
-    ✅ Figma
-    ✅ Bootstrap
-    ✅ Tailwind
-    ✅ Buefy
-    ✅ Vuetify
--------------------
-✅ +Freelancing
+🌟 Обзор курса:
+- Продолжительность: от 1 до 1.5 года (смотря на старания ученика)
 
+📚 Программа курса:
+- 🎨 UI/UX Дизайн с Figma (2 месяца)
+  - Создание прототипов и макетов
+  - Дизайн-системы и компоненты
+  - Принципы пользовательского опыта
 
+- 💻 Основы JavaScript (2.5 месяца)
+  - Современные возможности JavaScript
+  - Лучшие практики и паттерны
 
+- 🔄 Системы контроля версий и DevOps (3-5 занятий)
+  - Рабочие процессы Git & GitHub
+  - Командная строка UNIX
 
-✅ HTML / CSS / SASS 
-✅ JS / Typescript
-✅ Github && Git (UNIX commands)
-✅ React-JS  /  ✅ React Native
-✅ Android Studio (Beginner)
-✅ Kotlin (Advanced level)
-✅ Android Studio (Advanced level)
-По оконачанию курса, студенты могут создавать мобильные приложения для Android, 
-используя React-native, Kotlin и Android Studio. 
-И смогут ее размещать на Google Play Store.
+- ⚡️ Next.js с интеграцией AI (30 тем)
+  - Серверный рендеринг
+  - API маршруты
+  - Интеграция AI моделей
+  - Оптимизация производительности
 
-Преподаватель:
-- Alisher Khujanov (6 лет опыта в программировании)
-Github:
-- https://github.com/AlisherXujanov
-Сontact:
-- +998 33 474-74-77
+- 🐍 Python и разработка AI (35 тем)
+  - Обработка данных
+  - Разработка API
+
+- 🗄 Базы данных и облачная инфраструктура (1 месяц)
+  - PostgreSQL
+  - Сервисы AWS
+  - Деплой на Render & Vercek & PythonAnywhere
+  - Оптимизация баз данных
+
+- 🔌 Django REST Framework (30 тем)
+  - Проектирование RESTful API
+  - Аутентификация и авторизация
+
+- 🚀 Деплой и микросервисы (1 неделя)
+  - Контейнеризация
+  - Архитектура микросервисов
+  - Деплой в продакшн
+  - Мониторинг и масштабирование
+
+💡 Результаты курса:
+- Создание полноценных приложений с AI
+- Разработка проектов
+- Освоение full-stack разработки
+- Получение практических навыков для работы
+
+Преподаватель
+- Alisher Khujanov (7+ лет опыта в программировании)
+
+Оплата
+- $120 (3 раза в недели по 1.30 часа)
+
++ Английский язык (в практике)

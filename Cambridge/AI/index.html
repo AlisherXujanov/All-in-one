@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="spinner.css">
+</head>
+
+<body>
+    <h1>Learning AI with JS</h1>
+
+
+    <div class="spinner-container">
+        <div class="atom-spinner">
+            <div class="spinner-inner">
+                <div class="spinner-line"></div>
+                <div class="spinner-line"></div>
+                <div class="spinner-line"></div>
+                <!--Chrome renders little circles malformed :(-->
+                <div class="spinner-circle">&#9679;</div>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <div class="chat-with-ai">
+            <p class="question">Hello, how are you?</p>
+            <p class="ai-thoughts">Thinking... Далеко-далеко за словесными горами в стране, гласных и согласных живут
+                рыбные тексты. Языком злых имени рыбного путь своих вершину страна наш решила.</p>
+            <p class="ai-answer">I'm fine, thank you!</p>
+        </div>
+
+        <div class="action">
+            <input type="text" id="prompt-question" placeholder="Ask me anything...">
+            <button id="send-question">Send</button>
+        </div>
+    </main>
+
+    <script>
+        const CHAT_WITH_AI = document.querySelector('.chat-with-ai');
+        const PROMPT_QUESTION = document.querySelector('#prompt-question');
+        const SEND_QUESTION = document.querySelector('#send-question');
+        const SPINNER_CONTAINER = document.querySelector('.spinner-container');
+
+        // e  ==>  event 
+        // The event that is triggered on the browser
+        // In our case, it describes the "click event"
+
+        // e.target  =>  is the very item that we clicked on
+        SEND_QUESTION.onclick = (e) => {
+            const Q = PROMPT_QUESTION.value;
+            if (Q.length > 0) {
+                const p = document.createElement('p');
+                p.classList.add('question');
+                p.textContent = Q;
+                CHAT_WITH_AI.appendChild(p);
+                PROMPT_QUESTION.value = "";
+            }
+            getAIResponse(Q);
+        }
+
+        function getAIResponse(question) {
+            const URL = "https://api.together.xyz/v1/chat/completions"
+            const TOGETHER_API_KEY = "256441972f9d9da8cfd0a5f0055e2b4020d4d6e7fff2a969c45b2b40595f2b75"
+
+            SPINNER_CONTAINER.style.display = 'flex';
+            fetch(URL, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${TOGETHER_API_KEY}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    model: 'deepseek-ai/DeepSeek-R1-0528-tput',
+                    messages: [
+                        {
+                            role: 'user',
+                            content: createAIQuestion(question)
+                        }
+                    ]
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    const responseContent = data.choices[0].message.content;
+                    console.log(responseContent);
+
+                    // Parse the AI response to extract thoughts and answer
+                    const parsedResponse = parseAIResponse(responseContent);
+
+                    if (parsedResponse) {
+                        // Create and display AI thoughts
+                        const thoughtsElement = document.createElement('p');
+                        thoughtsElement.classList.add('ai-thoughts');
+                        thoughtsElement.textContent = parsedResponse.thoughts;
+                        CHAT_WITH_AI.appendChild(thoughtsElement);
+
+                        // Create and display AI answer
+                        const answerElement = document.createElement('p');
+                        answerElement.classList.add('ai-answer');
+                        answerElement.textContent = parsedResponse.answer;
+                        CHAT_WITH_AI.appendChild(answerElement);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                })
+                .finally(() => {
+                    SPINNER_CONTAINER.style.display = 'none';
+                });
+        }
+
+
+        function parseAIResponse(responseContent) {
+            try {
+                // Extract the JSON-like structure from the response
+                const jsonMatch = responseContent.match(/\{[\s\S]*\}/);
+                if (!jsonMatch) return null;
+
+                const jsonString = jsonMatch[0];
+
+                // More robust parsing using regex to extract values
+                const thoughtsMatch = jsonString.match(/'your-thoughts':\s*'([\s\S]*?)',?\s*'your-answer'/);
+                const answerMatch = jsonString.match(/'your-answer':\s*'([\s\S]*?)'\s*\}/);
+
+                if (thoughtsMatch && answerMatch) {
+                    return {
+                        thoughts: thoughtsMatch[1].trim(),
+                        answer: answerMatch[1].trim()
+                    };
+                }
+
+                // Fallback: try alternative parsing
+                const altThoughtsMatch = jsonString.match(/"your-thoughts":\s*"([\s\S]*?)",?\s*"your-answer"/);
+                const altAnswerMatch = jsonString.match(/"your-answer":\s*"([\s\S]*?)"\s*\}/);
+
+                if (altThoughtsMatch && altAnswerMatch) {
+                    return {
+                        thoughts: altThoughtsMatch[1].trim(),
+                        answer: altAnswerMatch[1].trim()
+                    };
+                }
+
+                return null;
+            } catch (error) {
+                console.error('Error parsing AI response:', error);
+
+                // Final fallback: extract any content between quotes after the field names
+                const thoughtsMatch = responseContent.match(/your-thoughts['":\s]*([^'"]*(?:'[^']*'[^'"]*)*)/);
+                const answerMatch = responseContent.match(/your-answer['":\s]*([^'"]*(?:'[^']*'[^'"]*)*)/);
+
+                if (thoughtsMatch && answerMatch) {
+                    return {
+                        thoughts: thoughtsMatch[1].replace(/['"]/g, '').trim(),
+                        answer: answerMatch[1].replace(/['"]/g, '').trim()
+                    };
+                }
+
+                return null;
+            }
+        }
+
+        function createAIQuestion(question) {
+            const NEW_Q = `
+                - This is my client's question and i want you to answer as 'Naruto Uzumaki' from Anime-cartoon "Naruto" to this question: "${question}"
+                - The format that you should answer is like this:
+                {
+                'your-thoughts': 'your-thoughts-here',
+                'your-answer': 'your-answer-here'
+                }`
+            return NEW_Q
+        }
+    </script>
+</body>
+<style>
+    * {
+        transition: 0.5s;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+        min-height: 100vh;
+        min-width: 1200px;
+        text-align: center;
+    }
+
+    h1,
+    main {
+        width: 40%;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+
+        display: flex;
+        justify-content: center;
+        align-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+        background-color: #eee;
+        border-radius: 10px;
+    }
+
+    .action {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 150px;
+        gap: 10px;
+        padding: 0 50px;
+    }
+
+    button,
+    input {
+        padding: 10px 20px;
+        border-radius: 4px;
+        border: none;
+        outline: none;
+        background-color: lightgray;
+        transition: 0.15s;
+    }
+
+    button:hover,
+    input:hover {
+        outline: 4px solid rgb(0, 0, 255, 0.2);
+        cursor: pointer;
+    }
+
+    input:focus {
+        background-color: snow;
+        outline: 4px solid rgb(0, 0, 255, 0.2);
+    }
+
+    button:hover {
+        background-color: rgb(0, 0, 170);
+        color: white;
+    }
+
+    button:active {
+        background-color: rgb(0, 0, 120, 0.7);
+        outline: 8px solid rgb(0, 0, 255, 0.2);
+        transform: scale(0.75);
+    }
+
+    .chat-with-ai {
+        margin: 20px 0;
+        height: 50vh;
+        overflow-y: auto;
+        border-radius: 0 40px 0 40px;
+        background-color: lightgray;
+        width: 100%;
+        padding: 20px;
+        text-align: left;
+    }
+
+    .chat-with-ai p {
+        padding: 10px;
+        font-size: 1.2rem;
+    }
+
+    .question {
+        margin-left: 10px;
+    }
+
+    .ai-answer {
+        margin-right: 10px;
+        text-align: right;
+        color: darkgreen;
+        font-style: italic;
+    }
+
+    .ai-thoughts {
+        margin-right: 10px;
+        text-align: right;
+        color: darkgray;
+        font-size: 0.8rem;
+    }
+</style>
+
+</html>
