@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Attributes Challenge — Restaurant</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Samarkand Bites — Attributes Master Challenge</h1>
+
+      <nav>
+        <a href="#about" target="_self">About</a>
+        <a href="#menu" target="_self">Menu</a>
+        <a href="#hours" target="_self">Hours</a>
+        <a href="#order" target="_self">Order</a>
+        <a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer">Find us</a>
+      </nav>
+
+      <marquee>
+        Today only: <b><em><mark>[DISCOUNT]</mark></em></b> off on <ins>Chef's</ins> Special
+      </marquee>
+    </header>
+
+    <hr>
+
+    <main>
+      <section id="about">
+        <h2>About</h2>
+        <p>
+          Welcome to <b>Samarkand Bites</b>. We cook with care and serve warm dishes. This week we added
+          <mark>Honey Cake</mark> and improved our menu for your <ins>1st</ins> visit.
+          <br>
+          We also try to reduce CO<sub>2</sub> impact by optimizing deliveries.
+        </p>
+
+        <address>
+          10 Amir Temur Street<br>
+          Tashkent, Uzbekistan<br>
+          Phone: +998 90 123 45 67
+        </address>
+
+        <details>
+          <summary>
+            <mark>Mini FAQ</mark>: vegetarian options?
+          </summary>
+          <p>
+            Yes. Choose the vegetarian checkbox in the form below and tell us your preferences in the note.
+          </p>
+        </details>
+      </section>
+
+      <hr>
+
+      <section aria-label="Media and image map">
+        <h2>Gallery (attributes practice)</h2>
+
+        <figure>
+          <img
+            src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=800&q=60"
+            alt="A restaurant dish on a table"
+            title="Example restaurant photo"
+            width="560"
+            height="360"
+            loading="lazy"
+            decoding="async"
+            referrerpolicy="no-referrer"
+          >
+          <figcaption>
+            Tap the image hotspots to open the challenge links.
+          </figcaption>
+        </figure>
+
+        <p>
+          Image map: click these areas
+          <a href="[AREA_LINK_1]" target="_blank" rel="noopener noreferrer">Area 1</a>,
+          <a href="[AREA_LINK_2]" target="_blank" rel="noopener noreferrer">Area 2</a>.
+        </p>
+
+        <!--
+          Student task: replace the placeholder hrefs in the <a> tags above, and also
+          set real href values in the <area> tags below.
+        -->
+        <img
+          src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=560&q=60"
+          alt="Hotspot practice image"
+          usemap="#dish-map"
+          width="560"
+          height="320"
+          title="Hotspots for attributes practice"
+        >
+        <map name="dish-map">
+          <area shape="rect" coords="20,20,180,140" href="[AREA_LINK_1]" target="_blank" alt="Starter area">
+          <area shape="circle" coords="360,170,90" href="[AREA_LINK_2]" target="_blank" alt="Dessert area">
+        </map>
+
+        <aside>
+          <h3>Progress meter</h3>
+          <p>
+            Popularity this week:
+            <meter min="0" max="100" value="78" low="35" high="70" optimum="90">78%</meter>
+          </p>
+        </aside>
+      </section>
+
+      <hr>
+
+      <section id="menu">
+        <h2>Menu</h2>
+
+        <h3>Starters</h3>
+        <ol>
+          <li>Tomato soup — 25,000 UZS</li>
+          <li>Salad "Green Mix" — 30,000 UZS</li>
+          <li>
+            Sparkling drink CO<sub>2</sub> — 15,000 UZS (limited 2<sup>nd</sup> refill)
+          </li>
+        </ol>
+
+        <h3>Main dishes</h3>
+        <ul>
+          <li>Plov — 75,000 UZS</li>
+          <li>
+            Shashlik (spicy option available) — 92,000 UZS
+          </li>
+          <li>
+            Vegan bowl — 68,000 UZS
+          </li>
+        </ul>
+
+        <p>
+          Download example:
+          <a href="menu.pdf" download="menu-[YOUR_NAME].pdf">Download menu PDF</a>
+        </p>
+      </section>
+
+      <hr>
+
+      <section id="hours" aria-label="Opening hours table">
+        <h2>Opening hours</h2>
+        <table border="1" cellspacing="0" cellpadding="8">
+          <caption>Weekly opening schedule</caption>
+          <thead>
+            <tr>
+              <th scope="col">Day</th>
+              <th scope="col">Hours</th>
+              <th scope="col">Note</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Mon–Fri</th>
+              <td>09:00 – 22:00</td>
+              <td><mark>Quick lunch</mark> available</td>
+            </tr>
+            <tr>
+              <th scope="row">Sat</th>
+              <td>10:00 – 23:00</td>
+              <td>Weekend specials</td>
+            </tr>
+            <tr>
+              <th scope="row">Sun</th>
+              <td>10:00 – 21:00</td>
+              <td>Family-friendly</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>
+          Copy-style practice (keep inside <code>&lt;pre&gt;</code>):
+        </p>
+        <pre>
+Mon–Fri   09:00 – 22:00
+Sat       10:00 – 23:00
+Sun       10:00 – 21:00
+        </pre>
+      </section>
+
+      <hr>
+
+      <section id="order" aria-label="Order form">
+        <h2>Reservation / Order form</h2>
+
+        <form action="#" method="post" autocomplete="on" enctype="application/x-www-form-urlencoded">
+          <input type="hidden" name="restaurant" value="Samarkand Bites">
+
+          <fieldset>
+            <legend><em>Step 1:</em> Your details</legend>
+
+            <label for="name">Name</label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              placeholder="e.g. Alisher"
+              required
+              minlength="2"
+              maxlength="40"
+              pattern="[A-Za-zА-Яа-яЁё ]+"
+              autocomplete="name"
+            >
+            <br>
+
+            <label for="phone">Phone</label>
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              inputmode="tel"
+              placeholder="+998 __ ___ __ __"
+              required
+              pattern="^\+998\s?\d{2,3}\s?\d{3}\s?\d{2}\s?\d{2}$"
+              autocomplete="tel"
+            >
+            <br>
+
+            <label for="email">Email (optional)</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="you@example.com"
+              autocomplete="email"
+            >
+          </fieldset>
+
+          <fieldset>
+            <legend><em>Step 2:</em> Order specifics</legend>
+
+            <p>
+              <label for="guests">Guests</label>
+              <select id="guests" name="guests" required>
+                <option value="" disabled selected>Select...</option>
+                <option value="1">1 guest</option>
+                <option value="2">2 guests</option>
+                <option value="3">3 guests</option>
+                <option value="4">4 guests</option>
+                <option value="5">5 guests</option>
+                <option value="6">6 guests</option>
+                <option value="7">7 guests</option>
+                <option value="8">8 guests</option>
+              </select>
+            </p>
+
+            <p>
+              <label for="date">Date</label>
+              <input
+                id="date"
+                name="date"
+                type="date"
+                required
+                min="2026-03-20"
+                max="2026-12-31"
+              >
+            </p>
+
+            <p>
+              <label for="time">Time</label>
+              <input
+                id="time"
+                name="time"
+                type="time"
+                required
+                step="900"
+                min="09:00"
+                max="23:00"
+              >
+            </p>
+
+            <p>
+              <label for="food">Pick a main dish</label>
+              <select id="food" name="food" required size="4" multiple>
+                <option value="plov">Plov</option>
+                <option value="shashlik">Shashlik</option>
+                <option value="vegan-bowl" selected>Vegan bowl</option>
+              </select>
+              <br>
+              (Hold Ctrl/Command to select multiple.)
+            </p>
+
+            <p>
+              <label>
+                <input type="checkbox" name="vegetarian" value="yes">
+                Vegetarian
+              </label>
+              <br>
+              <label>
+                <input type="checkbox" name="no-spicy" value="yes" checked>
+                No spicy
+              </label>
+              <br>
+              <label>
+                <input type="checkbox" name="sweets" value="yes" disabled>
+                Dessert for later (disabled example)
+              </label>
+            </p>
+
+            <label for="note">Special note</label>
+            <textarea
+              id="note"
+              name="note"
+              rows="4"
+              cols="40"
+              placeholder="Tell us what you need. (Keep it short)"
+              required
+              maxlength="250"
+            ></textarea>
+            <br>
+
+            <p>
+              Budget (optional):
+              <input
+                name="budget"
+                type="number"
+                min="10000"
+                max="500000"
+                step="1000"
+                placeholder="e.g. 200000"
+              >
+            </p>
+          </fieldset>
+
+          <button type="submit">Send request</button>
+          <button type="button" onclick="window.location.href='#menu'">Back to menu</button>
+          <!-- No JS is required for the main challenge, but this button shows attributes/handlers -->
+        </form>
+      </section>
+
+      <hr>
+
+      <section aria-label="Deep nesting challenge">
+        <h2>Challenge: nested text + link wrapping</h2>
+
+        <p>
+          Student task:
+          1) Replace every placeholder inside <code>[brackets]</code>.
+          2) In the paragraph below, keep the nested order exactly:
+          <b><em><mark>ALISHER</mark></em></b> (b &gt; em &gt; mark).
+          3) Also ensure the paragraph includes CO<sub>2</sub> and 1<sup>st</sup>.
+          4) Wrap the whole paragraph in ONE link (<code>&lt;a&gt;</code>) using <code>href</code> + <code>target</code> + <code>rel</code>.
+        </p>
+
+        <!-- Wrap THIS paragraph in a link (href/target/rel). -->
+        <p id="challenge-text">
+          Hi! I am <b><em><mark>ALISHER</mark></em></b>. On my <ins>1st</ins> visit,
+          I want a vegan bowl with a drink: CO<sub>2</sub> included, and I prefer it marked
+          as <mark>OK</mark> for my vegetarian option.
+        </p>
+
+        <p>
+          Bonus attributes:
+          add an <code>aria-label</code> somewhere meaningful (for accessibility practice),
+          and make the next embedded map use <code>loading="lazy"</code> and <code>title</code>.
+        </p>
+
+        <iframe
+          loading="lazy"
+          title="Restaurant map embed (placeholder)"
+          src="[MAP_EMBED_URL]"
+          width="560"
+          height="320"
+          style="border: 0;"
+          referrerpolicy="no-referrer"
+          allowfullscreen
+          aria-label="Map"
+        ></iframe>
+      </section>
+    </main>
+
+    <footer>
+      <hr>
+      <p>
+        Tip: Experiment with attributes like <code>target</code>, <code>rel</code>, <code>alt</code>, <code>required</code>,
+        <code>min</code>/<code>max</code>, and <code>pattern</code>.
+      </p>
+    </footer>
+  </body>
+</html>
