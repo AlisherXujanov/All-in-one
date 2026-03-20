@@ -1,11 +1,193 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
+
 <head>
+
+    <!--
+        SEO  => Search Engine Optimization
+    -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Alisher — Attributes Hard Challenge</title>
+
 </head>
+
 <body>
-    
+
+    <!--
+        a  ->  anchor tag   ->  creates links
+
+            ATTRIBUTES:
+                - href   =>  attribute for the link
+                - target =>  attribute for the tab (new or not)
+                            - _self  =>  opens the link in current tab
+                            - _blank =>  opens the link in a new tab
+        img  =>  image tag (self enclosing tag)
+
+                <img attr...>
+
+            ATTRIBUTES:
+                - width   =>  horizontal size
+                - height  =>  vertical size
+                - src     =>  source of the image (local or global)
+                - alt     =>  alternate text (if the image is not found)
+
+        --------------------------------------------------------
+        ATTRIBUTES
+            SYNTAX:   <tag-name attr-name='...'>...</tag-name>
+
+            There are 2 types of attributes:
+            - global
+            - specific
+        --------------------------------------------------------
+        LINK  ->   What is it? (URL Address)
+
+            URL  =>  Universal Resource Locator  =>  is a unique address of a resource on the web
+
+        EX:   https://www.google.com
+
+        - http(s)   =>  HyperText Transfer Protocol (Secure)
+        - www       =>  world wide web
+        - domain    =>  the name of the website
+        - path      =>  .com (commercial)
+                        .uz  (uzbekistan)
+                        .ru  (russia)
+                        .org (organization)
+                        .io  (input output)  (SaaS)
+    -->
+
+    <h1 id="top">Alisher</h1>
+
+    <marquee title="Big promo banner (global title attribute)">
+        Today: <b><em><mark>[DISCOUNT]</mark></em></b> off — <ins>hot</ins> delivery (limited
+        <sup>2</sup> days)!
+    </marquee>
+
+    <hr>
+
+    <h2>Attributes Warmup (global vs specific)</h2>
+
+    <p title="This is a global attribute (title) on a p tag" id="warmup">
+        Practice nested text like:
+        <b><em><mark>CO<sub>2</sub></mark></em></b> and <ins>1<sup>st</sup></ins> place wins a free drink.
+    </p>
+
+    <hr>
+
+    <h2>1) Anchor tags (href + target + title)</h2>
+
+    <p>
+        Open help page in a new tab:
+        <a href="https://www.google.com" target="_blank" title="Opens in a new tab">Google (new tab)</a>
+        <br>
+        Open map in the same tab:
+        <a href="https://www.google.com/maps" target="_self" title="Opens in current tab">Google Maps (same tab)</a>
+    </p>
+
+    <p>
+        Another link (with a different href):
+        <a href="https://www.instagram.com" target="_blank" title="Instagram link example">Instagram</a>
+        <br>
+        Tip: only change the <b>href</b> and <b>target</b> values, keep the text inside the tag.
+    </p>
+
+    <hr>
+
+    <h2>2) Image tags (src + alt + width/height + title)</h2>
+
+    <p id="photos">
+        Example 1 (remote image):
+        <br>
+        <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=420&q=60"
+            alt="A plate of food on a table" width="420" height="280" title="Food photo example">
+    </p>
+
+    <p>
+        Example 2 (different size + another alt text):
+        <br>
+        <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=300&q=60"
+            alt="A dessert close-up" width="300" height="200" title="Dessert photo example">
+        <br>
+        If the image is missing, your <b>alt</b> text becomes the fallback.
+    </p>
+
+    <hr>
+
+    <h2>3) Attribute syntax (write it as code text)</h2>
+
+    <pre id="syntax-board" title="This is plain text (not real HTML)">Example syntax:
+&lt;a href='https://example.com' target='_blank' title='Link title'&gt;Link text&lt;/a&gt;
+&lt;img src='path-or-url' alt='Fallback text' width='100' height='100' title='Preview'&gt;
+
+There are:
+- global attributes (example: id, title)
+- specific attributes (example: href, target, src, alt, width, height)</pre>
+
+    <hr>
+
+    <h2>4) Deep Details (nested information using details/summary)</h2>
+
+    <details id="faq1" title="Interactive section">
+        <summary><mark>FAQ</mark> — delivery and freshness?</summary>
+        <p>
+            We cook with <ins>care</ins> and serve meals <em>fresh</em>. If you want the most popular dish,
+            choose the <b><em><mark>Chef's Special</mark></em></b> (limited <sup>1</sup> per person).
+        </p>
+
+        <details title="Second level details">
+            <summary>What about CO<sub>2</sub> friendly options?</summary>
+            <p>
+                We reduce waste and recommend the <ins>2<sup>nd</sup></ins> option for smaller impact.
+                Mark your choice with <mark>this word</mark> before you order.
+            </p>
+        </details>
+    </details>
+
+    <hr>
+
+    <h2>5) Reservation challenge (fieldset + legend + button)</h2>
+
+    <fieldset title="This fieldset is practice-only (no input tags allowed)">
+        <legend><em>Reserve your table</em></legend>
+        <p>
+            Name: [YOUR_NAME] <br>
+            Guests: <mark>[COUNT]</mark> <br>
+            Time: [HH:MM] on <ins>[DAY]</ins>
+        </p>
+        <button title="This button demonstrates button tag usage">
+            <a href="https://www.google.com/search?q=restaurant+reservation" target="_blank">Confirm reservation</a>
+        </button>
+    </fieldset>
+
+    <hr>
+
+    <h2>6) Student task (hard mode)</h2>
+
+    <p>
+        Replace all bracket placeholders with your own values. Then write ONE paragraph that:
+        <br>
+        1) contains exactly this nesting: <b><em><mark>ALISHER</mark></em></b>
+        <br>
+        2) includes <b>CO<sub>2</sub></b> and <b>1<sup>st</sup></b> (as shown)
+        <br>
+        3) uses <ins>ins</ins> and <mark>mark</mark> once each (can be around words you like)
+        <br>
+        4) wraps the whole paragraph content inside a single <a href="[YOUR_URL]" target="_blank">link</a>.
+    </p>
+
+    <p>
+        Extra challenge: add a global <b>title</b> attribute to your linked paragraph and an <b>id</b> attribute to your chosen heading.
+    </p>
+
+    <hr>
+
+    <h2>End</h2>
+
+    <p>
+        Back to top:
+        <a href="#top" target="_self" title="Anchor link uses href with a fragment">Return</a>
+    </p>
+
 </body>
+
 </html>
